@@ -14,9 +14,14 @@ desktop.ini
 **/.astro/
 
 # Nested Git repositories declared in root modules.manifest.json.
-# Super-repo tracks only manifest/docs/shell, not repo contents or pointers.
+# The root tracks only manifests and docs, never their contents or pointers.
 /infra/
-/modules/*/
+/workspace/*/
+/productionspace/*/
+# Legacy module checkouts from before the workspace/ layout. Keep the rule
+# until every machine has moved its checkouts with
+# `lazurio repair module-location`.
+/modules/
 
 # Env a secrets
 **/.env

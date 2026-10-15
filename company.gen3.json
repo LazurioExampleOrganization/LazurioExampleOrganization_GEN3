@@ -213,8 +213,7 @@
       "override": [
         "company/roles/**",
         "company/colleagues/**",
-        "design-system/**",
-        "guide/**"
+        "design-system/**"
       ]
     },
     "update_model": "standalone"
@@ -258,11 +257,6 @@
       "kind": "workspace",
       "ownership": "manual",
       "path": "workspace"
-    },
-    {
-      "kind": "guide",
-      "ownership": "override",
-      "path": "guide"
     },
     {
       "kind": "mission-control",

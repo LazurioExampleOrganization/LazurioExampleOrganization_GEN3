@@ -69,8 +69,7 @@
       "override": [
         "company/roles/**",
         "company/colleagues/**",
-        "design-system/**",
-        "guide/**"
+        "design-system/**"
       ],
       "derived": [
         "generated/**"
@@ -119,11 +118,6 @@
       "kind": "workspace",
       "ownership": "manual",
       "path": "workspace"
-    },
-    {
-      "kind": "guide",
-      "ownership": "override",
-      "path": "guide"
     },
     {
       "kind": "mission-control",
@@ -426,7 +420,7 @@
     "legacy_projection": {
       "path": "company.gen3.json",
       "algorithm": "sha256-canonical-json-v1",
-      "sha256": "sha256:08b7b66a9994a2df0ad5659f5d256160a1db4e5159aa68418f51dfe1cc0efd47"
+      "sha256": "sha256:315814f9c828184437ca2fd7a5ca06993af6ea33dfd449f76ee2326465a20fa8"
     }
   }
 }

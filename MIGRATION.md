@@ -65,7 +65,9 @@ Each pull request gets one ledger row:
   human;
 - review rounds, files changed and lines added and removed;
 - Czech lines before and after: tracked lines that contain at least one Czech
-  diacritic (`[áčďéěíňóřšťúůýžÁČĎÉĚÍŇÓŘŠŤÚŮÝŽ]`), counted over `git ls-files`;
+  letter with a diacritic (the 15 lowercase letters U+00E1, U+010D, U+010F,
+  U+00E9, U+011B, U+00ED, U+0148, U+00F3, U+0159, U+0161, U+0165, U+00FA,
+  U+016F, U+00FD, U+017E and their capitals), counted over `git ls-files`;
 - `lazurio organization check` for root changes, Module Standard checks
   (`lazurio module setup`, MS-01 to MS-13) for modules, and the CI result;
 - what broke, with the issue and the fixing pull request;
@@ -101,3 +103,13 @@ A row lands in the same root pull request or in the next one.
 
 | # | Pull request | Repo | Start (UTC) | Merged (UTC) | Agent time | Human wait | Review rounds | Files | +/− | Czech lines before → after | Organization check | MS checks | CI | Broke | Human decisions | Tokens |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| R1 | [#1](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/1) | root | 2026-10-15 22:28 | 2026-10-15 22:31 | 3 min | 0 | 0 | 1 | +103/−0 | 7,297 → 7,297 | ok, `transition` | n/a | no workflow yet | nothing | none | not reported |
+| R2 | [#2](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/2) | root | 2026-10-15 22:32 | 2026-10-15 22:35 | 3 min | 0 | 0 | 5 | +54/−23 | 7,297 → 7,294 | ok, `transition`, projection parity | n/a | no workflow yet | The compiler needs a template remote ([HumanAndMachines/Lazurio#556](https://github.com/HumanAndMachines/Lazurio/issues/556)) and writes Czech headings ([#557](https://github.com/HumanAndMachines/Lazurio/issues/557)); local workaround for the first | none | not reported |
+
+### Mount on the maintainer machine (2026-10-15 22:35–22:38 UTC)
+
+| Step | Result |
+|---|---|
+| `git clone` into `organizations/LazurioExampleOrganization_GEN3` | Root at R2 |
+| `lazurio update --json` | Cloned automations, content, experiments, playbooks, research and knowledgebase into `modules/`. Knowledgebase `blocked`: its App id must start with the Organization prefix and collides with an App id of another mounted Organization (fixed in M1) |
+| `lazurio organization install LazurioExampleOrganization --json` (Admin, restricted slots included) | Cloned `finance`. `blocked` with `repository_db_not_active`: an Organization that declares Mission Control needs its active `mission-control/db` mount, which is held. `infra` was not cloned |

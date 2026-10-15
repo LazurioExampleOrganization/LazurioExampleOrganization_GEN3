@@ -19,7 +19,7 @@
   "modules": [
     {
       "slug": "automations",
-      "path": "modules/automations",
+      "path": "workspace/automations",
       "space": "workspace",
       "teams": [
         "workspace"
@@ -38,7 +38,7 @@
     },
     {
       "slug": "content",
-      "path": "modules/content",
+      "path": "workspace/content",
       "space": "workspace",
       "teams": [
         "workspace"
@@ -57,7 +57,7 @@
     },
     {
       "slug": "experiments",
-      "path": "modules/experiments",
+      "path": "workspace/experiments",
       "space": "workspace",
       "teams": [
         "workspace"
@@ -76,7 +76,7 @@
     },
     {
       "slug": "finance",
-      "path": "modules/finance",
+      "path": "workspace/finance",
       "space": "workspace",
       "teams": [
         "workspace"
@@ -94,7 +94,7 @@
     },
     {
       "slug": "knowledgebase",
-      "path": "modules/knowledgebase",
+      "path": "workspace/knowledgebase",
       "space": "workspace",
       "teams": [
         "workspace"
@@ -114,7 +114,7 @@
     },
     {
       "slug": "playbooks",
-      "path": "modules/playbooks",
+      "path": "workspace/playbooks",
       "space": "workspace",
       "teams": [
         "workspace"
@@ -134,7 +134,7 @@
     },
     {
       "slug": "research",
-      "path": "modules/research",
+      "path": "workspace/research",
       "space": "workspace",
       "teams": [
         "workspace"
@@ -155,6 +155,7 @@
   "manifest_slots": [
     {
       "path": "infra",
+      "slug": "infra",
       "space": "root",
       "category": "engineering",
       "default_access": "restricted",
@@ -166,13 +167,16 @@
         "url": "git@github.com:LazurioExampleOrganization/infra.git",
         "branch": "main"
       },
-      "notes": "Root-level infrastructure, access governance a deployment context pro AgentMint. GitHub repo v organizaci LazurioExampleOrganization; první zapsaný fakt je existence GitHub organizace LazurioExampleOrganization.",
+      "notes": "Restricted root repository for infrastructure, access governance and deployment context. It never holds secrets. Today it records only that the GitHub Organization exists.",
       "teams": [],
       "workspace": null
     },
     {
-      "path": "modules/knowledgebase",
-      "workspace": "workspace",
+      "path": "workspace/knowledgebase",
+      "slug": "knowledgebase",
+      "teams": [
+        "workspace"
+      ],
       "category": "knowledge",
       "default_access": "expected",
       "required_roles": [
@@ -181,23 +185,20 @@
         "experiment-operator"
       ],
       "source_of_truth": "git-native",
-      "app_manifests": [
-        {
-          "generation": "app/v2",
-          "role": "knowledgebase-viewer",
-          "path": "modules/knowledgebase/app/v2/package.json"
-        }
-      ],
-      "repo": "git@github.com:LazurioExampleOrganization/knowledgebase.git",
-      "notes": "Privátní strategie, rozhodovací logika, guardrails a lessons learned AgentMint. Připojit až ve chvíli, kdy root dokumenty přestanou stačit.",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/knowledgebase.git",
+        "branch": "main"
+      },
+      "notes": "Strategy, decision logic, guardrails and lessons learned. Document-native knowledge with a read-only viewer App.",
       "space": "workspace",
-      "teams": [
-        "workspace"
-      ]
+      "workspace": "workspace"
     },
     {
-      "path": "modules/research",
-      "workspace": "workspace",
+      "path": "workspace/research",
+      "slug": "research",
+      "teams": [
+        "workspace"
+      ],
       "category": "knowledge",
       "default_access": "expected",
       "required_roles": [
@@ -205,16 +206,20 @@
         "research-operator"
       ],
       "source_of_truth": "git-native",
-      "repo": "git@github.com:LazurioExampleOrganization/research.git",
-      "notes": "Mechanism scans, source notes, market maps a evidence pro rozhodnutí, co testovat.",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/research.git",
+        "branch": "main"
+      },
+      "notes": "Mechanism scans, source notes, market maps and the evidence for deciding what to test.",
       "space": "workspace",
-      "teams": [
-        "workspace"
-      ]
+      "workspace": "workspace"
     },
     {
-      "path": "modules/experiments",
-      "workspace": "workspace",
+      "path": "workspace/experiments",
+      "slug": "experiments",
+      "teams": [
+        "workspace"
+      ],
       "category": "business",
       "default_access": "expected",
       "required_roles": [
@@ -222,17 +227,21 @@
         "experiment-operator"
       ],
       "source_of_truth": "git-native",
-      "upstream_truth": "modules/research",
-      "repo": "git@github.com:LazurioExampleOrganization/experiments.git",
-      "notes": "Experiment specs, run logs, metriky, výsledky, stop/scale rozhodnutí a audit guardrails.",
+      "upstream_truth": "workspace/research",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/experiments.git",
+        "branch": "main"
+      },
+      "notes": "Experiment specs, run logs, metrics, results, stop or scale decisions and the guardrail audit.",
       "space": "workspace",
-      "teams": [
-        "workspace"
-      ]
+      "workspace": "workspace"
     },
     {
-      "path": "modules/playbooks",
-      "workspace": "workspace",
+      "path": "workspace/playbooks",
+      "slug": "playbooks",
+      "teams": [
+        "workspace"
+      ],
       "category": "knowledge",
       "default_access": "expected",
       "required_roles": [
@@ -241,17 +250,21 @@
         "experiment-operator"
       ],
       "source_of_truth": "git-native",
-      "upstream_truth": "modules/experiments",
-      "repo": "git@github.com:LazurioExampleOrganization/playbooks.git",
-      "notes": "Ověřené opakovatelné mechanismy. Hypotézy sem nepatří; ty zůstávají v research/experiments.",
+      "upstream_truth": "workspace/experiments",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/playbooks.git",
+        "branch": "main"
+      },
+      "notes": "Verified, repeatable mechanisms. Hypotheses do not belong here; they stay in research and experiments.",
       "space": "workspace",
-      "teams": [
-        "workspace"
-      ]
+      "workspace": "workspace"
     },
     {
-      "path": "modules/automations",
-      "workspace": "workspace",
+      "path": "workspace/automations",
+      "slug": "automations",
+      "teams": [
+        "workspace"
+      ],
       "category": "automation",
       "default_access": "role_based",
       "required_roles": [
@@ -259,16 +272,20 @@
         "experiment-operator"
       ],
       "source_of_truth": "git-native",
-      "repo": "git@github.com:LazurioExampleOrganization/automations.git",
-      "notes": "Agentní workflow, integrace a runtime. Připojit až po ručním ověření, že automatizace nevytváří spam, ToS obcházení ani bezpečnostní riziko.",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/automations.git",
+        "branch": "main"
+      },
+      "notes": "Agent workflows, integrations and runtime. An automation is connected only after a manual check that it creates no spam, no terms-of-service evasion and no security risk.",
       "space": "workspace",
-      "teams": [
-        "workspace"
-      ]
+      "workspace": "workspace"
     },
     {
-      "path": "modules/content",
-      "workspace": "workspace",
+      "path": "workspace/content",
+      "slug": "content",
+      "teams": [
+        "workspace"
+      ],
       "category": "publishing",
       "default_access": "role_based",
       "required_roles": [
@@ -276,32 +293,38 @@
         "research-operator"
       ],
       "source_of_truth": "git-native",
-      "upstream_truth": "modules/knowledgebase",
-      "repo": "git@github.com:LazurioExampleOrganization/content.git",
-      "notes": "Veřejné publikační a acquisition assets. Žádný cizí obsah, fake engagement ani claimy bez důkazu.",
+      "upstream_truth": "workspace/knowledgebase",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/content.git",
+        "branch": "main"
+      },
+      "notes": "Public publishing and acquisition assets. No third-party content, fake engagement or claims without evidence.",
       "space": "workspace",
-      "teams": [
-        "workspace"
-      ]
+      "workspace": "workspace"
     },
     {
-      "path": "modules/finance",
-      "workspace": "workspace",
+      "path": "workspace/finance",
+      "slug": "finance",
+      "teams": [
+        "workspace"
+      ],
       "category": "business",
       "default_access": "restricted",
       "required_roles": [
         "founder"
       ],
       "source_of_truth": "git-native",
-      "repo": "git@github.com:LazurioExampleOrganization/finance.git",
-      "notes": "Náklady, výnosy, unit economics, payment provider exporty a audit experimentů. Citlivá data nepatří do Gitu, pokud nejsou bezpečně anonymizovaná.",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/finance.git",
+        "branch": "main"
+      },
+      "notes": "Costs, revenue, unit economics, payment provider exports and the experiment audit. Sensitive data stays out of Git unless it is safely anonymized.",
       "space": "workspace",
-      "teams": [
-        "workspace"
-      ]
+      "workspace": "workspace"
     },
     {
       "path": "design-system",
+      "slug": "design-system",
       "space": "root",
       "category": "design",
       "default_access": "expected",
@@ -310,12 +333,13 @@
       ],
       "source_of_truth": "git-native",
       "status": "planned_slot",
-      "notes": "Root Design System zůstává v in-tree compatibility vrstvě; samostatné doctor-managed repo zatím není aktivní.",
+      "notes": "Organization design system. The root still carries the in-tree copy; the standalone design-system repository becomes this slot when the root application slots are activated.",
       "teams": [],
       "workspace": null
     },
     {
       "path": "mission-control",
+      "slug": "mission-control",
       "space": "root",
       "category": "planning",
       "default_access": "expected",
@@ -324,12 +348,13 @@
       ],
       "source_of_truth": "git-native",
       "status": "planned_slot",
-      "notes": "Mission Control zůstává v in-tree compatibility vrstvě; samostatné doctor-managed app repo zatím není aktivní.",
+      "notes": "Mission Control stays in the in-tree layer until the Organization adopts Mission Control v3.",
       "teams": [],
       "workspace": null
     },
     {
       "path": "mission-control/db",
+      "slug": "mission-control-data",
       "space": "root",
       "category": "planning-data",
       "default_access": "role_based",
@@ -338,8 +363,7 @@
       ],
       "source_of_truth": "repository-db:v3",
       "status": "planned_slot",
-      "notes": "Mission Control data mount je připravený kontrakt, ale aktivace repository-db v3 čeká na vlastní checkout a gate.",
-      "slug": "mission-control-data",
+      "notes": "Mission Control v3 data mount. Activation waits for its own repository and gate.",
       "teams": [],
       "workspace": null
     }

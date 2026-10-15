@@ -1,36 +1,37 @@
 # Workspace
 
-Workspace je **fyzická a logická kancelářská vrstva** Organizace GEN3 pro
-kancelářské (ne-produkční) moduly (viz `GLOSSARY.md`). Logické N:M grupování
-modulů a lidí obstarává **Team** (v obchodní řeči „digitální kancelář“ týmu
-nebo značky). AgentMint je single-team Organizace, takže má jediný default
-workspace se slugem `workspace`, který pokrývá všechny moduly.
+`workspace/` holds the Organization's workspace modules. Each
+`workspace/<module>/` is its own Git repository, mounted as an ignored nested
+checkout. The root never tracks module contents, submodules or gitlinks.
 
-## Co patří dovnitř
+The root `modules.manifest.json` is the only inventory of modules. A slot
+declares the module's path, its repository and the Teams it belongs to
+(`teams`). `lazurio update` clones every declared module you can access and
+keeps it on a clean `main`.
 
-- **Pracovní povrch týmu** — každodenní operativa workspace, která nepatří do
-  žádné dedikované org-level vrstvy.
-- **Pravidla a config workspace** — workspace-specific instrukce a nastavení
-  nad rámec root `AGENTS.md`.
-- **Moduly, které workspace vlastní** — fyzicky jsou mountované v `modules/`
-  (decision 0023), ale logicky patří tomuhle workspace/Teamu; jejich
-  příslušnost deklaruje root `modules.manifest.json`. Kanonicky přes
-  `module_slots[].teams`; AgentMint zatím drží historické aliasy `workspaces[]`
-  + `module_slots[].workspace`.
+## Teams
 
-## Co sem NEpatří
+The Organization has a single Team, `workspace`, declared in
+`lazurio.organization.json#teams`. Every workspace module belongs to it. A Team
+is a declaration in the manifest, not a directory: modules stay in this one
+flat layer whatever Teams they belong to. Which Teams can actually reach a
+module is decided by the GitHub grants of that repository.
 
-Org-level vrstvy sdílené celou Organizací: `manual/`, `mission-control/`
-(plánování), `productionspace/` (release/produkční systémy), `design-system/`,
-`guide/`, `company/`, `infra/`. Ty stojí vedle workspace, ne uvnitř něj.
+## Missing modules
 
-## Víc týmů
+A missing module is not automatically an error:
 
-Single-team Organizace vystačí s tímhle jedním default Teamem. Když Organizace
-obsluhuje víc týmů nebo značek, přibudou další **Teamy** — logické N:M
-grupování, ne vlastní složka (moduly zůstávají fyzicky v `modules/`).
-Kanonicky se roster deklaruje v `lazurio.organization.json#teams` a příslušnost
-modulu v `module_slots[].teams` (`modules.manifest.json`). AgentMint zatím drží
-historické aliasy `workspaces[]` + `module_slots[].workspace` (jeden default),
-které se do Team modelu teprve převedou
-(viz `GLOSSARY.md`).
+- `available`: the module is cloned and usable;
+- `missing_access`: the module is declared, but your GitHub account has no
+  access to its repository; restricted modules are cloned only by an Admin
+  install;
+- `planned_slot`: the slot is declared without a repository.
+
+Do not copy data from elsewhere to work around a missing module; say what you
+need.
+
+## What does not belong here
+
+Organization-level layers sit next to `workspace/`, not inside it:
+`manual/`, `mission-control/`, `design-system/`, `productionspace/`,
+`company/` and `infra/`.

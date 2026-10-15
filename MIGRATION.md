@@ -96,7 +96,7 @@ A row lands in the same root pull request or in the next one.
 | Step | Result |
 |---|---|
 | Team `workspace` | Created, closed, id 20129625. Write access to knowledgebase, research, experiments, playbooks, content and automations. `finance` and `infra` are declared `restricted` and get no Team grant |
-| Rulesets on `main` | Active on nine repositories: no deletion, no force push. Required status checks are added when a repository gets a CI workflow. `mission-control` is held with Mission Control |
+| Rulesets on `main` | Active on nine repositories: no deletion, no force push. Required status checks are added when a repository gets a CI workflow (root: "Organization check" since R4). `mission-control` is held with Mission Control |
 | Lazurio for GitHub | Not installed yet; the Owner installs it |
 
 ### Pull requests
@@ -107,6 +107,7 @@ A row lands in the same root pull request or in the next one.
 | R2 | [#2](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/2) | root | 2026-10-15 22:32 | 2026-10-15 22:35 | 3 min | 0 | 0 | 5 | +54/−23 | 7,297 → 7,294 | ok, `transition`, projection parity | n/a | no workflow yet | The compiler needs a template remote ([HumanAndMachines/Lazurio#556](https://github.com/HumanAndMachines/Lazurio/issues/556)) and writes Czech headings ([#557](https://github.com/HumanAndMachines/Lazurio/issues/557)); local workaround for the first | none | not reported |
 | R3 | [#3](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/3) | root | 2026-10-15 22:38 | 2026-10-15 22:41 | 3 min | 0 | 0 | 12 | +322/−309 | 7,294 → 7,188 | ok, `transition`, projection parity | n/a | no workflow yet | `lazurio update` then blocked the root on in-tree App ids ([#4](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/issues/4)), fixed in R3a | none | not reported |
 | R3a | [#5](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/5) | root | 2026-10-15 22:42 | 2026-10-15 22:44 | 2 min | 0 | 0 | 3 | +11/−2 | 7,188 → 7,188 | ok, `transition` | n/a | no workflow yet | fixes [#4](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/issues/4); the next `lazurio update` was green (155 current, root updated, 0 blocked) | none | not reported |
+| R4 | [#6](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/6) | root | 2026-10-15 22:46 | 2026-10-15 22:49 | 3 min | 0 | 0 | 57 | +633/−9,807 | 7,188 → 5,086 | ok, `transition`, projection parity | n/a | pass (first root CI run) | nothing | none | not reported |
 
 ### Mount on the maintainer machine (2026-10-15 22:35–22:38 UTC)
 

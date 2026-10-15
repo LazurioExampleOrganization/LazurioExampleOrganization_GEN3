@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Co má v AgentMintu držet feature plánování?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Jen chat s agentem.",
+          "correct": false,
+          "feedback": "Ne. Chat je pracovní rozhovor, ale plán musí mít dohledatelný domov."
+        },
+        {
+          "id": "b",
+          "text": "Mission Control jako lokální YAML-first plánovací vrstva.",
+          "correct": true,
+          "feedback": "Správně. Mission Control má držet feature kontext, rozhodnutí a acceptance criteria ve workspace souborech."
+        },
+        {
+          "id": "c",
+          "text": "Pouze `DONE.tasks.json`.",
+          "correct": false,
+          "feedback": "`DONE.tasks.json` drží hotovou nebo archivovanou práci, ne živý plán."
+        }
+      ],
+      "explanation": "Mission Control je plánovací vrstva; Git task ledgery drží implementační stav."
+    },
+    {
+      "id": "q2",
+      "text": "Co patří do `TODO.tasks.json`?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Konkrétní implementační kroky odvozené z plánu.",
+          "correct": true,
+          "feedback": "Ano. TODO má být vykonatelný krok, na který může agent navázat."
+        },
+        {
+          "id": "b",
+          "text": "Celý dlouhý business brief místo Mission Control plánu.",
+          "correct": false,
+          "feedback": "Business kontext patří do Mission Control planu. TODO drží konkrétní práci."
+        },
+        {
+          "id": "c",
+          "text": "API tokeny a přístupy do služeb.",
+          "correct": false,
+          "feedback": "Secrets nikdy nepatří do Gitu ani do task ledgerů."
+        }
+      ],
+      "explanation": "`TODO.tasks.json` je exekuční vrstva, ne náhrada plánovacího modelu."
+    }
+  ],
+  "achievement_on_pass": null
+}

@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Kam patří interní strategické rozhodnutí a důvody?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "`modules/research/`, protože tam sbíráme mechanismy.",
+          "correct": false,
+          "feedback": "Research drží zjištění a hypotézy. Strategické rozhodnutí patří do knowledgebase."
+        },
+        {
+          "id": "b",
+          "text": "`modules/experiments/`, pokud rozhodnutí vzniklo po testu.",
+          "correct": false,
+          "feedback": "Experiment může být důkaz, ale strategické rozhodnutí a jeho důvody patří do knowledgebase."
+        },
+        {
+          "id": "c",
+          "text": "`modules/knowledgebase/`",
+          "correct": true,
+          "feedback": "Správně. Knowledgebase drží interní pravdu, guardrails a reasoning."
+        }
+      ],
+      "explanation": "Knowledgebase je pro strategii, rozhodnutí a citlivé interní souvislosti."
+    },
+    {
+      "id": "q2",
+      "text": "Kam patří ověřený opakovatelný mechanismus?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "`modules/research/`, protože tam začal.",
+          "correct": false,
+          "feedback": "Research drží hypotézy a zdroje. Ověřený postup patří do playbooku."
+        },
+        {
+          "id": "b",
+          "text": "`modules/playbooks/`",
+          "correct": true,
+          "feedback": "Ano. Playbook je pro opakovatelný mechanismus s důkazem."
+        },
+        {
+          "id": "c",
+          "text": "`modules/content/`, protože se dá zveřejnit.",
+          "correct": false,
+          "feedback": "Veřejný obsah může být downstream výstup, ale vnitřní playbook je source of truth pro opakování."
+        }
+      ],
+      "explanation": "Nápad začíná v research, test v experiments, ověřený postup v playbooks."
+    }
+  ],
+  "achievement_on_pass": null
+}

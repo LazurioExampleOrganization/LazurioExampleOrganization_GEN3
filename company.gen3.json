@@ -1,0 +1,525 @@
+{
+  "access_governance": {
+    "admin_boundary": "infra/ je restricted root nested repo (doctor-managed) s GitHub/access governance; přístup mají admini Organizace.",
+    "agent_rule": "Agent smí navrhnout access change, ale schválení patří adminům Organizace s infra přístupem.",
+    "source_of_truth": "infra/access"
+  },
+  "agent_processes": {
+    "agent_rule": "Opakovatelný postup zapiš jako skill. Dokumentace vysvětluje proč, skill říká jak.",
+    "claude_compatibility": ".claude/skills",
+    "inventory": "company/agents/SKILLS_INVENTORY.md",
+    "runtime_rule": "Používej Bun jako základní runtime. Nepřidávej nový npm/node-only proces bez rozhodnutí kolegy.",
+    "skills_source_of_truth": ".agents/skills",
+    "voice_guide": "company/agents/voice/"
+  },
+  "business_context": {
+    "customer_segments": [
+      {
+        "description": "AgentMint nemá jeden fixní segment; každý experiment definuje vlastního zákazníka, kanál a nabídku v experiment specu. Segment bez experimentu je jen hypotéza.",
+        "slug": "mechanism-specific-audiences"
+      }
+    ],
+    "decision_rules": [
+      {
+        "owner": "founder",
+        "rule": "Finanční kroky, externě viditelné akce a cokoliv s legal/platform dopadem musí předem potvrdit člověk. Agent nesmí spustit automatizaci generující spam, fake engagement nebo klamavé claimy.",
+        "trigger": "money movement, external visibility, platform ToS, legal or reputational risk"
+      },
+      {
+        "owner": "founder",
+        "rule": "Škálovat se smí jen mechanismus s ověřeným signálem z experimentu; stop/scale rozhodnutí se zapisuje do modules/experiments.",
+        "trigger": "scale decision"
+      }
+    ],
+    "metrics": [
+      {
+        "description": "Počet mechanismů s ověřeným signálem příjmu zapsaných v playbooks.",
+        "slug": "verified-mechanisms"
+      },
+      {
+        "description": "Počet dokončených experimentů s explicitním stop/scale rozhodnutím a zapsanou evidencí.",
+        "slug": "experiment-throughput"
+      },
+      {
+        "description": "Čistý příjem běžících mechanismů po nákladech, podle modules/finance.",
+        "slug": "net-experiment-income"
+      }
+    ],
+    "revenue_drivers": [
+      {
+        "description": "Příjem z online mechanismů, které prošly experimentem s ověřeným signálem. Škáluje se jen to, co má důkaz; hypotéza zůstává v research/experiments.",
+        "priority": "high",
+        "slug": "validated-online-mechanisms"
+      },
+      {
+        "description": "Opakovatelné playbooky ověřených mechanismů: zdokumentovaný postup, unit economics a guardrails, připravené k opětovnému spuštění nebo přenosu.",
+        "priority": "medium",
+        "slug": "mechanism-playbooks"
+      }
+    ],
+    "risks": [
+      {
+        "description": "Experiment sklouzne do spamu, fake engagementu, obcházení ToS nebo klamavých claimů.",
+        "escalation": "Okamžitě zastavit, zapsat do experiment logu a eskalovat founderovi.",
+        "slug": "gray-zone-drift"
+      },
+      {
+        "description": "Mechanismus se začne škálovat nebo prezentovat jako funkční bez důkazu z experimentu.",
+        "escalation": "Vrátit do modules/experiments a doplnit měřitelný test se stop podmínkou.",
+        "slug": "no-evidence-scaling"
+      },
+      {
+        "description": "Práce zkopíruje cizí brand, obsah, data nebo account setup místo legální adaptace mechanismu.",
+        "escalation": "Zastavit implementaci, odstranit převzatý materiál a přepsat na vlastní adaptaci.",
+        "slug": "copying-instead-of-adapting"
+      },
+      {
+        "description": "Citlivá payment/finanční data se dostanou do Gitu bez anonymizace.",
+        "escalation": "Necommitovat, data anonymizovat nebo držet mimo Git a požádat admina Organizace o review.",
+        "slug": "sensitive-finance-data-in-git"
+      }
+    ],
+    "value_propositions": [
+      {
+        "description": "Legální adaptace prokazatelně fungujících online mechanismů: vlastní brand, vlastní data, vlastní nabídka, žádné obcházení pravidel platforem.",
+        "slug": "evidence-based-adaptation"
+      }
+    ]
+  },
+  "colleague_overlays": {
+    "active_colleagues": [
+      {
+        "display_name": "Jan Novák",
+        "os_user": "jannovak",
+        "primary_role": "founder"
+      }
+    ],
+    "agent_rule": "Nikdy nečti ani nekopíruj cizí složku private nebo archive. Ber tyto cesty jako lokální-only. Složky tomas/ a petr/ jsou onboardingové scaffoldy bez potvrzené role; agent jejich odpovědnosti nedomýšlí.",
+    "folder_name_rule": "Složka každého kolegy musí odpovídat lokálnímu OS username, například /Users/jannovak -> company/colleagues/jannovak.",
+    "gitignored_local_paths": [
+      "archive/",
+      "private/"
+    ],
+    "path": "company/colleagues"
+  },
+  "company": {
+    "default_branch": "main",
+    "display_name": "AgentMint",
+    "github_org": "LazurioExampleOrganization",
+    "repository": "git@github.com:LazurioExampleOrganization/LazurioExampleOrganization_GEN3.git",
+    "root_repository": "LazurioExampleOrganization/LazurioExampleOrganization_GEN3",
+    "slug": "LazurioExampleOrganization"
+  },
+  "generation_policy": {
+    "application_versions": [
+      {
+        "purpose": "Learning/proving generation.",
+        "version": "app/v1"
+      },
+      {
+        "purpose": "Second generation based on v1 learnings.",
+        "version": "app/v2"
+      }
+    ],
+    "data_versions": [
+      {
+        "namespace": "companydata/v1",
+        "source_of_truth": "First production or prototype data namespace."
+      },
+      {
+        "namespace": "companydata/v2",
+        "source_of_truth": "Next generation namespace after migration and parity checks."
+      }
+    ],
+    "migration_rules": [
+      {
+        "rule": "A generation migration must define old source of truth, new source of truth, transform, parity check, cutover and rollback or archive readability."
+      }
+    ],
+    "prototype_rule": "The best implementation plan is a prototype. v1 learns, v2 uses v1 as input, v3 uses v2 as input."
+  },
+  "glossary_contract": {
+    "agent_rule": "If a business, data or workflow term is missing or ambiguous, the agent must not guess. It must ask or propose a definition.",
+    "owners": [
+      "founder"
+    ],
+    "required_term_fields": [
+      "term",
+      "definition",
+      "scope",
+      "owner",
+      "source_of_truth",
+      "business_impact",
+      "data_impact"
+    ],
+    "source": "GLOSSARY.md"
+  },
+  "governance": {
+    "decision_rights": [
+      {
+        "domain": "experiment-guardrails",
+        "owner": "founder",
+        "rule": "Co je legální adaptace vs šedá zóna rozhoduje founder; agent guardrail neobchází a hraniční případ eskaluje."
+      },
+      {
+        "domain": "finance-data-access",
+        "owner": "organization-admin",
+        "rule": "Přístup k citlivým finančním datům a payment provider exportům schvaluje admin Organizace přes infra/access."
+      },
+      {
+        "domain": "template-sync",
+        "owner": "founder",
+        "rule": "Změny ovlivňující forkability nebo template update workflow musí mít čitelný diff a review."
+      }
+    ],
+    "default_branch": "main",
+    "file_ownership": {
+      "derived": [
+        "generated/**"
+      ],
+      "managed": [
+        "gen3/core/**"
+      ],
+      "manual": [
+        "AGENTS.md",
+        "README.md",
+        "GLOSSARY.md",
+        "lazurio.organization.json",
+        "company.gen3.json",
+        "infra/**",
+        "manual/**",
+        "modules.manifest.json",
+        "TODO.tasks.json",
+        "DONE.tasks.json",
+        "ISSUES.open.json",
+        "CHANGELOG.md",
+        "launchpad/README.md",
+        "mission-control/**",
+        "modules/**"
+      ],
+      "override": [
+        "company/roles/**",
+        "company/colleagues/**",
+        "design-system/**",
+        "guide/**"
+      ]
+    },
+    "update_model": "forkable-template"
+  },
+  "knowledge_surfaces": [
+    {
+      "agent_policy": "Agents may proactively write internal drafts and public candidates. Public publishing requires owner review and evidence-backed claims.",
+      "authority": "learning-surface",
+      "channels": [
+        "internal"
+      ],
+      "content_purpose": "mixed",
+      "kind": "blog",
+      "path": "blog",
+      "slug": "blog",
+      "visibility": "mixed"
+    }
+  ],
+  "layers": [
+    {
+      "kind": "company-shell",
+      "ownership": "override",
+      "path": "company"
+    },
+    {
+      "kind": "infra",
+      "ownership": "manual",
+      "path": "infra"
+    },
+    {
+      "kind": "design-system",
+      "ownership": "override",
+      "path": "design-system"
+    },
+    {
+      "kind": "manual",
+      "ownership": "manual",
+      "path": "manual"
+    },
+    {
+      "kind": "modules",
+      "ownership": "manual",
+      "path": "modules"
+    },
+    {
+      "kind": "guide",
+      "ownership": "override",
+      "path": "guide"
+    },
+    {
+      "kind": "mission-control",
+      "ownership": "manual",
+      "path": "mission-control"
+    },
+    {
+      "kind": "productionspace",
+      "ownership": "manual",
+      "path": "productionspace"
+    }
+  ],
+  "module_port_pool": {
+    "end": 24099,
+    "start": 24000
+  },
+  "modules": [
+    {
+      "access": {
+        "default": "role_based",
+        "roles": [
+          "founder",
+          "experiment-operator"
+        ]
+      },
+      "category": "automation",
+      "notes": "Agentní workflow, integrace a runtime. Připojit až po ručním ověření, že automatizace nevytváří spam, ToS obcházení ani bezpečnostní riziko.",
+      "path": "modules/automations",
+      "repo": "git@github.com:LazurioExampleOrganization/automations.git",
+      "slug": "automations",
+      "source_of_truth": "git-native",
+      "workspace": "workspace"
+    },
+    {
+      "access": {
+        "default": "role_based",
+        "roles": [
+          "founder",
+          "research-operator"
+        ]
+      },
+      "category": "publishing",
+      "notes": "Veřejné publikační a acquisition assets. Žádný cizí obsah, fake engagement ani claimy bez důkazu.",
+      "path": "modules/content",
+      "repo": "git@github.com:LazurioExampleOrganization/content.git",
+      "slug": "content",
+      "source_of_truth": "git-native",
+      "upstream_truth": "modules/knowledgebase",
+      "workspace": "workspace"
+    },
+    {
+      "access": {
+        "default": "expected",
+        "roles": [
+          "founder",
+          "experiment-operator"
+        ]
+      },
+      "category": "business",
+      "notes": "Experiment specs, run logs, metriky, výsledky, stop/scale rozhodnutí a audit guardrails.",
+      "path": "modules/experiments",
+      "repo": "git@github.com:LazurioExampleOrganization/experiments.git",
+      "slug": "experiments",
+      "source_of_truth": "git-native",
+      "upstream_truth": "modules/research",
+      "workspace": "workspace"
+    },
+    {
+      "access": {
+        "default": "restricted",
+        "roles": [
+          "founder"
+        ]
+      },
+      "category": "business",
+      "notes": "Náklady, výnosy, unit economics, payment provider exporty a audit experimentů. Citlivá data nepatří do Gitu, pokud nejsou bezpečně anonymizovaná.",
+      "path": "modules/finance",
+      "repo": "git@github.com:LazurioExampleOrganization/finance.git",
+      "slug": "finance",
+      "source_of_truth": "git-native",
+      "workspace": "workspace"
+    },
+    {
+      "access": {
+        "default": "expected",
+        "roles": [
+          "founder",
+          "research-operator",
+          "experiment-operator"
+        ]
+      },
+      "app_manifests": [
+        {
+          "generation": "app/v2",
+          "path": "modules/knowledgebase/app/v2/package.json",
+          "role": "knowledgebase-viewer"
+        }
+      ],
+      "category": "knowledge",
+      "notes": "Privátní strategie, rozhodovací logika, guardrails a lessons learned AgentMint. Připojit až ve chvíli, kdy root dokumenty přestanou stačit.",
+      "path": "modules/knowledgebase",
+      "repo": "git@github.com:LazurioExampleOrganization/knowledgebase.git",
+      "slug": "knowledgebase",
+      "source_of_truth": "git-native",
+      "workspace": "workspace"
+    },
+    {
+      "access": {
+        "default": "expected",
+        "roles": [
+          "founder",
+          "research-operator",
+          "experiment-operator"
+        ]
+      },
+      "category": "knowledge",
+      "notes": "Ověřené opakovatelné mechanismy. Hypotézy sem nepatří; ty zůstávají v research/experiments.",
+      "path": "modules/playbooks",
+      "repo": "git@github.com:LazurioExampleOrganization/playbooks.git",
+      "slug": "playbooks",
+      "source_of_truth": "git-native",
+      "upstream_truth": "modules/experiments",
+      "workspace": "workspace"
+    },
+    {
+      "access": {
+        "default": "expected",
+        "roles": [
+          "founder",
+          "research-operator"
+        ]
+      },
+      "category": "knowledge",
+      "notes": "Mechanism scans, source notes, market maps a evidence pro rozhodnutí, co testovat.",
+      "path": "modules/research",
+      "repo": "git@github.com:LazurioExampleOrganization/research.git",
+      "slug": "research",
+      "source_of_truth": "git-native",
+      "workspace": "workspace"
+    }
+  ],
+  "organization_generation": "gen3",
+  "organization_kind": "organization",
+  "roles": [
+    {
+      "colleagues": [
+        "jannovak"
+      ],
+      "decision_rights": [
+        "experiment-guardrails",
+        "scale-decisions",
+        "money-movement-approval",
+        "template-sync-impact"
+      ],
+      "display_name": "Founder",
+      "purpose": "Rozhoduje, co stojí za čas, peníze a reputační riziko; drží guardrails a stop/scale rozhodnutí.",
+      "slug": "founder",
+      "source_of_truth": "company/roles/founder.role.json"
+    },
+    {
+      "colleagues": [],
+      "decision_rights": [
+        "research-summary",
+        "mechanism-mapping"
+      ],
+      "display_name": "Research operator",
+      "purpose": "Mapuje online mechanismy a skládá evidenci, co stojí za test; odděluje mechanismus, důkaz a riziko.",
+      "slug": "research-operator",
+      "source_of_truth": "company/roles/research-operator.role.json"
+    },
+    {
+      "colleagues": [],
+      "decision_rights": [
+        "experiment-design",
+        "run-log-upkeep"
+      ],
+      "display_name": "Experiment operator",
+      "purpose": "Navrhuje a provozuje malé měřitelné experimenty s rozpočtem a stop podmínkou; zapisuje výsledky a evidence.",
+      "slug": "experiment-operator",
+      "source_of_truth": "company/roles/experiment-operator.role.json"
+    }
+  ],
+  "source_of_truth_matrix": [
+    {
+      "canonical": "lazurio.organization.json",
+      "domain": "company-structure",
+      "write_rule": "Změny struktury firmy se zapisují do lazurio.organization.json a validují před commitem. company.gen3.json je generovaná kompatibilní projekce pro starší čtečky: ručně se needituje a mění se jen příkazem lazurio migrate organization-manifest <task-worktree> --write."
+    },
+    {
+      "canonical": "modules.manifest.json",
+      "domain": "module-inventory",
+      "write_rule": "Inventář modulů a jejich příslušnost k Teamům se zapisuje do root modules.manifest.json. company.gen3.json#modules se z něj jen generuje stejným příkazem lazurio migrate organization-manifest <task-worktree> --write."
+    },
+    {
+      "canonical": "modules/knowledgebase",
+      "domain": "strategy-and-guardrails",
+      "write_rule": "Strategie, rozhodovací logika, guardrails a lessons learned se mění v knowledgebase. Downstream povrchy se z ní odvozují."
+    },
+    {
+      "canonical": "modules/research",
+      "domain": "research",
+      "write_rule": "Mechanism scans, source notes a market mapy patří do research. Každý claim má zdroj a datum ověření."
+    },
+    {
+      "canonical": "modules/experiments",
+      "domain": "experiments",
+      "upstream_truth": "modules/research",
+      "write_rule": "Experiment spec, run log, metriky a stop/scale rozhodnutí žijí v experiments. Bez zapsaného experimentu není důkaz."
+    },
+    {
+      "canonical": "modules/playbooks",
+      "domain": "playbooks",
+      "upstream_truth": "modules/experiments",
+      "write_rule": "Do playbooks se promuje jen mechanismus s ověřeným signálem z experimentu. Hypotézy zůstávají v research/experiments."
+    },
+    {
+      "canonical": "modules/content",
+      "domain": "content",
+      "upstream_truth": "modules/knowledgebase",
+      "write_rule": "Veřejné publikační a acquisition assets. Žádný cizí obsah, fake social proof ani claimy bez důkazu."
+    },
+    {
+      "canonical": "modules/automations",
+      "domain": "automations",
+      "write_rule": "Agentní workflow a runtime se připojuje až po ručním ověření mechanismu a guardrails; automatizace nesmí generovat spam ani obcházet ToS."
+    },
+    {
+      "canonical": "modules/finance",
+      "domain": "finance",
+      "write_rule": "Unit economics, náklady a výnosy experimentů. Citlivá data jdou do Gitu jen bezpečně anonymizovaná; zbytek zůstává mimo Git."
+    },
+    {
+      "canonical": "TODO.tasks.json",
+      "domain": "tasks",
+      "write_rule": "Živá práce se nepíše do Markdownu; agent ji zapisuje do TODO.tasks.json."
+    },
+    {
+      "canonical": "ISSUES.open.json",
+      "domain": "open-decisions",
+      "write_rule": "Nerozhodnuté otázky řeší kolega s agentem a po rozhodnutí se převádí na TODO."
+    }
+  ],
+  "task_sources": [
+    {
+      "authority": "source-of-truth",
+      "kind": "todo-tasks-json",
+      "path": "TODO.tasks.json",
+      "slug": "workspace-todo"
+    },
+    {
+      "authority": "source-of-truth",
+      "kind": "done-tasks-json",
+      "path": "DONE.tasks.json",
+      "slug": "workspace-done"
+    }
+  ],
+  "teams": [
+    {
+      "default": true,
+      "description": "Default Workspace AgentMint — digitální kancelář single-team Organizace; pokrývá všechny moduly.",
+      "display_name": "AgentMint Workspace",
+      "slug": "workspace"
+    }
+  ],
+  "workspaces": [
+    {
+      "default": true,
+      "description": "Default Workspace AgentMint — digitální kancelář single-team Organizace; pokrývá všechny moduly.",
+      "display_name": "AgentMint Workspace",
+      "slug": "workspace"
+    }
+  ]
+}

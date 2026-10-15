@@ -1,0 +1,63 @@
+{
+  "//": "Template per-person AgentMint workspace. Po init-from-template se soubor automaticky prejmenuje na company slug, napr. example.code-workspace. Copy to company/colleagues/<you>/ a pod klicem 'folders' zmen druhou polozku 'name' z '_template' na sve jmeno. VS Code/Cursor se oteviraji pres File -> Open Workspace from File.",
+  "folders": [
+    {
+      "name": "AgentMint",
+      "path": "../../.."
+    },
+    {
+      "name": "_template",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "files.exclude": {
+      "**/node_modules": true,
+      "**/.next": true,
+      "**/.turbo": true,
+      "**/dist": true,
+      "**/build": true,
+      "**/.dart_tool": true,
+      "**/.flutter-plugins": true,
+      "**/.flutter-plugins-dependencies": true,
+      "**/.symlinks": true,
+      "**/Pods": true,
+      "**/.gradle": true,
+      "**/target": true
+    },
+    "search.exclude": {
+      "**/node_modules": true,
+      "**/.next": true,
+      "**/.turbo": true,
+      "**/dist": true,
+      "**/build": true,
+      "**/.dart_tool": true,
+      "**/.flutter-plugins": true,
+      "**/.flutter-plugins-dependencies": true,
+      "**/.symlinks/**": true,
+      "**/Pods/**": true,
+      "**/.gradle/**": true,
+      "**/target/**": true
+    },
+    "files.watcherExclude": {
+      "**/node_modules/**": true,
+      "**/.next/**": true,
+      "**/.turbo/**": true,
+      "**/dist/**": true,
+      "**/build/**": true,
+      "**/.dart_tool/**": true,
+      "**/.symlinks/**": true,
+      "**/Pods/**": true,
+      "**/.gradle/**": true,
+      "**/target/**": true
+    },
+    "git.autoRepositoryDetection": "subFolders",
+    "git.detectSubmodules": true,
+    "git.detectSubmodulesLimit": 100,
+    "git.repositoryScanMaxDepth": 100,
+    "git.openRepositoryInParentFolders": "always"
+  },
+  "extensions": {
+    "recommendations": []
+  }
+}

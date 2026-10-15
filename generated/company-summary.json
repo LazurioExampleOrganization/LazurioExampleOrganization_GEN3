@@ -1,0 +1,99 @@
+{
+  "schema_version": "companiesascode.company_summary.v1",
+  "compiler_version": "companiesascode.organization_compiler.v1",
+  "company": {
+    "default_branch": "main",
+    "display_name": "AgentMint",
+    "github_org": "LazurioExampleOrganization",
+    "repository": "git@github.com:LazurioExampleOrganization/LazurioExampleOrganization_GEN3.git",
+    "root_repository": "LazurioExampleOrganization/LazurioExampleOrganization_GEN3",
+    "slug": "LazurioExampleOrganization"
+  },
+  "business_context": {
+    "revenue_drivers": [
+      {
+        "slug": "validated-online-mechanisms",
+        "description": "Příjem z online mechanismů, které prošly experimentem s ověřeným signálem. Škáluje se jen to, co má důkaz; hypotéza zůstává v research/experiments.",
+        "priority": "high"
+      },
+      {
+        "slug": "mechanism-playbooks",
+        "description": "Opakovatelné playbooky ověřených mechanismů: zdokumentovaný postup, unit economics a guardrails, připravené k opětovnému spuštění nebo přenosu.",
+        "priority": "medium"
+      }
+    ],
+    "customer_segments": [
+      {
+        "slug": "mechanism-specific-audiences",
+        "description": "AgentMint nemá jeden fixní segment; každý experiment definuje vlastního zákazníka, kanál a nabídku v experiment specu. Segment bez experimentu je jen hypotéza.",
+        "priority": null
+      }
+    ],
+    "value_propositions": [
+      {
+        "slug": "evidence-based-adaptation",
+        "description": "Legální adaptace prokazatelně fungujících online mechanismů: vlastní brand, vlastní data, vlastní nabídka, žádné obcházení pravidel platforem.",
+        "priority": null
+      }
+    ],
+    "decision_rules": [
+      {
+        "trigger": "money movement, external visibility, platform ToS, legal or reputational risk",
+        "owner": "founder"
+      },
+      {
+        "trigger": "scale decision",
+        "owner": "founder"
+      }
+    ],
+    "risks": [
+      {
+        "slug": "gray-zone-drift",
+        "description": "Experiment sklouzne do spamu, fake engagementu, obcházení ToS nebo klamavých claimů.",
+        "priority": null
+      },
+      {
+        "slug": "no-evidence-scaling",
+        "description": "Mechanismus se začne škálovat nebo prezentovat jako funkční bez důkazu z experimentu.",
+        "priority": null
+      },
+      {
+        "slug": "copying-instead-of-adapting",
+        "description": "Práce zkopíruje cizí brand, obsah, data nebo account setup místo legální adaptace mechanismu.",
+        "priority": null
+      },
+      {
+        "slug": "sensitive-finance-data-in-git",
+        "description": "Citlivá payment/finanční data se dostanou do Gitu bez anonymizace.",
+        "priority": null
+      }
+    ],
+    "metrics": [
+      {
+        "slug": "verified-mechanisms",
+        "description": "Počet mechanismů s ověřeným signálem příjmu zapsaných v playbooks.",
+        "priority": null
+      },
+      {
+        "slug": "experiment-throughput",
+        "description": "Počet dokončených experimentů s explicitním stop/scale rozhodnutím a zapsanou evidencí.",
+        "priority": null
+      },
+      {
+        "slug": "net-experiment-income",
+        "description": "Čistý příjem běžících mechanismů po nákladech, podle modules/finance.",
+        "priority": null
+      }
+    ]
+  },
+  "source_files": [
+    "lazurio.organization.json",
+    "modules.manifest.json"
+  ],
+  "generated_files": [
+    "generated/company-summary.json",
+    "generated/business-context.md",
+    "generated/modules.index.json",
+    "generated/generation-policy.md"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "K čemu slouží tvoje složka v `company/colleagues/<jmeno>/`?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "K pracovnímu profilu, preferencím a osobním postupům.",
+          "correct": true,
+          "feedback": "Správně. Pomáhá lidem i agentovi vědět, kdo jsi."
+        },
+        {
+          "id": "b",
+          "text": "K obecným firemním pravidlům, která platí pro všechny.",
+          "correct": false,
+          "feedback": "Obecná pravidla patří do vyšších instrukcí, ne do osobní týmové složky."
+        },
+        {
+          "id": "c",
+          "text": "K pracovním poznámkám, které mají smysl jen pro tvou roli.",
+          "correct": false,
+          "feedback": "Osobní složka má mít strukturu a sdílitelný pracovní profil, ne být volný odkladiště."
+        }
+      ],
+      "explanation": "Osobní složka je pracovní identita ve workspace."
+    },
+    {
+      "id": "q2",
+      "text": "Co má zůstat mimo sdílený Git?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Osobní pracovní preference, které mají agentovi pomáhat.",
+          "correct": false,
+          "feedback": "README do sdíleného profilu patří."
+        },
+        {
+          "id": "b",
+          "text": "Profilové informace, které mají být sdílené s týmem.",
+          "correct": false,
+          "feedback": "Sdílené profilové informace do Gitu patří, pokud neobsahují tajemství."
+        },
+        {
+          "id": "c",
+          "text": "Tokeny, hesla a soukromé nastavení editoru.",
+          "correct": true,
+          "feedback": "Ano. To jsou citlivé nebo lokální věci."
+        }
+      ],
+      "explanation": "Sdílí se pracovní kontext, ne tajné údaje."
+    }
+  ],
+  "achievement_on_pass": null
+}

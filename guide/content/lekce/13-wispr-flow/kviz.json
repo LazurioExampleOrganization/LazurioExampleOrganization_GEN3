@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Kdy je diktování obzvlášť užitečné?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Když potřebuješ rychle nadiktovat krátký příkaz nebo název souboru.",
+          "correct": false,
+          "feedback": "Tam bývá klávesnice často přesnější."
+        },
+        {
+          "id": "b",
+          "text": "Když potřebuješ agentovi vysvětlit kontext a souvislosti.",
+          "correct": true,
+          "feedback": "Správně. Hlas je silný pro delší vysvětlení."
+        },
+        {
+          "id": "c",
+          "text": "Když chceš obejít psaní přesné struktury zadání.",
+          "correct": false,
+          "feedback": "Text je dobré rychle zkontrolovat."
+        }
+      ],
+      "explanation": "Diktování snižuje tření hlavně u delších zadání."
+    },
+    {
+      "id": "q2",
+      "text": "Jak můžeš při diktování mluvit?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Česky a přirozeně, klidně s anglickými pracovními slovy.",
+          "correct": true,
+          "feedback": "Ano. To je hlavní výhoda pro běžnou práci."
+        },
+        {
+          "id": "b",
+          "text": "Česky, ale technické názvy raději překládat do češtiny.",
+          "correct": false,
+          "feedback": "Ne. Čeština pro běžnou práci funguje."
+        },
+        {
+          "id": "c",
+          "text": "Volně, pokud potom necháš agenta zadání zkrátit a potvrdit.",
+          "correct": false,
+          "feedback": "To může pomoct, ale pointa je hlavně mluvit přirozeně a srozumitelně."
+        }
+      ],
+      "explanation": "Hlas má pomoct přirozenému myšlení, ne přidávat další bariéru."
+    }
+  ],
+  "achievement_on_pass": null
+}

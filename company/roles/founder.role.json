@@ -1,0 +1,20 @@
+{
+  "role": "founder",
+  "display_name": "Founder",
+  "purpose": "Rozhoduje, co stojí za čas, peníze a reputační riziko; drží guardrails, stop/scale rozhodnutí a směr firmy.",
+  "default_modules": [
+    "modules/knowledgebase",
+    "modules/research",
+    "modules/experiments",
+    "modules/playbooks",
+    "modules/finance"
+  ],
+  "allowed_operations": [
+    "edit_company_config",
+    "approve_module_access",
+    "approve_money_movement",
+    "approve_scale_decision",
+    "change_process_model",
+    "update_todo_state"
+  ]
+}

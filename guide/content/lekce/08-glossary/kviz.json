@@ -1,0 +1,83 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "K čemu slouží `GLOSSARY.md`?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Je to místo pro poznámky, které se zatím nevešly do lekcí.",
+          "correct": false,
+          "feedback": "GLOSSARY není odkladiště poznámek. Má držet sdílené pojmy."
+        },
+        {
+          "id": "b",
+          "text": "Je to technická dokumentace jedné konkrétní aplikace.",
+          "correct": false,
+          "feedback": "Ne. Je to sdílený firemní slovník."
+        },
+        {
+          "id": "c",
+          "text": "Drží firemní slovník pojmů pro lidi i agenty.",
+          "correct": true,
+          "feedback": "Správně. Slovník pomáhá všem mluvit stejným jazykem."
+        }
+      ],
+      "explanation": "GLOSSARY snižuje nedorozumění u doménových pojmů."
+    },
+    {
+      "id": "q2",
+      "text": "Kdy dává smysl doplnit nový pojem do `GLOSSARY.md`?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Když se pojem objeví v jednom tasku, ale může se vrátit později.",
+          "correct": false,
+          "feedback": "To do firemního slovníku nepatří."
+        },
+        {
+          "id": "b",
+          "text": "Když pojem mate víc lidí a má jeden firemní význam.",
+          "correct": true,
+          "feedback": "Ano. To je přesně role slovníku."
+        },
+        {
+          "id": "c",
+          "text": "Když se termín používá ve víc modulech, ale zatím bez jasného vlastníka.",
+          "correct": false,
+          "feedback": "To může být signál k diskuzi, ale do slovníku patří až pojem s jasným firemním významem."
+        }
+      ],
+      "explanation": "Slovník je pro pojmy, které mají pomáhat napříč firmou."
+    },
+    {
+      "id": "q3",
+      "text": "Co je `Launchpad modul`?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Git submodul pod `modules/`, který Launchpad umí spouštět nebo spravovat.",
+          "correct": true,
+          "feedback": "Ano. Pořád je to modul, jen má Launchpad runtime vrstvu."
+        },
+        {
+          "id": "b",
+          "text": "Každý modul, který má v sobě nějaký frontend.",
+          "correct": false,
+          "feedback": "Ne. `launchpad/` je control plane; Launchpad modul je modul pod `modules/`."
+        },
+        {
+          "id": "c",
+          "text": "Libovolná část aplikace, kterou lze spustit v prohlížeči.",
+          "correct": false,
+          "feedback": "To je moc široké. Launchpad modul je pořád modul pod `modules/`, ne libovolná UI část."
+        }
+      ],
+      "explanation": "Launchpad modul je provozně spravovaný Git submodul, jehož appka typicky žije v `app/v1/`."
+    }
+  ],
+  "achievement_on_pass": null
+}

@@ -1,0 +1,91 @@
+{
+  "schema_version": "agentmint.company_workspace_skills.v1",
+  "policy": {
+    "principle": "Opakovatelný agentní proces v AgentMint musí být zapsaný jako skill.",
+    "canonical_directory": ".agents/skills",
+    "claude_compatibility": ".claude/skills is a symlink to .agents/skills",
+    "required_headings": [
+      "## Kdy použít",
+      "## Postup",
+      "## Ověření"
+    ],
+    "gen2_catalog_note": "Skilly převzaté z GEN2 katalogu si dočasně drží původní strukturu i descriptions v GEN2 dikci („Workspace GEN2“, „GEN2 firma“ apod. čti jako historické názvosloví — dnešní Organizace GEN3 s default Teamem, historický slug workspace). Na required headings a GEN3/Team pojmy se převádí při první věcné úpravě; rutiny a doctor-workflow už jsou převedené na worktree-first kulturu."
+  },
+  "skills": [
+    {
+      "slug": "agent-execution-discipline",
+      "path": ".agents/skills/agent-execution-discipline/SKILL.md",
+      "description": "Použij v AgentMintu před netriviální změnou kódu, dokumentace nebo workflow — vede agenta od zodpovědnosti za výsledek přes plán v Mission Control a worktree k udržitelné, ověřené změně."
+    },
+    {
+      "slug": "commit-push-submodule",
+      "path": ".agents/skills/commit-push-submodule/SKILL.md",
+      "description": "Historický název skillu pro scoped commit a push jednoho AgentMint nested repo modulu v `modules/<X>/`. Super-repo netrackuje module pointery, takže skill necommitujte `modules/<X>` do rootu."
+    },
+    {
+      "slug": "create-new-module",
+      "path": ".agents/skills/create-new-module/SKILL.md",
+      "description": "Použij, když má AgentMint přidat nový modul do `modules/` jako nested Git repo spravované doctorem a manifestem. Nepoužívej Git submoduly ani `.gitmodules`."
+    },
+    {
+      "slug": "design-system-lookup",
+      "path": ".agents/skills/design-system-lookup/SKILL.md",
+      "description": "Pouzij, kdyz mas produkovat cokoliv vizualniho nebo formatovaneho pro GEN2 firmu — web page, prezentaci, dokument, nabidku, tabulku, merch, e-mail sablonu nebo UI. Skill nejdrive najde firemni source-of-truth a potom te navede do `design-system/`."
+    },
+    {
+      "slug": "dobre-rano",
+      "path": ".agents/skills/dobre-rano/SKILL.md",
+      "description": "Ranní rutina Organizace AgentMint (default Team). Použij, když uživatel řekne \"dobré ráno\", \"začni den\", \"připrav workspace\" nebo chce bezpečně stáhnout/pullnout aktuální změny a srovnat primární checkout na `main`; feature práce žije ve worktree."
+    },
+    {
+      "slug": "dobrou-noc",
+      "path": ".agents/skills/dobrou-noc/SKILL.md",
+      "description": "Večerní rutina Organizace AgentMint (default Team). Použij, když uživatel řekne \"dobrou noc\", \"ukonči den\", \"pushni hotové změny\" nebo chce poslat bezpečně commitovatelné změny na GitHub jako drobnosti přímo na `main` nebo PR z worktree pro review."
+    },
+    {
+      "slug": "doctor-workflow",
+      "path": ".agents/skills/doctor-workflow/SKILL.md",
+      "description": "Bezpečná práce s doctor toolingem AgentMint (`company/scripts/doctor.sh`) pro status, sync, health checks, scoped push, dependency checks a workspace maintenance. Použij, když uživatel zmíní doctor, `doctor push`, `doctor sync`, workspace sync/push, nested repo moduly, dirty workspace, nebo chce commit/push přes kanonický doctor flow."
+    },
+    {
+      "slug": "guide-maintenance",
+      "path": ".agents/skills/guide-maintenance/SKILL.md",
+      "description": "Udržuj guide/ interaktivní onboarding v souladu s reálným stavem Workspace GEN2. Spusť, když vznikl nový skill, změnila se ARCHITECTURE.md/MAP.md/AGENTS.md, přidal/odebral se MCP server, změnil se doctor flow, přibyl top-level docs file, nebo přibyl/zmizel modul. Cílem je, aby lekce v guide/content/ vždy reflektovaly skutečnou strukturu workspace."
+    },
+    {
+      "slug": "mission-control-planning",
+      "path": ".agents/skills/mission-control-planning/SKILL.md",
+      "description": "Použij v AgentMintu, když uživatel plánuje novou feature, experiment, větší změnu fungování nebo cross-scope práci. Skill ukotví plán v lokálním Mission Control/YAML modelu a teprve potom z něj odvodí implementační kroky do TODO.tasks.json."
+    },
+    {
+      "slug": "module-agent-maintenance",
+      "path": ".agents/skills/module-agent-maintenance/SKILL.md",
+      "description": "Sdílený workflow pro maintenance module-level docs v GEN2 nested repo modulech (`modules/<modul>/`) — README.md, ARCHITECTURE.md, IMPLEMENTATION_PLAN.md, AGENTS.md. Použij, když uživatel pracuje uvnitř modulu a mění source-of-truth boundaries, data model, contracts, sync workflow nebo runtime behavior. Drží doc kontrakt (kdo co vlastní), required maintenance during/after meaningful work, IMPLEMENTATION_PLAN.md health rules a handoff checklist."
+    },
+    {
+      "slug": "resolve-pointer-conflict",
+      "path": ".agents/skills/resolve-pointer-conflict/SKILL.md",
+      "description": "Legacy diagnostic for old GEN2 submodule pointer conflicts. In AgentMint this should only be used to identify and remove accidental .gitmodules or 160000 gitlink state, because modules are nested Git repositories managed by doctor and the manifest."
+    },
+    {
+      "slug": "uklidit-pracovni-stul",
+      "path": ".agents/skills/uklidit-pracovni-stul/SKILL.md",
+      "description": "Úklid pracovního stolu v Organizaci AgentMint (default Team). Použij, když uživatel řekne \"ukliď pracovní stůl\", \"ukliď workspace\", \"srovnej branche\", \"dej mě na main\", \"vyřeš doctora\" nebo chce dostat workspace do prediktabilního stavu."
+    },
+    {
+      "slug": "upstream-rebase-fork",
+      "path": ".agents/skills/upstream-rebase-fork/SKILL.md",
+      "description": "Rebase fork nested repo modulu proti upstreamu (např. modules/<parent>/<fork> proti <upstream-org>/<parent>.git podle manifest.fork_upstream). Ověří 3-remote setup + rerere, fetchne upstream, rebaseuje main, při konfliktu eskaluje uživateli (nikdy auto-merge). Po úspěšném rebase nabídne --force-with-lease push s explicit user confirm. AgentMint super-repo po pushi necommitujte jako pointer update."
+    },
+    {
+      "slug": "workspace-initialization",
+      "path": ".agents/skills/workspace-initialization/SKILL.md",
+      "description": "Použij po čerstvém naklonování nebo forku Workspace GEN2 instance, když má agent poprvé připravit workspace pro konkrétního kolegu: ověřit lokální pravidla, spustit Doctor/bootstrap flow, nainstalovat dependencies, ověřit Launchpad/Guide handoff a opravit opakovatelné onboarding bugy."
+    },
+    {
+      "slug": "worktree-stewardship",
+      "path": ".agents/skills/worktree-stewardship/SKILL.md",
+      "description": "Vytváří, eviduje, předává a bezpečně uklízí dočasné Git worktrees v Organizaci AgentMint podle decision 0049. Použij pro každou branch, PR, review či rebase práci, paralelní agenty nebo cleanup: drž primární checkout na `main`, zakládej worktree pod `.worktrees/`, používej sidecar `companiesascode.worktree.v1` a nemaž dirty, nepushnutou ani živou PR práci."
+    }
+  ]
+}

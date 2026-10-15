@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Proč má workspace popsané role?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Aby agent mohl sám vybírat, kdo má mít rozhodovací slovo.",
+          "correct": false,
+          "feedback": "Ne. Role pomáhá práci rozdělit, ale nerozhoduje místo člověka."
+        },
+        {
+          "id": "b",
+          "text": "Aby lidé i agent věděli, co kdo řeší a kde jsou hranice odpovědnosti.",
+          "correct": true,
+          "feedback": "Správně. Role pomáhá držet práci ve správných rukou."
+        },
+        {
+          "id": "c",
+          "text": "Aby se práce dala řídit podle lidí místo podle zdrojů pravdy.",
+          "correct": false,
+          "feedback": "Source of truth zůstává důležitý."
+        }
+      ],
+      "explanation": "Role dávají agentovi i kolegům pracovní kontext."
+    },
+    {
+      "id": "q2",
+      "text": "Která role převádí hypotézu na měřitelný test?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Founder",
+          "correct": false,
+          "feedback": "Founder rozhoduje směr a risk, ale test typicky připravuje experiment operator."
+        },
+        {
+          "id": "b",
+          "text": "Research operator",
+          "correct": false,
+          "feedback": "Research operator připravuje podklady a hypotézu."
+        },
+        {
+          "id": "c",
+          "text": "Experiment operator",
+          "correct": true,
+          "feedback": "Ano. Experiment operator hlídá metriku, rozpočet, stop podmínku a výsledek."
+        }
+      ],
+      "explanation": "Research připravuje, experiment ověřuje, founder rozhoduje."
+    }
+  ],
+  "achievement_on_pass": null
+}

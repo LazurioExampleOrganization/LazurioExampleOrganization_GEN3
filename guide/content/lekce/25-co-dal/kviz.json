@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Jaký je nejlepší další krok po kurzu?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Vybrat větší úkol a nechat agenta nejdřív navrhnout celý plán bez mezikroků.",
+          "correct": false,
+          "feedback": "To je přesně risk, kterému se zatím vyhýbáme."
+        },
+        {
+          "id": "b",
+          "text": "Vybrat jeden malý reálný úkol a projít ho s agentem krok po kroku.",
+          "correct": true,
+          "feedback": "Správně. Praxe je lepší než další teorie."
+        },
+        {
+          "id": "c",
+          "text": "Projít další teorii, než zkusíš první reálnou práci.",
+          "correct": false,
+          "feedback": "Další teorie nepomůže tolik jako malý bezpečný úkol s review."
+        }
+      ],
+      "explanation": "Malý úkol, dobré review a zápis toho, co fungovalo, je nejlepší pokračování."
+    },
+    {
+      "id": "q2",
+      "text": "Kdy dávají autonomní agenti větší smysl?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Když je úkol opakovaný, ale dopad na produkci není předem jasný.",
+          "correct": false,
+          "feedback": "To by vedlo ke slopu."
+        },
+        {
+          "id": "b",
+          "text": "Když agent dokáže dodat návrh a ty máš jen rychle potvrdit výsledek.",
+          "correct": false,
+          "feedback": "Kontrola je u důležité práce pořád potřeba."
+        },
+        {
+          "id": "c",
+          "text": "Až když je úkol dobře vymezený, workspace uklizený a review jasné.",
+          "correct": true,
+          "feedback": "Ano. Autonomie potřebuje pevný rámec."
+        }
+      ],
+      "explanation": "Autonomní agenti přijdou později, ne jako první krok."
+    }
+  ],
+  "achievement_on_pass": null
+}

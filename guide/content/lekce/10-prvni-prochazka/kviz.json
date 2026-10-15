@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Co je cílem první procházky po složkách?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Najít co nejrychleji jeden konkrétní soubor a ostatní přeskočit.",
+          "correct": false,
+          "feedback": "To není cílem. Stačí vědět, kde začít."
+        },
+        {
+          "id": "b",
+          "text": "Vyzkoušet si první větší změnu, i když ještě neznáš vrstvy workspace.",
+          "correct": false,
+          "feedback": "Ne. Tahle lekce je jen orientační."
+        },
+        {
+          "id": "c",
+          "text": "Získat základní orientaci a vidět workspace na vlastní oči.",
+          "correct": true,
+          "feedback": "Správně. Nejde o test paměti."
+        }
+      ],
+      "explanation": "První procházka má snížit ostych ze struktury."
+    },
+    {
+      "id": "q2",
+      "text": "Kde najdeš šablonu pro osobní složku kolegy?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "`company/colleagues/_template/`",
+          "correct": true,
+          "feedback": "Přesně. Z té se vychází při zakládání profilu."
+        },
+        {
+          "id": "b",
+          "text": "`company/colleagues/<ty>/`, protože profil je osobní věc.",
+          "correct": false,
+          "feedback": "Konkrétní profil je osobní, ale šablona pro založení profilu je v `_template`."
+        },
+        {
+          "id": "c",
+          "text": "`company/roles/`, protože role a profil spolu souvisí.",
+          "correct": false,
+          "feedback": "Role pomáhají s odpovědností, ale šablonu osobní složky najdeš v `company/colleagues/_template/`."
+        }
+      ],
+      "explanation": "Osobní profily patří do `company/colleagues/`."
+    }
+  ],
+  "achievement_on_pass": null
+}

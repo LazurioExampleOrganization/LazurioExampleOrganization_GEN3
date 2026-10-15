@@ -1,0 +1,83 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Co je commit?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Uložený balíček změn s popisem.",
+          "correct": true,
+          "feedback": "Správně. Commit je záchytný bod v historii."
+        },
+        {
+          "id": "b",
+          "text": "Dočasné uložení rozpracované změny bez popisu dopadu.",
+          "correct": false,
+          "feedback": "Commit má mít popis dopadu. Bez něj se změna později špatně chápe."
+        },
+        {
+          "id": "c",
+          "text": "Automatická synchronizace workspace s remote repozitářem.",
+          "correct": false,
+          "feedback": "Commit ukládá změnu do historie; push ji teprve odešle ven."
+        }
+      ],
+      "explanation": "Commit dělá změnu dohledatelnou."
+    },
+    {
+      "id": "q2",
+      "text": "Která commit zpráva je nejlepší?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "`Update guide` bez vysvětlení dopadu.",
+          "correct": false,
+          "feedback": "To za měsíc nikomu nepomůže."
+        },
+        {
+          "id": "b",
+          "text": "`Guide: Update content` bez popisu, co se změnilo a proč.",
+          "correct": false,
+          "feedback": "Příliš vágní."
+        },
+        {
+          "id": "c",
+          "text": "`Workspace: Add mechanism research task` + krátké vysvětlení dopadu.",
+          "correct": true,
+          "feedback": "Ano. Je jasné, kde se co změnilo a proč."
+        }
+      ],
+      "explanation": "Dobrá zpráva má říct co, kde a proč."
+    },
+    {
+      "id": "q3",
+      "text": "Co je bezpečný první krok, když si nejsi jistý/á syntaxí `doctor push`?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Spustit příkaz bez `--help`, pokud ho agent použil v minulém tasku.",
+          "correct": false,
+          "feedback": "Ne. Doctor má neznámé flagy odmítnout a odkázat tě na nápovědu."
+        },
+        {
+          "id": "b",
+          "text": "Spustit `company/scripts/doctor.sh push --help`.",
+          "correct": true,
+          "feedback": "Ano. Nápověda nic neposílá a ukáže správný tvar příkazu."
+        },
+        {
+          "id": "c",
+          "text": "Rovnou pustit push s úzkým scope, když se mění jen jeden soubor.",
+          "correct": false,
+          "feedback": "Ne. V GEN2 se root změny posílají přes scoped doctor flow nebo přes domluvený skill."
+        }
+      ],
+      "explanation": "Nápověda je bezpečná cesta, jak si ověřit postup před dry-runem a reálným pushem."
+    }
+  ],
+  "achievement_on_pass": null
+}

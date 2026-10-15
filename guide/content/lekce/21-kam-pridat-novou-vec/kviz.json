@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Kam patří opakovaný postup, který chceš naučit agenta?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Do `TODO.tasks.json`, i když jde o trvalý opakovatelný postup.",
+          "correct": false,
+          "feedback": "TODO.tasks.json je pro otevřenou vykonatelnou práci a handoff, ne pro stabilní opakovaný postup."
+        },
+        {
+          "id": "b",
+          "text": "Do chatu s agentem, pokud postup zatím používáš jen ty.",
+          "correct": false,
+          "feedback": "Chat se ztratí. Opakovaný postup má mít svoje trvalé místo."
+        },
+        {
+          "id": "c",
+          "text": "Do skillu.",
+          "correct": true,
+          "feedback": "Správně. Skill je uložený opakovaný postup."
+        }
+      ],
+      "explanation": "Opakovatelné how-to patří do skillu."
+    },
+    {
+      "id": "q2",
+      "text": "Co uděláš, když nevíš, kam nová informace patří?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zeptáš se agenta nebo kolegy a necháš si vysvětlit důvod.",
+          "correct": true,
+          "feedback": "Ano. Lepší otázka než špatně umístěná informace."
+        },
+        {
+          "id": "b",
+          "text": "Uložíš ji tam, kde jsi ji právě našel/našla, a později se to uklidí.",
+          "correct": false,
+          "feedback": "To je přesně zlozvyk, kterému se vyhýbáme."
+        },
+        {
+          "id": "c",
+          "text": "Zapíšeš ji do nejbližšího modulu, i když nevíš, jestli je owner správný.",
+          "correct": false,
+          "feedback": "Pak to příště nikdo nenajde."
+        }
+      ],
+      "explanation": "Správné místo je důležitější než rychlé odložení."
+    }
+  ],
+  "achievement_on_pass": null
+}

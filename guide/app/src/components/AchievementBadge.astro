@@ -1,0 +1,51 @@
+---
+import type { AchievementDef, AchievementIcon, AchievementLevel } from "@/lib/types";
+
+interface Props {
+  achievement: Pick<AchievementDef, "id" | "name" | "icon" | "level"> & { description?: string };
+  size?: "sm" | "md" | "lg";
+}
+
+const { achievement, size = "md" } = Astro.props;
+
+const ICONS: Record<AchievementIcon, string> = {
+  trophy: "M5 4h14v3a5 5 0 0 1-4 4.9V14h2v2H7v-2h2v-2.1A5 5 0 0 1 5 7V4Zm2 2v1a3 3 0 0 0 6 0V6H7Zm10 0v1a3 3 0 0 0 2-2.83V4h-2v2Zm-12 0H3v.17A3 3 0 0 0 5 9V6Z",
+  star: "M12 2l2.9 6.5 7.1.7-5.4 4.8 1.7 7L12 17.3 5.7 21l1.7-7L2 9.2l7.1-.7L12 2Z",
+  zap: "M13 2L3 14h7l-1 8 10-12h-7l1-8Z",
+  compass: "M12 22a10 10 0 1 1 0-20 10 10 0 0 1 0 20Zm3.5-13.5L11 11l-2.5 4.5L13 13l2.5-4.5Z",
+  wrench: "M21 7a4 4 0 0 1-5.6 3.7L7 19l-3-3 8.3-8.4A4 4 0 0 1 17 2l-3 3 2 2 3-3a4 4 0 0 1 2 3Z",
+  rocket: "M14 4c4 0 6 2 6 6 0 2-1 4-3 6l-1 4-3-1-3 1-1-4c-2-2-3-4-3-6 0-4 2-6 6-6h2Zm-1 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z",
+  book: "M4 4h6a4 4 0 0 1 4 4v12H7a3 3 0 0 0-3 3V4Zm16 0v23a3 3 0 0 0-3-3h-7V8a4 4 0 0 1 4-4h6Z",
+  sparkles: "M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5L12 2Zm7 12l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3ZM5 14l1 3 3 1-3 1-1 3-1-3-3-1 3-1 1-3Z",
+};
+
+const LEVEL_CLASS: Record<AchievementLevel, string> = {
+  bronze: "badge-bronze",
+  silver: "badge-silver",
+  gold: "badge-gold",
+};
+
+const SIZE_PX: Record<NonNullable<Props["size"]>, number> = {
+  sm: 14,
+  md: 18,
+  lg: 28,
+};
+const px = SIZE_PX[size];
+---
+
+<span
+  class:list={["badge", LEVEL_CLASS[achievement.level]]}
+  title={achievement.description ?? achievement.name}
+  data-achievement-id={achievement.id}
+>
+  <svg
+    width={px}
+    height={px}
+    viewBox="0 0 24 24"
+    fill="currentColor"
+    aria-hidden="true"
+  >
+    <path d={ICONS[achievement.icon]} />
+  </svg>
+  <span>{achievement.name}</span>
+</span>

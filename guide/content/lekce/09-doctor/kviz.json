@@ -1,0 +1,109 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Který příkaz ti ukáže stav workspace?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "`git status` v rootu workspace.",
+          "correct": false,
+          "feedback": "Git status ukáže část stavu, ale běžný bezpečný přehled workspace dává Doctor."
+        },
+        {
+          "id": "b",
+          "text": "`company/scripts/doctor.sh sync`, pokud chceš rovnou stáhnout změny.",
+          "correct": false,
+          "feedback": "Sync už může měnit lokální checkout. Na pouhý přehled stavu použij status."
+        },
+        {
+          "id": "c",
+          "text": "`company/scripts/doctor.sh status`",
+          "correct": true,
+          "feedback": "Správně. Status je základní kontrola."
+        }
+      ],
+      "explanation": "Začni doctorem. Je bezpečnější než náhodné Git příkazy."
+    },
+    {
+      "id": "q2",
+      "text": "Co znamená dry-run?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Rychlý režim, který přeskočí část kontrol, aby ušetřil čas.",
+          "correct": false,
+          "feedback": "To zní jako quick režim. Dry-run má ukázat plán bez provedení změny."
+        },
+        {
+          "id": "b",
+          "text": "Zkušební běh, který ukáže plán, ale nic neodešle.",
+          "correct": true,
+          "feedback": "Ano. Dry-run je kontrola před skutečnou akcí."
+        },
+        {
+          "id": "c",
+          "text": "Lokální test, který změny provede jen v tvém checkoutu.",
+          "correct": false,
+          "feedback": "Dry-run nemá změny provést ani lokálně. Jen ukáže, co by se stalo."
+        }
+      ],
+      "explanation": "Dry-run ti dovolí vidět, co by se stalo, ještě před potvrzením."
+    },
+    {
+      "id": "q3",
+      "text": "Co má udělat `company/scripts/doctor.sh sync --help`?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Jen vypsat nápovědu a nic neměnit.",
+          "correct": true,
+          "feedback": "Správně. Nápověda musí být bezpečná a bez side efektů."
+        },
+        {
+          "id": "b",
+          "text": "Ukázat nápovědu a zároveň ověřit, jestli existují nové submoduly.",
+          "correct": false,
+          "feedback": "Ne. To by bylo matoucí a přesně tomu se Doctor vyhýbá."
+        },
+        {
+          "id": "c",
+          "text": "Zkontrolovat Git stav a doporučit další krok.",
+          "correct": false,
+          "feedback": "To zní užitečně, ale `--help` má jen vypsat nápovědu bez side efektů."
+        }
+      ],
+      "explanation": "Help příkazy jsou bezpečné. Mutující příkazy mají svoje side efekty popsané v nápovědě."
+    },
+    {
+      "id": "q4",
+      "text": "Kdy použiješ `company/scripts/doctor.sh init`?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Když workspace delší dobu neběžel a chceš ho preventivně opravit.",
+          "correct": false,
+          "feedback": "Na opravy existuje repair/check flow. Init je hlavně první setup po clone."
+        },
+        {
+          "id": "b",
+          "text": "Po čistém naklonování workspace, aby se připravily submoduly a závislosti.",
+          "correct": true,
+          "feedback": "Správně. Init je první setup po clone."
+        },
+        {
+          "id": "c",
+          "text": "Když máš dirty workspace a chceš ho před syncem uklidit.",
+          "correct": false,
+          "feedback": "Ne. Init není destruktivní reset pracovního stromu."
+        }
+      ],
+      "explanation": "Init je onboarding příkaz pro čerstvě naklonovaný Workspace."
+    }
+  ],
+  "achievement_on_pass": null
+}

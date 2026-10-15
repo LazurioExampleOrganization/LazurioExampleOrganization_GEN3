@@ -1,0 +1,213 @@
+{
+  "workspace_generation": "gen2",
+  "company": "LazurioExampleOrganization",
+  "github_org": "LazurioExampleOrganization",
+  "super_repo": "git@github.com:LazurioExampleOrganization/LazurioExampleOrganization_GEN3.git",
+  "platforms": [
+    "macos",
+    "windows",
+    "linux"
+  ],
+  "shared_shell": [
+    "company/colleagues",
+    "company/roles",
+    "company/agents",
+    "company/scripts",
+    "company/toolbox",
+    "company/archive"
+  ],
+  "module_slots": [
+    {
+      "path": "infra",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/infra.git",
+        "branch": "main"
+      },
+      "category": "engineering",
+      "default_access": "restricted",
+      "platforms": [
+        "macos",
+        "windows",
+        "linux"
+      ],
+      "required_roles": [
+        "founder"
+      ],
+      "firebase_dependent": false,
+      "target_repo_name": "infra",
+      "notes": "Root-level infrastructure, access governance a deployment context pro AgentMint. GitHub repo v organizaci LazurioExampleOrganization; první zapsaný fakt je existence GitHub organizace LazurioExampleOrganization."
+    },
+    {
+      "path": "modules/knowledgebase",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/knowledgebase.git",
+        "branch": "main"
+      },
+      "category": "knowledge",
+      "default_access": "expected",
+      "platforms": [
+        "macos",
+        "windows",
+        "linux"
+      ],
+      "required_roles": [
+        "founder",
+        "research-operator",
+        "experiment-operator"
+      ],
+      "firebase_dependent": false,
+      "target_repo_name": "knowledgebase",
+      "notes": "Privátní strategie, rozhodovací logika, guardrails a lessons learned AgentMint. Připojit až ve chvíli, kdy root dokumenty přestanou stačit."
+    },
+    {
+      "path": "modules/research",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/research.git",
+        "branch": "main"
+      },
+      "category": "knowledge",
+      "default_access": "expected",
+      "platforms": [
+        "macos",
+        "windows",
+        "linux"
+      ],
+      "required_roles": [
+        "founder",
+        "research-operator"
+      ],
+      "firebase_dependent": false,
+      "target_repo_name": "research",
+      "notes": "Mechanism scans, source notes, market maps a evidence pro rozhodnutí, co testovat."
+    },
+    {
+      "path": "modules/experiments",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/experiments.git",
+        "branch": "main"
+      },
+      "category": "business",
+      "default_access": "expected",
+      "platforms": [
+        "macos",
+        "windows",
+        "linux"
+      ],
+      "required_roles": [
+        "founder",
+        "experiment-operator"
+      ],
+      "firebase_dependent": false,
+      "target_repo_name": "experiments",
+      "notes": "Experiment specs, run logs, metriky, výsledky, stop/scale rozhodnutí a audit guardrails."
+    },
+    {
+      "path": "modules/playbooks",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/playbooks.git",
+        "branch": "main"
+      },
+      "category": "knowledge",
+      "default_access": "expected",
+      "platforms": [
+        "macos",
+        "windows",
+        "linux"
+      ],
+      "required_roles": [
+        "founder",
+        "research-operator",
+        "experiment-operator"
+      ],
+      "firebase_dependent": false,
+      "target_repo_name": "playbooks",
+      "notes": "Ověřené opakovatelné mechanismy. Hypotézy sem nepatří; ty zůstávají v research/experiments."
+    },
+    {
+      "path": "modules/automations",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/automations.git",
+        "branch": "main"
+      },
+      "category": "automation",
+      "default_access": "role_based",
+      "platforms": [
+        "macos",
+        "windows",
+        "linux"
+      ],
+      "required_roles": [
+        "founder",
+        "experiment-operator"
+      ],
+      "firebase_dependent": false,
+      "target_repo_name": "automations",
+      "notes": "Agentní workflow, integrace a runtime. Připojit až po ručním ověření, že automatizace nevytváří spam, ToS obcházení ani bezpečnostní riziko."
+    },
+    {
+      "path": "modules/content",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/content.git",
+        "branch": "main"
+      },
+      "category": "publishing",
+      "default_access": "role_based",
+      "platforms": [
+        "macos",
+        "windows",
+        "linux"
+      ],
+      "required_roles": [
+        "founder",
+        "research-operator"
+      ],
+      "firebase_dependent": false,
+      "target_repo_name": "content",
+      "notes": "Veřejné publikační a acquisition assets. Žádný cizí obsah, fake engagement ani claimy bez důkazu."
+    },
+    {
+      "path": "modules/finance",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/finance.git",
+        "branch": "main"
+      },
+      "category": "business",
+      "default_access": "restricted",
+      "platforms": [
+        "macos",
+        "windows",
+        "linux"
+      ],
+      "required_roles": [
+        "founder"
+      ],
+      "firebase_dependent": false,
+      "target_repo_name": "finance",
+      "notes": "Náklady, výnosy, unit economics, payment provider exporty a audit experimentů. Citlivá data nepatří do Gitu, pokud nejsou bezpečně anonymizovaná."
+    }
+  ],
+  "access_levels": {
+    "expected": "Baseline pro core tým AgentMint.",
+    "role_based": "Dostupné podle role. Viz required_roles.",
+    "restricted": "Default odepřeno. Jen explicitně schválené osoby.",
+    "optional": "Volitelný modul; připojuje se až po potvrzené potřebě."
+  },
+  "notes": [
+    "Tento soubor je GEN2 kompatibilní transport, ne inventář modulů: jediný inventář je root modules.manifest.json. Smí jen opakovat path, git.url a git.branch slotu, který existuje v root manifestu; hranici polí drží company/scripts/README.md. Reálný access se řídí SSH přístupem na GitHub repozitář uvedený v git.url.",
+    "Slot s git.url je nested repo, které legacy update-workspace klonuje a synchronizuje. planned_slot definuje jen root modules.manifest.json, ne tento soubor.",
+    "Root layout: root má dokumenty + .claude/ + company/ + infra/ + launchpad/ + mission-control/ + design-system/ + guide/ + modules/.",
+    "Sdílená firemní kostra je v company/, infrastruktura a access governance jsou v infra/, lokální runtime control plane je v launchpad/, planning/orchestration control plane je v mission-control/, vizuální baseline je v design-system/, onboarding je v guide/, modules/* jsou nested Git repozitáře ignorované super-repem.",
+    "required_roles s hodnotou [\"*\"] znamená baseline pro všechny; AgentMint zatím používá konkrétní role.",
+    "firebase_dependent=false neznamená zákaz databáze. Znamená, že žádný plánovaný slot teď nevyžaduje Firebase jako baseline."
+  ],
+  "category_reference": {
+    "control-plane": "Lokální orchestrace / launcher",
+    "utilities": "Cross-platform utility pro agenta i lidi",
+    "knowledge": "Strategické know-how, research, interní wiki, playbooky",
+    "publishing": "Veřejné publikační vrstvy a acquisition assets",
+    "business": "Experimenty, finance a další byznysová evidence",
+    "engineering": "Produkční codebase, integrace, SDK",
+    "automation": "Agentní workflow, integrace a případný always-on runtime",
+    "shared-shell": "Sdílená firemní kostra"
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Co je dobrý první krok, když se něco rozbije?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Zpomalit, spustit doctor a nezkoušet náhodné destruktivní příkazy.",
+          "correct": true,
+          "feedback": "Správně. Nejdřív zjistit stav."
+        },
+        {
+          "id": "b",
+          "text": "Rychle zkusit několik opravných příkazů a pak teprve číst výstup.",
+          "correct": false,
+          "feedback": "To zvyšuje riziko. Nejdřív si přečti stav a drž se bezpečných kroků."
+        },
+        {
+          "id": "c",
+          "text": "Vrátit poslední změny, i když ještě nevíš, komu patří.",
+          "correct": false,
+          "feedback": "Vrácení cizí práce je rizikové. Nejdřív zjisti, co se rozbilo a komu změny patří."
+        }
+      ],
+      "explanation": "Bezpečný postup začíná diagnostikou."
+    },
+    {
+      "id": "q2",
+      "text": "Kdy zapojit kolegu?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Až ve chvíli, kdy už agent vyzkoušel všechny bezpečné opravy.",
+          "correct": false,
+          "feedback": "Ne. Agent pomáhá, ale nenahrazuje odpovědnost lidí."
+        },
+        {
+          "id": "b",
+          "text": "Když jde o produkční data, přístupy nebo nerozumíš dopadu kroku.",
+          "correct": true,
+          "feedback": "Ano. U rizikových věcí má rozhodovat člověk."
+        },
+        {
+          "id": "c",
+          "text": "Když se chyba tváří lokálně, ale dotýká se zákaznických dat nebo přístupů.",
+          "correct": false,
+          "feedback": "To je přesně situace, kdy máš kolegu zapojit dřív, ne až po experimentech."
+        }
+      ],
+      "explanation": "Eskalace je zdravý pracovní postup, ne selhání."
+    }
+  ],
+  "achievement_on_pass": null
+}

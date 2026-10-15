@@ -1,0 +1,69 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Co je hlavní rozdíl mezi běžným AI chatem a agentem ve workspace?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Agent ve workspace si umí lépe domyslet firemní pravidla i bez podkladů.",
+          "correct": false,
+          "feedback": "Ne tak docela. Cílem není lepší domýšlení, ale práce s reálnými firemními podklady."
+        },
+        {
+          "id": "b",
+          "text": "Agent ve workspace vidí firemní soubory, pravidla a kontext.",
+          "correct": true,
+          "feedback": "Správně. Právě kontext dělá z AI pracovního asistenta."
+        },
+        {
+          "id": "c",
+          "text": "Běžný chat má stejný kontext, pokud mu člověk napíše dost podrobný prompt.",
+          "correct": false,
+          "feedback": "Dobrý prompt pomůže, ale nenahradí přístup k aktuálním souborům, pravidlům a slovníku workspace."
+        },
+        {
+          "id": "d",
+          "text": "Agent ve workspace rozhoduje sám, které firemní zdroje jsou pravdivé.",
+          "correct": false,
+          "feedback": "Ne. Agent má číst určené source of truth a řídit se pravidly workspace, ne si autoritu vybírat podle pocitu."
+        }
+      ],
+      "explanation": "Workspace dává agentovi kontext firmy. Díky tomu nemusíš všechno opisovat do promptu."
+    },
+    {
+      "id": "q2",
+      "text": "Co je cílem tohoto kurzu?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Naučit kolegu zadat agentovi práci tak, aby už nemusel ověřovat výsledek.",
+          "correct": false,
+          "feedback": "Ne. Lepší zadání pomáhá, ale kontrola výsledku je pořád důležitá součást práce."
+        },
+        {
+          "id": "b",
+          "text": "Přesunout firemní návody, úkoly a rozhodnutí z jejich zdrojů přímo do chatu.",
+          "correct": false,
+          "feedback": "Ne. Chat není source of truth. Kurz učí, jak pracovat s tím, co ve workspace už má své správné místo."
+        },
+        {
+          "id": "c",
+          "text": "Přeskočit orientaci ve workspace a řešit rovnou co největší autonomní úkoly.",
+          "correct": false,
+          "feedback": "To by bylo riskantní. Kurz nejdřív staví orientaci, bezpečné zadání a kontrolu, teprve pak větší práci."
+        },
+        {
+          "id": "d",
+          "text": "Naučit tě bezpečně pracovat s Codexem v tvém osobním Workspace.",
+          "correct": true,
+          "feedback": "Přesně. Nejde o kurz programování, ale o pracovní návyk."
+        }
+      ],
+      "explanation": "Kurz je pro přechod z webových AI nástrojů do práce s firemním workspace."
+    }
+  ],
+  "achievement_on_pass": null
+}

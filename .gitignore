@@ -1,0 +1,121 @@
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Python/Node caches
+**/__pycache__/
+**/*.pyc
+**/.pytest_cache/
+**/.mypy_cache/
+**/.ruff_cache/
+**/.venv/
+**/node_modules/
+**/.astro/
+
+# Nested Git repositories declared in root modules.manifest.json.
+# Super-repo tracks only manifest/docs/shell, not repo contents or pointers.
+/infra/
+/modules/*/
+
+# Env a secrets
+**/.env
+**/.env.local
+**/.env.*.local
+
+# Lockfiles z konkurenčních správců balíčků.
+# Kanonický package manager v Workspace = Bun, takže se commituje pouze
+# `bun.lock`. Pokud někdo lokálně spustí `npm i` / `yarn` / `pnpm i`,
+# vzniklý lock soubor se do Gitu nepošle a nezpůsobí drift.
+**/package-lock.json
+**/yarn.lock
+**/pnpm-lock.yaml
+
+# Per-person Claude Code settings (tokeny, MCP session data, OAuth)
+company/colleagues/*/.claude/settings.json
+company/colleagues/*/.claude/settings.local.json
+company/colleagues/*/.claude/session/
+company/colleagues/*/.claude/cache/
+company/colleagues/*/.claude/auth/
+
+# Per-person scratch
+company/colleagues/*/scratch/
+company/colleagues/*/.scratch/
+
+# Per-person local archive and private layers
+company/colleagues/*/archiv/
+company/colleagues/*/archive/
+company/colleagues/*/private/
+
+# Per-person local memory/runtime dumps. Osobní agentní paměť nepatří do GEN2
+# Gitu; dlouhodobé poznatky patří do správného workspace dokumentu nebo modulu.
+company/colleagues/*/memory/
+company/colleagues/*/.memory/
+
+# Per-person playgrounds (prototypování datových formátů)
+company/colleagues/*/playgrounds/
+
+# Shared skills library (GEN3): `.agents/skills` is the canonical tracked
+# directory; `.claude/skills` is a symlink for Claude Code compatibility.
+# Other `.agents` runtime files stay local.
+.agents/*
+!.agents/skills
+
+# IDE
+.idea/
+company/colleagues/*/.vscode/settings.json
+company/colleagues/*/.vscode/c_cpp_properties.json
+.vscode/*
+!/.vscode/settings.json
+.cursor/
+
+# Build output
+dist/
+build/
+.next/
+.turbo/
+
+# Workspace feature worktrees podle worktree-stewardship konvence.
+.worktrees/
+
+# Codex CLI local temp and transient worktrees
+.codex-tmp/
+.claude/worktrees/
+
+# Cloudflare Wrangler local cache
+**/.wrangler/
+
+# Local QMD semantic-search config (contains workstation-specific paths).
+.config/qmd/
+
+# Design system viewer build artifacts
+design-system/app/dist/
+
+# Guide viewer build artifacts
+guide/app/dist/
+
+# Logs
+*.log
+logs/
+
+# Local continuity diary for unfinished workspace changes.
+# Ignored by design; agents must clear completed sections after commit/push/PR.
+LOCAL_CHANGES_DIARY.md
+
+output/
+.cache/
+
+# Local archives and packaged artifacts. Commit only with explicit
+# source-of-truth reason and `git add -f`, preferably via Git LFS or release
+# storage.
+*.zip
+*.tar
+*.tar.gz
+*.tgz
+*.tar.bz2
+*.tbz2
+*.7z
+*.rar
+*.dmg
+*.pkg
+*.iso

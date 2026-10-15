@@ -1,0 +1,193 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import AchievementBadge from "@/components/AchievementBadge.astro";
+import { getAchievement } from "@/lib/achievements";
+import { readUserAchievements, whoami } from "@/lib/profile";
+import { loadAllLekce } from "@/lib/content";
+
+const me = whoami();
+const unlocked = me.slug ? readUserAchievements(me.slug) : [];
+const allLessonIds = loadAllLekce().map((l) => l.id);
+---
+
+<Layout
+  title={me.slug ? `Profil · ${me.jmeno ?? me.slug}` : "Profil"}
+  eyebrow={me.slug ? me.slug : "kdo jsi?"}
+  description={
+    me.slug
+      ? "Tvůj postup, odznaky a odkaz do git historie tvé složky."
+      : "Nepoznali jsme tě podle git e-mailu. Vyber se v seznamu níž."
+  }
+>
+  {
+    !me.slug ? (
+      <div>
+        <p class="mb-4 text-[var(--surface-muted)]">
+          Git e-mail: <code>{me.email ?? "(nenastaven)"}</code>
+        </p>
+        <p class="mb-4 text-sm text-[var(--surface-muted)]">
+          Žádný team profil s tímto e-mailem. Buď nastav v <code>git config user.email</code> svůj
+          pracovní e-mail, nebo si vyber profil ze seznamu (uloží se do localStorage).
+        </p>
+        <ul class="grid gap-2 md:grid-cols-2">
+          {(me.candidates ?? []).map((c) => (
+            <li>
+              <button
+                type="button"
+                class="w-full text-left rounded-lg border border-[var(--surface-border)] bg-[var(--surface-card)] hover:bg-[var(--surface-card-hover)] px-4 py-3"
+                data-pick-slug={c.slug}
+              >
+                <div class="font-medium">{c.jmeno}</div>
+                <div class="text-xs text-[var(--surface-muted)]">{c.slug}</div>
+              </button>
+            </li>
+          ))}
+        </ul>
+        <script is:inline>
+          document.querySelectorAll("[data-pick-slug]").forEach((b) => {
+            b.addEventListener("click", () => {
+              const slug = b.dataset.pickSlug;
+              if (slug) {
+                localStorage.setItem("guide:profile:slug", slug);
+                window.location.reload();
+              }
+            });
+          });
+        </script>
+      </div>
+    ) : (
+      <div class="space-y-10">
+        <section>
+          <h2 class="font-display text-2xl font-light mb-4">Tvoje odznaky</h2>
+          {unlocked.length === 0 ? (
+            <p class="text-[var(--surface-muted)]">
+              Zatím nic. Začni první lekcí v <a href="/" class="underline">přehledu kurzu</a>.
+            </p>
+          ) : (
+            <ul class="grid gap-3 md:grid-cols-2">
+              {unlocked.map((u) => {
+                const def = getAchievement(u.achievement_id);
+                if (!def) return null;
+                return (
+                  <li class="rounded-xl border border-[var(--surface-border)] bg-[var(--surface-card)] p-4">
+                    <AchievementBadge achievement={def} />
+                    <div class="mt-2 text-sm text-[var(--surface-muted)]">
+                      {def.description}
+                    </div>
+                    <div class="mt-2 text-xs text-[var(--surface-muted)] opacity-75">
+                      {new Date(u.unlocked_at).toLocaleString("cs-CZ")}
+                      {u.lekce && <span> · lekce {u.lekce}</span>}
+                      {u.gratulace.length > 0 && (
+                        <span> · {u.gratulace.length} gratulací 🎉</span>
+                      )}
+                    </div>
+                  </li>
+                );
+              })}
+            </ul>
+          )}
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl font-light mb-2">Postup kurzem</h2>
+          <p class="text-[var(--surface-muted)] text-sm" data-profile-progress>—</p>
+        </section>
+
+        <section>
+          <h2 class="font-display text-2xl font-light mb-2">Git historie</h2>
+          <p class="text-sm text-[var(--surface-muted)]">
+            Odznaky se ukládají do <code>company/colleagues/{me.slug}/guide/achievements/</code>.
+            Commitni je, ať se objeví u kolegů v týmovém feedu.
+          </p>
+        </section>
+
+        <section id="dev" class="rounded-xl border border-dashed border-[var(--surface-border)] p-5">
+          <h2 class="font-display text-2xl font-light mb-2">Developer režim</h2>
+          <p class="text-sm text-[var(--surface-muted)] mb-4">
+            Pro review obsahu — odemkne všechny lekce, můžeš přeskakovat, nepíše do
+            profilu žádné odznaky. Drží se v <code>localStorage</code>, jen v tomhle prohlížeči.
+          </p>
+          <div class="flex flex-wrap gap-2 text-sm">
+            <button type="button" data-dev-on
+              class="rounded-lg bg-workspace-700 text-white px-4 py-2 hover:bg-workspace-800">
+              Zapnout dev režim
+            </button>
+            <button type="button" data-dev-off
+              class="rounded-lg border border-[var(--surface-border)] px-4 py-2 hover:bg-[var(--surface-faint)]">
+              Vypnout dev režim
+            </button>
+            <button type="button" data-mark-all
+              class="rounded-lg border border-[var(--surface-border)] px-4 py-2 hover:bg-[var(--surface-faint)]">
+              Označ všechny lekce jako hotové
+            </button>
+            <button type="button" data-reset-progress
+              class="rounded-lg border border-[var(--surface-border)] px-4 py-2 hover:bg-[var(--surface-faint)]">
+              Resetuj progress
+            </button>
+          </div>
+          <p class="text-xs text-[var(--surface-muted)] mt-3" data-dev-state>—</p>
+          <script is:inline type="application/json" id="dev-lesson-ids" set:html={JSON.stringify(allLessonIds)}></script>
+        </section>
+      </div>
+    )
+  }
+</Layout>
+
+<script is:inline>
+  (() => {
+    const stateEl = document.querySelector("[data-dev-state]");
+    function refresh() {
+      if (!stateEl) return;
+      const on = localStorage.getItem("guide:dev-mode") === "1";
+      stateEl.textContent = on
+        ? "Dev režim: ZAPNUTÝ — všechny lekce odemčené, odznaky se NEodesílají."
+        : "Dev režim: vypnutý — normální průchod, odznaky se zapisují do profilu.";
+    }
+    document.querySelector("[data-dev-on]")?.addEventListener("click", () => {
+      localStorage.setItem("guide:dev-mode", "1");
+      window.location.href = "/";
+    });
+    document.querySelector("[data-dev-off]")?.addEventListener("click", () => {
+      localStorage.removeItem("guide:dev-mode");
+      window.location.reload();
+    });
+    document.querySelector("[data-mark-all]")?.addEventListener("click", () => {
+      const dataEl = document.getElementById("dev-lesson-ids");
+      let ids = [];
+      try { ids = JSON.parse(dataEl?.textContent ?? "[]"); } catch {}
+      ids.forEach((id) => localStorage.setItem(`guide:lekce:${id}:status`, "done"));
+      alert(`Hotovo, označeno ${ids.length} lekcí.`);
+      window.location.reload();
+    });
+    document.querySelector("[data-reset-progress]")?.addEventListener("click", () => {
+      if (!confirm("Smazat všechen lokální progress (lekce, kvízy, dev mode)?")) return;
+      const keys = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const k = localStorage.key(i);
+        if (k && k.startsWith("guide:")) keys.push(k);
+      }
+      keys.forEach((k) => localStorage.removeItem(k));
+      window.location.reload();
+    });
+    refresh();
+  })();
+</script>
+
+<script is:inline>
+  (() => {
+    const el = document.querySelector("[data-profile-progress]");
+    if (!el) return;
+    let done = 0, all = 0;
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k) continue;
+      if (k.startsWith("guide:lekce:") && k.endsWith(":status")) {
+        all++;
+        if (localStorage.getItem(k) === "done") done++;
+      }
+    }
+    el.textContent = all === 0
+      ? "Ještě jsi žádnou lekci neotevřel/a."
+      : `${done} dokončených / ${all} navštívených lekcí.`;
+  })();
+</script>

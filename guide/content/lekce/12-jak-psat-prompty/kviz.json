@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Co je lepší, když si ještě nejsi jistý/á řešením?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Začít otázkou a nechat agenta vysvětlit, jak problému rozumí.",
+          "correct": true,
+          "feedback": "Správně. Nejdřív sladit kontext, potom měnit."
+        },
+        {
+          "id": "b",
+          "text": "Rovnou požádat o změnu, ale nechat agenta vybrat zdroje sám.",
+          "correct": false,
+          "feedback": "To často vede k hádání."
+        },
+        {
+          "id": "c",
+          "text": "Popsat jen požadovaný výsledek a kontrolu nechat až na konec.",
+          "correct": false,
+          "feedback": "Kontrolní krok patří už do zadání, aby agent věděl, kdy se zastavit."
+        }
+      ],
+      "explanation": "Ptej se, když potřebuješ nejdřív pochopit problém."
+    },
+    {
+      "id": "q2",
+      "text": "Co by mělo obsahovat dobré zadání?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Cíl a výstup, ale bez hranic, aby měl agent víc volnosti.",
+          "correct": false,
+          "feedback": "To je příliš volné."
+        },
+        {
+          "id": "b",
+          "text": "Hodně kontextu z různých oblastí, i když není jasné, co s ním.",
+          "correct": false,
+          "feedback": "Velké úkoly je lepší rozdělit."
+        },
+        {
+          "id": "c",
+          "text": "Cíl, zdroje, hranice, výstup a kontrolní krok.",
+          "correct": true,
+          "feedback": "Přesně. To agentovi dává rámec."
+        }
+      ],
+      "explanation": "Dobré zadání chrání před zbytečnými vedlejšími změnami."
+    }
+  ],
+  "achievement_on_pass": null
+}

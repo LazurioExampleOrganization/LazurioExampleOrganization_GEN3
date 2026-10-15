@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Kdy ti většinou stačí běžný AI chat v prohlížeči?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Když chceš bezpečně upravit soubor ve AgentMint workspace.",
+          "correct": false,
+          "feedback": "Na práci se soubory je lepší agent ve workspace."
+        },
+        {
+          "id": "b",
+          "text": "Když chceš rychlé vysvětlení, nápad nebo obecný první návrh.",
+          "correct": true,
+          "feedback": "Správně. Pro obecné přemýšlení je chat pořád užitečný."
+        },
+        {
+          "id": "c",
+          "text": "Když chceš, aby AI sama navrhla změnu bez přístupu k firemním souborům.",
+          "correct": false,
+          "feedback": "Tohle je rizikové a v kurzu to není výchozí režim."
+        }
+      ],
+      "explanation": "Běžný chat je dobrý pro obecné myšlení. Workspace agent je pro práci s firemním kontextem."
+    },
+    {
+      "id": "q2",
+      "text": "Proč je agent ve workspace velký posun?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Umí pracovat s reálnými soubory, pravidly a historií workspace.",
+          "correct": true,
+          "feedback": "Ano. To je hlavní rozdíl oproti izolovanému chatu."
+        },
+        {
+          "id": "b",
+          "text": "Umí nahradit potřebu kontroly, když má dost kontextu.",
+          "correct": false,
+          "feedback": "Agent se může plést. Proto děláme review."
+        },
+        {
+          "id": "c",
+          "text": "Stačí mu obecné téma a cíl si odvodí z okolních souborů.",
+          "correct": false,
+          "feedback": "Cíl pořád určuje člověk."
+        }
+      ],
+      "explanation": "Agent ve workspace má kontext, ale stále potřebuje jasné zadání a kontrolu."
+    }
+  ],
+  "achievement_on_pass": null
+}

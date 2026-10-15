@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Která část skillu pomáhá agentovi poznat, kdy ho použít?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "`description` v hlavičce skillu.",
+          "correct": true,
+          "feedback": "Správně. Description je aktivační popis situace."
+        },
+        {
+          "id": "b",
+          "text": "Název složky, i když popis použití chybí.",
+          "correct": false,
+          "feedback": "To s aktivací nesouvisí."
+        },
+        {
+          "id": "c",
+          "text": "První nadpis v těle skillu.",
+          "correct": false,
+          "feedback": "Název pomáhá, ale description je klíčová."
+        }
+      ],
+      "explanation": "Description musí být konkrétní, aby agent skill poznal ve správné situaci."
+    },
+    {
+      "id": "q2",
+      "text": "Kdy nemá smysl vytvářet skill?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Když postup opakuješ, ale zatím ho umí jen jeden člověk.",
+          "correct": false,
+          "feedback": "To je naopak dobrý kandidát na skill."
+        },
+        {
+          "id": "b",
+          "text": "Když postup obsahuje citlivý krok a potřebuje jasné hranice.",
+          "correct": false,
+          "feedback": "Tam skill může hodně pomoct."
+        },
+        {
+          "id": "c",
+          "text": "Když jde hlavně o fakt, který patří do slovníku nebo research evidence.",
+          "correct": true,
+          "feedback": "Ano. To patří jinam."
+        }
+      ],
+      "explanation": "Skill je pro opakovatelné postupy, ne pro všechno."
+    }
+  ],
+  "achievement_on_pass": null
+}

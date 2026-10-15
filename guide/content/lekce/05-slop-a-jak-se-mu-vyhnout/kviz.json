@@ -1,0 +1,57 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Co je slop?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Hezky znějící AI výstup bez opory v realitě firmy.",
+          "correct": true,
+          "feedback": "Ano. Slop často zní dobře, ale po kontrole se nedá použít."
+        },
+        {
+          "id": "b",
+          "text": "Výstup, který zní sebevědomě, ale chybí mu kontrola proti firemním zdrojům.",
+          "correct": false,
+          "feedback": "To je blízko, ale slop je širší: výstup může být i stylisticky pěkný, přesto nepoužitelný pro reálnou práci."
+        },
+        {
+          "id": "c",
+          "text": "Text, který je jazykově hladký, ale směšuje ověřená fakta s domněnkami.",
+          "correct": false,
+          "feedback": "To je častý projev slopu, ale definice míří hlavně na chybějící oporu ve firemní realitě."
+        }
+      ],
+      "explanation": "Slop je varování, že výstup nemá dost opory ve zdrojích, pravidlech nebo konkrétní realitě."
+    },
+    {
+      "id": "q2",
+      "text": "Jak se slopu nejlépe předchází?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Tím, že agentovi dáš víc volnosti, aby si chybějící fakta domyslel.",
+          "correct": false,
+          "feedback": "Naopak. Volnost bez zdrojů zvyšuje šanci, že agent začne hádat."
+        },
+        {
+          "id": "b",
+          "text": "Malými kroky, konkrétními zdroji a kontrolou před uložením.",
+          "correct": true,
+          "feedback": "Správně. Tím agentovi zúžíš prostor pro hádání."
+        },
+        {
+          "id": "c",
+          "text": "Tím, že přijmeš první návrh, pokud zní dost přesvědčivě.",
+          "correct": false,
+          "feedback": "Přesvědčivý tón nestačí. Výsledek je potřeba ověřit proti zdrojům."
+        }
+      ],
+      "explanation": "Prevence slopu je dobrý pracovní postup, ne jedno kouzelné nastavení."
+    }
+  ],
+  "achievement_on_pass": null
+}

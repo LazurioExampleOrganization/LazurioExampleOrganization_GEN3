@@ -1,0 +1,83 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Kam se podíváš, když nevíš, kde něco ve workspace hledat?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Do modulu, který podle názvu zní podobně, a až potom ověříš MAP.",
+          "correct": false,
+          "feedback": "To je pomalé a často matoucí."
+        },
+        {
+          "id": "b",
+          "text": "Do posledního chatu, kde se podobné téma řešilo.",
+          "correct": false,
+          "feedback": "Soukromé poznámky nejsou společný zdroj pravdy."
+        },
+        {
+          "id": "c",
+          "text": "Do `MAP.md`.",
+          "correct": true,
+          "feedback": "Správně. MAP je rozcestník pro první orientaci."
+        }
+      ],
+      "explanation": "MAP.md je první pomoc, když nevíš, kam jít."
+    },
+    {
+      "id": "q2",
+      "text": "Kde najdeš research, experimenty nebo playbooky?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "V `modules/`.",
+          "correct": true,
+          "feedback": "Ano. Reálný obsah firmy žije hlavně v modulech."
+        },
+        {
+          "id": "b",
+          "text": "V `company/`, protože tam jsou firemní role a týmové podklady.",
+          "correct": false,
+          "feedback": "Company je důležitá vrstva, ale research, experimenty a playbooky najdeš hlavně v modulech."
+        },
+        {
+          "id": "c",
+          "text": "V `.claude/skills/`, pokud agent pracuje s experimenty opakovaně.",
+          "correct": false,
+          "feedback": "Tam jsou postupy pro agenta, ne data experimentů."
+        }
+      ],
+      "explanation": "`modules/` drží reálný firemní obsah a kód."
+    },
+    {
+      "id": "q3",
+      "text": "Co v GEN2 znamená modul?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Každá větší oblast práce, i když neleží pod `modules/`.",
+          "correct": false,
+          "feedback": "Ne. Root má i složky jako `company/` nebo `launchpad/`, které nejsou moduly."
+        },
+        {
+          "id": "b",
+          "text": "Git submodul pod `modules/<nazev>/`.",
+          "correct": true,
+          "feedback": "Správně. Modul má vlastní repo, historii a přístup."
+        },
+        {
+          "id": "c",
+          "text": "Aplikace, kterou Launchpad umí spustit, bez ohledu na Git repo.",
+          "correct": false,
+          "feedback": "Launchpad runtime je jen jedna vrstva. Modul ve workspace znamená Git submodul pod `modules/`."
+        }
+      ],
+      "explanation": "Slovo modul ve Workspace označuje Git submodul v `modules/`."
+    }
+  ],
+  "achievement_on_pass": null
+}

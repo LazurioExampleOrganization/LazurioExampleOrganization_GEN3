@@ -1,0 +1,83 @@
+{
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Který soubor je úvod psaný hlavně pro člověka?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "`MAP.md`",
+          "correct": false,
+          "feedback": "MAP pomáhá s orientací, ale úvod psaný hlavně pro člověka je README."
+        },
+        {
+          "id": "b",
+          "text": "`ARCHITECTURE.md`",
+          "correct": false,
+          "feedback": "ARCHITECTURE je technický model, ne první lidský úvod do složky."
+        },
+        {
+          "id": "c",
+          "text": "`README.md`",
+          "correct": true,
+          "feedback": "Správně. README je lidský úvod do složky nebo modulu."
+        }
+      ],
+      "explanation": "Když otevřeš neznámou část workspace, hledej README."
+    },
+    {
+      "id": "q2",
+      "text": "K čemu slouží `AGENTS.md`?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Říká agentovi, jak se má v dané části workspace chovat.",
+          "correct": true,
+          "feedback": "Přesně. Jsou to pracovní instrukce pro agenta."
+        },
+        {
+          "id": "b",
+          "text": "Popisuje projekt pro člověka stejně jako README, jen stručněji.",
+          "correct": false,
+          "feedback": "To je role README. AGENTS.md je instrukční soubor pro agenta."
+        },
+        {
+          "id": "c",
+          "text": "Říká, kam má člověk zapisovat všechny otevřené úkoly.",
+          "correct": false,
+          "feedback": "Otevřené kroky patří do task manageru firmy nebo do nejbližšího TODO.tasks.json, ne do AGENTS.md."
+        }
+      ],
+      "explanation": "AGENTS.md vrství pravidla pro agenta podle workspace, role, osoby a modulu."
+    },
+    {
+      "id": "q3",
+      "text": "Kdy je nejlepší otevřít `WORKSPACE_MANUAL.md`?",
+      "type": "single",
+      "options": [
+        {
+          "id": "a",
+          "text": "Když chci pochopit, jak Workspace GEN2 funguje jako celek.",
+          "correct": true,
+          "feedback": "Správně. Manuál propojuje vrstvy, data, aplikace a agentní pravidla do jednoho mentálního modelu."
+        },
+        {
+          "id": "b",
+          "text": "Když hledám jedinou závaznou definici každého pojmu.",
+          "correct": false,
+          "feedback": "Definice pojmů patří do GLOSSARY.md. Manuál je používá a vysvětluje souvislosti."
+        },
+        {
+          "id": "c",
+          "text": "Když chci zjistit aktuální otevřené úkoly v konkrétním modulu.",
+          "correct": false,
+          "feedback": "Aktuální otevřená práce patří do TODO.tasks.json daného scope nebo do task manageru firmy."
+        }
+      ],
+      "explanation": "WORKSPACE_MANUAL.md není slovník ani task list. Je to průvodce celkovou koncepcí Workspace GEN2."
+    }
+  ],
+  "achievement_on_pass": null
+}

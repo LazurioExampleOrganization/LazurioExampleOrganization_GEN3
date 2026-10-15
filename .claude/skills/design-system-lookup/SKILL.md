@@ -1,64 +1,60 @@
 ---
 name: design-system-lookup
-description: Pouzij, kdyz mas produkovat cokoliv vizualniho nebo formatovaneho pro GEN2 firmu — web page, prezentaci, dokument, nabidku, tabulku, merch, e-mail sablonu nebo UI. Skill nejdrive najde firemni source-of-truth a potom te navede do `design-system/`.
+description: Use before producing anything visual or formatted (web page, presentation, document, offer, table, email template or UI). It finds the Organization source of truth first and then points the agent to the design system.
 ---
 
-# Skill: design-system-lookup
+# Design system lookup
 
-## Kdy skill pouzit
+## When to use
 
-- Uživatel chce web layout, hero sekci, landing page nebo UI komponentu.
-- Uživatel chce prezentaci, dokument, nabidku, report, tabulku nebo merch.
-- Uživatel rekne "v nasi identite", "podle brandu", "hezky to
-  layoutni", "design systemem" nebo podobne.
-- Menis vizualni pravidlo, barvu, font, spacing, logo usage nebo format
-  opakovatelneho vystupu.
+- The user wants a web layout, a hero section, a landing page or a UI
+  component.
+- The user wants a presentation, document, offer, report, table or merchandise.
+- The user says "in our identity", "on brand", "lay it out nicely", "with the
+  design system" or similar.
+- You change a visual rule, colour, font, spacing, logo usage or the format of
+  a repeatable output.
 
-## Kdy skill nepouzivat
+Do not use it for a backend fix without UI impact, plain internal Markdown
+without a custom format, or a one-off technical diff that produces no visual
+output.
 
-- Cisty backend bug fix bez UI dopadu.
-- Plain interní Markdown bez custom formatu.
-- Jednorazovy technicky diff, kde se nevytvari vizualni vystup.
+## Steps
 
-## Preflight
+1. Open the design system's `README.md` and `BASELINE.md`.
+2. Open `content/brand/colors/tokens.json` and
+   `content/brand/typography/typography.md`.
+3. If a production source exists, open it as well: the owning workspace
+   module, `workspace/knowledgebase/` or `company/agents/voice/`.
+4. Pick the source of truth for the output:
 
-1. Otevri `design-system/README.md`.
-2. Otevri `design-system/BASELINE.md`.
-3. Otevri `design-system/content/brand/colors/tokens.json`.
-4. Otevri `design-system/content/brand/typography/typography.md`.
-5. Pokud existuje relevantni produkcni source:
-   - `modules/website/`
-   - `modules/knowledgebase/`
-   - `company/agents/voice/`
-   - prislusny app modul
+   | Output | Primary source of truth | Design system reference |
+   |---|---|---|
+   | Web or UI | the production module | `content/examples/` |
+   | Document or offer | the module that generates the document | `content/examples/` |
+   | Presentation | the brand brief | `content/examples/` |
+   | Table or report | the module that owns the data | `content/examples/` |
+   | Tone and copy | `company/agents/voice/` and the knowledgebase | `BASELINE.md` |
 
-## Authority Matrix
+The design system lives in the root's `design-system/` today. Its standalone
+repository [`design-system`](https://github.com/LazurioExampleOrganization/design-system)
+becomes the mounted `design-system/` checkout once the root application slots
+are activated; the paths inside it stay the same.
 
-| Vystup | Primarni source-of-truth | Design-system reference |
-|---|---|---|
-| Web / UI | `modules/website/` nebo produkcni app modul | `design-system/content/examples/web/` |
-| Dokument / nabidka | modul, ktery dokument generuje, nebo `modules/deals/` | `design-system/content/examples/documents/` |
-| Prezentace | `modules/presentation/` nebo brand brief | `design-system/content/examples/presentations/` |
-| Tabulka / report | modul vlastnici data | `design-system/content/examples/tables/` |
-| Merch / asset | brand source + logo/license source | `design-system/content/examples/merch/` |
-| Tone/copy | `company/agents/voice/` + knowledgebase | `design-system/BASELINE.md` |
+## Rules
 
-## Pravidla
+- Never copy another company's brand assets.
+- Do not invent colours or fonts when a production source exists.
+- When sources conflict, the production source of truth wins and the design
+  system is updated.
+- The design system App is a read-only viewer, not an authoring tool.
+- Record stable design decisions in the design system, not only in chat.
 
-- Nekopiruj brand assety jine firmy.
-- Neimaginuj barvy a fonty, pokud existuje produkcni source.
-- Pri konfliktu vitezi produkcni source-of-truth; design-system se
-  aktualizuje.
-- Appka v `design-system/app/` je read-only viewer, ne authoring UI.
-- Stabilni design rozhodnuti zapis do `design-system/`, ne jen do chatu.
+## Verification
 
-## Preview
-
-```bash
-cd design-system/app
-npm install
-npm run dev
-```
-
-Přesný listener ověř v `design-system/lazurio.module.json`; do skillu ani do
-lokálního `.env` se jeho číslo nekopíruje.
+- The output uses the tokens and typography from the design system, or the
+  production source that overrides them.
+- To preview the design system, start its App through Lazurio
+  (`lazurio module start` or the Launchpad); the listener comes from the
+  module's own `lazurio.module.json`. Never copy the port into a skill or a
+  local `.env`.

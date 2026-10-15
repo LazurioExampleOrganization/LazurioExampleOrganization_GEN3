@@ -1,72 +1,50 @@
 ---
 name: mission-control-planning
-description: Použij v AgentMintu, když uživatel plánuje novou feature, experiment, větší změnu fungování nebo cross-scope práci. Skill ukotví plán v lokálním Mission Control/YAML modelu a teprve potom z něj odvodí implementační kroky do TODO.tasks.json.
+description: Use when the user plans a new feature, an experiment, a larger change in how the Organization works or cross-scope work. It anchors the plan in Mission Control first and only then derives implementation steps.
 ---
 
 # Mission Control planning
 
-Tento skill převádí nejasný feature záměr na dvě oddělené vrstvy:
+This skill turns a vague intent into two separate layers:
 
-- **Mission Control plan** — lokální YAML plán ve workspace: proč se věc dělá,
-  pro koho, jaký je scope, rozhodnutí a acceptance criteria.
-- **`TODO.tasks.json`** — konkrétní implementační kroky v Git workspace.
+- **A Mission Control plan**: why the work is done, for whom, its scope,
+  decisions and acceptance criteria.
+- **Tasks**: concrete implementation steps that point back to the plan.
 
-Mission Control je root-level control-plane repo `mission-control/`. Drží
-plánovací kontrakt ve workspace YAML souborech a task ledgery na něj odkazují
-přes `planning`.
+Today the Organization plans in the in-tree layer `mission-control/` (YAML
+plans in `mission-control/plans/`) and keeps tasks in the root
+`TODO.tasks.json`, `DONE.tasks.json` and `ISSUES.open.json`. When the
+Organization adopts Mission Control v3, plans and tasks move to its data
+repository mounted at `mission-control/db/`, and this skill follows them.
 
-## Kdy použít
+## When to use
 
-Použij skill, když uživatel řekne například:
+When the user says, for example:
 
-- „naplánuj feature“
-- „pojďme udělat novou věc“
-- „z toho udělej tasky“
-- „rozpadni to do TODO“
-- „připrav experiment“
-- „tohle bude větší změna“
+- "plan a feature", "let's build something new";
+- "turn this into tasks", "break it down";
+- "prepare an experiment";
+- "this is going to be a bigger change".
 
-Jednoduchý bug fix tímto flow neblokuj, pokud je scope zřejmý a nemění se
-produktové nebo provozní rozhodnutí.
+Do not hold up a simple bug fix with this flow when its scope is obvious and
+no product or operating decision changes.
 
-## Preflight
+## Steps
 
-1. Přečti root `AGENTS.md`, `MAP.md`, `WORKSPACE_MANUAL.md` a nejbližší
-   relevantní `AGENTS.md`.
-2. Ověř, jestli `mission-control/` existuje jako dostupné nested repo.
-3. Pokud existuje, najdi nebo založ YAML plan v `mission-control/plans/`.
-4. Pokud Mission Control není dostupný, vytvoř nebo aktualizuj task v root
-   `TODO.tasks.json` a drž plánovací detaily v nejbližším schváleném scope.
-5. Teprve potom uprav nejbližší `TODO.tasks.json`.
+1. Read the root `AGENTS.md`, `MAP.md` and the nearest relevant `AGENTS.md`.
+2. Find an existing plan for the intent in `mission-control/plans/`. Do not
+   create a duplicate.
+3. If none exists, create one. A plan has at least: `id`, `title`, `type`,
+   `status`, `owner`; the goal and the business reason; scope and non-goals;
+   decisions and open questions; acceptance criteria; risks and guardrails;
+   links to the relevant files; the derived task ids; and the outcome once it
+   is done.
+4. Derive small tasks with one main result each in `TODO.tasks.json`. Link
+   every task back to the plan through its `planning` field and put the
+   relevant repository files, not the chat, into `links`.
+5. Record missing decisions in `ISSUES.open.json`.
 
-## Mission Control plan obsahuje
-
-Každý feature plan má mít minimálně:
-
-- `id`, `title`, `type`, `status`, `owner`
-- cíl a business důvod
-- scope a non-goals
-- rozhodnutí a otevřené otázky
-- acceptance criteria
-- rizika a guardrails
-- odkazy na relevantní workspace soubory
-- odvozené `TODO.tasks.json` task IDs
-- outcome po dokončení
-
-Mission Control neobsahuje secrets, tokeny, zákaznická data ani lokální runtime
-detaily, které patří do gitignored konfigurace nebo bezpečného vaultu.
-
-## Rozpad do `TODO.tasks.json`
-
-Po vytvoření nebo nalezení Mission Control plánu:
-
-1. Najdi nejbližší task ledger podle scope.
-2. Vytvoř malé tasky s jedním hlavním výsledkem.
-3. Každý task propoj zpět na plán přes pole `planning`.
-4. Do `links` přidej relevantní repo soubory, ne celý chat.
-5. Pokud chybí rozhodnutí, přidej nebo aktualizuj `ISSUES.open.json`.
-
-Příklad `planning` reference v tasku:
+Example `planning` reference in a task:
 
 ```json
 "planning": {
@@ -77,23 +55,15 @@ Příklad `planning` reference v tasku:
 }
 ```
 
-## Když Mission Control není dostupný
+If Mission Control cannot be read, do not pretend a plan exists. Record a task
+with a clear `next_action` to restore it, and move the planning context into
+Mission Control as soon as it is available again.
 
-Pokud `mission-control/` chybí nebo nejde číst:
+## Verification
 
-1. Nehaluzuj, že plan YAML existuje.
-2. Zapiš TODO task pro opravu dostupnosti nebo vytvoření prvního planu.
-3. Do tasku napiš jasný `next_action`.
-4. Jakmile je repo dostupné, přesuň trvalý plánovací kontext do
-   `mission-control/plans/`.
-
-Lokální fallback je jen dočasná stopa, ne nový trvalý source of truth.
-
-## Co nedělat
-
-- Nevytvářej feature plán jen v chatu.
-- Nedávej dlouhé strategické zadání jen do `TODO.tasks.json`.
-- Nekopíruj do Mission Control secrets ani privátní zákaznická data.
-- Nevytvářej duplicitní YAML plány, pokud už existuje odpovídající položka.
-- Nepoužívej Notion nebo ClickUp pro AgentMint planning, pokud to uživatel
-  explicitně neřekne pro jednorázovou práci.
+- The plan exists once, in Mission Control, and every derived task links to
+  it.
+- No feature plan lives only in chat, and no long strategic brief lives only
+  in a task.
+- Mission Control holds no secrets, tokens, customer data or local runtime
+  details.

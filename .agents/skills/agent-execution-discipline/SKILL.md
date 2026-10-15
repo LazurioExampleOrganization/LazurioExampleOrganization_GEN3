@@ -1,94 +1,88 @@
 ---
 name: agent-execution-discipline
-description: Použij v AgentMintu před netriviální změnou kódu, dokumentace nebo workflow — vede agenta od zodpovědnosti za výsledek přes plán v Mission Control a worktree k udržitelné, ověřené změně.
+description: Use before a non-trivial change to code, documentation or a workflow in this Organization. It takes the agent from owning the outcome through a plan and a worktree to a sustainable, verified change.
 ---
 
-# Skill: agentní disciplína při změnách
+# Agent execution discipline
 
-Tahle skill vede agenta, jak brát zodpovědnost za práci: od záměru přes plán
-a worktree až po udržitelnou změnu, kterou po tobě někdo rád převezme.
-Nejsi tu od toho, abys udělal nejlevnější možný zásah — jsi tu od toho,
-abys odvedl dobrou práci, za kterou se postavíš.
+This skill shows how an agent owns its work: from intent through a plan and a
+worktree to a sustainable change that someone else is glad to take over. You
+are not here to make the cheapest possible edit. You are here to do good work
+you can stand behind.
 
-## Kdy použít
+## When to use
 
-Za netriviální změnu, na kterou tahle skill míří, ber hlavně:
+A non-trivial change is mainly:
 
-- refactor, feature nebo změnu workflow, která přesahuje jeden zřejmý soubor
-- úpravu access hranice, research schématu, experiment metriky, stop
-  condition nebo evidence destination
-- úpravu více než jednoho `AGENTS.md`, skillu, task ledgeru nebo workflow
-  pravidla
-- cokoliv s legal/platform/reputation rizikem nebo možnou externí akcí
+- a refactor, feature or workflow change that goes beyond one obvious file;
+- a change to an access boundary, a research schema, an experiment metric, a
+  stop condition or where evidence is recorded;
+- a change to more than one `AGENTS.md`, skill, task ledger or workflow rule;
+- anything with legal, platform or reputational risk, or a possible external
+  action.
 
-Drobná oprava (překlep, rozbitý odkaz, jasná jednořádková chyba) plán
-v Mission Control nepotřebuje — použij úsudek, ale i tu pracuj ve worktree a
-přes PR (skill `worktree-stewardship`). Když váháš, ber změnu jako
-netriviální a projdi tuhle skill zkráceně.
+A small fix (a typo, a broken link, an obvious one-line error) needs no
+Mission Control plan. Use judgment, but still work in a worktree and open a
+pull request. When in doubt, treat the change as non-trivial and run through
+this skill briefly.
 
-## Postup
+## Steps
 
-### 1. Vezmi zodpovědnost za výsledek
+### 1. Own the outcome
 
-Než začneš, umíš odpovědět:
+Before you start, you can answer:
 
-- Co má po mé práci platit a jak to poznám? (ověřitelný cíl)
-- Kdo je owner té oblasti a kde je source of truth — nejbližší `AGENTS.md`,
-  `modules/knowledgebase` nebo `ISSUES.open.json`?
-- Jaký je business kontext — komu to slouží a co se rozbije, když to udělám
-  špatně?
-- Které předpoklady si domýšlím? Domněnka, která mění správnost, bezpečnost,
-  zákaznický dopad nebo owner hranici, není domněnka — je to otázka na
-  Principála.
+- What must be true after my work, and how will I know? (a verifiable goal)
+- Who owns this area and where is its source of truth: the nearest
+  `AGENTS.md`, `workspace/knowledgebase` or `ISSUES.open.json`?
+- What is the business context: who does it serve, and what breaks if I get
+  it wrong?
+- Which assumptions am I making? An assumption that changes correctness,
+  safety, customer impact or an ownership boundary is not an assumption; it is
+  a question for your Operator.
 
-Zodpovědnost znamená: když nevíš, zjistíš; když to nejde zjistit, zeptáš se;
-a co slíbíš v handoffu, je pravda.
+Owning the outcome means: when you do not know, you find out; when you cannot
+find out, you ask; and what you promise in the handoff is true.
 
-### 2. Netriviální práce začíná plánem v Mission Control
+### 2. Non-trivial work starts with a plan
 
-Refactor, feature, změnu workflow nebo access hranici si nejdřív naplánuj
-v `mission-control/` (in-tree vrstva přímo v tomto repu, skill
-`mission-control-planning`): YAML plán s kódem, cílem a acceptance
-kritérii v `mission-control/plans/`. Plán není byrokracie — je to kotva,
-přes kterou tvou práci najde další agent i Principál, a dává jméno tvému
-worktree (`<PLAN-kód>-<slug>`). Pokud plán chybí nebo je nejasný, založ
-nebo aktualizuj task přímo v `TODO.tasks.json` a plánovací detail dopiš
-do `mission-control/plans/`, jakmile bude jasný.
+Plan a refactor, feature, workflow change or access change first, with the
+`mission-control-planning` skill: a plan with a code, a goal and acceptance
+criteria. The plan is not bureaucracy. It is the anchor through which the
+next agent and your Operator find your work, and it names your worktree
+(`<plan-code>-<slug>`).
 
-### 3. Pak worktree — nikdy primární checkout
+### 3. Then a worktree, never the primary checkout
 
-Primární checkout Organizace i každého nested repo modulu je referenční
-strom a zůstává na `main`. Práce žije v dedikovaném worktree podle skillu
-`worktree-stewardship`: `.worktrees/root/<PLAN-kód>-<slug>/` pro Organization
-root, `.worktrees/<module-path>/<PLAN-kód>-<slug>/` pro nested repo modul
-(kanonické cesty a sidecar metadata dle decision 0049). Jeden plán = jeden
-worktree = jedna branch = jeden PR. Rozdělaná práce mimo worktree je dluh,
-který po tobě někdo musí uklidit.
+The primary checkout of the Organization and of every module stays on
+`main`. Work happens in a dedicated worktree: `.worktrees/root/<slug>/` for
+the Organization root and `.worktrees/workspace/<module>/<slug>/` for a
+module. One plan, one worktree, one branch, one pull request. The Lazurio
+root's worktree skill describes the full lifecycle.
 
-### 4. Dělej udržitelné změny
+### 4. Make sustainable changes
 
-Udržitelná změna je taková, kterou za půl roku někdo pochopí, zvaliduje
-a rozšíří:
+A sustainable change is one someone can understand, validate and extend six
+months from now:
 
-- Řeš příčinu, ne symptom. Quick hack, který obchází pravidla nebo maskuje
-  problém, není hotová práce — i kdyby prošel testem.
-- Drž hranice změny: měň, co patří k cíli plánu. Sousední problémy zapiš
-  jako follow-up do `TODO.tasks.json`, `ISSUES.open.json` nebo Mission
-  Control plánu, nemíchej je do diffu.
-- Udržitelnost není gold-plating: nezaváděj spekulativní abstrakce pro
-  neexistující use case. Je to čitelnost, správný datový tok a respekt
-  k owner hranicím — business data patří do owner modulu a zapisují se přes
-  jeho canonical writer; u v3 modulů přes repository-db publikační flow.
-- Zanech workspace pravdivější, než jsi ho našel: poznatky do
-  `modules/knowledgebase`, rozhodnutí do `ISSUES.open.json`, změny pravidel
-  práce do nejbližšího `AGENTS.md`.
+- Fix the cause, not the symptom. A quick hack that bypasses rules or masks a
+  problem is not finished work, even when a test passes.
+- Keep the change bounded: change what belongs to the plan's goal. Record
+  neighbouring problems as follow-ups instead of mixing them into the diff.
+- Sustainable is not gold-plated: no speculative abstractions for use cases
+  that do not exist. It means readability, a correct data flow and respect
+  for ownership boundaries. Business data belongs in its owning module and is
+  written through that module's own writer.
+- Leave the Organization more truthful than you found it: insights go to
+  `workspace/knowledgebase`, open decisions to `ISSUES.open.json`, changes in
+  working rules to the nearest `AGENTS.md`.
 
-## Ověření
+## Verification
 
-- Předem urči nejmenší přesvědčivé ověření a spusť ho; když nejde spustit,
-  napiš proč — nikdy nepředstírej zelený výsledek.
-- Handoff: co se změnilo, proč je řešení udržitelné, co bylo ověřeno a co
-  zůstává jako follow-up. Bez secrets a bez reasoning dumpu.
-- Tvoje práce končí PR — je to Draft a merge patří Principálovi nebo
-  Stewardovi, který ho reviewuje (viz root `AGENTS.md`, blok Model
-  spolupráce).
+- Decide up front on the smallest convincing check and run it. If it cannot
+  run, say why; never pretend a result is green.
+- Handoff: what changed, why the solution is sustainable, what was verified
+  and what remains as follow-up. No secrets and no reasoning dump.
+- Your work ends with a pull request. Publishing it (the merge) belongs to
+  your Operator or to a Colleague they ask; see the collaboration model linked
+  from the root `AGENTS.md`.

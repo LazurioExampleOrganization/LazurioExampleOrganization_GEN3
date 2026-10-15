@@ -81,7 +81,7 @@
       },
       {
         "slug": "net-experiment-income",
-        "description": "Čistý příjem běžících mechanismů po nákladech, podle modules/finance.",
+        "description": "Čistý příjem běžících mechanismů po nákladech, podle workspace/finance.",
         "priority": null
       }
     ]

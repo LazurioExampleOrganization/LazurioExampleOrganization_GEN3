@@ -16,7 +16,7 @@ Firma: Lazurio Example Organization
 
 ## Rozhodovací pravidla
 - money movement, external visibility, platform ToS, legal or reputational risk: Finanční kroky, externě viditelné akce a cokoliv s legal/platform dopadem musí předem potvrdit člověk. Agent nesmí spustit automatizaci generující spam, fake engagement nebo klamavé claimy.
-- scale decision: Škálovat se smí jen mechanismus s ověřeným signálem z experimentu; stop/scale rozhodnutí se zapisuje do modules/experiments.
+- scale decision: Škálovat se smí jen mechanismus s ověřeným signálem z experimentu; stop/scale rozhodnutí se zapisuje do workspace/experiments.
 
 ## Rizika
 - gray-zone-drift: Experiment sklouzne do spamu, fake engagementu, obcházení ToS nebo klamavých claimů.
@@ -27,4 +27,4 @@ Firma: Lazurio Example Organization
 ## Metriky
 - verified-mechanisms: Počet mechanismů s ověřeným signálem příjmu zapsaných v playbooks.
 - experiment-throughput: Počet dokončených experimentů s explicitním stop/scale rozhodnutím a zapsanou evidencí.
-- net-experiment-income: Čistý příjem běžících mechanismů po nákladech, podle modules/finance.
+- net-experiment-income: Čistý příjem běžících mechanismů po nákladech, podle workspace/finance.

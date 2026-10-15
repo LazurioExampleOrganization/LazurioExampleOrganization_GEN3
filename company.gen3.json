@@ -27,7 +27,7 @@
       },
       {
         "owner": "founder",
-        "rule": "Škálovat se smí jen mechanismus s ověřeným signálem z experimentu; stop/scale rozhodnutí se zapisuje do modules/experiments.",
+        "rule": "Škálovat se smí jen mechanismus s ověřeným signálem z experimentu; stop/scale rozhodnutí se zapisuje do workspace/experiments.",
         "trigger": "scale decision"
       }
     ],
@@ -41,7 +41,7 @@
         "slug": "experiment-throughput"
       },
       {
-        "description": "Čistý příjem běžících mechanismů po nákladech, podle modules/finance.",
+        "description": "Čistý příjem běžících mechanismů po nákladech, podle workspace/finance.",
         "slug": "net-experiment-income"
       }
     ],
@@ -65,7 +65,7 @@
       },
       {
         "description": "Mechanismus se začne škálovat nebo prezentovat jako funkční bez důkazu z experimentu.",
-        "escalation": "Vrátit do modules/experiments a doplnit měřitelný test se stop podmínkou.",
+        "escalation": "Vrátit do workspace/experiments a doplnit měřitelný test se stop podmínkou.",
         "slug": "no-evidence-scaling"
       },
       {
@@ -190,9 +190,7 @@
       "derived": [
         "generated/**"
       ],
-      "managed": [
-        "gen3/core/**"
-      ],
+      "managed": [],
       "manual": [
         "AGENTS.md",
         "README.md",
@@ -206,9 +204,11 @@
         "DONE.tasks.json",
         "ISSUES.open.json",
         "CHANGELOG.md",
-        "launchpad/README.md",
         "mission-control/**",
-        "modules/**"
+        "MAP.md",
+        "MIGRATION.md",
+        "workspace/**",
+        "productionspace/**"
       ],
       "override": [
         "company/roles/**",
@@ -217,7 +217,7 @@
         "guide/**"
       ]
     },
-    "update_model": "forkable-template"
+    "update_model": "standalone"
   },
   "knowledge_surfaces": [
     {
@@ -255,9 +255,9 @@
       "path": "manual"
     },
     {
-      "kind": "modules",
+      "kind": "workspace",
       "ownership": "manual",
-      "path": "modules"
+      "path": "workspace"
     },
     {
       "kind": "guide",
@@ -288,13 +288,16 @@
           "experiment-operator"
         ]
       },
+      "branch": "main",
       "category": "automation",
-      "notes": "Agentní workflow, integrace a runtime. Připojit až po ručním ověření, že automatizace nevytváří spam, ToS obcházení ani bezpečnostní riziko.",
-      "path": "modules/automations",
+      "notes": "Agent workflows, integrations and runtime. An automation is connected only after a manual check that it creates no spam, no terms-of-service evasion and no security risk.",
+      "path": "workspace/automations",
       "repo": "git@github.com:LazurioExampleOrganization/automations.git",
       "slug": "automations",
       "source_of_truth": "git-native",
-      "workspace": "workspace"
+      "teams": [
+        "workspace"
+      ]
     },
     {
       "access": {
@@ -304,14 +307,17 @@
           "research-operator"
         ]
       },
+      "branch": "main",
       "category": "publishing",
-      "notes": "Veřejné publikační a acquisition assets. Žádný cizí obsah, fake engagement ani claimy bez důkazu.",
-      "path": "modules/content",
+      "notes": "Public publishing and acquisition assets. No third-party content, fake engagement or claims without evidence.",
+      "path": "workspace/content",
       "repo": "git@github.com:LazurioExampleOrganization/content.git",
       "slug": "content",
       "source_of_truth": "git-native",
-      "upstream_truth": "modules/knowledgebase",
-      "workspace": "workspace"
+      "teams": [
+        "workspace"
+      ],
+      "upstream_truth": "workspace/knowledgebase"
     },
     {
       "access": {
@@ -321,14 +327,17 @@
           "experiment-operator"
         ]
       },
+      "branch": "main",
       "category": "business",
-      "notes": "Experiment specs, run logs, metriky, výsledky, stop/scale rozhodnutí a audit guardrails.",
-      "path": "modules/experiments",
+      "notes": "Experiment specs, run logs, metrics, results, stop or scale decisions and the guardrail audit.",
+      "path": "workspace/experiments",
       "repo": "git@github.com:LazurioExampleOrganization/experiments.git",
       "slug": "experiments",
       "source_of_truth": "git-native",
-      "upstream_truth": "modules/research",
-      "workspace": "workspace"
+      "teams": [
+        "workspace"
+      ],
+      "upstream_truth": "workspace/research"
     },
     {
       "access": {
@@ -337,13 +346,16 @@
           "founder"
         ]
       },
+      "branch": "main",
       "category": "business",
-      "notes": "Náklady, výnosy, unit economics, payment provider exporty a audit experimentů. Citlivá data nepatří do Gitu, pokud nejsou bezpečně anonymizovaná.",
-      "path": "modules/finance",
+      "notes": "Costs, revenue, unit economics, payment provider exports and the experiment audit. Sensitive data stays out of Git unless it is safely anonymized.",
+      "path": "workspace/finance",
       "repo": "git@github.com:LazurioExampleOrganization/finance.git",
       "slug": "finance",
       "source_of_truth": "git-native",
-      "workspace": "workspace"
+      "teams": [
+        "workspace"
+      ]
     },
     {
       "access": {
@@ -354,20 +366,16 @@
           "experiment-operator"
         ]
       },
-      "app_manifests": [
-        {
-          "generation": "app/v2",
-          "path": "modules/knowledgebase/app/v2/package.json",
-          "role": "knowledgebase-viewer"
-        }
-      ],
+      "branch": "main",
       "category": "knowledge",
-      "notes": "Privátní strategie, rozhodovací logika, guardrails a lessons learned AgentMint. Připojit až ve chvíli, kdy root dokumenty přestanou stačit.",
-      "path": "modules/knowledgebase",
+      "notes": "Strategy, decision logic, guardrails and lessons learned. Document-native knowledge with a read-only viewer App.",
+      "path": "workspace/knowledgebase",
       "repo": "git@github.com:LazurioExampleOrganization/knowledgebase.git",
       "slug": "knowledgebase",
       "source_of_truth": "git-native",
-      "workspace": "workspace"
+      "teams": [
+        "workspace"
+      ]
     },
     {
       "access": {
@@ -378,14 +386,17 @@
           "experiment-operator"
         ]
       },
+      "branch": "main",
       "category": "knowledge",
-      "notes": "Ověřené opakovatelné mechanismy. Hypotézy sem nepatří; ty zůstávají v research/experiments.",
-      "path": "modules/playbooks",
+      "notes": "Verified, repeatable mechanisms. Hypotheses do not belong here; they stay in research and experiments.",
+      "path": "workspace/playbooks",
       "repo": "git@github.com:LazurioExampleOrganization/playbooks.git",
       "slug": "playbooks",
       "source_of_truth": "git-native",
-      "upstream_truth": "modules/experiments",
-      "workspace": "workspace"
+      "teams": [
+        "workspace"
+      ],
+      "upstream_truth": "workspace/experiments"
     },
     {
       "access": {
@@ -395,13 +406,16 @@
           "research-operator"
         ]
       },
+      "branch": "main",
       "category": "knowledge",
-      "notes": "Mechanism scans, source notes, market maps a evidence pro rozhodnutí, co testovat.",
-      "path": "modules/research",
+      "notes": "Mechanism scans, source notes, market maps and the evidence for deciding what to test.",
+      "path": "workspace/research",
       "repo": "git@github.com:LazurioExampleOrganization/research.git",
       "slug": "research",
       "source_of_truth": "git-native",
-      "workspace": "workspace"
+      "teams": [
+        "workspace"
+      ]
     }
   ],
   "organization_generation": "gen3",
@@ -457,40 +471,40 @@
       "write_rule": "Inventář modulů a jejich příslušnost k Teamům se zapisuje do root modules.manifest.json. company.gen3.json#modules se z něj jen generuje stejným příkazem lazurio migrate organization-manifest <task-worktree> --write."
     },
     {
-      "canonical": "modules/knowledgebase",
+      "canonical": "workspace/knowledgebase",
       "domain": "strategy-and-guardrails",
       "write_rule": "Strategie, rozhodovací logika, guardrails a lessons learned se mění v knowledgebase. Downstream povrchy se z ní odvozují."
     },
     {
-      "canonical": "modules/research",
+      "canonical": "workspace/research",
       "domain": "research",
       "write_rule": "Mechanism scans, source notes a market mapy patří do research. Každý claim má zdroj a datum ověření."
     },
     {
-      "canonical": "modules/experiments",
+      "canonical": "workspace/experiments",
       "domain": "experiments",
-      "upstream_truth": "modules/research",
+      "upstream_truth": "workspace/research",
       "write_rule": "Experiment spec, run log, metriky a stop/scale rozhodnutí žijí v experiments. Bez zapsaného experimentu není důkaz."
     },
     {
-      "canonical": "modules/playbooks",
+      "canonical": "workspace/playbooks",
       "domain": "playbooks",
-      "upstream_truth": "modules/experiments",
+      "upstream_truth": "workspace/experiments",
       "write_rule": "Do playbooks se promuje jen mechanismus s ověřeným signálem z experimentu. Hypotézy zůstávají v research/experiments."
     },
     {
-      "canonical": "modules/content",
+      "canonical": "workspace/content",
       "domain": "content",
-      "upstream_truth": "modules/knowledgebase",
+      "upstream_truth": "workspace/knowledgebase",
       "write_rule": "Veřejné publikační a acquisition assets. Žádný cizí obsah, fake social proof ani claimy bez důkazu."
     },
     {
-      "canonical": "modules/automations",
+      "canonical": "workspace/automations",
       "domain": "automations",
       "write_rule": "Agentní workflow a runtime se připojuje až po ručním ověření mechanismu a guardrails; automatizace nesmí generovat spam ani obcházet ToS."
     },
     {
-      "canonical": "modules/finance",
+      "canonical": "workspace/finance",
       "domain": "finance",
       "write_rule": "Unit economics, náklady a výnosy experimentů. Citlivá data jdou do Gitu jen bezpečně anonymizovaná; zbytek zůstává mimo Git."
     },

@@ -46,9 +46,7 @@
     ],
     "default_branch": "main",
     "file_ownership": {
-      "managed": [
-        "gen3/core/**"
-      ],
+      "managed": [],
       "manual": [
         "AGENTS.md",
         "README.md",
@@ -62,9 +60,11 @@
         "DONE.tasks.json",
         "ISSUES.open.json",
         "CHANGELOG.md",
-        "launchpad/README.md",
         "mission-control/**",
-        "modules/**"
+        "MAP.md",
+        "MIGRATION.md",
+        "workspace/**",
+        "productionspace/**"
       ],
       "override": [
         "company/roles/**",
@@ -76,7 +76,7 @@
         "generated/**"
       ]
     },
-    "update_model": "forkable-template"
+    "update_model": "standalone"
   },
   "teams": [
     {
@@ -116,9 +116,9 @@
       "path": "manual"
     },
     {
-      "kind": "modules",
+      "kind": "workspace",
       "ownership": "manual",
-      "path": "modules"
+      "path": "workspace"
     },
     {
       "kind": "guide",
@@ -180,7 +180,7 @@
           },
           {
             "owner": "founder",
-            "rule": "Škálovat se smí jen mechanismus s ověřeným signálem z experimentu; stop/scale rozhodnutí se zapisuje do modules/experiments.",
+            "rule": "Škálovat se smí jen mechanismus s ověřeným signálem z experimentu; stop/scale rozhodnutí se zapisuje do workspace/experiments.",
             "trigger": "scale decision"
           }
         ],
@@ -194,7 +194,7 @@
             "slug": "experiment-throughput"
           },
           {
-            "description": "Čistý příjem běžících mechanismů po nákladech, podle modules/finance.",
+            "description": "Čistý příjem běžících mechanismů po nákladech, podle workspace/finance.",
             "slug": "net-experiment-income"
           }
         ],
@@ -218,7 +218,7 @@
           },
           {
             "description": "Mechanismus se začne škálovat nebo prezentovat jako funkční bez důkazu z experimentu.",
-            "escalation": "Vrátit do modules/experiments a doplnit měřitelný test se stop podmínkou.",
+            "escalation": "Vrátit do workspace/experiments a doplnit měřitelný test se stop podmínkou.",
             "slug": "no-evidence-scaling"
           },
           {
@@ -364,40 +364,40 @@
           "write_rule": "Inventář modulů a jejich příslušnost k Teamům se zapisuje do root modules.manifest.json. company.gen3.json#modules se z něj jen generuje stejným příkazem lazurio migrate organization-manifest <task-worktree> --write."
         },
         {
-          "canonical": "modules/knowledgebase",
+          "canonical": "workspace/knowledgebase",
           "domain": "strategy-and-guardrails",
           "write_rule": "Strategie, rozhodovací logika, guardrails a lessons learned se mění v knowledgebase. Downstream povrchy se z ní odvozují."
         },
         {
-          "canonical": "modules/research",
+          "canonical": "workspace/research",
           "domain": "research",
           "write_rule": "Mechanism scans, source notes a market mapy patří do research. Každý claim má zdroj a datum ověření."
         },
         {
-          "canonical": "modules/experiments",
+          "canonical": "workspace/experiments",
           "domain": "experiments",
-          "upstream_truth": "modules/research",
+          "upstream_truth": "workspace/research",
           "write_rule": "Experiment spec, run log, metriky a stop/scale rozhodnutí žijí v experiments. Bez zapsaného experimentu není důkaz."
         },
         {
-          "canonical": "modules/playbooks",
+          "canonical": "workspace/playbooks",
           "domain": "playbooks",
-          "upstream_truth": "modules/experiments",
+          "upstream_truth": "workspace/experiments",
           "write_rule": "Do playbooks se promuje jen mechanismus s ověřeným signálem z experimentu. Hypotézy zůstávají v research/experiments."
         },
         {
-          "canonical": "modules/content",
+          "canonical": "workspace/content",
           "domain": "content",
-          "upstream_truth": "modules/knowledgebase",
+          "upstream_truth": "workspace/knowledgebase",
           "write_rule": "Veřejné publikační a acquisition assets. Žádný cizí obsah, fake social proof ani claimy bez důkazu."
         },
         {
-          "canonical": "modules/automations",
+          "canonical": "workspace/automations",
           "domain": "automations",
           "write_rule": "Agentní workflow a runtime se připojuje až po ručním ověření mechanismu a guardrails; automatizace nesmí generovat spam ani obcházet ToS."
         },
         {
-          "canonical": "modules/finance",
+          "canonical": "workspace/finance",
           "domain": "finance",
           "write_rule": "Unit economics, náklady a výnosy experimentů. Citlivá data jdou do Gitu jen bezpečně anonymizovaná; zbytek zůstává mimo Git."
         },
@@ -426,7 +426,7 @@
     "legacy_projection": {
       "path": "company.gen3.json",
       "algorithm": "sha256-canonical-json-v1",
-      "sha256": "sha256:97624957bc6cc904e98efc217363906d4b6861a321a989d4491d0860d19f6c25"
+      "sha256": "sha256:00d6acbf6e5debe0a9cb7eb3548f171f26198e97c2cb369bc9b42cf7a8768e08"
     }
   }
 }

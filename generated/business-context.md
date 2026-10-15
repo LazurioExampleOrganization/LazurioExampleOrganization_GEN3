@@ -2,7 +2,7 @@
 
 > Tento soubor je generovaný z `lazurio.organization.json`. Neupravuj ho ručně.
 
-Firma: AgentMint
+Firma: Lazurio Example Organization
 
 ## Co firmu živí
 - validated-online-mechanisms: Příjem z online mechanismů, které prošly experimentem s ověřeným signálem. Škáluje se jen to, co má důkaz; hypotéza zůstává v research/experiments.

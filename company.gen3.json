@@ -104,11 +104,24 @@
   },
   "company": {
     "default_branch": "main",
-    "display_name": "AgentMint",
+    "display_name": "Lazurio Example Organization",
     "github_org": "LazurioExampleOrganization",
     "repository": "git@github.com:LazurioExampleOrganization/LazurioExampleOrganization_GEN3.git",
     "root_repository": "LazurioExampleOrganization/LazurioExampleOrganization_GEN3",
     "slug": "LazurioExampleOrganization"
+  },
+  "forge_binding": {
+    "organization": {
+      "asserted_login": "LazurioExampleOrganization",
+      "id": "325048785"
+    },
+    "provider": "github",
+    "repository": {
+      "asserted_full_name": "LazurioExampleOrganization/LazurioExampleOrganization_GEN3",
+      "default_branch": "main",
+      "id": "1421349619"
+    },
+    "schema_version": "lazurio.forge-binding.github.v0"
   },
   "generation_policy": {
     "application_versions": [
@@ -263,8 +276,8 @@
     }
   ],
   "module_port_pool": {
-    "end": 24099,
-    "start": 24000
+    "end": 25399,
+    "start": 25300
   },
   "modules": [
     {
@@ -509,16 +522,24 @@
   "teams": [
     {
       "default": true,
-      "description": "Default Workspace AgentMint — digitální kancelář single-team Organizace; pokrývá všechny moduly.",
-      "display_name": "AgentMint Workspace",
+      "description": "Default Team of Lazurio Example Organization. The Organization has a single Team, and it covers every workspace module.",
+      "display_name": "Workspace",
+      "forge_binding": {
+        "provider": "github",
+        "schema_version": "lazurio.team-forge-binding.github.v0",
+        "team": {
+          "asserted_slug": "workspace",
+          "id": "20129625"
+        }
+      },
       "slug": "workspace"
     }
   ],
   "workspaces": [
     {
       "default": true,
-      "description": "Default Workspace AgentMint — digitální kancelář single-team Organizace; pokrývá všechny moduly.",
-      "display_name": "AgentMint Workspace",
+      "description": "Default Team of Lazurio Example Organization. The Organization has a single Team, and it covers every workspace module.",
+      "display_name": "Workspace",
       "slug": "workspace"
     }
   ]

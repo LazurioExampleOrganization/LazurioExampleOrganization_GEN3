@@ -3,7 +3,7 @@
   "compiler_version": "companiesascode.organization_compiler.v1",
   "company": {
     "default_branch": "main",
-    "display_name": "AgentMint",
+    "display_name": "Lazurio Example Organization",
     "github_org": "LazurioExampleOrganization",
     "repository": "git@github.com:LazurioExampleOrganization/LazurioExampleOrganization_GEN3.git",
     "root_repository": "LazurioExampleOrganization/LazurioExampleOrganization_GEN3",

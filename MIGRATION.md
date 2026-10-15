@@ -106,6 +106,7 @@ A row lands in the same root pull request or in the next one.
 | R1 | [#1](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/1) | root | 2026-10-15 22:28 | 2026-10-15 22:31 | 3 min | 0 | 0 | 1 | +103/−0 | 7,297 → 7,297 | ok, `transition` | n/a | no workflow yet | nothing | none | not reported |
 | R2 | [#2](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/2) | root | 2026-10-15 22:32 | 2026-10-15 22:35 | 3 min | 0 | 0 | 5 | +54/−23 | 7,297 → 7,294 | ok, `transition`, projection parity | n/a | no workflow yet | The compiler needs a template remote ([HumanAndMachines/Lazurio#556](https://github.com/HumanAndMachines/Lazurio/issues/556)) and writes Czech headings ([#557](https://github.com/HumanAndMachines/Lazurio/issues/557)); local workaround for the first | none | not reported |
 | R3 | [#3](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/3) | root | 2026-10-15 22:38 | 2026-10-15 22:41 | 3 min | 0 | 0 | 12 | +322/−309 | 7,294 → 7,188 | ok, `transition`, projection parity | n/a | no workflow yet | `lazurio update` then blocked the root on in-tree App ids ([#4](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/issues/4)), fixed in R3a | none | not reported |
+| R3a | [#5](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/5) | root | 2026-10-15 22:42 | 2026-10-15 22:44 | 2 min | 0 | 0 | 3 | +11/−2 | 7,188 → 7,188 | ok, `transition` | n/a | no workflow yet | fixes [#4](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/issues/4); the next `lazurio update` was green (155 current, root updated, 0 blocked) | none | not reported |
 
 ### Mount on the maintainer machine (2026-10-15 22:35–22:38 UTC)
 
@@ -122,3 +123,12 @@ A row lands in the same root pull request or in the next one.
 | `lazurio update --json` after R3 | Root fast-forwarded. All seven module checkouts reported `repository_location_mismatch` (checkout in `modules/<slug>`, manifest expects `workspace/<slug>`). Root `blocked` on in-tree App ids ([#4](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/issues/4)) |
 | `lazurio repair module-location --org LazurioExampleOrganization --module <slug>` | Check-only plan `ready` for all seven: path change only, origin unchanged |
 | Same with `--apply --expect <fingerprint>` | `repaired` for all seven; every checkout is clean `main` at its previous commit in `workspace/<slug>`; the empty `modules/` directory removed by hand |
+
+### Conformance after the move (2026-10-15 22:46 UTC)
+
+`lazurio module setup organizations/LazurioExampleOrganization_GEN3/workspace/<module> --root <Lazurio Folder> --json`:
+
+| Module | Result |
+|---|---|
+| automations, content, experiments, finance, playbooks, research | `current`, 13/13 |
+| knowledgebase | `actionable`, 7/13: MS-01 (leases outside the pool and shared with another Organization), MS-02, MS-04, MS-06, MS-07, MS-08. Fixed in M1 |

@@ -1,70 +1,51 @@
 ---
 name: module-agent-maintenance
-description: Sdílený workflow pro maintenance module-level docs v GEN2/GEN3 nested repo modulech (`modules/<modul>/`) — README.md, ARCHITECTURE.md, AGENTS.md, task ledgery a Mission Control vazby. Použij, když práce uvnitř modulu mění source-of-truth boundaries, data model, contracts, sync workflow nebo runtime behavior.
+description: Use when work inside a workspace module changes its source-of-truth boundaries, data model, contracts, sync workflow or runtime behaviour. It keeps the module README, ARCHITECTURE, AGENTS and plans in step.
 ---
 
-# Skill: module-agent-maintenance
+# Module documentation maintenance
 
-Shared workflow pro udržení dokumentace a ledgerů uvnitř top-level modulu.
-Modul je samostatné nested Git repo pod `modules/<slug>/`; super-repo obvykle
-netrackuje jeho obsah ani SHA pointer.
+A workspace module is its own Git repository, mounted at
+`workspace/<module>/`. The root never tracks its contents. This skill keeps
+the module's own documentation true while you change it.
 
-## Kdy použít
+## When to use
 
-Použij tenhle skill, když změna v modulu mění nebo odhaluje:
+When a change in a module changes or reveals:
 
-- source-of-truth boundary
-- datový model, schema, writer/proposal flow nebo contract shape
-- import/export/sync workflow
-- runtime behavior, port, Launchpad registraci nebo access/role pravidla
-- opakovaný postup, který další agent potřebuje najít bez znalosti chatu
+- a source-of-truth boundary;
+- a data model, schema, writer flow or contract shape;
+- an import, export or sync workflow;
+- runtime behaviour, a port lease, App declaration or access rule;
+- a repeatable procedure that the next agent must find without this chat.
 
-## Preflight
+## Steps
 
-Před větší prací čti:
+1. Before larger work, read the root `AGENTS.md`, the module's `AGENTS.md`,
+   `README.md` and `ARCHITECTURE.md` (when present), and the Mission Control
+   plan that the work belongs to.
+2. Keep each document to its job:
+   - `README.md`: practical use, scope and runtime expectations;
+   - `ARCHITECTURE.md`: current design, invariants and source-of-truth
+     boundaries;
+   - `AGENTS.md`: short local rules for agents, not a generic runbook;
+   - the Mission Control plan: the wider why, scope, risks and acceptance
+     criteria, plus the tasks derived from it.
+3. While the current truth changes, update `ARCHITECTURE.md` for design,
+   contract or boundary changes, `README.md` for usage changes and `AGENTS.md`
+   for new local rules. Record new steps and open questions as tasks and
+   issues linked to the plan.
+4. Do not keep a live plan in `TODO.md` or `IMPLEMENTATION_PLAN.md`. If an
+   older module still has one, treat it as input to move into Mission Control.
+5. For a module with an App, keep it conformant with the Lazurio Module
+   Standard and check it with `lazurio module setup <module> --json`.
 
-1. root `AGENTS.md`
-2. `modules/AGENTS.md`, pokud v daném workspace existuje
-3. modulový `AGENTS.md`, pokud existuje
-4. modulový `README.md`
-5. modulový `ARCHITECTURE.md`
-6. modulové `TODO.tasks.json`, `DONE.tasks.json`, `ISSUES.open.json`
-7. navázaný Mission Control plán, pokud práce má `PLAN-XXXX` nebo širší scope
+## Verification
 
-## Document contract
+Before you close a meaningful change, check that:
 
-- **`README.md`** — praktické použití, scope, runtime expectations.
-- **`ARCHITECTURE.md`** — current design, invarianty, source-of-truth hranice.
-- **`AGENTS.md`** — krátká lokální pravidla pro agenty, ne generický runbook.
-- **`TODO.tasks.json`** — aktuální vykonatelné kroky.
-- **`DONE.tasks.json`** — dokončená práce s evidencí.
-- **`ISSUES.open.json`** — otevřené otázky, rozhodnutí a věci, na kterých práce stojí.
-- **Mission Control plán** — širší proč/scope/rizika/acceptance criteria pro větší změny.
-
-`TODO.md` ani `IMPLEMENTATION_PLAN.md` nepoužívej jako živý plánovací ledger.
-Pokud je ve starém modulu najdeš, ber je jako legacy vstup k migraci do
-Mission Controlu a JSON ledgerů.
-
-## Maintenance během práce
-
-Když se current truth mění:
-
-- aktualizuj `ARCHITECTURE.md`, pokud se mění design, contracts nebo boundaries
-- aktualizuj `README.md`, pokud se mění praktické použití nebo operator expectation
-- aktualizuj `AGENTS.md`, pokud další agent potřebuje nové lokální pravidlo
-- zapiš nové kroky do `TODO.tasks.json`
-- přesouvej hotovou práci do `DONE.tasks.json` s krátkou evidencí
-- zapisuj nevyřešené otázky nebo access/decision gates do `ISSUES.open.json`
-- u většího scope udrž vazbu na Mission Control plán (`PLAN-XXXX`)
-
-Nenech důležité poznatky jen v chatu.
-
-## Handoff checklist
-
-Před uzavřením meaningful změny ověř:
-
-- dokumentace odpovídá skutečnému stavu, ne pre-change designu
-- aktivní kroky/otázky jsou v JSON ledgerech nebo Mission Controlu
-- žádné nové živé checkboxy nevznikly v Markdown TODO souborech
-- next recommended step je zřejmý i bez původního chatu
-- uvedl jsi relevantní validační příkazy nebo důvod, proč nešly spustit
+- the documentation describes the actual state, not the pre-change design;
+- open steps and questions live in Mission Control or the issue tracker, not
+  in Markdown checkboxes;
+- the next recommended step is clear without the original chat;
+- you listed the validation commands you ran, or why they could not run.

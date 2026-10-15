@@ -1,0 +1,68 @@
+name: Organization check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    name: Organization check
+    runs-on: ubuntu-latest
+    env:
+      # Public Lazurio Core. Bump the pin in a reviewed pull request.
+      LAZURIO_CORE_REPOSITORY: HumanAndMachines/Lazurio
+      LAZURIO_CORE_REF: 4699b5ca8aeecf8b6074ad0919b051a6693497c8
+    steps:
+      - name: Check out the Organization
+        uses: actions/checkout@v4
+        with:
+          path: organization
+
+      - name: Check out the pinned Lazurio Core
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ env.LAZURIO_CORE_REPOSITORY }}
+          ref: ${{ env.LAZURIO_CORE_REF }}
+          path: lazurio
+          sparse-checkout: lazurio
+
+      - name: Set up Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+
+      - name: Organization manifest
+        run: bun lazurio/lazurio/cli.mjs organization check organization --json
+
+      - name: Legacy projection parity
+        run: |
+          bun lazurio/lazurio/cli.mjs migrate organization-manifest organization --json > migrate.json
+          bun -e '
+            const report = await Bun.file("migrate.json").json();
+            const ok = report.ok && report.outcome === "noop" && report.parity?.semantic && report.parity?.projection;
+            if (!ok) {
+              console.error(JSON.stringify(report, null, 2));
+              console.error("company.gen3.json is out of date: run `lazurio migrate organization-manifest <worktree> --write`.");
+              process.exit(1);
+            }
+            console.log(`projection parity: ${report.before.state}, ${report.after.projection.actual_hash}`);
+          '
+
+      - name: Skill mirror
+        working-directory: organization
+        run: |
+          status=0
+          for dir in .agents/skills/*/; do
+            name=$(basename "$dir")
+            diff -r "$dir" ".claude/skills/$name" || { echo "::error::.claude/skills/$name differs from .agents/skills/$name"; status=1; }
+          done
+          for dir in .claude/skills/*/; do
+            name=$(basename "$dir")
+            test -d ".agents/skills/$name" || { echo "::error::.claude/skills/$name has no canonical skill"; status=1; }
+          done
+          exit $status

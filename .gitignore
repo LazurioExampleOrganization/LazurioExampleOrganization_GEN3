@@ -18,10 +18,6 @@ desktop.ini
 /infra/
 /workspace/*/
 /productionspace/*/
-# Legacy module checkouts from before the workspace/ layout. Keep the rule
-# until every machine has moved its checkouts with
-# `lazurio repair module-location`.
-/modules/
 
 # Env a secrets
 **/.env
@@ -60,9 +56,8 @@ company/colleagues/*/.memory/
 # Per-person playgrounds (prototypování datových formátů)
 company/colleagues/*/playgrounds/
 
-# Shared skills library (GEN3): `.agents/skills` is the canonical tracked
-# directory; `.claude/skills` is a symlink for Claude Code compatibility.
-# Other `.agents` runtime files stay local.
+# Shared skills: `.agents/skills` is canonical and `.claude/skills` is its
+# tracked mirror. Other `.agents` runtime files stay local.
 .agents/*
 !.agents/skills
 
@@ -70,8 +65,7 @@ company/colleagues/*/playgrounds/
 .idea/
 company/colleagues/*/.vscode/settings.json
 company/colleagues/*/.vscode/c_cpp_properties.json
-.vscode/*
-!/.vscode/settings.json
+.vscode/
 .cursor/
 
 # Build output

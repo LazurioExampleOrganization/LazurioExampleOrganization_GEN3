@@ -160,7 +160,7 @@
       "agent_processes": {
         "agent_rule": "Opakovatelný postup zapiš jako skill. Dokumentace vysvětluje proč, skill říká jak.",
         "claude_compatibility": ".claude/skills",
-        "inventory": "company/agents/SKILLS_INVENTORY.md",
+        "inventory": ".agents/skills/manifest.json",
         "runtime_rule": "Používej Bun jako základní runtime. Nepřidávej nový npm/node-only proces bez rozhodnutí kolegy.",
         "skills_source_of_truth": ".agents/skills",
         "voice_guide": "company/agents/voice/"
@@ -426,7 +426,7 @@
     "legacy_projection": {
       "path": "company.gen3.json",
       "algorithm": "sha256-canonical-json-v1",
-      "sha256": "sha256:00d6acbf6e5debe0a9cb7eb3548f171f26198e97c2cb369bc9b42cf7a8768e08"
+      "sha256": "sha256:08b7b66a9994a2df0ad5659f5d256160a1db4e5159aa68418f51dfe1cc0efd47"
     }
   }
 }

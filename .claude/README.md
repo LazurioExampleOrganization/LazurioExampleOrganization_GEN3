@@ -1,47 +1,15 @@
-# `.claude/` — Agent konfigurace
+# `.claude/`: Claude Code configuration
 
-Tato složka drží **runtime konfiguraci pro Claude Code** v AgentMint
-Organizaci GEN3.
+This directory holds the shared Claude Code configuration of the
+Organization. It lives in the root so that Claude Code loads it when it opens
+the repository.
 
-Záměrně žije v rootu (ne pod `company/`), aby ji Claude Code nativně
-načetl při otevření workspace.
+- `skills/` is a byte-for-byte mirror of the skill directories in
+  `.agents/skills/`, which is canonical. Change a skill there and copy it
+  here in the same pull request; root CI checks that both are equal.
+- The root `CLAUDE.md` only points to `AGENTS.md`; rules are never kept in two
+  copies.
 
-## Vztah ke `CLAUDE.md`
-
-Root `CLAUDE.md` je nativní Claude Code bootstrap. Drží jen krátký odkaz na
-autoritativní `AGENTS.md`; pravidla, role a guardrails se neudržují ve dvou
-kopiích.
-
-## Obsah
-
-- `skills/` — **symlink** na kanonickou sdílenou skill knihovnu
-  `.agents/skills/`. GEN3 obrací GEN2 směr: source of truth je
-  `.agents/skills`, `.claude/skills` je jen kompatibilní vstup pro Claude
-  Code. Nikdy tu neudržuj samostatnou kopii skillů.
-- `launch.json` — lokální app launch konfigurace pro in-tree viewery.
-
-## Co sem NEpatří
-
-- `settings.json` s OAuth tokeny, API keys — to je **per-person** v
-  `company/colleagues/<os-user>/.claude/settings.json` (gitignored) nebo v
-  `~/.claude/settings.json`
-- Session artifacts, cache, auth tokeny — gitignored
-- Jakékoli runtime state s tajnými hodnotami — gitignored
-
-Viz root `.gitignore` a root `AGENTS.md`.
-
-## Vztah k dalším `.claude/` složkám
-
-- **Root `.claude/`** (tento) — sdílené pro celou firmu, trackuje se v Gitu
-- **`company/colleagues/<os-user>/.claude/`** — osobní, může mít per-person
-  skills, settings, agenty. Settings a tokeny jsou gitignored, skills mohou
-  být trackované v osobní vrstvě.
-
-## Vztah k `company/agents/`
-
-`.agents/skills/` je **runtime** (agent to přímo spouští). `company/agents/`
-je **knowledge** (reference, voice, legacy runbooks).
-
-- Proces k vykonání → skill
-- Knowledge ke konzultaci → `company/agents/reference/`
-- Jak psát výstup → `company/agents/voice/`
+Personal settings, tokens, session data and caches do not belong here. They
+live in the gitignored `company/colleagues/<os-user>/.claude/` or in
+`~/.claude/`.

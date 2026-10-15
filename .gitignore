@@ -90,8 +90,8 @@ build/
 # Design system viewer build artifacts
 design-system/app/dist/
 
-# Guide viewer build artifacts
-guide/app/dist/
+# Former guide viewer build output, kept ignored for old checkouts.
+/guide/
 
 # Logs
 *.log

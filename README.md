@@ -1,122 +1,96 @@
-# AgentMint — Organizace GEN3
+# Lazurio Example Organization
 
-> ## Lazurio reference Organization
->
-> This repository is the root of **LazurioExampleOrganization**, the public
-> reference Organization of [Lazurio](https://github.com/Lazurio/LazurioPlatform).
-> It shows how a real Organization repository is laid out, documented and
-> migrated.
->
-> - **All data is fictional.** The company "AgentMint", its people (for
->   example Jan Novák), plans, prices and offers are illustrative samples.
->   Prices are placeholders in square brackets.
-> - **Starting state:** a cleaned snapshot of a GEN2 baseline, imported
->   without its earlier Git history.
-> - **Direction:** the Organization migrates from that baseline to GEN3 here,
->   in the open, as a worked example.
+This repository is the root of **LazurioExampleOrganization**, the public
+reference Organization of [Lazurio](https://github.com/Lazurio/LazurioPlatform).
+It shows how an Organization repository is laid out, documented and migrated.
 
-`AgentMint` je Organizace GEN3 pro firmu, která hledá ověřitelné cesty, jak
-mohou AI agenti vydělávat peníze online.
+- **All data is fictional.** The company, its people, plans, prices and offers
+  are illustrative samples. Prices are placeholders in square brackets.
+- **Starting state:** a cleaned snapshot of a GEN2 baseline, imported without
+  its earlier Git history.
+- **Direction:** the Organization migrates from that baseline to the current
+  GEN3 model in public pull requests. [`MIGRATION.md`](MIGRATION.md) holds the
+  plan (EX-0001) and a benchmark ledger with one row per pull request.
 
-Cíl není kopírovat cizí brand, obsah, zákaznická data ani šedé taktiky. Cíl
-je najít funkční mechanismus, pochopit proč funguje, legálně ho adaptovat a
-otestovat tak, aby AgentMint začal generovat vlastní příjem.
+New to Lazurio? Start with the public guide at
+[documentation.lazurio.ai](https://documentation.lazurio.ai/en/).
 
-Repo je napojené na GitHub organizaci `LazurioExampleOrganization` a
-v Launchpad rootu se mountuje jako
-`organizations/LazurioExampleOrganization_GEN3`. Začíná vyčištěným snapshotem
-GEN2 baseline (bez Git historie; viz „Lazurio reference Organization“ níže).
-AgentMint je zároveň rehearsal Organizace pro GEN2 → GEN3 migrační pipeline.
+## The fictional company
 
-## Začni tady
+The company looks for verifiable ways in which AI agents can earn money
+online. It does not copy other brands, content, customer data or grey-zone
+tactics. It finds a mechanism that works, understands why it works, adapts it
+legally and tests it, so that the company earns its own income.
 
-1. Otevři `AGENTS.md` (pravidla a rozcestník) a `lazurio.organization.json`
-   (strojový model firmy).
-2. Pojmy ověř v `GLOSSARY.md`.
-3. Plánování žije v `mission-control/` (nested repo); aktuální
-   implementační práci hledej v `TODO.tasks.json` a rozhodnutí v
-   `ISSUES.open.json`.
-4. Vstup do kanceláře je přes Launchpad root; tahle Organizace dodává
-   Launchpadu jen konfiguraci a manifesty.
+It works in a loop:
 
-## Pracovní princip
+1. **Find a mechanism**: something online that demonstrably earns money.
+2. **Break it down into a model**: customer, offer, channel, unit economics,
+   operating steps and risks.
+3. **Design a legal adaptation**: its own brand, its own data, its own offer
+   and no evasion of platform rules.
+4. **Run a small test**: the smallest measurable experiment with a clear
+   budget and a stop condition.
+5. **Record the result**: evidence in `workspace/experiments` and in the
+   plan.
+6. **Scale only what has evidence**: without evidence an idea stays a
+   hypothesis.
 
-AgentMint jede ve smyčce:
+## Basic boundaries
 
-1. **Najít mechanismus** — co někde online prokazatelně vydělává.
-2. **Rozložit ho na model** — zákazník, nabídka, kanál, jednotková
-   ekonomika, provozní kroky, rizika.
-3. **Navrhnout legální adaptaci** — vlastní brand, vlastní data, vlastní
-   nabídka, žádné obcházení pravidel platformy.
-4. **Spustit malý test** — nejmenší měřitelný experiment s jasným rozpočtem
-   a stop podmínkou.
-5. **Zapsat výsledek** — evidence do `modules/experiments` a task ledgerů.
-6. **Škálovat jen to, co má důkaz** — bez důkazu zůstává nápad hypotézou.
+- Copy the mechanism, never someone else's identity.
+- Never commit secrets, tokens, customer data or platform accounts to Git.
+- No spam, phishing, fake engagement, terms-of-service evasion or misleading
+  claims.
+- Every experiment has a hypothesis, a metric, a budget, a stop condition and
+  a recorded result.
 
-## Co je kde
+## Getting started
 
-| Cesta | Co drží |
+1. Install Lazurio and mount the Organization as
+   `organizations/LazurioExampleOrganization_GEN3` in your Lazurio Folder.
+   `lazurio update` clones every module your GitHub account can access.
+2. Read `AGENTS.md` (rules for agents) and `lazurio.organization.json` (the
+   machine-readable model of the Organization).
+3. Look up terms in `GLOSSARY.md`.
+4. Open the modules from Lazurio; this repository only supplies manifests and
+   configuration.
+
+## What lives where
+
+| Path | Holds |
 |---|---|
-| `lazurio.organization.json` | kanonický strojový model Organizace (business context, role, Teamy, vrstvy) |
-| `modules.manifest.json` | GEN3 deskriptor a inventář modulů |
-| `company.gen3.json` | generovaná kompatibilní projekce pro starší čtečky; ručně se needituje |
-| `company/` | role, colleague overlays, agentní knowledge, scripts, toolbox |
-| `infra/` | nested repo: GitHub/access governance a deployment kontext |
-| `mission-control/` | nested repo: plánovací vrstva (YAML plány) |
-| `modules/` | doctor-managed nested repa: research, experiments, playbooks, … |
-| `manual/` | maintenance manuál + GEN2 → GEN3 migrační runbook |
-| `blog/` | interní learning surface pro aha momenty |
-| `design-system/` | brand baseline a vizuální pravidla |
-| `guide/` | onboarding do pracovního stylu workspace |
-| `generated/` | historické compiler-managed snapshoty; Launchpad ani Doctor z nich runtime porty nečtou a Lazurio migrátor je nepřepisuje |
-| `.agents/skills/` | kanonická skill knihovna (`.claude/skills` je symlink) |
-| `launchpad/` | jen redirect — shared Launchpad žije v Launchpad rootu |
+| `lazurio.organization.json` | Canonical model of the Organization: identity, Team, layers, business context and roles |
+| `modules.manifest.json` | Inventory of module slots |
+| `company.gen3.json` | Generated compatibility projection for older readers; never edited by hand |
+| `generated/` | Projections generated by the Lazurio organization compiler |
+| `MIGRATION.md` | GEN3 migration plan and benchmark ledger |
+| `company/` | Roles, colleague overlays, agent knowledge and voice |
+| `.agents/skills/` | Organization skills; `.claude/skills` is their mirror |
+| `workspace/` | Workspace modules, each its own repository |
+| `infra/` | Restricted repository for infrastructure and access governance |
+| `design-system/` | Brand baseline and visual rules (moving to its own repository) |
+| `mission-control/` | Planning layer with YAML plans |
+| `manual/` | Maintenance manual |
+| `blog/` | Internal learning notes |
 
-Moduly: `modules/knowledgebase` (strategie a guardrails),
-`modules/research` (mechanism scans s evidencí), `modules/experiments`
-(testy a stop/scale rozhodnutí), `modules/playbooks` (jen ověřené
-mechanismy), `modules/automations` (runtime po ověření guardrails),
-`modules/content` (veřejné assets), `modules/finance` (unit economics,
-restricted).
+Workspace modules:
 
-## Základní hranice
-
-- Kopíruj mechanismus, ne cizí identitu.
-- Nezapisuj secrets, tokeny, zákaznická data ani účty platforem do Gitu.
-- Nevyráběj spam, phishing, fake engagement, obcházení ToS ani klamavé
-  claimy.
-- Každý experiment musí mít hypotézu, metriku, rozpočet, stop podmínku a
-  zapsaný výsledek.
-
-## Root soubory
-
-| Soubor | Účel |
+| Module | Purpose |
 |---|---|
-| `README.md` | rychlý lidský úvod |
-| `AGENTS.md` | operační pravidla pro agenty (rozcestník vrstvy) |
-| `CLAUDE.md` | Claude Code bootstrap odkazující na `AGENTS.md` |
-| `lazurio.organization.json` | kanonický strojový model Organizace |
-| `modules.manifest.json` | GEN3 deskriptor a inventář modulů |
-| `company.gen3.json` | generovaná kompatibilní projekce; mění se jen přes `lazurio migrate organization-manifest <task-worktree> --write` |
-| `GLOSSARY.md` | doménové pojmy AgentMint + GEN3 topologie |
-| `TODO.tasks.json` | aktuální vykonatelné kroky |
-| `DONE.tasks.json` | hotová nebo archivovaná práce |
-| `ISSUES.open.json` | otázky čekající na rozhodnutí |
-| `CHANGELOG.md` | doručené významné změny |
+| [knowledgebase](https://github.com/LazurioExampleOrganization/knowledgebase) | Strategy and guardrails, with a read-only viewer App |
+| [research](https://github.com/LazurioExampleOrganization/research) | Mechanism scans with evidence |
+| [experiments](https://github.com/LazurioExampleOrganization/experiments) | Tests and stop or scale decisions |
+| [playbooks](https://github.com/LazurioExampleOrganization/playbooks) | Verified mechanisms only |
+| [automations](https://github.com/LazurioExampleOrganization/automations) | Runtime after the guardrails are verified |
+| [content](https://github.com/LazurioExampleOrganization/content) | Public assets |
+| [finance](https://github.com/LazurioExampleOrganization/finance) | Unit economics; restricted |
 
-`MAP.md`, `ARCHITECTURE.md` a `WORKSPACE_MANUAL.md` jsou po konverzi jen
-redirect stuby; plný GEN2 text není součástí tohoto veřejného snapshotu.
+## Planning
 
-## Mission Control
-
-AgentMint používá **Mission Control** jako lokální plánovací a orchestrační
-centrum workspace — root-level nested repo v control-plane vrstvě.
-
-- workspace repo: `mission-control/`
-- storage model: YAML soubory ve workspace
-- UI model: lokální aplikace spouštěná přes Launchpad root
-
-Mission Control drží širší kontext: proč se věc dělá, pro koho, jaké
-rozhodnutí padlo, scope a akceptační kritéria. `TODO.tasks.json` drží až
-konkrétní implementační kroky, které se dají vzít do práce v tomto
-workspace.
+The Organization plans in Mission Control. Today that is the in-tree
+`mission-control/` layer: YAML plans hold the why, the scope, the decisions
+and the acceptance criteria, and the root `TODO.tasks.json` holds the concrete
+implementation steps. Moving to Mission Control v3 with its own data
+repository is part of the migration and is on hold until Mission Control has a
+public upstream.

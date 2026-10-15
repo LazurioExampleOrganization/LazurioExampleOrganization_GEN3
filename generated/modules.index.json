@@ -5,14 +5,14 @@
   "teams": [
     {
       "slug": "workspace",
-      "display_name": "AgentMint Workspace",
+      "display_name": "Workspace",
       "default": true
     }
   ],
   "workspaces": [
     {
       "slug": "workspace",
-      "display_name": "AgentMint Workspace",
+      "display_name": "Workspace",
       "default": true
     }
   ],

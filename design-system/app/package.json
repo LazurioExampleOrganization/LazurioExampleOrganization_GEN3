@@ -15,7 +15,7 @@
   "lazurio": {
     "runtime": {
       "schema_version": "lazurio.runtime.v1",
-      "id": "agentmint-design-system-v1",
+      "id": "lazurioexampleorganization-design-system-v1",
       "title": "Design system",
       "company": "LazurioExampleOrganization",
       "module": "design-system",

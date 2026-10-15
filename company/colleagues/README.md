@@ -1,104 +1,110 @@
-# Colleague Overlays
+# Colleague overlays
 
-Tato složka drží **osobní workspace overlays** pro kolegy AgentMint.
-Každý kolega má svou složku `company/colleagues/<os-user>/`.
+This folder holds **personal workspace overlays** for the colleagues of the
+Organization. Each colleague has their own folder,
+`company/colleagues/<os-user>/`.
 
-`<os-user>` musí být stejné jako uživatelské jméno na počítači. Když je
-domovská složka `/Users/jannovak`, složka kolegy je
-`company/colleagues/jannovak/`. GEN2 `company/team/` se už nepoužívá.
+`<os-user>` must match the user name on the computer. When the OS user name
+is `alexmorgan`, the colleague folder is `company/colleagues/alexmorgan/`.
+The GEN2 `company/team/` folder is no longer used.
 
-## Formát
+## Format
 
 ```
 company/colleagues/
-├── README.md             # tenhle soubor
-├── TODO.md               # úkoly a stav overlays
-├── _template/            # vzor pro nového kolegu
-│   ├── README.md         # scaffold pro osobní README
-│   ├── AGENTS.md         # scaffold pro person overlay
+├── README.md             # this file
+├── TODO.md               # tasks and the state of the overlays
+├── _template/            # pattern for a new colleague
+│   ├── README.md         # scaffold for the personal README
+│   ├── AGENTS.md         # scaffold for the person overlay
 │   ├── *.code-workspace  # VS Code/Cursor multi-root workspace template
-│   └── .claude/skills/   # osobní skills
-└── <os-user>/            # jeden pro každého kolegu
+│   └── .claude/skills/   # personal skills
+└── <os-user>/            # one for each colleague
     ├── README.md
     ├── AGENTS.md
-    ├── *.code-workspace  # osobní VS Code/Cursor workspace
-    ├── .claude/skills/   # osobní skills kolegy
-    ├── archive/          # lokální odkladiště mimo Git (gitignored)
-    ├── private/          # privátní lokální vrstva (gitignored)
-    ├── tools/            # osobní skripty (volitelné)
-    └── voice/            # osobní tone of voice (volitelné, jinak
-                          # v company/agents/voice/)
+    ├── *.code-workspace  # personal VS Code/Cursor workspace
+    ├── .claude/skills/   # the colleague's personal skills
+    ├── archive/          # local storage outside Git (gitignored)
+    ├── private/          # private local layer (gitignored)
+    ├── tools/            # personal scripts (optional)
+    └── voice/            # personal tone of voice (optional, otherwise
+                          # in company/agents/voice/)
 ```
 
-## Co `company/colleagues/<ty>/` JE
+## What `company/colleagues/<you>/` is
 
-- **Normální složka v super-repu** — trackovaná přímo, ne submodul.
-- Místo pro **osobní konfiguraci a preference** (preferovaný jazyk,
-  multi-role disambiguace).
-- Místo pro **osobní skills**, které používá jen daný kolega.
-- Slot pro **per-person MCP konfiguraci** (v `.claude/settings.json` —
-  gitignored, secrets mimo Git).
-- Slot pro lokální **`archive/`** a **`private/`** složky mimo Git.
+- **A normal folder in the super-repo**: tracked directly, not a submodule.
+- A place for **personal configuration and preferences** (preferred
+  language, multi-role disambiguation).
+- A place for **personal skills** that only that colleague uses.
+- A slot for **per-person MCP configuration** (in `.claude/settings.json`,
+  gitignored, secrets outside Git).
+- A slot for local **`archive/`** and **`private/`** folders outside Git.
 
-## Co `company/colleagues/<ty>/` NENÍ
+## What `company/colleagues/<you>/` is not
 
-- Není to **samostatný Git submodul** — byl by overhead.
-- Není to **secrets store** — tokeny a API keys patří do gitignored
-  `.claude/settings.json`, OS keychainu, nebo `.env.local`.
-- Není to **paměť agenta** — žádný `memory/` ani `MEMORY.md`.
-- Není to **kopie firemní knowledge** — sdílené patří do
-  `modules/knowledgebase/` nebo skills.
+- It is not **a separate Git submodule**: that would be overhead.
+- It is not **a secrets store**: tokens and API keys belong in the
+  gitignored `.claude/settings.json`, the OS keychain or `.env.local`.
+- It is not **agent memory**: no `memory/` and no `MEMORY.md`.
+- It is not **a copy of company knowledge**: shared material belongs in
+  `workspace/knowledgebase/` or in skills.
 
-## Kaskáda AGENTS.md
+## AGENTS.md cascade
 
-Person overlay je třetí vrstva v kaskádě:
+The person overlay is the third layer of the cascade:
 
-1. root `/AGENTS.md` — company baseline
-2. `/company/roles/<role>/AGENTS.md` — role baseline
-3. `/company/colleagues/<os-user>/AGENTS.md` — **person override**
-4. `/modules/<modul>/AGENTS.md` — modulový scope override
+1. root `/AGENTS.md`: company baseline
+2. `/company/roles/<role>/AGENTS.md`: role baseline
+3. `/company/colleagues/<os-user>/AGENTS.md`: **person override**
+4. `/workspace/<module>/AGENTS.md`: module scope override
 
-**Pravidlo:** bližší vyhrává. Person overlay může roli přebít, modul může
-přebít cokoliv pro svůj vlastní scope.
+**Rule:** the closer one wins. A person overlay can override a role, and a
+module can override anything for its own scope.
 
-## Jak přidat nového kolegu
+## How to add a new colleague
 
-1. Zkopíruj `_template/` jako `company/colleagues/<os-user>/`
-2. Vyplň `README.md` a `AGENTS.md` podle reality (role, kontakt,
-   preference)
-3. V osobním `*.code-workspace` změň druhý folder name z `_template`
-   na os-user kolegy
-4. Přidej kolegu do
+1. Copy `_template/` to `company/colleagues/<os-user>/`.
+2. Fill in `README.md` and `AGENTS.md` to match reality (role, contact,
+   preferences).
+3. In the personal `*.code-workspace`, change the second folder name from
+   `_template` to the colleague's OS user name.
+4. Add the colleague to
    `lazurio.organization.json#extensions.legacy.colleague_overlays.active_colleagues`
-   s potvrzenou primární rolí a projekci `company.gen3.json` přegeneruj přes
-   `lazurio migrate organization-manifest <task-worktree> --write` (ručně ji
-   needituj)
-5. Commit do super-repa; nový kolega si doladí `.claude/settings.json`
-   (OAuth, MCP tokeny) lokálně — ty se **necommitují**
+   with a confirmed primary role, and regenerate the `company.gen3.json`
+   projection with
+   `lazurio migrate organization-manifest <task-worktree> --write` (do not
+   edit it by hand).
+5. Commit in a worktree and open a pull request against the root repository;
+   the new colleague then sets up `.claude/settings.json` (OAuth, MCP tokens)
+   locally. Those are **never committed**.
 
-## Co musí kolega vyplnit
+## What a colleague must fill in
 
-Person overlay má být užitečný pro agenty, ale nesmí obsahovat secrets ani
-neověřené domněnky o člověku. Každý kolega si ve své složce doplní:
+A person overlay should be useful to agents, but it must not contain secrets
+or unverified assumptions about the person. Each colleague fills in their own
+folder:
 
-- **role** — primární role, další role a disambiguace, kdy se která používá
-- **ownership** — co vlastní, o čem smí rozhodovat a kdy eskaluje
-- **moduly** — které nested repozitáře typicky potřebuje
-- **pracovní identita** — pracovní e-mail a externí služby bez tokenů
-- **preference** — jazyk, délka odpovědí, míra detailu a styl práce
-- **externí akce** — co agent nesmí udělat bez potvrzení
-- **handoff** — komu předává práci a od koho ji přebírá
+- **role**: the primary role, other roles and the disambiguation of when each
+  one applies
+- **ownership**: what they own, what they may decide and when they escalate
+- **modules**: which nested repositories they typically need
+- **work identity**: work email and external services, without tokens
+- **preferences**: language, length of answers, level of detail and working
+  style
+- **external actions**: what the agent must not do without confirmation
+- **handoff**: to whom they hand work and from whom they take it
 
-Dokud nejsou role nebo ownership vyplněné, agent se má doptat a nesmí je
-domýšlet podle jména.
+Until the role or the ownership is filled in, the agent asks and must not
+guess them from the name.
 
-## Aktuální kolegové
+## Current colleagues
 
-| Složka | Kolega | Primární role |
+| Folder | Colleague | Primary role |
 |---|---|---|
-| `jannovak/` | Jan Novák | `founder` (drží i research/experiment operator práci první fáze) |
-| `tomas/` | Tomáš | onboarding scaffold, role nepotvrzená |
-| `petr/` | Petr | onboarding scaffold, role nepotvrzená |
+| `alexmorgan/` | Alex Morgan | `founder` (also holds the research and experiment operator work of the first phase) |
+| `samtaylor/` | Sam Taylor | onboarding scaffold, role not confirmed |
+| `robinlee/` | Robin Lee | onboarding scaffold, role not confirmed |
 
-Aktivní kolegy s potvrzenou rolí drží
+Active colleagues with a confirmed role are listed in
 `lazurio.organization.json#extensions.legacy.colleague_overlays.active_colleagues`.

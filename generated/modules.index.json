@@ -167,7 +167,7 @@
         "url": "git@github.com:LazurioExampleOrganization/infra.git",
         "branch": "main"
       },
-      "notes": "Restricted root repository for infrastructure, access governance and deployment context. It never holds secrets. Today it records only that the GitHub Organization exists.",
+      "notes": "Restricted root repository for infrastructure, access governance and deployment context. It never holds secrets. Its access record lists the GitHub Organization, Team grants and rulesets.",
       "teams": [],
       "workspace": null
     },

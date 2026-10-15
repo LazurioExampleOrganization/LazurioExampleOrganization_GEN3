@@ -1,12 +1,12 @@
 {
-  "//": "Janův AgentMint workspace. Root je celé local-only super-repo, druhý folder je person overlay.",
+  "//": "Robin Lee's Lazurio Example Organization workspace. The first folder is the whole Organization root repository; the second folder is the person overlay.",
   "folders": [
     {
-      "name": "AgentMint",
+      "name": "Lazurio Example Organization",
       "path": "../../.."
     },
     {
-      "name": "jannovak",
+      "name": "robinlee",
       "path": "."
     }
   ],
@@ -51,11 +51,7 @@
       "**/.gradle/**": true,
       "**/target/**": true
     },
-    "git.autoRepositoryDetection": "subFolders",
-    "git.detectSubmodules": true,
-    "git.detectSubmodulesLimit": 100,
-    "git.repositoryScanMaxDepth": 100,
-    "git.openRepositoryInParentFolders": "always"
+    "git.repositoryScanMaxDepth": 2
   },
   "extensions": {
     "recommendations": []

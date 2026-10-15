@@ -1,20 +1,20 @@
-# Blog - pravidla pro agenty
+# Blog: rules for agents
 
-Agent může proaktivně psát drafty do `blog/posts/`, když najde aha moment
-nebo sdílitelný pattern.
+An agent may proactively write drafts into `blog/posts/` when it finds an aha
+moment or a shareable pattern.
 
-## Pravidla
+## Rules
 
-- Bez secrets.
-- Bez klientských dat.
-- Bez osobních overlayů.
-- Public jen po owner review.
-- Pokud článek mění pravidlo, blog nestačí.
+- No secrets.
+- No client data.
+- No personal overlays.
+- Public only after owner review.
+- If a post changes a rule, the blog is not enough.
 
 ## Frontmatter
 
-Post musí mít JSON frontmatter se stejnými poli jako template v
+A post must have JSON frontmatter with the same fields as the template in
 `blog/templates/aha-moment.md`.
 
-Pokud má být článek zdrojem pro sociální sítě nebo marketing, vyplň
-`channels` a nech `safe_to_share: false`, dokud ho neschválí owner.
+If the post is meant as a source for social networks or marketing, fill in
+`channels` and keep `safe_to_share: false` until the owner approves it.

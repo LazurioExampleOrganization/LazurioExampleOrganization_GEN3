@@ -1,83 +1,82 @@
-# AGENTS.md — <VYPLNIT_JMENO> (person overlay)
+# AGENTS.md: <FILL_NAME> (person overlay)
 
-Tenhle soubor je **čtvrtá vrstva kaskády** (root → role → osoba →
-modul, viz root `AGENTS.md §1`). Drží **jen věci specifické pro
-<VYPLNIT_JMENO>**. Generická company policy je v root `AGENTS.md`,
-policy pro roli v `company/roles/<VYPLNIT_ROLE>/AGENTS.md`.
+This file is the **third layer of the cascade** (root → role → person →
+module, see the cascade of instructions in the root `AGENTS.md`). It holds **only
+what is specific to <FILL_NAME>**. The generic company policy is in the root
+`AGENTS.md`, the role policy in `company/roles/<FILL_ROLE>/AGENTS.md`.
 
 ## Role
 
-<VYPLNIT_JMENO> je **<VYPLNIT_ROLE_FULL_NAME>** (viz
-`company/roles/<VYPLNIT_ROLE>/`).
+<FILL_NAME> is **<FILL_ROLE_FULL_NAME>** (see `company/roles/<FILL_ROLE>/`).
 
-<VYPLNIT_POPIS_KONTEXT> — proč je tento člověk, co na něj útokuje, jak
-mu pomáhat nejlépe.
+<FILL_CONTEXT>: why this person is here, what lands on their desk, how to
+help them best.
 
-## Multi-role disambiguace (pokud drží více rolí, jinak smaž)
+## Multi-role disambiguation (if they hold several roles, otherwise delete)
 
-<VYPLNIT_JMENO> drží <N> rolí: `<role1>`, `<role2>`.
+<FILL_NAME> holds <N> roles: `<role1>`, `<role2>`.
 
-Při víceznačném zadání se agent **doptá**, kterou rolí to brát.
-Neodhaduj a nesmíchávej role tiše.
+When a request is ambiguous, the agent **asks** which role to take it in.
+Do not guess, and do not mix roles silently.
 
-- **`<role1>`** — kdy se aktivuje
-- **`<role2>`** — kdy se aktivuje
+- **`<role1>`**: when it applies
+- **`<role2>`**: when it applies
 
-Když je to zjevné z kontextu, pokračuj bez ptaní.
+When it is obvious from the context, continue without asking.
 
-## <VYPLNIT_TASK_TOOL>
+## <FILL_TASK_TOOL>
 
-- **Login e-mail** (OAuth identity): `<VYPLNIT>`
-- **Kontaktní pracovní e-mail**: `<VYPLNIT>@agentmint.local`
-- **<VYPLNIT_TASK_TOOL> user ID**: `<VYPLNIT>`
-- **<VYPLNIT_TASK_TOOL> workspace**: `<VYPLNIT>`
-- **Default task list**: `<VYPLNIT>`
+- **Login email** (OAuth identity): `<FILL>`
+- **Contact work email**: `<FILL>@example.local`
+- **<FILL_TASK_TOOL> user ID**: `<FILL>`
+- **<FILL_TASK_TOOL> workspace**: `<FILL>`
+- **Default task list**: `<FILL>`
 
-## Monorepo scope label policy (pokud máte task-driven codebase, jinak smaž)
+## Monorepo scope label policy (if you have a task-driven codebase, otherwise delete)
 
-Pro commit messages, PR title/body a tasky v
-`modules/<VYPLNIT_CODEBASE>/` vždy uveď **scope label** z kanonického
-seznamu:
+For commit messages, PR titles and bodies and tasks in
+`workspace/<FILL_CODEBASE>/`, always give a **scope label** from the
+canonical list:
 
-`<VYPLNIT>`, `<VYPLNIT>`, ...
+`<FILL>`, `<FILL>`, ...
 
-Formát: `<Scope>: <short summary>`.
+Format: `<Scope>: <short summary>`.
 
-Branch prefix (např. `codex/PLAN-XXXX`) z root `AGENTS.md §6` platí
-souběžně.
+The branch prefix (for example `codex/PLAN-XXXX`) from the root `AGENTS.md`
+applies at the same time.
 
-## Preferovaný jazyk
+## Preferred language
 
-- **Interní komunikace s agentem**: <VYPLNIT> (čeština / angličtina /
-  kombinace)
-- **Kód, komentáře, commit message, PR popis**: angličtina,
+- **Internal communication with the agent**: <FILL> (English, Czech or a
+  mix)
+- **Code, comments, commit messages, PR descriptions**: English,
   conventional commits
-- **Externí výstupy**: podle publika
+- **External outputs**: depending on the audience
 
-## Preferovaný styl práce
+## Preferred working style
 
-<VYPLNIT_STYL>
+<FILL_STYLE>
 
-Příklady:
+Examples:
 
-- **Stručná shrnutí technických rozhodnutí pro netechnické publikum**
-- **<Task tool> slouží pro provozní viditelnost, ownership a komunikaci; Git/Mission Control ledgery drží roadmapu, rozhodnutí a execution stav.**
-- **Proaktivně upozorni na blokéry, rizika a chybějící rozhodnutí.**
-- **Dopad, ne implementace** — shrnuj dopad na byznys/tým/zákazníka.
+- **Short summaries of technical decisions for a non-technical audience.**
+- **<Task tool> is for operational visibility, ownership and communication; the Git and Mission Control ledgers hold the roadmap, the decisions and the execution state.**
+- **Point out blockers, risks and missing decisions proactively.**
+- **Impact, not implementation**: summarise the impact on the business, the team or the customer.
 
 ## Tone of voice
 
-Pro e-maily, <VYPLNIT_TASK_TOOL> tasky, komentáře a oznámení jménem
-<VYPLNIT_JMENO> používej jako **jediný kanonický zdroj**
-`company/agents/voice/<VYPLNIT>_TONE_OF_VOICE.md` (pokud existuje,
-jinak default na `<VYPLNIT_COMPANY>_BASELINE_VOICE.md`).
+For emails, <FILL_TASK_TOOL> tasks, comments and announcements on behalf of
+<FILL_NAME>, use as the **only canonical source**
+`company/agents/voice/<FILL>_TONE_OF_VOICE.md` (if it exists, otherwise fall
+back to `<FILL_COMPANY>_BASELINE_VOICE.md`).
 
-Tone of voice sem **neduplikuj** — jeden source of truth.
+Do **not duplicate** the tone of voice here: one source of truth.
 
-## Osobní skills a paměť
+## Personal skills and memory
 
-- **Osobní skills**: `company/colleagues/<jmeno>/.claude/skills/` (volitelně)
-- **Osobní napříč-projektová paměť**: volitelný gbrain mimo workspace
-  (viz root `AGENTS.md §5.1`)
-- **Sdílená firemní znalost**: `modules/knowledgebase/`,
-  `modules/wiki/`, skills nebo AGENTS.md — viz root `AGENTS.md §11`
+- **Personal skills**: `company/colleagues/<name>/.claude/skills/` (optional)
+- **Personal cross-project memory**: an optional gbrain outside the workspace
+  (see the root `AGENTS.md`)
+- **Shared company knowledge**: `workspace/knowledgebase/`,
+  `workspace/wiki/`, skills or AGENTS.md (see the root `AGENTS.md`)

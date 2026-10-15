@@ -1,40 +1,41 @@
 # Reference
 
-Tato složka drží **hluboké technické a provozní reference** pro agenta.
+This folder holds **deep technical and operational references** for the
+agent.
 
-Na rozdíl od `runbooks/` (postupy k vykonání) a `voice/` (jak psát
-výstup), `reference/` drží **knowledge k ad hoc konzultaci**. Agent
-si to čte, když potřebuje porozumět něčemu do hloubky.
+Unlike `runbooks/` (procedures to carry out) and `voice/` (how to write an
+output), `reference/` holds **knowledge for ad hoc consultation**. The agent
+reads it when it needs to understand something in depth.
 
-## Co sem patří
+## What belongs here
 
-Firmy typicky dodávají:
+Companies typically provide:
 
-- technické mapy (co kde je v codebase)
-- doménové background docs (pro nové kolegy)
-- HW/systémové diagramy
-- reference specifických technologií
+- technical maps (what lives where in the codebase)
+- domain background docs (for new colleagues)
+- hardware and system diagrams
+- references for specific technologies
 
-Konkrétní obsah závisí na firmě. Aktuální reference:
+The concrete content depends on the company. Current references:
 
-- [`mission-control-planning-model.md`](mission-control-planning-model.md) —
-  kontrakt mezi lokálními Mission Control YAML plány a implementačními
-  `TODO.tasks.json` tasky
+- [`mission-control-planning-model.md`](mission-control-planning-model.md):
+  the contract between the local Mission Control YAML plans and the
+  implementation tasks in `TODO.tasks.json`
 
-## Co sem NEpatří
+## What does not belong here
 
-- procesy k vykonání (to jsou skills v `/.claude/skills/`)
-- tone of voice (to je `company/agents/voice/`)
-- doménové definice pojmů (to je `GLOSSARY.md`)
-- strategie a firemní rozhodování (to je `modules/knowledgebase/`
-  pokud firma má)
+- processes to carry out (those are skills in `.agents/skills/`)
+- tone of voice (that is `company/agents/voice/`)
+- domain definitions of terms (that is `GLOSSARY.md`)
+- strategy and company decisions (that is `workspace/knowledgebase/`, if the
+  company has one)
 
-## Kdy reference přečíst
+## When to read the references
 
-Agent by měl reference načíst ad hoc, když:
+The agent should load references ad hoc when:
 
-- uživatel se ptá na něco specifického
-- skill explicitně odkazuje na reference dokument
-- chystá se kontext-náročná změna
+- the user asks about something specific
+- a skill explicitly points to a reference document
+- a context-heavy change is coming
 
-Nemusí se číst v každé session. Není to baseline kontext.
+They do not have to be read in every session. They are not baseline context.

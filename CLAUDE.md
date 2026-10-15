@@ -2,5 +2,6 @@
 
 @AGENTS.md
 
-Tento soubor je jen kompatibilní vstup pro Claude Code. Autoritativní pravidla
-pro agenty žijí v `AGENTS.md`; neměň agentní pravidla tady.
+This file is only the compatibility entry point for Claude Code. The
+authoritative rules for agents live in `AGENTS.md`; do not change agent rules
+here.

@@ -1,38 +1,40 @@
 # Mission Control planning model
 
-Mission Control je lokální planning/orchestration centrum AgentMintu jako
-root-level control-plane repo vedle `launchpad/`. Má nahradit roli externího
-task manageru pro feature kontext, ale zůstat plně čitelné a editovatelné pro
-agenty přes souborový systém.
+Mission Control is the Organization's local planning and orchestration centre:
+an in-tree layer at the root of the Organization repository. It takes over the
+role of an external task manager for feature context, yet stays fully readable
+and editable for agents through the file system.
 
-## Kanonické místo
+## Canonical location
 
-- Workspace repo: `mission-control/`
-- Data: YAML soubory ve workspace
-- UI: lokální aplikace spouštěná přes Launchpad
-- Execution output: nejbližší `TODO.tasks.json`
+- Location: `mission-control/` in the Organization root repository (in-tree,
+  not a nested repository)
+- Data: YAML files in the repository
+- UI: a local App started from the Launchpad
+- Execution output: the nearest `TODO.tasks.json`
 
-Trvalé plány nevytvářej mimo schválený workspace scope. `mission-control/`
-je vlastní repo a jeho data jsou filesystem DB pro plánování.
+Do not create durable plans outside the approved workspace scope.
+`mission-control/` is the planning layer, and its data is the file-system
+database for planning.
 
-## Source-of-truth kontrakt
+## Source-of-truth contract
 
-Mission Control drží:
+Mission Control holds:
 
-- feature a experiment plány
-- rozhodnutí a otevřené otázky k plánům
-- scope, non-goals a acceptance criteria
-- vazbu na implementační TODO tasky
-- outcome po dokončení
+- feature and experiment plans
+- decisions and open questions about the plans
+- scope, non-goals and acceptance criteria
+- the link to the implementation TODO tasks
+- the outcome after completion
 
-Git task ledgery drží:
+The Git task ledgers hold:
 
-- konkrétní implementační tasky v `TODO.tasks.json`
-- hotovou práci v `DONE.tasks.json`
-- otevřená rozhodnutí v `ISSUES.open.json`
-- kód, dokumentaci, skills a modulový obsah
+- concrete implementation tasks in `TODO.tasks.json`
+- finished work in `DONE.tasks.json`
+- open decisions in `ISSUES.open.json`
+- code, documentation, skills and module content
 
-## Cílová struktura modulu
+## Target structure
 
 ```text
 mission-control/
@@ -57,27 +59,27 @@ mission-control/
     └── export-todo-tasks.mjs
 ```
 
-`app/` je editor a dashboard nad soubory. Není autoritativní databáze. Pokud
-UI a YAML nesouhlasí, pravdu má YAML.
+`app/` is an editor and dashboard over the files. It is not the authoritative
+database. When the UI and the YAML disagree, the YAML is right.
 
-## Minimální feature plan YAML
+## Minimal feature plan YAML
 
 ```yaml
-schema_version: agentmint.mission_control.feature_plan.v1
+schema_version: example.mission_control.feature_plan.v1
 id: plan-2026-05-23-001
 title: Agent Automation Desk pilot
 type: experiment
 status: shaping
-owner: jannovak
+owner: alexmorgan
 created_at: 2026-05-23
 updated_at: 2026-05-23
 
 context: |
-  Chceme ověřit, jestli firmy zaplatí za produktizovanou agentní automatizaci.
+  We want to test whether companies will pay for productized agent automation.
 
 goals:
-  - Získat první kvalifikovaný zájem.
-  - Ověřit cenu a ICP.
+  - Get the first qualified interest.
+  - Validate the price and the ICP.
 
 scope:
   in:
@@ -89,9 +91,9 @@ scope:
     - paid ads
 
 acceptance_criteria:
-  - Existuje landing/offer draft.
-  - Existuje prospect list nebo jasná prospect kritéria.
-  - Existuje ručně schválený outreach script.
+  - A landing page or offer draft exists.
+  - A prospect list or clear prospect criteria exist.
+  - A manually approved outreach script exists.
 
 todo_outputs:
   - task-2026-05-23-010
@@ -99,19 +101,19 @@ todo_outputs:
 
 links:
   - label: Experiment spec
-    path: modules/experiments/specs/2026-05-23-agent-automation-desk.md
+    path: workspace/experiments/specs/2026-05-23-agent-automation-desk.md
 ```
 
-## Mapování na `TODO.tasks.json`
+## Mapping to `TODO.tasks.json`
 
-Každý implementační task odvozený z Mission Control planu má mít:
+Every implementation task derived from a Mission Control plan has:
 
-- `summary` jako konkrétní implementační výsledek, ne business esej
-- `acceptance_criteria` zredukovaná na ověřitelné kroky
-- `links` na lokální soubory nebo GitHub výstupy
-- `planning` objekt s `plan_id` a `path`, jakmile existuje YAML plan
+- `summary` as a concrete implementation result, not a business essay
+- `acceptance_criteria` reduced to verifiable steps
+- `links` to local files or GitHub outputs
+- a `planning` object with `plan_id` and `path`, as soon as a YAML plan exists
 
-Doporučená reference:
+Recommended reference:
 
 ```json
 {
@@ -122,9 +124,9 @@ Doporučená reference:
 }
 ```
 
-## Provozní pravidlo
+## Operating rule
 
-Když uživatel plánuje novou feature, agent nejdřív vytvoří nebo najde Mission
-Control plan a až potom rozpadne práci do `TODO.tasks.json`. Když se
-implementace dokončí, agent aktualizuje task ledger a doplní YAML plan o
-outcome a odkazy na výsledky.
+When the user plans a new feature, the agent first creates or finds a Mission
+Control plan and only then breaks the work down into `TODO.tasks.json`. When
+the implementation is finished, the agent updates the task ledger and adds the
+outcome and links to the results to the YAML plan.

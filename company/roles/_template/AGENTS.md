@@ -1,59 +1,59 @@
-# Role <VYPLNIT_ROLE_NAME> — AGENTS.md
+# Role <FILL_ROLE_NAME>: AGENTS.md
 
-Role overlay pro agenta, když kolega vystupuje v roli
-**<VYPLNIT_ROLE_NAME>**.
+Role overlay for the agent when a colleague acts in the role
+**<FILL_ROLE_NAME>**.
 
-Přebíjí root baseline pouze v tom, co je pro <VYPLNIT_ROLE_NAME>
-specifické. Viz root `/AGENTS.md §1 Kaskáda instrukcí`.
+It overrides the root baseline only where something is specific to
+<FILL_ROLE_NAME>. See the cascade of instructions in the root `/AGENTS.md`.
 
 ## Scope
 
-<VYPLNIT_SCOPE>
+<FILL_SCOPE>
 
-Co role vlastní, co **není** v scope.
+What the role owns, and what is **not** in scope.
 
 ## Ownership
 
-- **Moduly / vrstvy:** <VYPLNIT>
-- **Výstupy:** <VYPLNIT>
-- **Rozhodování:** <VYPLNIT>
-- **Eskalace:** <VYPLNIT>
+- **Modules / layers:** <FILL>
+- **Outputs:** <FILL>
+- **Decisions:** <FILL>
+- **Escalation:** <FILL>
 
-## Typické workflow
+## Typical workflow
 
-- **<VYPLNIT_TYP_UKOLU>** → agent <VYPLNIT_POSTUP>
-- **<VYPLNIT_TYP_UKOLU>** → agent <VYPLNIT_POSTUP>
+- **<FILL_TASK_TYPE>** → the agent <FILL_PROCEDURE>
+- **<FILL_TASK_TYPE>** → the agent <FILL_PROCEDURE>
 
-## Typické výstupy
+## Typical outputs
 
-- <VYPLNIT>
-- <VYPLNIT>
+- <FILL>
+- <FILL>
 
 ## Source of truth
 
-- Nejdřív čti: <VYPLNIT>
-- Pokud chybí kontext: <VYPLNIT>
-- Pokud je rozpor mezi zdroji: <VYPLNIT>
+- Read first: <FILL>
+- When context is missing: <FILL>
+- When sources contradict each other: <FILL>
 
 ## Handoff
 
-- **→ <jiná role>** <VYPLNIT_KDY>
-- **← <jiná role>** <VYPLNIT_KDY>
-- **Eskaluj na <role>** <VYPLNIT_KDY>
+- **→ <other role>** <FILL_WHEN>
+- **← <other role>** <FILL_WHEN>
+- **Escalate to <role>** <FILL_WHEN>
 
-## Multi-role chování
+## Multi-role behaviour
 
-Pokud person overlay říká, že konkrétní člověk drží více rolí, nepřepínej
-mezi nimi tiše. Když není z úkolu jasné, kterou roli má agent použít,
-zeptej se krátkou otázkou.
+If the person overlay says that a specific person holds several roles, do not
+switch between them silently. When the task does not make clear which role
+the agent should use, ask a short question.
 
-## Co NEdělat
+## What not to do
 
-- <hranice scope>
-- <typické chyby, kterých se vyvarovat>
-- <citlivé akce, které vyžadují ownera nebo potvrzení>
+- <scope boundary>
+- <typical mistakes to avoid>
+- <sensitive actions that need the owner or a confirmation>
 
-## Stav
+## Status
 
-Základ funkční. Plné rozšíření role se doplňuje průběžně podle potřeby
-(viz `company/roles/TODO.md`).
+The basics work. The full role is filled in over time as needed (see
+`company/roles/TODO.md`).

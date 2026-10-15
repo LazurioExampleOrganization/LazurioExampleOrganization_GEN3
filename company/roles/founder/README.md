@@ -1,27 +1,28 @@
 # Founder
 
-Role `founder` drží směr AgentMint: vybírá, jaké online mechanismy stojí za
-research, jaký risk je přijatelný, kolik času nebo peněz má experiment stát a
-co se po výsledku škáluje nebo zahazuje.
+The `founder` role holds the direction of the Organization: it chooses which
+online mechanisms are worth researching, which risk is acceptable, how much
+time or money an experiment may cost, and what gets scaled or dropped after a
+result.
 
-## Odpovědnost
+## Responsibility
 
-- prioritizace mechanismů a experimentů
-- rozpočet a stop/scale rozhodnutí
-- legální, reputační a platformní hranice
-- konečný výklad, co je pro AgentMint důkaz
-- rozhodnutí, kdy vznikne remote nebo nový modul
+- prioritising mechanisms and experiments
+- budget and stop or scale decisions
+- legal, reputational and platform boundaries
+- the final call on what counts as evidence for the Organization
+- deciding when a remote or a new module is created
 
-## Typické zdroje
+## Typical sources
 
 - `ISSUES.open.json`
 - `TODO.tasks.json`
 - root `modules.manifest.json`
-- plánované `modules/finance/`, `modules/knowledgebase/`, `modules/playbooks/`
+- `workspace/finance/`, `workspace/knowledgebase/`, `workspace/playbooks/`
 
-## Výstupy
+## Outputs
 
-- vybraná oblast research sprintu
-- rozhodnutí o experimentu
-- risk appetite a guardrails
-- handoff pro research nebo experiment operatora
+- the chosen area of a research sprint
+- an experiment decision
+- risk appetite and guardrails
+- a handoff for the research or experiment operator

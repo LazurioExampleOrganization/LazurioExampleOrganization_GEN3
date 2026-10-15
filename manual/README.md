@@ -1,118 +1,108 @@
-# Maintenance manuál Organizace AgentMint
+# Maintenance manual of Lazurio Example Organization
 
-Tento manuál je source of truth pro maintenance agenty, kteří udržují
-AgentMint jako Organizaci GEN3. Provoz se nesmí opírat o paměť jednoho
-člověka ani o jeden chat.
+This manual is the source of truth for agents and colleagues who maintain the
+Organization. Its operation must never depend on the memory of one person or
+one chat.
 
-## Co maintenance agent chrání
+## What maintenance protects
 
-- správný source of truth pro každou změnu
-- forkability template a company overrides
-- evidence guardrails: hypotéza ≠ důkaz, škáluje se jen ověřený mechanismus
-- legal/platform guardrails: žádný spam, fake engagement, obcházení ToS ani
-  klamavé claimy
-- přístupové hranice v `infra/access` v restricted nested repu `infra/`
-- osobní hranice v `company/colleagues/<os-user>/`
-- validní tasky v `TODO.tasks.json` a `DONE.tasks.json`
-- otevřené nerozhodnuté otázky v `ISSUES.open.json`
-- business dopad rozhodnutí podle
-  `lazurio.organization.json#extensions.legacy.business_context`
+- the right source of truth for every change;
+- the evidence guardrails: a hypothesis is not evidence, and only a verified
+  mechanism is scaled;
+- the legal and platform guardrails: no spam, fake engagement,
+  terms-of-service evasion or misleading claims;
+- access boundaries in `infra/access/` in the restricted `infra` repository;
+- personal boundaries in `company/colleagues/<os-user>/`;
+- valid plans and tasks in Mission Control and the task ledgers;
+- the business impact of decisions, per
+  `lazurio.organization.json#extensions.legacy.business_context`.
 
-## První pořadí čtení
+## Reading order
 
 1. `AGENTS.md`
 2. `lazurio.organization.json`
-3. tento manuál
+3. this manual
 4. `GLOSSARY.md`
-5. `TODO.tasks.json`, `DONE.tasks.json` a `ISSUES.open.json`
-6. nejbližší modulový nebo složkový `AGENTS.md`
+5. Mission Control and the task ledgers
+6. the nearest module or folder `AGENTS.md`
 
 ## Source of truth map
 
-- Struktura firmy: `lazurio.organization.json` (+ inventář modulů v
-  `modules.manifest.json`); `company.gen3.json` je generovaná kompatibilní
-  projekce a mění se jen přes
-  `lazurio migrate organization-manifest <task-worktree> --write`
-- Přístupy: `infra/access/` v nested repu `infra/`
-- Kolegové a osobní overlaye: `company/colleagues/`
-- Role: `company/roles/*.role.json`
-- Agentní procesy: `.agents/skills/`
-- Voice guide: `company/agents/voice/`
-- Design systém firmy: `design-system/`
-- Moduly: `modules/` (deskriptor: root `modules.manifest.json`)
-- Plánování: `mission-control/` (nested repo)
-- Živá práce: `TODO.tasks.json`
-- Hotová práce: `DONE.tasks.json`
-- Nerozhodnuté problémy: `ISSUES.open.json`
-- Sdílené pojmy: `GLOSSARY.md`
-- Významné změny: `CHANGELOG.md`
+- Organization structure: `lazurio.organization.json` and the module
+  inventory `modules.manifest.json`. `company.gen3.json` is generated with
+  `lazurio migrate organization-manifest <task-worktree> --write`; `generated/`
+  with the Lazurio organization compiler.
+- Access: `infra/access/` in the `infra` repository.
+- Colleagues and personal overlays: `company/colleagues/`.
+- Roles: `company/roles/*.role.json`.
+- Agent procedures: `.agents/skills/`.
+- Voice guide: `company/agents/voice/`.
+- Design system: `design-system/`.
+- Modules: `workspace/` (inventory in `modules.manifest.json`).
+- Planning: Mission Control.
+- Shared terms: `GLOSSARY.md`.
+- Notable changes: `CHANGELOG.md`.
+- Migration to GEN3: `MIGRATION.md`.
 
-## Template upstream režim
+## Keeping the root current
 
-AgentMint vznikl z GEN2 Lazurio company template linie (repo nevzniklo jako
-fork GEN3 template). Remote model:
+- Run `lazurio update` to bring the root and every module you can access to a
+  clean `main`. It moves nothing by force: local work, diverged history or a
+  dirty checkout stop it with a precise next step.
+- Make every change in a task worktree and a pull request. `main` is
+  protected: no force push, no deletion, and root CI ("Organization check")
+  must pass.
+- After a manifest change, regenerate the projection and `generated/` in the
+  same pull request; root CI fails when the projection drifts.
+- The Organization has no template upstream (update model `standalone`).
+  General improvements come from Lazurio itself, not from a template sync.
 
-```text
-origin   -> git@github.com:LazurioExampleOrganization/LazurioExampleOrganization_GEN3.git
-```
+## Root application modules
 
-Remote `template` se přidává lokálně (`git remote add template …`) a slouží
-pro budoucí template sync. Maintenance agent nemá dělat lokální změny, které
-by zbytečně rozbíjely future template sync; sync musí být branch s čitelným
-diffem a review.
+`infra` is a restricted root repository for access governance and the
+deployment context. Mission Control and the design system are root
+application modules; their activation as separate repositories is part of the
+GEN3 migration. `lazurio update` clones every active slot; the root never
+tracks their contents.
 
-## Infra a mission-control
+## Colleague overlays
 
-`infra/` je restricted root nested repo
-(`git@github.com:LazurioExampleOrganization/infra.git`) pro access governance a deployment
-kontext. `mission-control/` je nested repo
-(`git@github.com:LazurioExampleOrganization/mission-control.git`) pro plánovací vrstvu. Obě
-spravuje doctor podle root `modules.manifest.json`; super-repo
-jejich obsah netrackuje.
-
-## Colleagues overlay pravidlo
-
-Složka kolegy se jmenuje podle lokálního OS username:
+A colleague folder is named after the local OS user name:
 
 ```text
 company/colleagues/<os-user>/
 ```
 
-`archive/`, `private/` a lokální runtime složky jsou ignorované Gitem a
-nesmí se kopírovat do sdíleného repozitáře. Složky `tomas/` a `petr/`
-jsou onboardingové scaffoldy bez potvrzené role.
+`archive/`, `private/` and local runtime folders are ignored by Git and are
+never copied into the shared repository. `samtaylor/` and `robinlee/` are
+onboarding scaffolds without a confirmed role.
 
-## Launchpad pravidlo
+## Launchpad
 
-Shared Launchpad GEN3 je v Launchpad rootu. Organizace dodává jen
-konfiguraci (`lazurio.organization.json`, `modules.manifest.json` a pro starší
-čtečky generovanou projekci `company.gen3.json`), package
-manifesty a pluginy. Pokud aplikace běží na portu, port musí být
-deklarovaný pouze v jejím modulovém `lazurio.module.json`; package
-`lazurio.runtime.listeners` na pojmenovaný lease jen odkazuje. In-tree
-`launchpad/` je jen redirect po GEN2.
+The Launchpad lives in Lazurio. The Organization supplies only configuration
+(`lazurio.organization.json`, `modules.manifest.json` and the generated
+`company.gen3.json`). An App's port is declared only in its module's
+`lazurio.module.json`, inside the Organization pool 25300–25399; the App's
+`lazurio.runtime.listeners` only refer to that lease.
 
-## AgentMint jako experimentální firma
+## The fictional company
 
-AgentMint hledá ověřitelné cesty, jak mohou AI agenti vydělávat peníze
-online — legálně, s vlastním brandem a vlastními daty. Pracovní smyčka:
-najít mechanismus → rozložit na model → navrhnout legální adaptaci →
-spustit malý test → zapsat výsledek → škálovat jen s důkazem.
+The company looks for verifiable ways in which AI agents can earn money
+online: legally, with its own brand and its own data. Its working loop: find a
+mechanism, break it down into a model, design a legal adaptation, run a small
+test, record the result, and scale only with evidence.
 
-Zároveň je AgentMint testovací Organizace pro GEN2 → GEN3 migrační
-pipeline; tato veřejná kopie začíná vyčištěným snapshotem GEN2 baseline a migruje
-na GEN3 přímo zde.
+## Modules and their boundaries
 
-## Moduly a hranice
-
-- `modules/knowledgebase` — strategie a guardrails, nejvyšší autorita.
-- `modules/research` — mechanism scans a evidence; každý claim má zdroj a
-  datum.
-- `modules/experiments` — specs, run logy, stop/scale rozhodnutí; tady
-  vzniká důkaz.
-- `modules/playbooks` — jen ověřené mechanismy; hypotézy sem nepatří.
-- `modules/automations` — runtime až po ručním ověření guardrails.
-- `modules/content` — veřejné assets bez cizího obsahu a bez claimů bez
-  důkazu.
-- `modules/finance` — unit economics; citlivá data jen anonymizovaná, jinak
-  mimo Git.
+- `workspace/knowledgebase`: strategy and guardrails, the highest authority.
+- `workspace/research`: mechanism scans and evidence; every claim has a source
+  and a date.
+- `workspace/experiments`: specs, run logs, stop or scale decisions; this is
+  where evidence is created.
+- `workspace/playbooks`: verified mechanisms only; no hypotheses.
+- `workspace/automations`: runtime only after the guardrails are verified by
+  hand.
+- `workspace/content`: public assets without third-party content and without
+  claims that lack evidence.
+- `workspace/finance`: unit economics; sensitive data only anonymised,
+  otherwise outside Git.

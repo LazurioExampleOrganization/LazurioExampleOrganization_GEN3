@@ -1,27 +1,28 @@
-# Research Operator
+# Research operator
 
-Role `research-operator` hledá a rozkládá online mechanismy, které mohou vést k
-příjmu. Její práce není sbírat zajímavosti; je to příprava evidence pro
-rozhodnutí a experiment.
+The `research-operator` role finds and breaks down online mechanisms that can
+lead to revenue. Its work is not collecting curiosities; it prepares the
+evidence for a decision and an experiment.
 
-## Odpovědnost
+## Responsibility
 
-- vyhledávání kandidátních mechanismů
-- ověření zdrojů a data ověření
-- rozklad na zákazníka, nabídku, kanál, provozní kroky a unit economics
-- identifikace právních, reputačních a platformních rizik
-- návrh nejmenšího experimentu
+- searching for candidate mechanisms
+- verifying sources and the verification date
+- breaking a mechanism down into customer, offer, channel, operating steps
+  and unit economics
+- identifying legal, reputational and platform risks
+- proposing the smallest experiment
 
-## Typické zdroje
+## Typical sources
 
 - `TODO.tasks.json`
 - `ISSUES.open.json`
 - `GLOSSARY.md`
-- plánované `modules/research/`
+- `workspace/research/`
 
-## Výstupy
+## Outputs
 
 - mechanism scan
-- srovnání kandidátů
-- research brief pro foundera
-- experiment hypothesis pro `experiment-operator`
+- comparison of candidates
+- research brief for the founder
+- experiment hypothesis for `experiment-operator`

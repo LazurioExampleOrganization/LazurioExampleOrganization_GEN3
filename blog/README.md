@@ -1,15 +1,15 @@
 # Blog
 
-Firemní blog pro agentní a týmové aha momenty.
+The company blog for aha moments of agents and the team.
 
-Použití:
+Use it for:
 
-- interní postřehy pro tým
-- public candidates pro budoucí články
-- zdroj pro vnitrofiremní komunikaci
-- zdroj pro sociální sítě a marketing
-- lessons learned z prototypu, delivery, produktu nebo security
+- internal insights for the team
+- public candidates for future articles
+- a source for internal company communication
+- a source for social networks and marketing
+- lessons learned from a prototype, delivery, the product or security
 
-Blog není source of truth pro pravidla. Pokud článek mění pravidlo,
-aktualizuj i `ARCHITECTURE.md`, `AGENTS.md`, `GLOSSARY.md`, schema nebo
-decision log.
+The blog is not a source of truth for rules. If a post changes a rule, also
+update `ARCHITECTURE.md`, `AGENTS.md`, `GLOSSARY.md`, a schema or the decision
+log.

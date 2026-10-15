@@ -1,21 +1,22 @@
 # Roles TODO
 
-Role overlay úkoly se dlouhodobě drží v root `TODO.tasks.json`. Tenhle soubor
-je jen lokální rozcestník pro role vrstvu.
+Role overlay tasks are tracked long-term in the root `TODO.tasks.json`. This
+file is only a local signpost for the role layer.
 
-## Aktuální stav
+## Current state
 
-AgentMint má tři kanonické role:
+The Organization has three canonical roles:
 
 - `founder`
 - `research-operator`
 - `experiment-operator`
 
-## Při změně role modelu
+## When the role model changes
 
-1. Uprav `company/roles/README.md`.
-2. Přidej nebo změň konkrétní `README.md` a `AGENTS.md` v dané roli.
-3. Promítni změnu do root `modules.manifest.json`, pokud mění přístup nebo
-   ownerství modulů, a projekci `company.gen3.json` přegeneruj přes
+1. Update `company/roles/README.md`.
+2. Add or change the specific `README.md` and `AGENTS.md` of the role.
+3. Reflect the change in the root `modules.manifest.json` if it changes access
+   to or ownership of modules, and regenerate the `company.gen3.json`
+   projection with
    `lazurio migrate organization-manifest <task-worktree> --write`.
-4. Uprav person overlays, které roli používají.
+4. Update the person overlays that use the role.

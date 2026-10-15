@@ -1,34 +1,37 @@
 # Team TODO
 
-Team overlay úkoly se dlouhodobě drží v root `TODO.tasks.json`. Tenhle soubor
-je jen lokální rozcestník pro person overlay vrstvu.
+Team overlay tasks are tracked long-term in the root `TODO.tasks.json`. This
+file is only a local signpost for the person overlay layer.
 
-## Aktuální stav
+## Current state
 
-- `jannovak/` existuje jako první person overlay.
-- `tomas/` existuje jako onboarding scaffold; Tomáš musí doplnit role,
-  ownership, preferovaný styl práce, moduly a externí služby bez secrets.
-- `petr/` existuje jako onboarding scaffold; Petr musí doplnit role,
-  ownership, preferovaný styl práce, moduly a externí služby bez secrets.
-- Workspace směřuje k Mission Control jako lokálnímu planning task manageru;
-  implementační kroky zůstávají v root `TODO.tasks.json`.
-- Firemní OAuth účty zatím nejsou nastavené; `agentmint.local` je jen lokální
+- `alexmorgan/` exists as the first person overlay.
+- `samtaylor/` exists as an onboarding scaffold; Sam Taylor still has to fill
+  in roles, ownership, preferred working style, modules and external services
+  without secrets.
+- `robinlee/` exists as an onboarding scaffold; Robin Lee still has to fill in
+  roles, ownership, preferred working style, modules and external services
+  without secrets.
+- The workspace is moving towards Mission Control as its local planning task
+  manager; implementation steps stay in the root `TODO.tasks.json`.
+- Company OAuth accounts are not set up yet; `example.local` is only a local
   placeholder.
-- Další kolegové se přidají až po rozhodnutí v root task/issue ledgerech.
+- More colleagues are added only after a decision in the root task and issue
+  ledgers.
 
-## Při přidání nového kolegy
+## When adding a new colleague
 
-1. Zkopíruj `_template/` jako `company/colleagues/<jméno>/`.
-2. Vyplň `README.md` a `AGENTS.md` podle reality.
-3. V osobním `*.code-workspace` změň druhý folder name z `_template` na jméno
-   kolegy.
-4. Ověř preflight kaskádu: root → role → person → modul.
+1. Copy `_template/` to `company/colleagues/<name>/`.
+2. Fill in `README.md` and `AGENTS.md` to match reality.
+3. In the personal `*.code-workspace`, change the second folder name from
+   `_template` to the colleague's name.
+4. Verify the cascade as a preflight: root → role → person → module.
 
-## K doplnění Janem / týmem
+## To be filled in by Alex or the team
 
-- Skutečné role Tomáše a Petra.
-- Jestli potřebují nové role v `company/roles/`, nebo stačí existující
-  `research-operator` / `experiment-operator` / `founder`.
-- GitHub access ke konkrétním nested repozitářům podle jejich práce.
-- Per-person MCP konfigurace lokálně v jejich `.claude/settings.json`, nikdy v
-  Gitu.
+- The actual roles of Sam and Robin.
+- Whether they need new roles in `company/roles/`, or the existing
+  `research-operator` / `experiment-operator` / `founder` are enough.
+- GitHub access to the specific nested repositories their work needs.
+- Per-person MCP configuration, locally in their `.claude/settings.json`,
+  never in Git.

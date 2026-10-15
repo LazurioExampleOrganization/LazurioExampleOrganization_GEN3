@@ -19,20 +19,19 @@ desktop.ini
 /workspace/*/
 /productionspace/*/
 
-# Env a secrets
+# Environment files and secrets
 **/.env
 **/.env.local
 **/.env.*.local
 
-# Lockfiles z konkurenčních správců balíčků.
-# Kanonický package manager v Workspace = Bun, takže se commituje pouze
-# `bun.lock`. Pokud někdo lokálně spustí `npm i` / `yarn` / `pnpm i`,
-# vzniklý lock soubor se do Gitu nepošle a nezpůsobí drift.
+# Lockfiles of other package managers. Bun is the package manager, so only
+# `bun.lock` is committed. A lockfile from a local `npm i`, `yarn` or
+# `pnpm i` never reaches Git and cannot cause drift.
 **/package-lock.json
 **/yarn.lock
 **/pnpm-lock.yaml
 
-# Per-person Claude Code settings (tokeny, MCP session data, OAuth)
+# Per-person Claude Code settings (tokens, MCP session data, OAuth)
 company/colleagues/*/.claude/settings.json
 company/colleagues/*/.claude/settings.local.json
 company/colleagues/*/.claude/session/
@@ -44,16 +43,15 @@ company/colleagues/*/scratch/
 company/colleagues/*/.scratch/
 
 # Per-person local archive and private layers
-company/colleagues/*/archiv/
 company/colleagues/*/archive/
 company/colleagues/*/private/
 
-# Per-person local memory/runtime dumps. Osobní agentní paměť nepatří do GEN2
-# Gitu; dlouhodobé poznatky patří do správného workspace dokumentu nebo modulu.
+# Per-person local memory and runtime dumps. Personal agent memory never goes
+# to Git; durable insights belong in the right document or module.
 company/colleagues/*/memory/
 company/colleagues/*/.memory/
 
-# Per-person playgrounds (prototypování datových formátů)
+# Per-person playgrounds (prototyping data formats)
 company/colleagues/*/playgrounds/
 
 # Shared skills: `.agents/skills` is canonical and `.claude/skills` is its
@@ -74,7 +72,7 @@ build/
 .next/
 .turbo/
 
-# Workspace feature worktrees podle worktree-stewardship konvence.
+# Task worktrees (`.worktrees/root/<slug>`, `.worktrees/workspace/<module>/<slug>`).
 .worktrees/
 
 # Codex CLI local temp and transient worktrees

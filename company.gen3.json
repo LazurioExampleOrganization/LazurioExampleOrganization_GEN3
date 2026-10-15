@@ -1,87 +1,87 @@
 {
   "access_governance": {
-    "admin_boundary": "infra/ je restricted root nested repo (doctor-managed) s GitHub/access governance; přístup mají admini Organizace.",
-    "agent_rule": "Agent smí navrhnout access change, ale schválení patří adminům Organizace s infra přístupem.",
+    "admin_boundary": "infra/ is the restricted root repository for GitHub and access governance, cloned by lazurio update only for Admins of the Organization.",
+    "agent_rule": "An agent may propose an access change; approval belongs to the Admins of the Organization with access to infra.",
     "source_of_truth": "infra/access"
   },
   "agent_processes": {
-    "agent_rule": "Opakovatelný postup zapiš jako skill. Dokumentace vysvětluje proč, skill říká jak.",
+    "agent_rule": "Write a repeatable procedure as a skill. Documentation explains why, a skill says how.",
     "claude_compatibility": ".claude/skills",
     "inventory": ".agents/skills/manifest.json",
-    "runtime_rule": "Používej Bun jako základní runtime. Nepřidávej nový npm/node-only proces bez rozhodnutí kolegy.",
+    "runtime_rule": "Use Bun as the runtime. Do not add a new npm- or Node-only process without a colleague's decision.",
     "skills_source_of_truth": ".agents/skills",
     "voice_guide": "company/agents/voice/"
   },
   "business_context": {
     "customer_segments": [
       {
-        "description": "AgentMint nemá jeden fixní segment; každý experiment definuje vlastního zákazníka, kanál a nabídku v experiment specu. Segment bez experimentu je jen hypotéza.",
+        "description": "The company has no single fixed segment; every experiment defines its own customer, channel and offer in its spec. A segment without an experiment is only a hypothesis.",
         "slug": "mechanism-specific-audiences"
       }
     ],
     "decision_rules": [
       {
         "owner": "founder",
-        "rule": "Finanční kroky, externě viditelné akce a cokoliv s legal/platform dopadem musí předem potvrdit člověk. Agent nesmí spustit automatizaci generující spam, fake engagement nebo klamavé claimy.",
+        "rule": "A person confirms financial steps, externally visible actions and anything with legal or platform impact in advance. An agent never starts an automation that generates spam, fake engagement or misleading claims.",
         "trigger": "money movement, external visibility, platform ToS, legal or reputational risk"
       },
       {
         "owner": "founder",
-        "rule": "Škálovat se smí jen mechanismus s ověřeným signálem z experimentu; stop/scale rozhodnutí se zapisuje do workspace/experiments.",
+        "rule": "Only a mechanism with a verified signal from an experiment may be scaled; the stop or scale decision is recorded in workspace/experiments.",
         "trigger": "scale decision"
       }
     ],
     "metrics": [
       {
-        "description": "Počet mechanismů s ověřeným signálem příjmu zapsaných v playbooks.",
+        "description": "Number of mechanisms with a verified income signal recorded in playbooks.",
         "slug": "verified-mechanisms"
       },
       {
-        "description": "Počet dokončených experimentů s explicitním stop/scale rozhodnutím a zapsanou evidencí.",
+        "description": "Number of finished experiments with an explicit stop or scale decision and recorded evidence.",
         "slug": "experiment-throughput"
       },
       {
-        "description": "Čistý příjem běžících mechanismů po nákladech, podle workspace/finance.",
+        "description": "Net income of running mechanisms after costs, per workspace/finance.",
         "slug": "net-experiment-income"
       }
     ],
     "revenue_drivers": [
       {
-        "description": "Příjem z online mechanismů, které prošly experimentem s ověřeným signálem. Škáluje se jen to, co má důkaz; hypotéza zůstává v research/experiments.",
+        "description": "Income from online mechanisms that passed an experiment with a verified signal. Only what has evidence is scaled; a hypothesis stays in research or experiments.",
         "priority": "high",
         "slug": "validated-online-mechanisms"
       },
       {
-        "description": "Opakovatelné playbooky ověřených mechanismů: zdokumentovaný postup, unit economics a guardrails, připravené k opětovnému spuštění nebo přenosu.",
+        "description": "Repeatable playbooks of verified mechanisms: a documented procedure, unit economics and guardrails, ready to be run again or transferred.",
         "priority": "medium",
         "slug": "mechanism-playbooks"
       }
     ],
     "risks": [
       {
-        "description": "Experiment sklouzne do spamu, fake engagementu, obcházení ToS nebo klamavých claimů.",
-        "escalation": "Okamžitě zastavit, zapsat do experiment logu a eskalovat founderovi.",
+        "description": "An experiment slides into spam, fake engagement, terms-of-service evasion or misleading claims.",
+        "escalation": "Stop immediately, record it in the experiment log and escalate to the Founder.",
         "slug": "gray-zone-drift"
       },
       {
-        "description": "Mechanismus se začne škálovat nebo prezentovat jako funkční bez důkazu z experimentu.",
-        "escalation": "Vrátit do workspace/experiments a doplnit měřitelný test se stop podmínkou.",
+        "description": "A mechanism starts to be scaled or presented as working without evidence from an experiment.",
+        "escalation": "Return it to workspace/experiments and add a measurable test with a stop condition.",
         "slug": "no-evidence-scaling"
       },
       {
-        "description": "Práce zkopíruje cizí brand, obsah, data nebo account setup místo legální adaptace mechanismu.",
-        "escalation": "Zastavit implementaci, odstranit převzatý materiál a přepsat na vlastní adaptaci.",
+        "description": "Work copies another company's brand, content, data or account setup instead of legally adapting the mechanism.",
+        "escalation": "Stop the implementation, remove the copied material and rewrite it as the company's own adaptation.",
         "slug": "copying-instead-of-adapting"
       },
       {
-        "description": "Citlivá payment/finanční data se dostanou do Gitu bez anonymizace.",
-        "escalation": "Necommitovat, data anonymizovat nebo držet mimo Git a požádat admina Organizace o review.",
+        "description": "Sensitive payment or financial data reaches Git without anonymisation.",
+        "escalation": "Do not commit; anonymise the data or keep it outside Git, and ask an Admin of the Organization for a review.",
         "slug": "sensitive-finance-data-in-git"
       }
     ],
     "value_propositions": [
       {
-        "description": "Legální adaptace prokazatelně fungujících online mechanismů: vlastní brand, vlastní data, vlastní nabídka, žádné obcházení pravidel platforem.",
+        "description": "Legal adaptations of demonstrably working online mechanisms: own brand, own data, own offer and no evasion of platform rules.",
         "slug": "evidence-based-adaptation"
       }
     ]
@@ -89,13 +89,13 @@
   "colleague_overlays": {
     "active_colleagues": [
       {
-        "display_name": "Jan Novák",
-        "os_user": "jannovak",
+        "display_name": "Alex Morgan",
+        "os_user": "alexmorgan",
         "primary_role": "founder"
       }
     ],
-    "agent_rule": "Nikdy nečti ani nekopíruj cizí složku private nebo archive. Ber tyto cesty jako lokální-only. Složky tomas/ a petr/ jsou onboardingové scaffoldy bez potvrzené role; agent jejich odpovědnosti nedomýšlí.",
-    "folder_name_rule": "Složka každého kolegy musí odpovídat lokálnímu OS username, například /Users/jannovak -> company/colleagues/jannovak.",
+    "agent_rule": "Never read or copy another person's private or archive folder. Treat these paths as local only. The folders samtaylor/ and robinlee/ are onboarding scaffolds without a confirmed role; an agent does not infer their responsibilities.",
+    "folder_name_rule": "Each colleague's folder matches the local OS user name: the OS user alexmorgan has company/colleagues/alexmorgan.",
     "gitignored_local_paths": [
       "archive/",
       "private/"
@@ -172,17 +172,17 @@
       {
         "domain": "experiment-guardrails",
         "owner": "founder",
-        "rule": "Co je legální adaptace vs šedá zóna rozhoduje founder; agent guardrail neobchází a hraniční případ eskaluje."
+        "rule": "The Founder decides what is a legal adaptation and what is a grey zone; an agent never bypasses a guardrail and escalates a borderline case."
       },
       {
         "domain": "finance-data-access",
         "owner": "organization-admin",
-        "rule": "Přístup k citlivým finančním datům a payment provider exportům schvaluje admin Organizace přes infra/access."
+        "rule": "Access to sensitive financial data and payment provider exports is approved by an Admin of the Organization through infra/access."
       },
       {
         "domain": "template-sync",
         "owner": "founder",
-        "rule": "Změny ovlivňující forkability nebo template update workflow musí mít čitelný diff a review."
+        "rule": "Changes that affect how others can fork and reuse this reference Organization need a readable diff and a review."
       }
     ],
     "default_branch": "main",
@@ -417,7 +417,7 @@
   "roles": [
     {
       "colleagues": [
-        "jannovak"
+        "alexmorgan"
       ],
       "decision_rights": [
         "experiment-guardrails",
@@ -426,7 +426,7 @@
         "template-sync-impact"
       ],
       "display_name": "Founder",
-      "purpose": "Rozhoduje, co stojí za čas, peníze a reputační riziko; drží guardrails a stop/scale rozhodnutí.",
+      "purpose": "Decides what is worth time, money and reputational risk; holds the guardrails, the stop or scale decisions and the direction of the company.",
       "slug": "founder",
       "source_of_truth": "company/roles/founder.role.json"
     },
@@ -437,7 +437,7 @@
         "mechanism-mapping"
       ],
       "display_name": "Research operator",
-      "purpose": "Mapuje online mechanismy a skládá evidenci, co stojí za test; odděluje mechanismus, důkaz a riziko.",
+      "purpose": "Maps online mechanisms and assembles the evidence for what is worth testing; keeps mechanism, evidence and risk apart.",
       "slug": "research-operator",
       "source_of_truth": "company/roles/research-operator.role.json"
     },
@@ -448,7 +448,7 @@
         "run-log-upkeep"
       ],
       "display_name": "Experiment operator",
-      "purpose": "Navrhuje a provozuje malé měřitelné experimenty s rozpočtem a stop podmínkou; zapisuje výsledky a evidence.",
+      "purpose": "Designs and runs small measurable experiments with a budget and a stop condition; records results and evidence.",
       "slug": "experiment-operator",
       "source_of_truth": "company/roles/experiment-operator.role.json"
     }
@@ -457,60 +457,60 @@
     {
       "canonical": "lazurio.organization.json",
       "domain": "company-structure",
-      "write_rule": "Změny struktury firmy se zapisují do lazurio.organization.json a validují před commitem. company.gen3.json je generovaná kompatibilní projekce pro starší čtečky: ručně se needituje a mění se jen příkazem lazurio migrate organization-manifest <task-worktree> --write."
+      "write_rule": "Changes to the structure of the Organization are written to lazurio.organization.json and validated before the commit. company.gen3.json is a generated compatibility projection for older readers: never edited by hand, changed only with lazurio migrate organization-manifest <task-worktree> --write."
     },
     {
       "canonical": "modules.manifest.json",
       "domain": "module-inventory",
-      "write_rule": "Inventář modulů a jejich příslušnost k Teamům se zapisuje do root modules.manifest.json. company.gen3.json#modules se z něj jen generuje stejným příkazem lazurio migrate organization-manifest <task-worktree> --write."
+      "write_rule": "The module inventory and the Team membership of modules are written to the root modules.manifest.json. company.gen3.json#modules is only generated from it by the same lazurio migrate organization-manifest <task-worktree> --write."
     },
     {
       "canonical": "workspace/knowledgebase",
       "domain": "strategy-and-guardrails",
-      "write_rule": "Strategie, rozhodovací logika, guardrails a lessons learned se mění v knowledgebase. Downstream povrchy se z ní odvozují."
+      "write_rule": "Strategy, decision logic, guardrails and lessons learned change in the knowledgebase. Downstream surfaces are derived from it."
     },
     {
       "canonical": "workspace/research",
       "domain": "research",
-      "write_rule": "Mechanism scans, source notes a market mapy patří do research. Každý claim má zdroj a datum ověření."
+      "write_rule": "Mechanism scans, source notes and market maps belong in research. Every claim has a source and a date of verification."
     },
     {
       "canonical": "workspace/experiments",
       "domain": "experiments",
       "upstream_truth": "workspace/research",
-      "write_rule": "Experiment spec, run log, metriky a stop/scale rozhodnutí žijí v experiments. Bez zapsaného experimentu není důkaz."
+      "write_rule": "Experiment specs, run logs, metrics and stop or scale decisions live in experiments. Without a recorded experiment there is no evidence."
     },
     {
       "canonical": "workspace/playbooks",
       "domain": "playbooks",
       "upstream_truth": "workspace/experiments",
-      "write_rule": "Do playbooks se promuje jen mechanismus s ověřeným signálem z experimentu. Hypotézy zůstávají v research/experiments."
+      "write_rule": "Only a mechanism with a verified signal from an experiment is promoted to playbooks. Hypotheses stay in research or experiments."
     },
     {
       "canonical": "workspace/content",
       "domain": "content",
       "upstream_truth": "workspace/knowledgebase",
-      "write_rule": "Veřejné publikační a acquisition assets. Žádný cizí obsah, fake social proof ani claimy bez důkazu."
+      "write_rule": "Public publishing and acquisition assets. No third-party content, fake social proof or claims without evidence."
     },
     {
       "canonical": "workspace/automations",
       "domain": "automations",
-      "write_rule": "Agentní workflow a runtime se připojuje až po ručním ověření mechanismu a guardrails; automatizace nesmí generovat spam ani obcházet ToS."
+      "write_rule": "Agent workflows and runtime are connected only after the mechanism and its guardrails are verified by hand; an automation never generates spam or evades terms of service."
     },
     {
       "canonical": "workspace/finance",
       "domain": "finance",
-      "write_rule": "Unit economics, náklady a výnosy experimentů. Citlivá data jdou do Gitu jen bezpečně anonymizovaná; zbytek zůstává mimo Git."
+      "write_rule": "Unit economics, costs and revenue of experiments. Sensitive data enters Git only safely anonymised; the rest stays outside Git."
     },
     {
       "canonical": "TODO.tasks.json",
       "domain": "tasks",
-      "write_rule": "Živá práce se nepíše do Markdownu; agent ji zapisuje do TODO.tasks.json."
+      "write_rule": "Live work is never written in Markdown; an agent records it in TODO.tasks.json."
     },
     {
       "canonical": "ISSUES.open.json",
       "domain": "open-decisions",
-      "write_rule": "Nerozhodnuté otázky řeší kolega s agentem a po rozhodnutí se převádí na TODO."
+      "write_rule": "Open questions are resolved by a colleague with an agent and become tasks once decided."
     }
   ],
   "task_sources": [

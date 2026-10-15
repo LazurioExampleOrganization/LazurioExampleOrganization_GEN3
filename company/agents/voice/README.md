@@ -1,48 +1,49 @@
 # Voice
 
-Tato složka drží **tone of voice guidance** pro všechny výstupy, které
-agent píše **jménem AgentMint** nebo jménem kolegy.
+This folder holds the **tone of voice guidance** for every output that an
+agent writes **on behalf of the Organization** or on behalf of a colleague.
 
-Je to **single source of truth** pro tón. Neduplikuj tone of voice do
-`AGENTS.md`, `README.md` ani skill souborů — odkazuj sem.
+It is the **single source of truth** for tone. Do not duplicate the tone of
+voice in `AGENTS.md`, `README.md` or skill files: link here.
 
-## Co sem patří
+## What belongs here
 
 ### Baseline
 
-- `AGENTMINT_BASELINE_VOICE.md` — firemní baseline tone pro
-  výstupy jménem AgentMint (announcementy, shared docs,
-  interní zápisy bez specifického autora).
+- `EXAMPLE_BASELINE_VOICE.md`: the company baseline tone for outputs on
+  behalf of the Organization (announcements, shared docs, internal notes
+  without a specific author).
 
-  **Tip:** jako výchozí bod použij stručný rozhovor s ownerem firmy:
-  komu firma píše, jak formálně mluví, kterým frázím se vyhýbá a jaké
-  příklady výstupů už považuje za dobré. Nekopíruj cizí firemní identitu
-  ani interní tone of voice z jiné firmy.
+  **Tip:** as a starting point, have a short conversation with the company
+  owner: whom the company writes to, how formally it speaks, which phrases it
+  avoids and which example outputs it already considers good. Do not copy
+  another company's identity or internal tone of voice.
 
-### Per-person tone (volitelné)
+### Per-person tone (optional)
 
-- `<PERSON>_TONE_OF_VOICE.md` pro každého kolegu, který má výrazně
-  odlišný osobní styl, za kterého agent píše. Typicky CEO, osobnosti
-  v PR/marketingu.
+- `<PERSON>_TONE_OF_VOICE.md` for each colleague with a clearly different
+  personal style whom the agent writes for. Typically the CEO or public faces
+  in PR and marketing.
 
-## Co sem NEpatří
+## What does not belong here
 
-- proces, jak napsat e-mail (to je skill, pokud je to opakovatelné)
-- šablony konkrétních e-mailů (to jsou templates, patří do skill
-  podpůrných souborů)
-- strategie marketingu (to je `modules/marketing/` modul nebo
-  `modules/knowledgebase/`, pokud firma má)
+- the process for writing an email (that is a skill, if it is repeatable)
+- templates of specific emails (those are templates and belong in a skill's
+  supporting files)
+- marketing strategy (that is the `workspace/marketing/` module or
+  `workspace/knowledgebase/`, if the company has them)
 
-## Kaskáda tónu
+## Tone cascade
 
-Když existuje víc tone zdrojů, **bližší vyhrává**. Agent čte od
-specifického k obecnému:
+When there are several tone sources, **the closer one wins**. The agent reads
+from the specific to the general:
 
-1. Pokud píše jménem konkrétní osoby → `<PERSON>_TONE_OF_VOICE.md`
-2. Pokud osoba nemá vlastní tone → role-specific tone (volitelně)
-3. Pokud ani role nemá → `AGENTMINT_BASELINE_VOICE.md`
+1. When writing on behalf of a specific person → `<PERSON>_TONE_OF_VOICE.md`
+2. When the person has no tone of their own → the role-specific tone
+   (optional)
+3. When the role has none either → `EXAMPLE_BASELINE_VOICE.md`
 
-## Stav
+## Status
 
-Baseline existuje v `AGENTMINT_BASELINE_VOICE.md`. Per-person tone přidej jen
-tehdy, když se má psát jménem konkrétní osoby výrazně jiným stylem.
+The baseline exists in `EXAMPLE_BASELINE_VOICE.md`. Add a per-person tone only
+when writing on behalf of a specific person in a clearly different style.

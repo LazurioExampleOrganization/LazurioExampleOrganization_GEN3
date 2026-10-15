@@ -1,70 +1,69 @@
-# <VYPLNIT_JMENO>
+# <FILL_NAME>
 
-Tato složka je **person overlay** pro <VYPLNIT_JMENO>.
+This folder is the **person overlay** for <FILL_NAME>.
 
-## Kontext kolegy
+## Colleague context
 
-- **Jméno:** <VYPLNIT_JMENO>
-- **Primární role:** `<VYPLNIT_ROLE>` (viz
-  `company/roles/<VYPLNIT_ROLE>/`)
-- **Pracovní e-mail:** `<VYPLNIT>@agentmint.local`
-- **<VYPLNIT_TASK_TOOL> user ID:** `<VYPLNIT>`
+- **Name:** <FILL_NAME>
+- **Primary role:** `<FILL_ROLE>` (see `company/roles/<FILL_ROLE>/`)
+- **Work email:** `<FILL>@example.local`
+- **<FILL_TASK_TOOL> user ID:** `<FILL>`
 
-## Jak nejčastěji pomoci
+## How to help most often
 
-<VYPLNIT_JAK_POMOCI>
+<FILL_HOW_TO_HELP>
 
-Popiš, s čím tenhle kolega typicky potřebuje pomoci (prioritizace,
-příprava podkladů, follow-upy, atd.).
+Describe what this colleague typically needs help with (prioritising,
+preparing material, follow-ups, and so on).
 
-## Aktivní role
+## Active roles
 
-Pokud kolega drží více rolí, uveď je zde s disambiguací:
+If the colleague holds several roles, list them here with the
+disambiguation:
 
-- **`<role1>`** — kdy se na tebe obracet v této roli
-- **`<role2>`** — kdy v téhle
+- **`<role1>`**: when to come to you in this role
+- **`<role2>`**: when in this one
 
 ## Default module set
 
-Popiš, které moduly tenhle kolega typicky potřebuje. Skutečný přístup
-se řídí SSH a root `modules.manifest.json`.
+Describe which modules this colleague typically needs. Actual access follows
+SSH access and the root `modules.manifest.json`.
 
-## Jak nejlépe zadávat úkoly agentovi
+## How best to give tasks to the agent
 
-<VYPLNIT_JAK_ZADAVAT_UKOLY>
+<FILL_HOW_TO_GIVE_TASKS>
 
-## Workspace ve VS Code / Cursoru
+## Workspace in VS Code / Cursor
 
-Tahle složka obsahuje `*.code-workspace` template pro multi-root
-workspace. Po zkopírování `_template/` do `company/colleagues/<jmeno>/`:
+This folder contains a `*.code-workspace` template for a multi-root
+workspace. After copying `_template/` to `company/colleagues/<name>/`:
 
-1. přejmenuj soubor podle company slugu, pokud už tak není
-2. otevři ho ve VS Code/Cursoru přes `File -> Open Workspace from File...`
-3. v `folders[1].name` změň `_template` na `<jmeno>`
+1. rename the file after the company slug, if it is not named that way yet
+2. open it in VS Code or Cursor via `File -> Open Workspace from File...`
+3. in `folders[1].name`, change `_template` to `<name>`
 
-Workspace soubor i root `.vscode/settings.json` musí ponechat:
-`git.autoRepositoryDetection = "subFolders"` a
-`git.detectSubmodules = true`, aby editor načítal Git submoduly.
+The workspace file needs no Git submodule settings: the Organization has no
+submodules, and modules are nested checkouts that Lazurio finds and clones.
 
-## Preferovaný jazyk
+## Preferred language
 
-- Interní komunikace: <VYPLNIT>
-- Kód a commit message: angličtina (standard GEN2)
-- Externí výstupy: podle publika
+- Internal communication: <FILL>
+- Code and commit messages: English (the Organization standard)
+- External outputs: depending on the audience
 
-## Osobní skills a paměť
+## Personal skills and memory
 
-- Osobní skills (v Gitu): `company/colleagues/<jmeno>/.claude/skills/`
-- Osobní lokální archiv mimo Git: `company/colleagues/<jmeno>/archiv/`
-- **Osobní paměť napříč projekty:** volitelný gbrain mimo workspace
-  (viz root `AGENTS.md §5.1`).
-- **Sdílená firemní znalost** jde do `modules/knowledgebase/`,
-  `modules/wiki/`, skills nebo AGENTS.md (viz root `AGENTS.md §11`).
+- Personal skills (in Git): `company/colleagues/<name>/.claude/skills/`
+- Personal local archive outside Git: `company/colleagues/<name>/archive/`
+- **Personal memory across projects:** an optional gbrain outside the
+  workspace (see the root `AGENTS.md`).
+- **Shared company knowledge** goes to `workspace/knowledgebase/`,
+  `workspace/wiki/`, skills or AGENTS.md (see the root `AGENTS.md`).
 
-## Odkazy
+## Links
 
-- Operační pravidla: [AGENTS.md](AGENTS.md) (person overlay,
-  <VYPLNIT_JMENO>-specific)
-- Role detaily: `company/roles/<role>/`
+- Operating rules: [AGENTS.md](AGENTS.md) (person overlay,
+  <FILL_NAME>-specific)
+- Role details: `company/roles/<role>/`
 - Company baseline: root `/AGENTS.md`, `/ARCHITECTURE.md`,
   `/GLOSSARY.md`

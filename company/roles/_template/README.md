@@ -1,71 +1,72 @@
-# Role: <VYPLNIT_ROLE_NAME>
+# Role: <FILL_ROLE_NAME>
 
-**Scope:** <VYPLNIT_SCOPE>
+**Scope:** <FILL_SCOPE>
 
-Tahle složka definuje reusable role overlay. Konkrétní člověk na ni
-odkazuje z `company/colleagues/<jméno>/`.
+This folder defines a reusable role overlay. A specific person refers to it
+from `company/colleagues/<name>/`.
 
-## Co role dělá
+## What the role does
 
-<VYPLNIT_ROLE_NAME> ve AgentMint vede/zajišťuje:
+In the Organization, <FILL_ROLE_NAME> leads or ensures:
 
-- <VYPLNIT>
-- <VYPLNIT>
-- <VYPLNIT>
+- <FILL>
+- <FILL>
+- <FILL>
 
 ## Ownership
 
-Role vlastní:
+The role owns:
 
-- **Moduly / vrstvy:** <VYPLNIT>
-- **Výstupy:** <VYPLNIT>
-- **Rozhodování:** <VYPLNIT>
-- **Eskalace:** <VYPLNIT>
+- **Modules / layers:** <FILL>
+- **Outputs:** <FILL>
+- **Decisions:** <FILL>
+- **Escalation:** <FILL>
 
-## Typické moduly
+## Typical modules
 
-<VYPLNIT_MODULY>
+<FILL_MODULES>
 
-Příklad:
+Example:
 
-- `modules/<VYPLNIT>/` — <proč role tenhle modul potřebuje>
-- `modules/<VYPLNIT>/` — <proč>
+- `workspace/<FILL>/`: <why the role needs this module>
+- `workspace/<FILL>/`: <why>
 
-## Typické výstupy
+## Typical outputs
 
-- <VYPLNIT_VYSTUP>
-- <VYPLNIT_VYSTUP>
+- <FILL_OUTPUT>
+- <FILL_OUTPUT>
 
 ## Source of truth
 
-- Primární zdroj faktů: <VYPLNIT>
-- Pracovní systém / tasky: <VYPLNIT>
-- Dokumentace nebo wiki: <VYPLNIT>
+- Primary source of facts: <FILL>
+- Work system / tasks: <FILL>
+- Documentation or wiki: <FILL>
 
-## Handoff hranice
+## Handoff boundaries
 
-- **→ <jiná role>** — <kdy se handover děje a co se předává>
-- **← <jiná role>** — <kdy přebírá od ostatních>
-- **Eskalace na <role>** — <kdy role nesmí rozhodovat sama>
+- **→ <other role>**: <when the handover happens and what is handed over>
+- **← <other role>**: <when it takes over from others>
+- **Escalation to <role>**: <when the role must not decide on its own>
 
-## Multi-role poznámka
+## Multi-role note
 
-Pokud konkrétní člověk drží víc rolí, disambiguace patří do
-`company/colleagues/<člověk>/AGENTS.md`. Tady popisuj čistou roli, ne osobní mix.
+If a specific person holds several roles, the disambiguation belongs in
+`company/colleagues/<person>/AGENTS.md`. Describe the pure role here, not a
+personal mix.
 
-## Co NEdělat
+## What not to do
 
-- <hranice scope proti jiným rolím>
-- <citlivé nebo zakázané akce>
-- <typický scope creep>
+- <scope boundary against other roles>
+- <sensitive or forbidden actions>
+- <typical scope creep>
 
-## Odkazy
+## Links
 
-- Operační pravidla: `company/roles/<VYPLNIT_ROLE_NAME>/AGENTS.md`
+- Operating rules: `company/roles/<FILL_ROLE_NAME>/AGENTS.md`
 - Company baseline: root `/AGENTS.md`
-- Starter katalog: `company/roles/_starter/`
+- Starter catalogue: `company/roles/_starter/`
 
-## Stav
+## Status
 
-Základ funkční. Plné rozšíření role se doplňuje průběžně podle potřeby
-(viz `company/roles/TODO.md`).
+The basics work. The full role is filled in over time as needed (see
+`company/roles/TODO.md`).

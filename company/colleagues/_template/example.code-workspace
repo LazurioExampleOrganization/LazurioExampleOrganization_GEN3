@@ -1,12 +1,12 @@
 {
-  "//": "Tomášův AgentMint workspace. Root je celé super-repo, druhý folder je person overlay.",
+  "//": "Template for a per-person Lazurio Example Organization workspace. When an Organization is created from the template, the file is renamed to the company slug, e.g. example.code-workspace. Copy it to company/colleagues/<you>/ and under 'folders' change the 'name' of the second entry from '_template' to your OS user name. Open it in VS Code or Cursor via File -> Open Workspace from File.",
   "folders": [
     {
-      "name": "AgentMint",
+      "name": "Lazurio Example Organization",
       "path": "../../.."
     },
     {
-      "name": "tomas",
+      "name": "_template",
       "path": "."
     }
   ],
@@ -51,14 +51,9 @@
       "**/.gradle/**": true,
       "**/target/**": true
     },
-    "git.autoRepositoryDetection": "subFolders",
-    "git.detectSubmodules": true,
-    "git.detectSubmodulesLimit": 100,
-    "git.repositoryScanMaxDepth": 100,
-    "git.openRepositoryInParentFolders": "always"
+    "git.repositoryScanMaxDepth": 2
   },
   "extensions": {
     "recommendations": []
   }
 }
-

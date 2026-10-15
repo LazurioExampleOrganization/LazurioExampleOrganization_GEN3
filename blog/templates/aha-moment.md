@@ -1,6 +1,6 @@
 ---
 {
-  "title": "<VYPLNIT_TITLE>",
+  "title": "<FILL_TITLE>",
   "date": "YYYY-MM-DD",
   "status": "draft",
   "visibility": "internal",
@@ -15,16 +15,16 @@
 }
 ---
 
-# <VYPLNIT_TITLE>
+# <FILL_TITLE>
 
 ## Aha moment
 
-<Co jsme pochopili?>
+<What did we understand?>
 
-## Proč na tom záleží
+## Why it matters
 
-<Proč to má business, product, delivery, security nebo agentní dopad?>
+<Why does it have a business, product, delivery, security or agent impact?>
 
-## Co z toho plyne
+## What follows from it
 
-<Co se má změnit v práci týmu nebo agentů?>
+<What should change in the work of the team or the agents?>

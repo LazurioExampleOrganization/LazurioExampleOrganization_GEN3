@@ -1,209 +1,152 @@
-# AgentMint slovníček pojmů
+# Glossary of Lazurio Example Organization
 
-Tento dokument definuje klíčové pojmy AgentMint. Když pojem ovlivňuje
-rozhodnutí, experiment, peníze nebo agentní chování, nesmí zůstat jen v
-chatu. Kontrakt pro doplňování pojmů drží
+This document defines the key terms of the Organization. When a term affects
+a decision, an experiment, money or agent behaviour, it must not live only in
+a chat. The contract for adding terms is
 `lazurio.organization.json#extensions.legacy.glossary_contract`.
 
-## Doména AgentMint
+## Business domain
 
-### Mechanismus
+### Mechanism
 
-Opakovatelný způsob, jak vzniká online příjem. Mechanismus není konkrétní
-cizí značka, text, databáze ani účet. Je to model: nabídka, zákazník,
-kanál, provozní kroky, ekonomika a důvod, proč někdo platí.
+A repeatable way in which online income is created. A mechanism is not a
+particular foreign brand, text, database or account. It is a model: the offer,
+the customer, the channel, the operating steps, the economics and the reason
+why someone pays.
 
-### Adaptace
+### Adaptation
 
-Legální převedení mechanismu do vlastního kontextu AgentMint. Adaptace
-používá vlastní brand, vlastní obsah, vlastní účty, vlastní data a
-respektuje pravidla platforem.
+The legal transfer of a mechanism into the company's own context. An
+adaptation uses the company's own brand, content, accounts and data and
+respects the rules of the platforms.
 
 ### Experiment
 
-Malý měřitelný test hypotézy. Musí mít hypotézu, metriku, rozpočet, stop
-podmínku, ownera a zapsaný výsledek.
+A small, measurable test of a hypothesis. It has a hypothesis, a metric, a
+budget, a stop condition, an owner and a recorded result.
 
-### Důkaz
+### Evidence
 
-Evidence, která zvyšuje jistotu, že mechanismus funguje: reálná platba,
-konverze, odpověď trhu, auditelná metrika nebo opakovatelné pozorování.
-Pocit ani virální claim sám o sobě důkaz není.
+Something that raises confidence that a mechanism works: a real payment, a
+conversion, a market response, an auditable metric or a repeatable
+observation. A feeling or a viral claim is not evidence on its own.
 
 ### Playbook
 
-Ověřený postup, který lze opakovat. Do playbooku patří až mechanismus,
-který má dost evidence; hypotézy patří do research nebo experiments.
+A verified procedure that can be repeated. A mechanism enters a playbook only
+once it has enough evidence; hypotheses belong in research or experiments.
 
 ### Unit economics
 
-Základní ekonomika jedné jednotky výdělku: cena, náklad, čas
-agenta/člověka, akviziční náklad, marže a rizika.
+The basic economics of one unit of income: price, cost, agent and human time,
+acquisition cost, margin and risks.
 
 ### Guardrail
 
-Pravidlo, které chrání firmu před právním, reputačním, platformním nebo
-bezpečnostním problémem. U AgentMint jsou guardrails součástí každého
-experimentu.
+A rule that protects the company from legal, reputational, platform or
+security problems. Guardrails are part of every experiment.
 
-## GEN3 topologie a generace
+## Lazurio model
 
-### Conglomerate
+### Organization
 
-Kanonický anglický termín (česky pro trh: Konglomerát). Conglomerate je
-celek více Organizací pod jedním Launchpad rootem na jedné mašině
-(například `Conglomerate`). Definuje ho `launchpad.gen3.json`; mountuje
-`organizations/<org>/` a `personalspace/`. Není to business repo —
-Organizace v něm zůstávají oddělené access hranice.
+One company, one root repository, one GitHub Organization and one access
+boundary. It is defined by `lazurio.organization.json`
+(`company.gen3.json` is only its generated compatibility projection) and is
+mounted in a Lazurio Folder as `organizations/<slug>_GEN3/`. This repository
+is the root of Lazurio Example Organization. Inside an Organization live
+Teams, the `workspace/` layer of modules, the Organization-level
+`productionspace/` and the root application modules (Mission Control and the
+design system).
 
-### Organizace GEN3 / Organization GEN3
+### Lazurio Folder
 
-Jedna firma = jedno super-repo = jedna GitHub organizace = jedna access
-hranice. Definuje ji `lazurio.organization.json` (`company.gen3.json` je jen
-jeho generovaná kompatibilní projekce); v Launchpad rootu Conglomerate se
-mountuje jako `organizations/<slug>/`. Tohle repo je Organizace GEN3
-AgentMint, mount `organizations/LazurioExampleOrganization_GEN3`. Uvnitř Organizace žijí Teamy
-(logické N:M skupiny modulů a lidí), fyzická workspace vrstva pro kancelářské
-moduly, org-level `productionspace/` a moduly. Historické aliasy „Company
-Workspace GEN3“ a „Workspace GEN2“ (celé super-repo firmy) používej jen
-s přívlastkem jako historický odkaz (decision 0012).
+The folder on one Machine in which Lazurio keeps the Organizations a person
+works with (`organizations/`) and their private Personalspace. Organizations
+stay separate access boundaries inside it.
 
 ### Team
 
-Logická N:M skupina modulů a lidí uvnitř Organizace GEN3, stejný pojem jako
-GitHub Team; v obchodní řeči „digitální kancelář“ týmu nebo značky. Modul může
-patřit do více Teamů; chybějící membership používá deklarovaný default Team
-a productionspace repo do žádného Teamu nepatří. Team nemá vlastní adresář —
-je to logické grupování, ne složka.
-
-Kanonicky roster deklaruje `lazurio.organization.json#teams` a příslušnost
-modulu `module_slots[].teams` v `modules.manifest.json`. AgentMint zatím drží
-historické singulární aliasy z doby před Team refinementem:
-`lazurio.organization.json#extensions.legacy.workspaces` (jeden default)
-a `module_slots[].workspace`; do generované projekce `company.gen3.json` se
-promítají jako `workspaces` a `modules[].workspace`. Čti je
-jako deprecated wire klíče, které se do N:M Team modelu teprve převedou; význam
-je „modul patří default Teamu“.
+A logical, many-to-many group of modules and people inside an Organization,
+the same concept as a GitHub Team. A module can belong to several Teams. A
+Team has no directory of its own. The roster is declared in
+`lazurio.organization.json#teams` and a module's membership in
+`modules.manifest.json` (`module_slots[].teams`); which Teams can actually
+reach a module is decided by the GitHub grants. This Organization has a
+single Team, `workspace`, that covers every workspace module.
 
 ### Workspace
 
-Fyzická a logická kancelářská vrstva Organizace pro kancelářské (ne-produkční)
-moduly. Sdílí firemní kostru v `company/`, Mission Control, role/person
-overlaye, dokumentaci a Doctor-managed nested repo moduly; jejich logické
-grupování určují Teamy. AgentMint je single-team Organizace: má jediný default
-workspace se slugem `workspace`
-(`lazurio.organization.json#extensions.legacy.workspaces`), který pokrývá
-všechny moduly. Moduly jsou fyzicky mountované v `modules/` (decision 0023),
-ale logicky patří tomuto workspace/Teamu.
+The layer of the Organization's working (non-production) modules, mounted
+flat in `workspace/<module>/`. The GEN2 meaning of "workspace" (the whole
+company repository) corresponds to the Organization today; write "GEN2
+workspace" when you mean the old one.
 
-DISAMBIGUACE: GEN2 „workspace“ znamenal celé super-repo firmy — tomu v GEN3
-odpovídá pojem Organizace. Slovo Workspace bez přívlastku znamená vnitřní
-kancelářskou vrstvu Organizace; historické GEN2 použití piš vždy s přívlastkem
-„Workspace GEN2“. Názvy template rep (CompanyWorkspaceTemplate,
-CompaniesWorkspaceTemplate) jsou historické.
+### Module
 
-### Workspace GEN2
-
-Předchozí generace: standalone super-repo s in-tree Launchpadem a
-doctorem per firma. Tato veřejná Organizace začíná vyčištěným snapshotem
-AgentMint GEN2 baseline bez předchozí Git historie.
-
-### Modul / Module
-
-Doctor-managed gitignored nested Git repo (`modules/<slug>/`, plus
-root-level `infra/` a `mission-control/`) s jedním doménovým source of
-truth, popsané v root `modules.manifest.json` (`company.gen3.json#modules`
-se z něj jen generuje). Modul patří do jednoho nebo více Teamů (N:M);
-příslušnost deklaruje definice modulu (kanonicky `module_slots[].teams`, dnes
-ještě přes historický alias `module_slots[].workspace`). Nejmenší jednotka
-hierarchie Conglomerate → Organizace → Team → Modul. Super-repo netrackuje
-obsah modulů ani gitlink pointery. Chybějící modul není automaticky chyba;
-rozlišuj stavy `available`, `missing_access`, `planned_slot`.
+A Git repository with `lazurio.module.json` in its root and one domain source
+of truth, declared as a slot in `modules.manifest.json` and kept up to date by
+`lazurio update`. Workspace modules live in `workspace/<module>/`; root
+modules (`infra`, `mission-control`, `design-system`) next to it. The root
+never tracks module contents or gitlink pointers. A module with an App follows
+the Lazurio Module Standard; a document module has no App. A missing module is
+not automatically an error: its state is `available`, `missing_access` or
+`planned_slot`.
 
 ### Productionspace
 
-Org-level vrstva nasazených/produkčních systémů Organizace, mimo workspace
-vrstvu. Modul sem patří, jakmile je reálně **nasazený** (na serveru, s vlastním
-CI/CD) nebo **veřejný** (dokumentace, web) — ne když běží jen lokálně nebo přes
-Organization Host. Verze se sem **povyšuje** z workspace (dílny pod univerzálním
-Launchpad patternem) poté, co je v dílně označená za dobrou (např. v1.4). V
-productionspace **není univerzální pattern**: každý produkční modul má vlastní,
-historicky navrženou release/CI-CD pipelinu a vlastní pravidla. Mountuje se jako
-`productionspace/` vedle workspace mountpointu; patří celé Organizaci, ne jednomu
-Teamu, a řídí se vlastními production pravidly (decision 0014). **Není to
-Organization Host** — ten je jen runtime pro vzdálený přístup k workspace dílně,
-ne deploy/produkční stage. AgentMint zatím productionspace nemá; pojem platí pro
-GEN3 topologii.
+The Organization-level layer of deployed or public production systems, next
+to the workspace layer and outside any Team. A module moves there once it is
+really deployed with its own release pipeline. This Organization has none
+yet.
 
 ### Personalspace
 
-Privátní osobní repo/mount vlastníka mašiny, mountované v Launchpad rootu
-jako `personalspace/` mimo sdílené GitHub organizace. Drží osobní kontext
-vlastníka; nikdy nedrží firemní pravdu žádné Organizace.
+The private personal space of one person, outside every GitHub Organization.
+It never holds company truth.
 
-### Launchpad root
+### Launchpad
 
-Kořenová složka Conglomerate na jedné mašině, definovaná
-`launchpad.gen3.json`. Mountuje `organizations/<org>/` a `personalspace/`,
-hostí shared Launchpad GEN3 a Guide a orchestruje doctory Organizací. Na
-jedné mašině je právě jeden Launchpad root; není to fork template repa, ale
-přímý klon/pull sdíleného Conglomerate Launchpadu z veřejného Lazurio rootu
-(decision 0030). Rozhraní nad rootem popisuje pojem Launchpad GEN3.
-
-### Launchpad GEN3
-
-Builder-first přehledové a orchestrační rozhraní Conglomerate. Dynamicky
-načítá Organizace z `launchpad.gen3.json` a jejich moduly a Teamy z
-`lazurio.organization.json` + `modules.manifest.json` (starší čtečky z
-generované projekce `company.gen3.json`) a ukazuje stav: co je lokálně
-naklonované a stavy modulů `available` / `missing_access` / `planned_slot`.
-Je to místo, kde builder na své mašině vidí a spouští, co je v lokálně
-naklonovaném Conglomerate — spolehlivé přehledové rozhraní, ne dev-first
-konzole. Builder-first záměr reviduje starší CEO-first formulaci (decision
-0047 nad 0024); executive/admin přehled řeší samostatný Dashboard surface.
-Discovery, health, spouštění aplikací a orchestrace doctorů jsou
-control-plane mechanika pod tímto principem, ne jeho definice.
+The part of Lazurio that shows the Organizations and their modules on a
+Machine and starts their Apps from `main` or from a worktree. It reads
+`lazurio.organization.json`, `modules.manifest.json` and each module's
+`lazurio.module.json`.
 
 ### Mission Control
 
-Plánovací a orchestrační centrum workspace. U AgentMint nested repo
-`mission-control/`: YAML plány drží kontext, scope a akceptační kritéria;
-implementační kroky žijí v `TODO.tasks.json`.
-
-### Doctor
-
-CLI pro sync/push doctor-managed nested rep a diagnostiku workspace
-(`company/scripts/doctor.sh`). Přechodný multiplayer flow, dokud ho
-nenahradí Lazurio CLI.
+The planning centre of the Organization: plans hold the context, scope and
+acceptance criteria, and tasks hold the implementation steps that point back
+to a plan. Today it is the in-tree `mission-control/` layer with the root task
+ledgers; the migration moves it to Mission Control v3 with its own data
+repository.
 
 ### Partial workspace
 
-Stav lokálního klonu Organizace, kdy některý modul není naklonovaný
-(`available`, `missing_access`, `planned_slot`). Je to záměr, ne chyba Git
-workflow.
+A local clone of the Organization in which some modules are not cloned
+(`missing_access`, `planned_slot`). It is intended, not a Git workflow error.
 
 ### Skill
 
-Kanonický formát opakovatelného agentního postupu. Žije v
-`.agents/skills/<název>/SKILL.md` (`.claude/skills` je kompatibilní
-symlink); index drží `.agents/skills/manifest.json`.
+The canonical format of a repeatable agent procedure, in
+`.agents/skills/<name>/SKILL.md` with its index in
+`.agents/skills/manifest.json`; `.claude/skills/` is the mirror.
 
-## Role
+## Roles
 
 ### Founder
 
-Role, která drží směr firmy, rozhoduje o riziku, rozpočtu a tom, který
-mechanismus se testuje dál. Strojový popis:
+Holds the direction of the company and decides on risk, budget and which
+mechanism is tested further. Machine description:
 `company/roles/founder.role.json`.
 
 ### Research operator
 
-Role, která mapuje online mechanismy, rozkládá je na model a připravuje
-evidence pro rozhodnutí. Strojový popis:
+Maps online mechanisms, breaks them down into a model and prepares the
+evidence for decisions. Machine description:
 `company/roles/research-operator.role.json`.
 
 ### Experiment operator
 
-Role, která převádí hypotézu na měřitelný test, hlídá guardrails a
-zapisuje výsledek. Strojový popis:
+Turns a hypothesis into a measurable test, watches the guardrails and records
+the result. Machine description:
 `company/roles/experiment-operator.role.json`.

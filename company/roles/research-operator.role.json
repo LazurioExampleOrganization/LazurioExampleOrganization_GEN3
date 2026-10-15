@@ -1,11 +1,11 @@
 {
   "role": "research-operator",
   "display_name": "Research operator",
-  "purpose": "Mapuje online mechanismy a skládá evidenci, co stojí za test; odděluje mechanismus, důkaz a riziko.",
+  "purpose": "Maps online mechanisms and assembles the evidence for what is worth testing; keeps mechanism, evidence and risk apart.",
   "default_modules": [
-    "modules/research",
-    "modules/knowledgebase",
-    "modules/playbooks"
+    "workspace/research",
+    "workspace/knowledgebase",
+    "workspace/playbooks"
   ],
   "allowed_operations": [
     "write_research_outputs",

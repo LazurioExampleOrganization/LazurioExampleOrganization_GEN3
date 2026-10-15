@@ -1,290 +1,295 @@
-# Starter role katalog
+# Starter role catalogue
 
-Tahle složka není aktivní role overlay. Je to katalog ověřených
-role archetypů, které může agent při setupu nové firmy zkopírovat do
-`company/roles/<role>/` a přepsat podle reality firmy.
+This folder is not an active role overlay. It is a catalogue of proven role
+archetypes that an agent can copy into `company/roles/<role>/` when setting up
+a new company, and then rewrite to match the company's reality.
 
-Proč tu je:
+Why it is here:
 
-- nová firma nemusí role vymýšlet od nuly
-- agent má jasné otázky na ownera firmy
-- person overlays v `company/colleagues/<člověk>/` mají na co odkazovat
-- `modules.manifest.json` může používat stabilní `required_roles`
+- a new company does not have to invent roles from scratch
+- the agent has clear questions for the company owner
+- person overlays in `company/colleagues/<person>/` have something to refer to
+- `modules.manifest.json` can use stable `required_roles`
 
-## Jak katalog používat
+## How to use the catalogue
 
-1. Nejdřív se zeptej ownera firmy, jaké práce ve firmě skutečně existují.
-2. Vyber jen archetypy, které mají reálného ownera nebo jasný budoucí use
-   case.
-3. Zkopíruj `_template/` do `company/roles/<role>/`.
-4. Použij níže uvedené archetypy jako obsahový vzor pro `README.md` a
+1. First ask the company owner which kinds of work really exist in the
+   company.
+2. Choose only archetypes that have a real owner or a clear future use case.
+3. Copy `_template/` to `company/roles/<role>/`.
+4. Use the archetypes below as a content pattern for `README.md` and
    `AGENTS.md`.
-5. Zapiš finální seznam do `company/roles/README.md`.
-6. Pro každého člověka v `company/colleagues/<člověk>/` nastav primární roli a
-   případné multi-role disambiguace.
+5. Write the final list into `company/roles/README.md`.
+6. For each person in `company/colleagues/<person>/`, set the primary role and
+   any multi-role disambiguation.
 
-Nezakládej prázdné role jen proto, že jsou v katalogu. Role bez ownera,
-výstupů a handoff hranic je šum.
+Do not create empty roles just because they are in the catalogue. A role
+without an owner, outputs and handoff boundaries is noise.
 
-## Starter archetypy
+## Starter archetypes
 
 ### `founder` / `ceo`
 
-**Scope:** strategie, priority, obchodní směr, větší rozhodnutí, risk.
+**Scope:** strategy, priorities, business direction, larger decisions, risk.
 
-Typické vlastní:
+Typically owns:
 
-- firemní strategie a rozhodovací rámec
-- obchodní a finanční priority
-- schvalování rizikových nebo strategických závazků
+- company strategy and the decision framework
+- business and financial priorities
+- approval of risky or strategic commitments
 - executive reporting
 
-Typické výstupy:
+Typical outputs:
 
-- rozhodnutí a jejich důvody
-- priorita na další období
-- stručný executive summary
-- schválení / zamítnutí výjimky
+- decisions and their reasons
+- the priority for the next period
+- a short executive summary
+- approval or rejection of an exception
 
 Handoff:
 
-- předává směr `technical-lead`, `operations`, `sales` nebo jiným ownerům
-- přebírá eskalace, když rozhodnutí přesahuje jednu roli
+- hands direction to `technical-lead`, `operations`, `sales` or other owners
+- takes escalations when a decision goes beyond one role
 
-Co NEdělat:
+What not to do:
 
-- neřešit detailní implementaci místo ownera role
-- neschvalovat citlivé závazky bez zdrojových podkladů
+- do not work on detailed implementation in place of the role owner
+- do not approve sensitive commitments without source material
 
 ### `technical-lead`
 
-**Scope:** technická architektura, delivery kvalita, engineering pravidla.
+**Scope:** technical architecture, delivery quality, engineering rules.
 
-Typické vlastní:
+Typically owns:
 
-- technické rozhodování a architektura
-- kvalita codebase / technického produktu
-- incidenty a technická rizika
-- napojení technických modulů na business kontext
+- technical decisions and architecture
+- quality of the codebase or technical product
+- incidents and technical risks
+- connecting technical modules to the business context
 
-Typické výstupy:
+Typical outputs:
 
 - technical decision / ADR
-- review rizik před změnou
-- implementační plán
-- incident summary a follow-up
+- risk review before a change
+- implementation plan
+- incident summary and follow-up
 
 Handoff:
 
-- přebírá priority od `founder` / `product-owner`
-- předává zákaznický nebo obsahový dopad `product-owner` / `marketing`
-- eskaluje obchodní dopad `founder`
+- takes priorities from `founder` / `product-owner`
+- hands customer or content impact to `product-owner` / `marketing`
+- escalates business impact to `founder`
 
-Co NEdělat:
+What not to do:
 
-- nepřebírat business rozhodnutí jen proto, že mají technický detail
-- neukládat interní strategii do veřejné dokumentace
+- do not take over business decisions just because they have a technical
+  detail
+- do not put internal strategy into public documentation
 
 ### `product-owner`
 
-**Scope:** produktová / službová identita, dokumentace, zákaznický tok
-informací.
+**Scope:** product or service identity, documentation, the flow of
+information to customers.
 
-Typické vlastní:
+Typically owns:
 
-- co firma nabízí a jak se to popisuje
-- zákaznická dokumentace
-- názvy produktů/služeb a jejich konzistence
-- zpětná vazba od zákazníků do roadmapy
+- what the company offers and how it is described
+- customer documentation
+- product and service names and their consistency
+- customer feedback into the roadmap
 
-Typické výstupy:
+Typical outputs:
 
-- update dokumentace
-- rozhodnutí o pojmenování
-- customer-facing vysvětlení
-- zadání pro marketing nebo technický tým
+- documentation update
+- naming decision
+- customer-facing explanation
+- brief for marketing or the technical team
 
 Handoff:
 
-- přebírá technické změny od `technical-lead`
-- předává komunikační potřeby `marketing`
-- přebírá feedback od `sales`, `support`, `delivery`
+- takes technical changes from `technical-lead`
+- hands communication needs to `marketing`
+- takes feedback from `sales`, `support`, `delivery`
 
-Co NEdělat:
+What not to do:
 
-- nevymýšlet technická fakta bez technického ownera
-- nemíchat interní reasoning do veřejné dokumentace
+- do not invent technical facts without the technical owner
+- do not mix internal reasoning into public documentation
 
 ### `sales`
 
-**Scope:** vztahy s klienty, pipeline, nabídky, follow-upy, CRM/task systém.
+**Scope:** client relationships, pipeline, offers, follow-ups, CRM or task
+system.
 
-Typické vlastní:
+Typically owns:
 
-- nové leady a příležitosti
-- nabídky a follow-up komunikace
-- klientská očekávání
-- obchodní forecast a stav pipeline
+- new leads and opportunities
+- offers and follow-up communication
+- client expectations
+- the sales forecast and the state of the pipeline
 
-Typické výstupy:
+Typical outputs:
 
-- shrnutí příležitosti
-- follow-up e-mail nebo zpráva
-- podklady pro nabídku
-- handoff do delivery / operations
+- opportunity summary
+- follow-up email or message
+- material for an offer
+- handoff to delivery / operations
 
 Handoff:
 
-- předává technické nejasnosti `technical-lead` nebo `delivery`
-- předává fakturaci / administrativu `operations`
-- předává case-study potenciál `marketing`
+- hands technical uncertainties to `technical-lead` or `delivery`
+- hands invoicing and administration to `operations`
+- hands case-study potential to `marketing`
 
-Co NEdělat:
+What not to do:
 
-- neslibovat technické, právní ani finanční závazky bez ownera
-- neukládat klientská data mimo schválený source-of-truth
+- do not promise technical, legal or financial commitments without the owner
+- do not store client data outside the approved source of truth
 
 ### `operations`
 
-**Scope:** administrativa, provoz, finance, logistika, koordinace práce.
+**Scope:** administration, operations, finance, logistics, coordination of
+work.
 
-Typické vlastní:
+Typically owns:
 
-- provozní checklisty a stav administrativy
-- fakturace / objednávky / dodávky, pokud to firma používá
-- koordinace interních termínů
-- provozní reporting
+- operating checklists and the state of administration
+- invoicing, orders and deliveries, if the company uses them
+- coordination of internal deadlines
+- operational reporting
 
-Typické výstupy:
+Typical outputs:
 
-- provozní stav
-- checklist dokončení
-- podklady pro fakturaci nebo dodávku
-- upozornění na blokér
+- operating status
+- completion checklist
+- material for invoicing or delivery
+- a warning about a blocker
 
 Handoff:
 
-- přebírá podklady od `sales` nebo `delivery`
-- eskaluje cashflow/risk `founder`
-- předává provozní změny do `wiki` nebo jiné interní vrstvy
+- takes material from `sales` or `delivery`
+- escalates cash flow and risk to `founder`
+- hands operational changes to `wiki` or another internal layer
 
-Co NEdělat:
+What not to do:
 
-- nerozhodovat strategii místo ownera
-- necommitovat finanční nebo osobní data do Gitu, pokud tam nepatří
+- do not decide strategy in place of the owner
+- do not commit financial or personal data to Git when it does not belong
+  there
 
 ### `marketing`
 
-**Scope:** obsah, kampaně, case studies, brand konzistence, veřejná
-komunikace.
+**Scope:** content, campaigns, case studies, brand consistency, public
+communication.
 
-Typické vlastní:
+Typically owns:
 
-- publikovatelný obsah
-- case studies a reference
-- newslettery, sociální sítě, webové texty
-- konzistence s tone of voice a design systémem
+- publishable content
+- case studies and references
+- newsletters, social networks, website copy
+- consistency with the tone of voice and the design system
 
-Typické výstupy:
+Typical outputs:
 
-- návrh postu / článku / newsletteru
-- brief pro grafiku nebo web
-- case-study osnova
-- repurposing existujícího obsahu
+- a draft post, article or newsletter
+- a brief for graphics or the website
+- a case-study outline
+- repurposing of existing content
 
 Handoff:
 
-- přebírá fakta od `product-owner`, `sales`, `delivery`
-- ověřuje technická tvrzení s `technical-lead`
-- u klientských referencí čeká na schválení ownera vztahu
+- takes facts from `product-owner`, `sales`, `delivery`
+- checks technical claims with `technical-lead`
+- for client references, waits for approval from the owner of the
+  relationship
 
-Co NEdělat:
+What not to do:
 
-- nevymýšlet reference, výsledky ani klientská tvrzení
-- neměnit design systém bez `design-system-lookup`
+- do not invent references, results or client claims
+- do not change the design system without `design-system-lookup`
 
 ### `delivery`
 
-**Scope:** doručení služby/projektu zákazníkovi, technická nebo procesní
-realizace, feedback z praxe.
+**Scope:** delivering a service or project to the customer, technical or
+process implementation, feedback from practice.
 
-Typické vlastní:
+Typically owns:
 
-- konkrétní klientský/projektový průběh
-- implementační checklist
-- předávka výsledku
-- zpětná vazba do produktu, dokumentace nebo provozu
+- the course of a specific client or project
+- implementation checklist
+- handover of the result
+- feedback into the product, documentation or operations
 
-Typické výstupy:
+Typical outputs:
 
-- stav projektu / zakázky
-- technický nebo procesní návrh realizace
-- handoff do operations
-- feedback pro `product-owner` nebo `technical-lead`
+- status of a project or order
+- technical or process proposal for the implementation
+- handoff to operations
+- feedback for `product-owner` or `technical-lead`
 
 Handoff:
 
-- přebírá schválený scope od `sales`
-- předává provozní detaily `operations`
-- eskaluje produktový nebo technický problém `product-owner` /
+- takes the approved scope from `sales`
+- hands operational details to `operations`
+- escalates a product or technical problem to `product-owner` /
   `technical-lead`
 
-Co NEdělat:
+What not to do:
 
-- neměnit rozsah zakázky bez obchodního ownera
-- neřešit systémové bugy jen lokálním workaroundem
+- do not change the scope of an order without the business owner
+- do not solve system bugs with a local workaround only
 
 ### `external-collaborator`
 
-**Scope:** omezené, jasně zadané úkoly pro externistu, brigádníka nebo
-dočasného spolupracovníka.
+**Scope:** limited, clearly defined tasks for a contractor, a part-time
+helper or a temporary collaborator.
 
-Typické vlastní:
+Typically owns:
 
-- konkrétní task s jasným zadáním
-- práce jen ve schválených modulech nebo souborech
-- výstup připravený k review
+- a specific task with a clear brief
+- work only in approved modules or files
+- output ready for review
 
-Typické výstupy:
+Typical outputs:
 
-- návrh změny
-- zpracovaná data / obsah / rešerše
-- krátký handoff pro interního ownera
+- a proposed change
+- processed data, content or research
+- a short handoff for the internal owner
 
 Handoff:
 
-- přebírá zadání od interního ownera
-- výstup vždy předává internímu ownerovi k review
+- takes the brief from the internal owner
+- always hands the output to the internal owner for review
 
-Co NEdělat:
+What not to do:
 
-- nepředpokládat plný workspace access
-- nepracovat s citlivými daty bez explicitního scope
-- neposílat výstupy externě bez interního schválení
+- do not assume full workspace access
+- do not work with sensitive data without an explicit scope
+- do not send outputs outside without internal approval
 
-## Otázky pro ownera firmy
+## Questions for the company owner
 
-Při setupu se ptej krátce:
+During setup, ask briefly:
 
-- Kdo ve firmě rozhoduje strategii a priority?
-- Kdo vlastní technické / odborné rozhodování?
-- Kdo komunikuje s klienty a drží pipeline?
-- Kdo drží provoz, fakturaci, administrativu nebo logistiku?
-- Kdo vlastní dokumentaci, produkt/službu a veřejné texty?
-- Kdo doručuje práci zákazníkovi?
-- Existují externisté nebo brigádníci s omezeným přístupem?
-- Které role může držet jeden člověk současně?
-- Kdy se agent má doptat na aktivní roli místo hádání?
+- Who decides strategy and priorities in the company?
+- Who owns technical or expert decisions?
+- Who talks to clients and holds the pipeline?
+- Who runs operations, invoicing, administration or logistics?
+- Who owns the documentation, the product or service and the public copy?
+- Who delivers the work to the customer?
+- Are there contractors or part-time helpers with limited access?
+- Which roles can one person hold at the same time?
+- When should the agent ask about the active role instead of guessing?
 
-## Minimální dobrý role model
+## A minimal good role model
 
-Pro malou firmu často stačí:
+For a small company this is often enough:
 
 - `founder`
-- `technical-lead` nebo odborný owner služby
+- `technical-lead` or an expert owner of the service
 - `sales`
 - `operations`
-- `external-collaborator`, pokud firma pracuje s externisty
+- `external-collaborator`, if the company works with contractors
 
-Marketing, product-owner a delivery se mohou sloučit s jinou rolí, dokud
-firma nemá dost lidí nebo dost práce na jejich oddělení.
+Marketing, product-owner and delivery can be merged into another role until
+the company has enough people or enough work to separate them.

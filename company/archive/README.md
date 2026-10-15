@@ -1,51 +1,50 @@
 # Archive
 
-Složka `company/archive/` je určená pro **read-only** nebo **odvozený**
-archivní obsah AgentMint.
+The `company/archive/` folder is meant for **read-only** or **derived**
+archive content of the Organization.
 
-Typické příklady:
+Typical examples:
 
-- exporty z Google Drive
-- archivy e-mailů
-- CRM snapshoty
-- jednorázové mirror datasety
-- historické snapshoty dokumentace nebo business dat
+- exports from Google Drive
+- email archives
+- CRM snapshots
+- one-off mirror datasets
+- historical snapshots of documentation or business data
 
-## Důležitá pravidla
+## Important rules
 
-- `company/archive/` **není automaticky** source of truth
-- pokud je obsah jen zrcadlený, musí být jasné, **odkud pochází**
-- citlivé zdroje se sem **nemají kopírovat** bez jasného důvodu a
-  pravidel
-- při commitu archivních dat vždy pochyb, jestli opravdu patří do
-  Gitu, nebo jen do lokálního backup flow
+- `company/archive/` is **not automatically** a source of truth
+- if the content is only mirrored, it must be clear **where it comes from**
+- sensitive sources **should not be copied** here without a clear reason and
+  rules
+- when committing archive data, always question whether it really belongs in
+  Git or only in a local backup flow
 
-## Retention a GDPR
+## Retention and GDPR
 
-Archive může obsahovat **osobní údaje** (kontakty, e-maily, CRM
-snapshoty) a podléhá GDPR. Pravidla:
+The archive may contain **personal data** (contacts, emails, CRM snapshots)
+and is subject to the GDPR. Rules:
 
-- Nekopíruj sem osobní data bez jasného účelu a právního základu.
-- Pokud kolega (nebo klient) požádá o smazání, musíš mít proces, jak
-  to z Gitu odstranit včetně historie (BFG repo-cleaner nebo podobný).
-- Při odchodu kolegy z firmy rozhodnout, co se děje s archivními daty
-  souvisejícími s jeho prací.
+- Do not copy personal data here without a clear purpose and legal basis.
+- If a colleague (or a client) asks for deletion, you must have a process to
+  remove it from Git including the history (BFG Repo-Cleaner or similar).
+- When a colleague leaves the company, decide what happens to the archive
+  data related to their work.
 
-## Kategorie archivního obsahu
+## Categories of archive content
 
-Doporučujeme udržovat tři kategorie:
+We recommend keeping three categories:
 
-- **source archive** — kopie originálního zdroje (např. .mbox export
-  e-mailů), needitovatelné
-- **working archive** — data, která se ještě zpracovávají (např.
-  rozparsovaný e-mail archiv pro analýzu)
-- **derived archive** — odvozené datasety (např. summary reporty
-  ze starého CRM)
+- **source archive**: a copy of the original source (for example an .mbox
+  export of emails), not editable
+- **working archive**: data that is still being processed (for example a
+  parsed email archive for analysis)
+- **derived archive**: derived datasets (for example summary reports from an
+  old CRM)
 
-## Co `company/archive/` NENÍ
+## What `company/archive/` is not
 
-- odkladiště pro nezařazené soubory (ty patří do `playgrounds/` nebo
-  `tmp/` a jsou gitignored)
-- kopie aktuální produkční databáze
-- long-term dokument store (ten patří do `modules/documentation/`,
-  `modules/wiki/`, `modules/knowledgebase/` podle scope)
+- a dumping ground for unsorted files (those belong in `playgrounds/` or
+  `tmp/` and are gitignored)
+- a copy of the current production database
+- a long-term document store (that belongs in `workspace/knowledgebase/`)

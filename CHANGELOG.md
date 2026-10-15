@@ -1,92 +1,59 @@
-# Changelog — `AgentMint/`
+# Changelog
 
-Datumové verze: `YYYYMMDD`. Tento changelog drží doručené významné změny
-super-repa firmy.
+Date versions: `YYYYMMDD`. This changelog records notable changes delivered
+to the Organization root. Modules keep their own changelogs.
+
+## 20261016
+
+GEN3 migration, plan EX-0001. Every step is a public pull request with a
+benchmark row in `MIGRATION.md`.
+
+### Changed
+
+- The Organization has its own identity: display name "Lazurio Example
+  Organization", module port pool 25300–25399, and a GitHub binding of the
+  Organization, the root repository and the default Team verified by id.
+- Modules moved from `modules/` to the flat `workspace/` layer; slots declare
+  `teams` and `git.url`. The update model is `standalone`: the Organization
+  has no template upstream.
+- Root CI checks the Organization manifest, the projection parity and the
+  skill mirror with a pinned commit of the public Lazurio Core.
+- The root is written in English: rules, map, glossary, manual, roles,
+  colleague overlays, agent knowledge, blog and the manifest text. Fictional
+  people have international names (Alex Morgan, Sam Taylor, Robin Lee).
+
+### Removed
+
+- The GEN2 doctor, sync and bootstrap scripts, the machine setup notes and
+  eleven GEN2 skills; Lazurio replaces them. `.claude/skills` is a real mirror
+  instead of a symlink.
+- The Organization guide (`guide/`); newcomers use the public Lazurio guide.
+- The redirect stubs `ARCHITECTURE.md` and `manual/WORKSPACE_MANUAL.md`.
+- The research artefacts in `company/archive/derived/` and
+  `company/agents/reference/`; they live in the research module now.
 
 ## 20261015
 
-### Změněno
+### Changed
 
-- Organizace publikovaná jako veřejná referenční Organizace Lazuria
-  `LazurioExampleOrganization`: čerstvá Git historie z vyčištěného snapshotu
-  GEN2 baseline. Lidé a firmy v datech jsou fiktivní; odkazy na jiné
-  Organizace a jejich privátní repozitáře byly odstraněny. Starší záznamy
-  níže popisují fiktivní historii AgentMintu před tímto snapshotem.
+- Published as Lazurio's public reference Organization
+  `LazurioExampleOrganization`, with a fresh Git history from a cleaned
+  snapshot of the GEN2 baseline. People and companies in the data are
+  fictional; references to other Organizations and their private repositories
+  were removed.
 
-## 20260612
+## Before 20261015: GEN2 history (summary)
 
-### Změněno
-
-- AgentMint se in-place konvertoval z Workspace GEN2 na Organizaci GEN3
-  (rehearsal celé migrační pipeline):
-  nový strojový model `company.gen3.json` + root `modules.manifest.json`,
-  `company/team/` -> `company/colleagues/`, kanonické skills v
-  `.agents/skills/`, maintenance manuál v `manual/` s migračním runbookem,
-  in-tree Launchpad GEN2 nahrazený redirectem na Launchpad root a root
-  dokumenty přepsané pro GEN3 (MAP/ARCHITECTURE/WORKSPACE_MANUAL jsou
-  redirect stuby).
-
-## 20260608
-
-### Změněno
-
-- Skilly `dobre-rano` a `dobrou-noc` nově používají zpřísněný GEN2 denní Git
-  flow: ráno se latest pulluje i při dirty `main` přes lokální safety stash a
-  večer se bezpečně commitovatelné změny posílají na GitHub.
-- `dobrou-noc` rozlišuje malé nízkorizikové drobnosti pro direct push na
-  `main` a větší nebo review-sensitive balíky pro PR.
-
-### Dopad
-
-- AgentMint ranní/večerní rutina chrání lokální WIP při syncu a zároveň
-  nenechává hotové commitovatelné změny jen lokálně.
-
-## 20260523
-
-### Přidáno
-
-- Přidán root `CLAUDE.md` jako nativní Claude Code bootstrap, který odkazuje na
-  `AGENTS.md` a povinný preflight.
-- Založena GitHub organizace/repozitáře pro AgentMint: super-repo `AgentMint`
-  a nested repo moduly `knowledgebase`, `research`, `experiments`, `playbooks`,
-  `automations`, `content`, `finance`.
-- Přepnuta modulová vrstva na nested repo pattern: `modules/*` jsou nested Git
-  repozitáře spravované doctorem, ne Git submoduly.
-- Přidán sdílený skill `agent-execution-discipline` pro netriviální kód,
-  dokumentaci, research postupy a experiment workflow.
-- Vybrán název **Mission Control** pro lokální plánovací a orchestrační centrum
-  AgentMintu.
-- Přidán planned slot `modules/mission-control/` a základní kontrakt pro
-  YAML-first plánování.
-
-### Dopad
-
-- Claude Code má jasný vstup do workspace bez druhé kopie agentních pravidel;
-  Doctor nově hlídá, že `CLAUDE.md` zůstává napojený na `AGENTS.md`.
-- Super-repo nedrží `160000` gitlink pointery ani `.gitmodules`; eliminuje se
-  běžný konflikt pointerů na `modules/`.
-- Reálný access k modulům se řídí SSH/GitHub právy a `git.url` v manifestu.
-- Agent má jednotný guardrail: nejdřív pojmenovat předpoklady a evidence,
-  potom držet nejmenší bezpečný krok, chirurgický diff a ověřitelný výsledek.
-- Feature kontext má žít v YAML souborech Mission Control; implementační práce
-  zůstává v Git task ledgerech s traceability zpět na lokální plán.
-
-## 20260522
-
-### Přidáno
-
-- Založen local-only GEN2 workspace `AgentMint` z aktualizovaného
-  Lazurio company template bez GitHub remote.
-- Nastaveny root dokumenty pro misi: hledat, modelovat, testovat a škálovat
-  legální online revenue mechanismy pro AI agenty.
-- Přidány plánované module slots: `research`, `experiments`, `playbooks`,
-  `automations`, `content`, `finance`.
-- Založeny role `founder`, `research-operator`, `experiment-operator` a
-  person overlay `jannovak`.
-
-### Dopad
-
-- Agent má jasný pracovní rámec: kopírovat mechanismus, ne cizí identitu nebo
-  data.
-- Workspace je připravený pro první výzkumné a experimentální tasky bez
-  synchronizace na GitHub.
+The fictional company was set up on 2026-05-22 as a local GEN2 workspace from
+a Lazurio company template: root documents for its mission (find, model, test
+and scale legal online revenue mechanisms for AI agents), the roles
+`founder`, `research-operator` and `experiment-operator`, the first person
+overlay and planned module slots. On 2026-05-23 it got its GitHub repositories,
+nested module repositories instead of submodules, the
+`agent-execution-discipline` skill, a `CLAUDE.md` bootstrap and Mission
+Control as its YAML-first planning layer. In early June 2026 the daily
+morning and evening routines were tightened, and on 2026-06-12 the workspace
+was converted in place to an Organization GEN3 with the machine model
+`company.gen3.json`, the root `modules.manifest.json`, colleague overlays in
+`company/colleagues/` and canonical skills in `.agents/skills/`. That history
+is not part of this repository.

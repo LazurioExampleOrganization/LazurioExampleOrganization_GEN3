@@ -1,56 +1,57 @@
-# Shared Agent Docs
+# Shared agent docs
 
-Složka `company/agents/` je **sdílená agentní knihovna** pro celý
-AgentMint workspace.
+The `company/agents/` folder is the **shared agent library** for the whole
+Organization workspace.
 
-Je to **knowledge vrstva** nad `company/colleagues/` a `company/roles/`, ne
-jejich náhrada.
+It is a **knowledge layer** above `company/colleagues/` and `company/roles/`,
+not a replacement for them.
 
-## Rozdělení
+## Layout
 
-- `runbooks/` — **LEGACY slot**, default prázdný. V GEN2 jsou
-  kanonickým formátem pro opakovatelné postupy **skills**
-  (`.claude/skills/`), ne runbooks. Slot je zachovaný jen kvůli
-  konzistenci struktury.
-- `reference/` — hlubší technické a provozní mapy. Knowledge ke
-  konzultaci, ne procesy k vykonání.
-- `voice/` — komunikační guidance, tone of voice pro e-maily,
-  task-manager zprávy, announcementy. **Single source of
-  truth** pro tón — neduplikuj.
-- `handoffs/` — self-contained briefingy pro delegované one-off task
-  sessions. Každý handoff je prompt, který agent přečte a vykoná bez
-  dalšího kontextu. Po dokončení se handoff smaže.
+- `runbooks/`: **LEGACY slot**, empty by default. **Skills**
+  (`.agents/skills/`, mirrored to `.claude/skills/`) are the canonical format
+  for repeatable procedures, not runbooks. The slot is kept only for a
+  consistent structure.
+- `reference/`: deeper technical and operational maps. Knowledge to consult,
+  not processes to carry out.
+- `voice/`: communication guidance, tone of voice for emails, task manager
+  messages and announcements. The **single source of truth** for tone: do
+  not duplicate it.
+- `handoffs/`: self-contained briefings for delegated one-off task sessions.
+  Each handoff is a prompt that an agent reads and carries out without
+  further context. The handoff is deleted when it is done.
 
-## Vztah k skills
+## Relation to skills
 
-V GEN2 jsou **skills** (v `/.claude/skills/`) kanonický formát pro
-opakovatelné postupy, protože je Claude Code umí přímo invokovat.
+**Skills** (in `.agents/skills/`, mirrored to `.claude/skills/`) are the
+canonical format for repeatable procedures, because Claude Code can invoke
+them directly.
 
-- **Skill** = proces k vykonání (how-to)
-- **Reference** = knowledge ke konzultaci (ad hoc lookup)
-- **Voice** = jak napsat výstup
-- **Handoff** = one-off task briefing pro jinou session
+- **Skill** = a process to carry out (how-to)
+- **Reference** = knowledge to consult (ad hoc lookup)
+- **Voice** = how to write an output
+- **Handoff** = a one-off task briefing for another session
 
-Pokud zjistíš, že postup je opakovatelný, navrhni skill, ne runbook
-ani textový dokument.
+If you find that a procedure is repeatable, propose a skill, not a runbook or
+a text document.
 
-## Kdo co vlastní
+## Who owns what
 
-- Obsah `runbooks/`, `reference/`, `voice/` je **company-wide**. Změny
-  se týkají všech.
-- `company/colleagues/<ty>/voice/` může existovat pro person-specific tone
-  overrides (volitelné).
-- `handoffs/` jsou one-off artifakty — smažou se po dokončení.
+- The content of `runbooks/`, `reference/` and `voice/` is **company-wide**.
+  Changes affect everyone.
+- `company/colleagues/<you>/voice/` may exist for person-specific tone
+  overrides (optional).
+- `handoffs/` are one-off artefacts: they are deleted when done.
 
-## Jak najít správný zdroj
+## How to find the right source
 
-Agent v session:
+An agent in a session:
 
-1. **Proces k vykonání?** → hledej skill v `/.claude/skills/` (sdílený)
-   a `company/colleagues/<ty>/.claude/skills/` (osobní).
-2. **Hluboká technická znalost?** → `company/agents/reference/`.
-3. **Jak psát výstup?** → `company/agents/voice/`.
-4. **Doménový pojem?** → `GLOSSARY.md` (root).
-5. **Strategie, pravidla, rozhodování?** → `modules/knowledgebase/`
-   (pokud firma má).
-6. **Delegovaný one-off task?** → `company/agents/handoffs/`.
+1. **A process to carry out?** → look for a skill in `.agents/skills/`
+   (shared) and in `company/colleagues/<you>/.claude/skills/` (personal).
+2. **Deep technical knowledge?** → `company/agents/reference/`.
+3. **How to write an output?** → `company/agents/voice/`.
+4. **A domain term?** → `GLOSSARY.md` (root).
+5. **Strategy, rules, decisions?** → `workspace/knowledgebase/`
+   (if the company has one).
+6. **A delegated one-off task?** → `company/agents/handoffs/`.

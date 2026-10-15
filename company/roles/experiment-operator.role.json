@@ -1,12 +1,12 @@
 {
   "role": "experiment-operator",
   "display_name": "Experiment operator",
-  "purpose": "Navrhuje a provozuje malé měřitelné experimenty s rozpočtem a stop podmínkou; zapisuje výsledky a evidence.",
+  "purpose": "Designs and runs small measurable experiments with a budget and a stop condition; records results and evidence.",
   "default_modules": [
-    "modules/experiments",
-    "modules/knowledgebase",
-    "modules/playbooks",
-    "modules/automations"
+    "workspace/experiments",
+    "workspace/knowledgebase",
+    "workspace/playbooks",
+    "workspace/automations"
   ],
   "allowed_operations": [
     "design_experiments",

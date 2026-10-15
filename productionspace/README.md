@@ -1,24 +1,26 @@
 # Productionspace
 
-Org-level vrstva nasazených/produkčních systémů Organizace GEN3 (decision 0014):
-firmware, connect, produktový monorepo, veřejné docs/web a podobné nasazené
-systémy. Mountuje se vedle workspace vrstvy, sdílí ji celá Organizace a nepatří
-do žádného jednotlivého Teamu.
+The Organization-level layer of the deployed and production systems of a GEN3
+Organization (decision 0014): firmware, connect, the product monorepo, public
+docs and website, and similar deployed systems. It is mounted next to the
+workspace layer, the whole Organization shares it, and it belongs to no single
+Team.
 
-Modul sem patří, jakmile je reálně **nasazený** (na serveru, s vlastním CI/CD)
-nebo **veřejný** (dokumentace, web) — ne když běží jen lokálně nebo přes
-Organization Host. Verze se sem **povyšuje** z workspace (dílny pod univerzálním
-Launchpad patternem) poté, co je v dílně označená za dobrou (např. v1.4). Na
-rozdíl od workspace tu **není univerzální pattern**: každý produkční modul má
-vlastní, historicky navrženou release/CI-CD pipelinu a vlastní pravidla.
-Productionspace **není Organization Host** — ten je jen runtime pro vzdálený
-přístup k dílně, ne deploy/produkční stage.
+A module belongs here once it is really **deployed** (on a server, with its
+own CI/CD) or **public** (documentation, website), not while it runs only
+locally or through the Organization Host. A version is **promoted** here from
+the workspace (the workshop under the universal Launchpad pattern) after it is
+marked good in the workshop (for example v1.4). Unlike the workspace, there is
+**no universal pattern** here: each production module has its own,
+historically designed release and CI/CD pipeline and its own rules.
+Productionspace **is not the Organization Host**: the Host is only a runtime
+for remote access to the workshop, not a deploy or production stage.
 
-AgentMint je výzkumná Organizace bez produkčních systémů, takže
-productionspace je zatím prázdná — složka existuje záměrně, aby kanonická
-GEN3 struktura byla kompletní a aby bylo jasné, kam release/prod systémy
-patří, až vzniknou.
+Lazurio Example Organization is a research Organization without production
+systems, so productionspace is empty for now. The folder exists on purpose, so
+that the canonical GEN3 structure is complete and it is clear where release
+and production systems belong once they exist.
 
-Plánování, roadmapu a rozhodnutí pro productionspace i pro celou Organizaci
-drží `mission-control/` v rootu (jedna plánovací vrstva jako ve Workspace
-GEN2), ne samostatná planning vrstva.
+Planning, the roadmap and decisions for productionspace and for the whole
+Organization are held by `mission-control/` at the root (one planning layer,
+as in the GEN2 Workspace), not by a separate planning layer.

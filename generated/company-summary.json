@@ -13,26 +13,26 @@
     "revenue_drivers": [
       {
         "slug": "validated-online-mechanisms",
-        "description": "Příjem z online mechanismů, které prošly experimentem s ověřeným signálem. Škáluje se jen to, co má důkaz; hypotéza zůstává v research/experiments.",
+        "description": "Income from online mechanisms that passed an experiment with a verified signal. Only what has evidence is scaled; a hypothesis stays in research or experiments.",
         "priority": "high"
       },
       {
         "slug": "mechanism-playbooks",
-        "description": "Opakovatelné playbooky ověřených mechanismů: zdokumentovaný postup, unit economics a guardrails, připravené k opětovnému spuštění nebo přenosu.",
+        "description": "Repeatable playbooks of verified mechanisms: a documented procedure, unit economics and guardrails, ready to be run again or transferred.",
         "priority": "medium"
       }
     ],
     "customer_segments": [
       {
         "slug": "mechanism-specific-audiences",
-        "description": "AgentMint nemá jeden fixní segment; každý experiment definuje vlastního zákazníka, kanál a nabídku v experiment specu. Segment bez experimentu je jen hypotéza.",
+        "description": "The company has no single fixed segment; every experiment defines its own customer, channel and offer in its spec. A segment without an experiment is only a hypothesis.",
         "priority": null
       }
     ],
     "value_propositions": [
       {
         "slug": "evidence-based-adaptation",
-        "description": "Legální adaptace prokazatelně fungujících online mechanismů: vlastní brand, vlastní data, vlastní nabídka, žádné obcházení pravidel platforem.",
+        "description": "Legal adaptations of demonstrably working online mechanisms: own brand, own data, own offer and no evasion of platform rules.",
         "priority": null
       }
     ],
@@ -49,39 +49,39 @@
     "risks": [
       {
         "slug": "gray-zone-drift",
-        "description": "Experiment sklouzne do spamu, fake engagementu, obcházení ToS nebo klamavých claimů.",
+        "description": "An experiment slides into spam, fake engagement, terms-of-service evasion or misleading claims.",
         "priority": null
       },
       {
         "slug": "no-evidence-scaling",
-        "description": "Mechanismus se začne škálovat nebo prezentovat jako funkční bez důkazu z experimentu.",
+        "description": "A mechanism starts to be scaled or presented as working without evidence from an experiment.",
         "priority": null
       },
       {
         "slug": "copying-instead-of-adapting",
-        "description": "Práce zkopíruje cizí brand, obsah, data nebo account setup místo legální adaptace mechanismu.",
+        "description": "Work copies another company's brand, content, data or account setup instead of legally adapting the mechanism.",
         "priority": null
       },
       {
         "slug": "sensitive-finance-data-in-git",
-        "description": "Citlivá payment/finanční data se dostanou do Gitu bez anonymizace.",
+        "description": "Sensitive payment or financial data reaches Git without anonymisation.",
         "priority": null
       }
     ],
     "metrics": [
       {
         "slug": "verified-mechanisms",
-        "description": "Počet mechanismů s ověřeným signálem příjmu zapsaných v playbooks.",
+        "description": "Number of mechanisms with a verified income signal recorded in playbooks.",
         "priority": null
       },
       {
         "slug": "experiment-throughput",
-        "description": "Počet dokončených experimentů s explicitním stop/scale rozhodnutím a zapsanou evidencí.",
+        "description": "Number of finished experiments with an explicit stop or scale decision and recorded evidence.",
         "priority": null
       },
       {
         "slug": "net-experiment-income",
-        "description": "Čistý příjem běžících mechanismů po nákladech, podle workspace/finance.",
+        "description": "Net income of running mechanisms after costs, per workspace/finance.",
         "priority": null
       }
     ]

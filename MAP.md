@@ -1,98 +1,84 @@
-# Mapa Organizace AgentMint
+# Map of Lazurio Example Organization
 
-Krátký rozcestník: kam jít, když potřebuješ něco najít nebo změnit. Strojový
-model drží `lazurio.organization.json`; tenhle soubor je jeho lidský průvodce.
+A short guide to where things are and where to change them. The machine model
+is `lazurio.organization.json`; this file is its human companion.
 
-## Root povrchy
+## Root surfaces
 
 ```text
 LazurioExampleOrganization_GEN3/
-├── README.md, MAP.md, AGENTS.md, ARCHITECTURE.md, GLOSSARY.md, CHANGELOG.md
-├── TODO.tasks.json, DONE.tasks.json, ISSUES.open.json   # task ledgery
-├── lazurio.organization.json, modules.manifest.json     # strojový model + deskriptor modulů
-├── company.gen3.json                                    # generovaná kompatibilní projekce, ručně needitovat
-├── manual/          # provozní a migrační manuály (WORKSPACE_MANUAL)
-├── .agents/         # kanonická sdílená skill knihovna (.claude/skills je symlink)
-├── company/         # role, colleagues, agentní voice/reference, skripty, toolbox
-├── mission-control/ # in-tree plánovací vrstva (YAML plány) + UI aplikace
-├── design-system/   # vizuální systém, tokeny, šablony, viewer
-├── guide/           # interaktivní onboarding
-├── blog/            # interní aha momenty (drafty)
-├── modules/         # doctor-managed nested repozitáře (knowledgebase, research, experiments, …)
-├── workspace/       # registry default Teamu (moduly logicky patří sem, fyzicky do modules/)
-├── productionspace/ # org-level release/produkční vrstva (zatím prázdná)
-└── generated/       # historické compiler snapshoty — nejsou runtime autorita, needituj ručně
+├── README.md, MAP.md, AGENTS.md, CLAUDE.md, GLOSSARY.md, CHANGELOG.md
+├── MIGRATION.md                                        # GEN3 migration plan and benchmark ledger
+├── lazurio.organization.json, modules.manifest.json    # Organization model and module inventory
+├── company.gen3.json                                   # generated compatibility projection; never edit
+├── generated/          # outputs of the Lazurio organization compiler; never edit
+├── TODO.tasks.json, DONE.tasks.json, ISSUES.open.json  # task ledgers (until Mission Control v3)
+├── manual/             # maintenance manual
+├── .agents/skills/     # Organization skills (.claude/skills is the mirror)
+├── company/            # roles, colleague overlays, agent voice and reference
+├── mission-control/    # in-tree planning layer (YAML plans) and its v1 App
+├── design-system/      # in-tree design system (moving to its own repository)
+├── blog/               # internal insights (drafts)
+├── workspace/          # workspace modules, each its own repository
+├── productionspace/    # Organization-level production systems (none yet)
+└── infra/              # restricted infrastructure and access repository
 ```
 
-Root nemá být odkladiště. Nová věc patří do jednoho z těchto povrchů,
-konkrétního modulu, skillu nebo archivu.
+The root is not a dumping ground. Something new belongs in one of these
+surfaces, in a module or in a skill.
 
-## Rychlé routování
+## Quick routing
 
-| Otázka | Kam se podívat |
+| Question | Where to look |
 |---|---|
-| Jak Organizace funguje jako celek? | `README.md` + `lazurio.organization.json` |
-| Co znamená pojem? | `GLOSSARY.md` |
-| Jaké pravidlo platí pro agenta? | nejbližší `AGENTS.md` (kaskáda root → role → colleague → modul) |
-| Co je rozdělané? | root `TODO.tasks.json` nebo nejbližší modulový `TODO.tasks.json` |
-| Co je hotové nebo archivované? | `DONE.tasks.json` v daném scope |
-| Co čeká na rozhodnutí? | `ISSUES.open.json` v daném scope |
-| Jaká je struktura nebo invariant? | `ARCHITECTURE.md` v daném scope |
-| Co už se změnilo? | `CHANGELOG.md` v daném scope |
-| Kde plánovat feature nebo experiment? | `mission-control/` (YAML plány) |
-| Kde je business kontext, decision rights, metriky? | `lazurio.organization.json#extensions.legacy.business_context` |
-| Kde zapsat strategii a guardrails? | `modules/knowledgebase/` |
-| Kde je mechanism research s evidencí? | `modules/research/` |
-| Kde je experiment spec, log a výsledek? | `modules/experiments/` |
-| Kde je ověřený opakovatelný postup? | `modules/playbooks/` |
-| Kde vzniká veřejný text? | `modules/content/` |
-| Kde je interní aha moment? | `blog/` |
-| Kde řešit vizuální nebo formátovaný výstup? | `design-system/` (nejdřív skill `design-system-lookup`) |
-| Kde je onboarding pro nové kolegy? | `guide/` |
-| Kde je opakovatelný agentní postup? | `.agents/skills/` (index `manifest.json` + `company/agents/SKILLS_INVENTORY.md`) |
-| Jaké moduly Organizace má a jaký mají stav? | `modules.manifest.json` (`company.gen3.json#modules` se z něj jen generuje) |
+| How does the Organization work as a whole? | `README.md` and `lazurio.organization.json` |
+| What does a term mean? | `GLOSSARY.md` |
+| Which rule applies to an agent? | the nearest `AGENTS.md` (cascade: root, role, colleague, module) |
+| What is in progress, done or waiting for a decision? | Mission Control and the task ledgers |
+| What changed? | `CHANGELOG.md` in the scope |
+| How far is the GEN3 migration? | `MIGRATION.md` |
+| Where to plan a feature or experiment? | Mission Control (`mission-control-planning` skill) |
+| Business context, decision rights, metrics? | `lazurio.organization.json#extensions.legacy.business_context` |
+| Strategy and guardrails? | `workspace/knowledgebase/` |
+| Mechanism research with evidence? | `workspace/research/` |
+| An experiment spec, log or result? | `workspace/experiments/` |
+| A verified, repeatable procedure? | `workspace/playbooks/` |
+| Public text? | `workspace/content/` |
+| Unit economics? | `workspace/finance/` (restricted) |
+| An internal insight? | `blog/` |
+| Visual or formatted output? | the design system (use the `design-system-lookup` skill first) |
+| Onboarding? | the public Lazurio guide at https://documentation.lazurio.ai/en/ |
+| A repeatable agent procedure? | `.agents/skills/` (index `manifest.json`) |
+| Which modules exist and in what state? | `modules.manifest.json` |
+| Who may access what? | `infra/access/` in the `infra` repository |
 
 ## `company/`
 
-Firemní kostra trackovaná přímo v repu.
+The company skeleton, tracked in this repository.
 
-- `company/roles/` — reusable role overlays + `*.role.json`
-- `company/colleagues/` — person overlays (složka podle lokálního OS username)
-- `company/agents/` — voice, reference a skills inventory
-- `company/scripts/` — Doctor, manifest modulů a check skripty
-- `company/toolbox/` — sdílené utility
+- `company/roles/`: reusable role overlays and `*.role.json`.
+- `company/colleagues/`: personal overlays, one folder per local OS user.
+- `company/agents/`: voice and reference knowledge for agents.
+- `company/archive/`: rules for derived archive content.
 
-## `modules/`
+## `workspace/`
 
-`modules/` je registry vrstva pro doctor-managed nested Git repozitáře. Kromě
-`modules/README.md` a `modules/AGENTS.md` má každý aktivní modul vlastní repo
-a access hranici; super-repo netrackuje jejich obsah ani pointery. Přesný
-seznam a očekávané stavy drží `modules.manifest.json`.
+Each `workspace/<module>/` is a nested Git repository with its own history and
+access boundary. The root never tracks module contents or pointers;
+`modules.manifest.json` is the only inventory. Do substantive work inside the
+module and read its own `AGENTS.md` first.
 
-Věcnou práci nedělej přímo v `modules/` — přejdi do konkrétního
-`modules/<slug>/` a přečti jeho nejbližší `AGENTS.md`.
+## When something does not work
 
-## Když něco nefunguje
+Run `lazurio update` to bring the root and every module you can access to a
+clean `main`, and `lazurio doctor` for a diagnosis. For a module with an App,
+`lazurio module setup <module> --json` checks it against the Lazurio Module
+Standard.
 
-Spusť Doctor. Pro běžnou práci nejdřív srovnej `main` referenci, potom řeš
-kontext:
+## Missing modules
 
-```bash
-company/scripts/doctor.sh sync
-company/scripts/doctor.sh status
-company/scripts/doctor.sh check-my-context
-```
+A missing module is not automatically an error:
 
-Na Windows použij `company/scripts/doctor.ps1`.
-
-## Chybějící moduly
-
-Chybějící modul není automaticky chyba. Doctor a manifest rozlišují:
-
-- `available` — modul je naklonovaný a použitelný
-- `missing_access` — kolega nemá SSH/GitHub přístup
-- `planned_slot` — slot v root `modules.manifest.json` bez `repo`/`git.url`
-  (`company/scripts/modules.manifest.json` je jen GEN2 kompatibilní transport
-  a sloty nedefinuje; hranici polí drží `company/scripts/README.md`)
-
-Plný GEN2 rozcestník není součástí tohoto veřejného snapshotu.
+- `available`: the module is cloned and usable;
+- `missing_access`: your GitHub account cannot reach the repository;
+- `planned_slot`: the slot in `modules.manifest.json` has no repository yet.

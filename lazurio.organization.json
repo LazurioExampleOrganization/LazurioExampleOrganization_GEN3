@@ -145,6 +145,20 @@
       "slug": "mission-control-issues"
     }
   ],
+  "settings": {
+    "integrations": {
+      "microsoft365": {
+        "tenant_id": "9755f325-aab4-4294-8232-88dcfefacb96",
+        "client_id": "e2ad5755-21c1-46db-bfcb-8ba290440414",
+        "apps": [
+          "outlook",
+          "one_drive",
+          "share_point"
+        ],
+        "callbacks": []
+      }
+    }
+  },
   "extensions": {
     "legacy": {
       "access_governance": {

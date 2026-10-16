@@ -46,6 +46,8 @@ company/colleagues/*/.scratch/
 
 # Per-person local archive and private layers
 company/colleagues/*/archive/
+# Legacy folder name that lazurio doctor still probes.
+company/colleagues/*/archiv/
 company/colleagues/*/private/
 
 # Per-person local memory and runtime dumps. Personal agent memory never goes

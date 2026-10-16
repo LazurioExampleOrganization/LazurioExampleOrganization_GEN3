@@ -129,6 +129,8 @@ A row lands in the same root pull request or in the next one.
 | O3 | [mission-control#1](https://github.com/LazurioExampleOrganization/mission-control/pull/1) | mission-control | 2026-10-15 23:56 | 2026-10-16 00:56 | 35 min | 24 min (waiting for the upstream fix) | 0 | 6 overlay files on top of the upstream merge | +12/−12 vs upstream v3.0.1 | upstream UI is Czech-only (known gap) | n/a | `bun run check`, 231 + 228 tests and build green with the real data mount | pass (Ubuntu and Windows) | On v3.0.0, 7 upstream fixture tests failed in a fork integrated with unrelated histories ([Lazurio/mission-control#3](https://github.com/Lazurio/mission-control/issues/3)); fixed upstream in v3.0.1 and the branch was rebuilt on it | Owner chose to wait for the upstream fix instead of merging red | not reported |
 | O4 | [#9](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/9) | root | 2026-10-16 00:09 | 2026-10-16 00:58 | 20 min (prepared while O3 waited) | 0 | 0 | 115 | +246/−11,784 | 1,187 → 9 (compiler headings only) | ok, `transition`, projection parity | design system 13/13, Mission Control 12/13 | pass | The ignored `node_modules` of the removed in-tree Apps blocked the clone of the new nested checkouts until removed by hand | none | not reported |
 | T7 follow-up | [infra#3](https://github.com/LazurioExampleOrganization/infra/pull/3) | infra | 2026-10-16 01:06 | 2026-10-16 01:09 | 3 min | 0 | 0 | 2 | +18/−8 | 0 → 0 | n/a | n/a | none | nothing | none | not reported |
+| close-out | [#10](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/10) | root | 2026-10-16 01:09 | 2026-10-16 01:11 | 3 min | 0 | 0 | 4 | +40/−3 | 9 → 9 | ok, `transition`, projection parity | n/a | pass | `lazurio doctor` then reported infra without a module contract and an unignored legacy colleague folder; fixed in infra#4 and the next root PR | none | not reported |
+| infra fix | [infra#4](https://github.com/LazurioExampleOrganization/infra/pull/4) | infra | 2026-10-16 01:12 | 2026-10-16 01:14 | 2 min | 0 | 0 | 1 | +9/−0 | 0 → 0 | n/a | not linked → 13/13 | none | nothing | none | not reported |
 
 ### Mount on the maintainer machine (2026-10-15 22:35–22:38 UTC)
 
@@ -200,3 +202,11 @@ rulesets allow this and GitHub marks the pull request as merged.
 - Install the Lazurio for GitHub app (Owner).
 - A1: a fresh `lazurio organization install` on a clean Lazurio Folder, the
   checks above, totals and the close of EX-0001.
+
+### Doctor after the activation (2026-10-16 01:12 UTC)
+
+`lazurio doctor --json` reported two required failures for this Organization:
+`infra` had no `lazurio.module.json` once it became a managed checkout
+(fixed in infra#4), and `.gitignore` no longer covered the legacy colleague
+folder name `archiv/` that the doctor probes (fixed in the PR that adds this
+section). Every Organization check is green afterwards.

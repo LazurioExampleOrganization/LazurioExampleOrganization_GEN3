@@ -163,11 +163,13 @@
         "founder"
       ],
       "source_of_truth": "git-native",
+      "status": "active",
+      "materialization": "doctor_managed_nested_repo",
       "git": {
         "url": "git@github.com:LazurioExampleOrganization/infra.git",
         "branch": "main"
       },
-      "notes": "Restricted root repository for infrastructure, access governance and deployment context. It never holds secrets. Its access record lists the GitHub Organization, Team grants and rulesets.",
+      "notes": "Restricted root repository for infrastructure, access governance and deployment context. It never holds secrets. Cloned only by an Admin install; its access record lists the GitHub Organization, Team grants and rulesets.",
       "teams": [],
       "workspace": null
     },

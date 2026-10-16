@@ -55,7 +55,7 @@ stays here.
 | 2 | M1 (knowledgebase) | Lazurio Module Standard |
 | 3 | O1a, O1b (design system) | New repository from the root's in-tree `design-system/`, then the Module Standard |
 | 4 | T1, T2, T4–T7 | English translation of every repository |
-| 3 (continued) | O2, O3, O4, T3 | Mission Control data repository and v1 import, the v3 App from the public upstream, activation of the root application slots, translation of the planning data |
+| 3 (continued) | O2, O3, O4, T3 | Mission Control data repository and v1 import, the v3 App from the public upstream, activation of the root application slots, translation of the planning data (done) |
 | 5 | A1 | Fresh install from GitHub and close-out |
 
 ## Benchmark method
@@ -127,6 +127,8 @@ A row lands in the same root pull request or in the next one.
 | O2 | [mission-control-data#1](https://github.com/LazurioExampleOrganization/mission-control-data/pull/1) (after a bootstrap push of the template skeleton to `v3`) | mission-control-data | 2026-10-15 23:50 | 2026-10-15 23:56 | 6 min | 0 | 0 | 18 | +2,479/−3 | imported in original language | n/a | data validation OK | pass | nothing; the GitHub governance issue moved to [infra#2](https://github.com/LazurioExampleOrganization/infra/issues/2) | Owner unblocked Mission Control | not reported |
 | T3 | [mission-control-data#2](https://github.com/LazurioExampleOrganization/mission-control-data/pull/2) | mission-control-data | 2026-10-15 23:58 | 2026-10-16 00:24 | 26 min | 0 | 0 | 18 | +689/−957 | 575 → 2 (pinned upstream validator) | n/a | data validation OK | pass | nothing | none | subagent, 350k tokens |
 | O3 | [mission-control#1](https://github.com/LazurioExampleOrganization/mission-control/pull/1) | mission-control | 2026-10-15 23:56 | 2026-10-16 00:56 | 35 min | 24 min (waiting for the upstream fix) | 0 | 6 overlay files on top of the upstream merge | +12/−12 vs upstream v3.0.1 | upstream UI is Czech-only (known gap) | n/a | `bun run check`, 231 + 228 tests and build green with the real data mount | pass (Ubuntu and Windows) | On v3.0.0, 7 upstream fixture tests failed in a fork integrated with unrelated histories ([Lazurio/mission-control#3](https://github.com/Lazurio/mission-control/issues/3)); fixed upstream in v3.0.1 and the branch was rebuilt on it | Owner chose to wait for the upstream fix instead of merging red | not reported |
+| O4 | [#9](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/9) | root | 2026-10-16 00:09 | 2026-10-16 00:58 | 20 min (prepared while O3 waited) | 0 | 0 | 115 | +246/−11,784 | 1,187 → 9 (compiler headings only) | ok, `transition`, projection parity | design system 13/13, Mission Control 12/13 | pass | The ignored `node_modules` of the removed in-tree Apps blocked the clone of the new nested checkouts until removed by hand | none | not reported |
+| T7 follow-up | [infra#3](https://github.com/LazurioExampleOrganization/infra/pull/3) | infra | 2026-10-16 01:06 | 2026-10-16 01:09 | 3 min | 0 | 0 | 2 | +18/−8 | 0 → 0 | n/a | n/a | none | nothing | none | not reported |
 
 ### Mount on the maintainer machine (2026-10-15 22:35–22:38 UTC)
 
@@ -175,3 +177,26 @@ rulesets allow this and GitHub marks the pull request as merged.
 - The Mission Control data validator is pinned upstream code and keeps two
   Czech regular expressions; they are the only Czech left in
   `mission-control-data`.
+- Mission Control v3 fails Module Standard check MS-07 upstream
+  ([Lazurio/mission-control#5](https://github.com/Lazurio/mission-control/issues/5)).
+- The localhost Launchpad does not run a module's declared preparation
+  ([HumanAndMachines/Lazurio#470](https://github.com/HumanAndMachines/Lazurio/issues/470));
+  Mission Control needs `bun run prepare:app` in `app/v3` before its first
+  start there.
+
+### Activation checks after O4 (2026-10-16 00:58–01:06 UTC)
+
+| Step | Result |
+|---|---|
+| `lazurio update --json` | Root updated; `design-system` and `mission-control` reported `managed_checkout_not_repository`: only the ignored `node_modules` of the removed in-tree Apps were left in those folders. Removed by hand |
+| `lazurio organization install LazurioExampleOrganization --json` (Admin) | `updated`, 0 blocked: cloned `design-system`, `mission-control` and the repository-db mount `mission-control/db` |
+| `lazurio module setup` | design-system `current` 13/13; mission-control 12/13 (MS-07: the upstream `dev` script starts Bun without `--no-env-file`, [Lazurio/mission-control#5](https://github.com/Lazurio/mission-control/issues/5)); all seven workspace modules `current` 13/13 |
+| `lazurio module start` | design-system healthy on 25301; Mission Control healthy on 25302 after its declared preparation (`prepare:app`) was run by hand, because the localhost Launchpad does not run preparation yet ([HumanAndMachines/Lazurio#470](https://github.com/HumanAndMachines/Lazurio/issues/470)) |
+| Browser (headless Chromium) | The design system renders its tokens; Mission Control lists the 13 plans (EX-0001 to EX-0013), 14 open tasks (6 linked to a plan) and 1 open business issue, with no broken links |
+| Czech-diacritics grep | 0 in design-system, knowledgebase, research, experiments, playbooks, content, finance, automations and infra; root 9 (compiler headings); mission-control-data 2 (pinned upstream validator); mission-control 1,142 (upstream code and Czech-only UI) |
+
+### Remaining before A1
+
+- Install the Lazurio for GitHub app (Owner).
+- A1: a fresh `lazurio organization install` on a clean Lazurio Folder, the
+  checks above, totals and the close of EX-0001.

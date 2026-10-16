@@ -21,6 +21,12 @@ benchmark row in `MIGRATION.md`.
 - The root is written in English: rules, map, glossary, manual, roles,
   colleague overlays, agent knowledge, blog and the manifest text. Fictional
   people have international names (Alex Morgan, Sam Taylor, Robin Lee).
+- Mission Control v3 replaces the in-tree v1 layer: the App comes from the
+  public upstream Lazurio/mission-control (v3.0.1) and the plans and tasks
+  live in the mission-control-data repository, imported from v1 and
+  translated. The design system is its own repository. All three root
+  application slots are active, and the restricted infra slot is cloned by an
+  Admin install.
 
 ### Removed
 
@@ -31,6 +37,8 @@ benchmark row in `MIGRATION.md`.
 - The redirect stubs `ARCHITECTURE.md` and `manual/WORKSPACE_MANUAL.md`.
 - The research artefacts in `company/archive/derived/` and
   `company/agents/reference/`; they live in the research module now.
+- The in-tree `mission-control/` and `design-system/` copies and the root
+  task ledgers; their content lives in the new repositories.
 
 ## 20261015
 

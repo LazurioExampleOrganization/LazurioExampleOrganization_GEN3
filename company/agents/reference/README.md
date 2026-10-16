@@ -16,11 +16,10 @@ Companies typically provide:
 - hardware and system diagrams
 - references for specific technologies
 
-The concrete content depends on the company. Current references:
-
-- [`mission-control-planning-model.md`](mission-control-planning-model.md):
-  the contract between the local Mission Control YAML plans and the
-  implementation tasks in `TODO.tasks.json`
+The concrete content depends on the company. There are no references yet.
+The Mission Control planning model is documented in its upstream,
+[Lazurio/mission-control](https://github.com/Lazurio/mission-control)
+(`docs/roadmap-planning-model.md` and the operating manual).
 
 ## What does not belong here
 

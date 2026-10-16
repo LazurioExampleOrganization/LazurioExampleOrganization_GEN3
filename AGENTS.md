@@ -105,10 +105,19 @@ experiment, all content and every automation:
 - Plans live in Mission Control: why something is done, for whom, its scope,
   decisions and acceptance criteria. Concrete implementation steps are tasks
   linked to a plan. Use the `mission-control-planning` skill.
-- Today plans live in the in-tree `mission-control/` layer and tasks in the
-  root `TODO.tasks.json`, `DONE.tasks.json` and `ISSUES.open.json`. The move to
-  Mission Control v3 with its own data repository is part of the migration
-  (`MIGRATION.md`).
+- Mission Control v3 is the root application module `mission-control/`, the
+  public upstream [Lazurio/mission-control](https://github.com/Lazurio/mission-control)
+  with this Organization's overlay. Its data repository `mission-control-data`
+  (branch `v3`) is mounted at `mission-control/db/`: plans in
+  `data/mission-control/plans/<year>/<month>/EX-XXXX-<slug>.yaml`, tasks in
+  `data/mission-control/TODO.tasks.json` and `DONE.tasks.json`.
+- Write plans and tasks through the Mission Control App (a reviewed draft,
+  published as one fast-forward commit) or a pull request to
+  `mission-control-data`. Open technical problems are GitHub Issues of the
+  owning repository.
+- The Mission Control UI is Czech-only for now
+  ([Lazurio/mission-control#1](https://github.com/Lazurio/mission-control/issues/1));
+  the data is English.
 - Do not hold up a simple bug fix with planning ceremony.
 
 ## Missing modules
@@ -185,8 +194,10 @@ There is no personal memory in this repository (`memory/`, `MEMORY.md`).
 
 - a repeatable procedure: a skill in `.agents/skills/<name>/SKILL.md`;
 - a strategic or experiment plan: Mission Control;
-- a concrete next step, finished work or an open question: a task, a done
-  task or an issue linked to the plan;
+- a concrete next step or finished work: a Mission Control task linked to the
+  plan;
+- an open business decision: Mission Control; an open technical problem: a
+  GitHub Issue of the owning repository;
 - a rule of behaviour: the nearest `AGENTS.md`;
 - strategy and guardrails: `workspace/knowledgebase/`;
 - mechanism research with evidence: `workspace/research/`;
@@ -194,8 +205,7 @@ There is no personal memory in this repository (`memory/`, `MEMORY.md`).
 - a verified procedure: `workspace/playbooks/`;
 - public text: `workspace/content/`; an internal insight: `blog/`;
 - a term: `GLOSSARY.md`;
-- a delivered notable change: `CHANGELOG.md`;
-- an open technical problem in a repository: a GitHub issue there.
+- a delivered notable change: `CHANGELOG.md`.
 
 Do not create ad-hoc note files in the root.
 
@@ -217,13 +227,12 @@ another Organization's work, point them there instead of copying data here.
 - Compatibility projection (generated): `company.gen3.json`
 - Migration plan and benchmark: `MIGRATION.md`
 - Maintenance manual: `manual/`
-- Planning: Mission Control (today the in-tree `mission-control/`)
-- Tasks: `TODO.tasks.json`, `DONE.tasks.json`, `ISSUES.open.json`
+- Planning and tasks: Mission Control, data in `mission-control/db/` (repository `mission-control-data`)
 - Agent skills: `.agents/skills/` (mirror in `.claude/skills/`)
 - Voice guide: `company/agents/voice/`
 - Access governance: `infra/access/` in the `infra` repository
 - Colleague overlays: `company/colleagues/`
 - Roles: `company/roles/` and `company/roles/*.role.json`
-- Design system: `design-system/`
+- Design system: `design-system/` (repository `design-system`)
 - Internal blog: `blog/`
 - Compiler outputs: `generated/`

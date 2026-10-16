@@ -56,11 +56,7 @@
         "infra/**",
         "manual/**",
         "modules.manifest.json",
-        "TODO.tasks.json",
-        "DONE.tasks.json",
-        "ISSUES.open.json",
         "CHANGELOG.md",
-        "mission-control/**",
         "MAP.md",
         "MIGRATION.md",
         "workspace/**",
@@ -68,8 +64,7 @@
       ],
       "override": [
         "company/roles/**",
-        "company/colleagues/**",
-        "design-system/**"
+        "company/colleagues/**"
       ],
       "derived": [
         "generated/**"
@@ -134,14 +129,20 @@
     {
       "authority": "source-of-truth",
       "kind": "todo-tasks-json",
-      "path": "TODO.tasks.json",
-      "slug": "workspace-todo"
+      "path": "mission-control/db/data/mission-control/TODO.tasks.json",
+      "slug": "mission-control-todo"
     },
     {
       "authority": "source-of-truth",
       "kind": "done-tasks-json",
-      "path": "DONE.tasks.json",
-      "slug": "workspace-done"
+      "path": "mission-control/db/data/mission-control/DONE.tasks.json",
+      "slug": "mission-control-done"
+    },
+    {
+      "authority": "source-of-truth",
+      "kind": "open-issues-json",
+      "path": "mission-control/db/data/mission-control/ISSUES.open.json",
+      "slug": "mission-control-issues"
     }
   ],
   "extensions": {
@@ -396,14 +397,14 @@
           "write_rule": "Unit economics, costs and revenue of experiments. Sensitive data enters Git only safely anonymised; the rest stays outside Git."
         },
         {
-          "canonical": "TODO.tasks.json",
+          "canonical": "mission-control/db/data/mission-control/TODO.tasks.json",
           "domain": "tasks",
-          "write_rule": "Live work is never written in Markdown; an agent records it in TODO.tasks.json."
+          "write_rule": "Live work is never written in Markdown; it is a task in Mission Control, linked to its plan, published through the Mission Control App or a pull request to mission-control-data."
         },
         {
-          "canonical": "ISSUES.open.json",
+          "canonical": "mission-control/db/data/mission-control/ISSUES.open.json",
           "domain": "open-decisions",
-          "write_rule": "Open questions are resolved by a colleague with an agent and become tasks once decided."
+          "write_rule": "Open business decisions are resolved by a colleague with an agent and become tasks once decided; open technical problems are GitHub Issues of the owning repository."
         }
       ],
       "workspaces": [
@@ -420,7 +421,7 @@
     "legacy_projection": {
       "path": "company.gen3.json",
       "algorithm": "sha256-canonical-json-v1",
-      "sha256": "sha256:2e37c55c2d38963a67fd96ab7352f8ff9167797e395a2877a9a33ae7b6377c68"
+      "sha256": "sha256:26de869aa2814ee92caccc6213df0158938d7d4b5b9e58aaaac48abf93fe6c41"
     }
   }
 }

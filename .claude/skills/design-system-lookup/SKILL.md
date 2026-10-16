@@ -36,10 +36,10 @@ output.
    | Table or report | the module that owns the data | `content/examples/` |
    | Tone and copy | `company/agents/voice/` and the knowledgebase | `BASELINE.md` |
 
-The design system lives in the root's `design-system/` today. Its standalone
-repository [`design-system`](https://github.com/LazurioExampleOrganization/design-system)
-becomes the mounted `design-system/` checkout once the root application slots
-are activated; the paths inside it stay the same.
+The design system is the root module `design-system/`, a checkout of the
+[`design-system`](https://github.com/LazurioExampleOrganization/design-system)
+repository that `lazurio update` keeps current. The paths above are relative to
+it.
 
 ## Rules
 

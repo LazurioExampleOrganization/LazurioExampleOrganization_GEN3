@@ -116,9 +116,9 @@ Machine and starts their Apps from `main` or from a worktree. It reads
 
 The planning centre of the Organization: plans hold the context, scope and
 acceptance criteria, and tasks hold the implementation steps that point back
-to a plan. Today it is the in-tree `mission-control/` layer with the root task
-ledgers; the migration moves it to Mission Control v3 with its own data
-repository.
+to a plan. It is Mission Control v3: the root application module
+`mission-control/` from the public upstream Lazurio/mission-control, with its
+data repository `mission-control-data` mounted at `mission-control/db/`.
 
 ### Partial workspace
 

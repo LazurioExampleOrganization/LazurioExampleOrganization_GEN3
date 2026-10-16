@@ -34,7 +34,7 @@ Before you start, you can answer:
 
 - What must be true after my work, and how will I know? (a verifiable goal)
 - Who owns this area and where is its source of truth: the nearest
-  `AGENTS.md`, `workspace/knowledgebase` or `ISSUES.open.json`?
+  `AGENTS.md`, `workspace/knowledgebase` or a Mission Control plan?
 - What is the business context: who does it serve, and what breaks if I get
   it wrong?
 - Which assumptions am I making? An assumption that changes correctness,
@@ -74,8 +74,9 @@ months from now:
   for ownership boundaries. Business data belongs in its owning module and is
   written through that module's own writer.
 - Leave the Organization more truthful than you found it: insights go to
-  `workspace/knowledgebase`, open decisions to `ISSUES.open.json`, changes in
-  working rules to the nearest `AGENTS.md`.
+  `workspace/knowledgebase`, open decisions to the Mission Control plan,
+  technical problems to GitHub Issues, and changes in working rules to the
+  nearest `AGENTS.md`.
 
 ## Verification
 

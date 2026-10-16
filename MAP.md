@@ -12,12 +12,11 @@ LazurioExampleOrganization_GEN3/
 ├── lazurio.organization.json, modules.manifest.json    # Organization model and module inventory
 ├── company.gen3.json                                   # generated compatibility projection; never edit
 ├── generated/          # outputs of the Lazurio organization compiler; never edit
-├── TODO.tasks.json, DONE.tasks.json, ISSUES.open.json  # task ledgers (until Mission Control v3)
 ├── manual/             # maintenance manual
 ├── .agents/skills/     # Organization skills (.claude/skills is the mirror)
 ├── company/            # roles, colleague overlays, agent voice and reference
-├── mission-control/    # in-tree planning layer (YAML plans) and its v1 App
-├── design-system/      # in-tree design system (moving to its own repository)
+├── mission-control/    # Mission Control v3 App (own repository); data in mission-control/db/
+├── design-system/      # design system (own repository)
 ├── blog/               # internal insights (drafts)
 ├── workspace/          # workspace modules, each its own repository
 ├── productionspace/    # Organization-level production systems (none yet)
@@ -34,7 +33,7 @@ surfaces, in a module or in a skill.
 | How does the Organization work as a whole? | `README.md` and `lazurio.organization.json` |
 | What does a term mean? | `GLOSSARY.md` |
 | Which rule applies to an agent? | the nearest `AGENTS.md` (cascade: root, role, colleague, module) |
-| What is in progress, done or waiting for a decision? | Mission Control and the task ledgers |
+| What is in progress, done or waiting for a decision? | Mission Control (`mission-control/db/data/mission-control/`) |
 | What changed? | `CHANGELOG.md` in the scope |
 | How far is the GEN3 migration? | `MIGRATION.md` |
 | Where to plan a feature or experiment? | Mission Control (`mission-control-planning` skill) |

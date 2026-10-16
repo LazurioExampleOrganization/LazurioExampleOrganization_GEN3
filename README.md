@@ -69,8 +69,8 @@ It works in a loop:
 | `.agents/skills/` | Organization skills; `.claude/skills` is their mirror |
 | `workspace/` | Workspace modules, each its own repository |
 | `infra/` | Restricted repository for infrastructure and access governance |
-| `design-system/` | Brand baseline and visual rules (moving to its own repository) |
-| `mission-control/` | Planning layer with YAML plans |
+| `design-system/` | [Design system](https://github.com/LazurioExampleOrganization/design-system): brand baseline, tokens and a viewer App |
+| `mission-control/` | [Mission Control v3](https://github.com/LazurioExampleOrganization/mission-control) with its [data](https://github.com/LazurioExampleOrganization/mission-control-data) in `mission-control/db/` |
 | `manual/` | Maintenance manual |
 | `blog/` | Internal learning notes |
 
@@ -88,9 +88,11 @@ Workspace modules:
 
 ## Planning
 
-The Organization plans in Mission Control. Today that is the in-tree
-`mission-control/` layer: YAML plans hold the why, the scope, the decisions
-and the acceptance criteria, and the root `TODO.tasks.json` holds the concrete
-implementation steps. Moving to Mission Control v3 with its own data
-repository is part of the migration and is on hold until Mission Control has a
-public upstream.
+The Organization plans in Mission Control v3. Plans hold the why, the scope,
+the decisions and the acceptance criteria; tasks hold the concrete
+implementation steps and link back to a plan. The App comes from the public
+upstream [Lazurio/mission-control](https://github.com/Lazurio/mission-control);
+the plans and tasks live in the
+[mission-control-data](https://github.com/LazurioExampleOrganization/mission-control-data)
+repository. The migration itself is plan EX-0001 there. The Mission Control UI
+is Czech-only for now; the data is English.

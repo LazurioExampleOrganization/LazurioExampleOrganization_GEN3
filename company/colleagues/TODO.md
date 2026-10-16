@@ -1,6 +1,6 @@
 # Team TODO
 
-Team overlay tasks are tracked long-term in the root `TODO.tasks.json`. This
+Team overlay tasks are tracked long-term in Mission Control. This
 file is only a local signpost for the person overlay layer.
 
 ## Current state
@@ -12,12 +12,12 @@ file is only a local signpost for the person overlay layer.
 - `robinlee/` exists as an onboarding scaffold; Robin Lee still has to fill in
   roles, ownership, preferred working style, modules and external services
   without secrets.
-- The workspace is moving towards Mission Control as its local planning task
-  manager; implementation steps stay in the root `TODO.tasks.json`.
+- Mission Control is the planning task manager; implementation steps are
+  Mission Control tasks.
 - Company OAuth accounts are not set up yet; `example.local` is only a local
   placeholder.
-- More colleagues are added only after a decision in the root task and issue
-  ledgers.
+- More colleagues are added only after a decision recorded in Mission
+  Control.
 
 ## When adding a new colleague
 

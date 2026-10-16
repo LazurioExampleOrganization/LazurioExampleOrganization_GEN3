@@ -15,8 +15,7 @@ evidence for a decision and an experiment.
 
 ## Typical sources
 
-- `TODO.tasks.json`
-- `ISSUES.open.json`
+- Mission Control plans and tasks
 - `GLOSSARY.md`
 - `workspace/research/`
 

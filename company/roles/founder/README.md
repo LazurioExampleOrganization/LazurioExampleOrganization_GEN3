@@ -15,8 +15,7 @@ result.
 
 ## Typical sources
 
-- `ISSUES.open.json`
-- `TODO.tasks.json`
+- Mission Control plans and tasks
 - root `modules.manifest.json`
 - `workspace/finance/`, `workspace/knowledgebase/`, `workspace/playbooks/`
 

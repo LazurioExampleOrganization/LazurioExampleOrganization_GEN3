@@ -9,9 +9,8 @@ This folder is the person overlay for Alex in the Organization.
 - **Other active roles:** `research-operator`, `experiment-operator`
 - **Work email:** not set up yet; `example.local` is only a local
   placeholder.
-- **Planning task manager:** Mission Control as the local YAML-first planning
-  layer; the root task ledgers are the source of truth for implementation
-  work.
+- **Planning task manager:** Mission Control v3; its plans and tasks are the
+  source of truth for planned and implementation work.
 
 ## How to help most often
 
@@ -20,8 +19,8 @@ This folder is the person overlay for Alex in the Organization.
 - propose the smallest verification test instead of a large project
 - keep the line between inspiration and copying someone else's identity or
   data
-- record feature context in Mission Control and implementation steps in the
-  task and issue ledgers, so the next agent can pick up
+- record feature context in a Mission Control plan and implementation steps
+  as its tasks, so the next agent can pick up
 
 ## Active roles
 
@@ -36,7 +35,7 @@ unless the context makes it safely clear.
 
 ## Default module set
 
-Alex typically works with the root ledgers, the root `modules.manifest.json`,
+Alex typically works with Mission Control, the root `modules.manifest.json`,
 the role overlays and the workspace modules `research`, `experiments`,
 `playbooks` and `finance`.
 

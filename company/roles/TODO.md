@@ -1,6 +1,6 @@
 # Roles TODO
 
-Role overlay tasks are tracked long-term in the root `TODO.tasks.json`. This
+Role overlay tasks are tracked long-term in Mission Control. This
 file is only a local signpost for the role layer.
 
 ## Current state

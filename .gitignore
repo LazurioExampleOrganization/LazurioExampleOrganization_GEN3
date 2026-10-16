@@ -16,6 +16,8 @@ desktop.ini
 # Nested Git repositories declared in root modules.manifest.json.
 # The root tracks only manifests and docs, never their contents or pointers.
 /infra/
+/design-system/
+/mission-control/
 /workspace/*/
 /productionspace/*/
 
@@ -84,9 +86,6 @@ build/
 
 # Local QMD semantic-search config (contains workstation-specific paths).
 .config/qmd/
-
-# Design system viewer build artifacts
-design-system/app/dist/
 
 # Former guide viewer build output, kept ignored for old checkouts.
 /guide/

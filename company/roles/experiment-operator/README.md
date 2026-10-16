@@ -15,8 +15,7 @@ recorded result.
 
 ## Typical sources
 
-- `TODO.tasks.json`
-- `ISSUES.open.json`
+- Mission Control plans and tasks
 - `workspace/experiments/`
 - `workspace/finance/`
 

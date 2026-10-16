@@ -18,8 +18,8 @@ responsibilities or access.
 - **Other active roles:** TO FILL, if they will hold several roles.
 - **Work email:** TO FILL. Do not use `example.local` as an OAuth identity;
   it is only a local placeholder.
-- **Planning system:** Mission Control as the local YAML-first planning layer;
-  the root task ledgers are the source of truth for implementation work.
+- **Planning system:** Mission Control v3; its plans and tasks are the
+  source of truth for planned and implementation work.
 - **External accounts / MCP:** TO FILL with service names only. Tokens and
   session data belong in the gitignored local configuration, not in Git.
 

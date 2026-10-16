@@ -13,7 +13,7 @@ Do not optimise for activity alone; optimise for a verifiable revenue signal.
   phishing, ToS circumvention or misleading claims.
 - Always confirm financial or externally visible steps with a person first.
 - When a decision changes the direction of the company, record it in
-  `ISSUES.open.json`, `CHANGELOG.md` or the knowledgebase.
+  Mission Control, `CHANGELOG.md` or the knowledgebase.
 
 ## Handoff
 

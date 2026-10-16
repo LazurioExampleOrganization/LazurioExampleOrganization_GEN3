@@ -13,7 +13,7 @@ one chat.
   terms-of-service evasion or misleading claims;
 - access boundaries in `infra/access/` in the restricted `infra` repository;
 - personal boundaries in `company/colleagues/<os-user>/`;
-- valid plans and tasks in Mission Control and the task ledgers;
+- valid plans and tasks in Mission Control;
 - the business impact of decisions, per
   `lazurio.organization.json#extensions.legacy.business_context`.
 
@@ -23,7 +23,7 @@ one chat.
 2. `lazurio.organization.json`
 3. this manual
 4. `GLOSSARY.md`
-5. Mission Control and the task ledgers
+5. Mission Control
 6. the nearest module or folder `AGENTS.md`
 
 ## Source of truth map
@@ -37,7 +37,7 @@ one chat.
 - Roles: `company/roles/*.role.json`.
 - Agent procedures: `.agents/skills/`.
 - Voice guide: `company/agents/voice/`.
-- Design system: `design-system/`.
+- Design system: `design-system/` (repository `design-system`).
 - Modules: `workspace/` (inventory in `modules.manifest.json`).
 - Planning: Mission Control.
 - Shared terms: `GLOSSARY.md`.

@@ -332,8 +332,13 @@
         "*"
       ],
       "source_of_truth": "git-native",
-      "status": "planned_slot",
-      "notes": "Organization design system. The root still carries the in-tree copy; the standalone design-system repository becomes this slot when the root application slots are activated.",
+      "status": "active",
+      "materialization": "doctor_managed_nested_repo",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/design-system.git",
+        "branch": "main"
+      },
+      "notes": "Organization design system: brand baseline, tokens and a read-only viewer App. Split from the root with its history; no template upstream.",
       "teams": [],
       "workspace": null
     },
@@ -346,9 +351,14 @@
       "required_roles": [
         "*"
       ],
-      "source_of_truth": "git-native",
-      "status": "planned_slot",
-      "notes": "Mission Control stays in the in-tree layer until the Organization adopts Mission Control v3.",
+      "source_of_truth": "forked-app-code-repo",
+      "status": "active",
+      "materialization": "doctor_managed_nested_repo",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/mission-control.git",
+        "branch": "main"
+      },
+      "notes": "Mission Control v3 App. The repository integrates released tags of the public upstream Lazurio/mission-control (decision 0174) and adds only the declared instance overlay; its data lives in mission-control/db.",
       "teams": [],
       "workspace": null
     },
@@ -357,13 +367,27 @@
       "slug": "mission-control-data",
       "space": "root",
       "category": "planning-data",
-      "default_access": "role_based",
+      "default_access": "expected",
       "required_roles": [
         "*"
       ],
       "source_of_truth": "repository-db:v3",
-      "status": "planned_slot",
-      "notes": "Mission Control v3 data mount. Activation waits for its own repository and gate.",
+      "status": "active",
+      "materialization": "repository_db_mount",
+      "repository_db": {
+        "repo": "LazurioExampleOrganization/mission-control-data",
+        "url": "git@github.com:LazurioExampleOrganization/mission-control-data.git",
+        "branch": "v3",
+        "config": "repository-db.yaml",
+        "data_root": "data/mission-control",
+        "profile": "repository-db-v3",
+        "app_writable_path_policy": "repository_db_publish_only"
+      },
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/mission-control-data.git",
+        "branch": "v3"
+      },
+      "notes": "Mission Control v3 data: plans, tasks, roadmaps and reports, on branch v3. Published through the Mission Control App or a pull request; GitHub grants are the only access authority.",
       "teams": [],
       "workspace": null
     }

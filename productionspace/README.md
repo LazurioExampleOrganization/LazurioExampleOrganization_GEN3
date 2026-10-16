@@ -22,5 +22,5 @@ that the canonical GEN3 structure is complete and it is clear where release
 and production systems belong once they exist.
 
 Planning, the roadmap and decisions for productionspace and for the whole
-Organization are held by `mission-control/` at the root (one planning layer,
-as in the GEN2 Workspace), not by a separate planning layer.
+Organization are held by Mission Control (`mission-control/`, data in
+`mission-control/db/`), not by a separate planning layer.

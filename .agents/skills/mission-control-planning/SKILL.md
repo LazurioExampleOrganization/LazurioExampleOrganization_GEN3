@@ -11,11 +11,16 @@ This skill turns a vague intent into two separate layers:
   decisions and acceptance criteria.
 - **Tasks**: concrete implementation steps that point back to the plan.
 
-Today the Organization plans in the in-tree layer `mission-control/` (YAML
-plans in `mission-control/plans/`) and keeps tasks in the root
-`TODO.tasks.json`, `DONE.tasks.json` and `ISSUES.open.json`. When the
-Organization adopts Mission Control v3, plans and tasks move to its data
-repository mounted at `mission-control/db/`, and this skill follows them.
+The Organization runs Mission Control v3: the App is the root module
+`mission-control/` (public upstream
+[Lazurio/mission-control](https://github.com/Lazurio/mission-control)), and
+its data repository `mission-control-data` (branch `v3`) is mounted at
+`mission-control/db/`:
+
+- plans: `data/mission-control/plans/<year>/<month>/EX-XXXX-<slug>.yaml`
+  (plan prefix `EX`);
+- tasks: `data/mission-control/TODO.tasks.json` and `DONE.tasks.json`;
+- roadmaps: `data/mission-control/roadmaps/`.
 
 ## When to use
 
@@ -32,37 +37,32 @@ no product or operating decision changes.
 ## Steps
 
 1. Read the root `AGENTS.md`, `MAP.md` and the nearest relevant `AGENTS.md`.
-2. Find an existing plan for the intent in `mission-control/plans/`. Do not
-   create a duplicate.
-3. If none exists, create one. A plan has at least: `id`, `title`, `type`,
-   `status`, `owner`; the goal and the business reason; scope and non-goals;
-   decisions and open questions; acceptance criteria; risks and guardrails;
-   links to the relevant files; the derived task ids; and the outcome once it
-   is done.
-4. Derive small tasks with one main result each in `TODO.tasks.json`. Link
-   every task back to the plan through its `planning` field and put the
-   relevant repository files, not the chat, into `links`.
-5. Record missing decisions in `ISSUES.open.json`.
+2. Find an existing plan for the intent in Mission Control (the App, or the
+   plans directory). Do not create a duplicate.
+3. If none exists, create one in English: in the Mission Control App, or with
+   `bun run create-plan -- --title "<title>"` in `mission-control/`, which takes
+   the next free `EX-XXXX` code. A plan has a goal and business reason
+   (`context`, `current_problem`, `target_state`), scope and non-goals,
+   acceptance criteria, validation, risks, decisions and open questions.
+4. Derive small tasks with one main result each. Put them in the plan's
+   `proposed_tasks` and export them to `TODO.tasks.json`
+   (`bun run export -- --plan EX-XXXX`, then `--apply`), so every task links
+   back to the plan through `planning` and carries the plan code in its tags.
+5. Publish the change: in the App as a reviewed draft (one fast-forward commit
+   to `v3`), or as a pull request to `mission-control-data` that passes
+   `npm run validate`. Publishing data needs your Operator's instruction.
+6. Record an open business decision in the plan's `open_questions`; record an
+   open technical problem as a GitHub Issue of the owning repository.
 
-Example `planning` reference in a task:
-
-```json
-"planning": {
-  "plan_id": "plan-2026-05-23-001",
-  "path": "mission-control/plans/2026/05/agent-automation-desk.yaml",
-  "source": "mission-control",
-  "role": "planning_source"
-}
-```
-
-If Mission Control cannot be read, do not pretend a plan exists. Record a task
-with a clear `next_action` to restore it, and move the planning context into
-Mission Control as soon as it is available again.
+If Mission Control cannot be read, do not pretend a plan exists. Say what is
+missing and how to restore it; do not keep a second plan elsewhere.
 
 ## Verification
 
 - The plan exists once, in Mission Control, and every derived task links to
   it.
+- `npm run validate` in `mission-control/db/` reports
+  `Mission Control data validation OK`.
 - No feature plan lives only in chat, and no long strategic brief lives only
   in a task.
 - Mission Control holds no secrets, tokens, customer data or local runtime

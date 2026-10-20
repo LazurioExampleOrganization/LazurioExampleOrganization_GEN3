@@ -157,6 +157,9 @@
         ],
         "callbacks": []
       }
+    },
+    "access_requests": {
+      "enabled": true
     }
   },
   "extensions": {

@@ -16,7 +16,7 @@ jobs:
     env:
       # Public Lazurio Core. Bump the pin in a reviewed pull request.
       LAZURIO_CORE_REPOSITORY: HumanAndMachines/Lazurio
-      LAZURIO_CORE_REF: 4699b5ca8aeecf8b6074ad0919b051a6693497c8
+      LAZURIO_CORE_REF: f5e491712499e8e6400a6c0aa216abc348bada96
     steps:
       - name: Check out the Organization
         uses: actions/checkout@v4

@@ -11,7 +11,7 @@ Do not optimise for activity alone; optimise for a verifiable revenue signal.
   verify it.
 - Do not allow automation that would generate spam, fake engagement,
   phishing, ToS circumvention or misleading claims.
-- Always confirm financial or externally visible steps with a person first.
+- Always confirm financial or externally visible steps with the user first.
 - When a decision changes the direction of the company, record it in
   Mission Control, `CHANGELOG.md` or the knowledgebase.
 

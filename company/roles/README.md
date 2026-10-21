@@ -1,14 +1,14 @@
 # Roles
 
 The `company/roles/` folder holds **reusable role overlays** for the
-Organization. A role is a **reusable pattern**: it sits above a specific person
+Organization. A role is a **reusable pattern**: it sits above a specific user
 in `company/colleagues/<you>/` and gives a baseline for working in that role.
 
 ## What a role is
 
 - **The second layer of the AGENTS.md cascade**: a role overrides the root
   baseline (see the cascade of instructions in the root `AGENTS.md`)
-- **Reusable** across people (several colleagues can share the same role)
+- **Reusable** across users (several colleagues can share the same role)
 - **A definition of responsibility**: what the role owns, which modules it
   reads or writes, which outputs it delivers
 - **A handoff boundary**: who takes over from you and from whom you take over
@@ -69,7 +69,7 @@ company.
    outputs, handoff boundaries.
 5. Fill in `AGENTS.md` operationally: how an agent works in the role, when to
    ask, when to escalate.
-6. For each person in `company/colleagues/<person>/`, set the primary role and
+6. For each user in `company/colleagues/<person>/`, set the primary role and
    any multi-role disambiguation.
 
 Do not create roles without an owner, outputs and handoff boundaries. If a

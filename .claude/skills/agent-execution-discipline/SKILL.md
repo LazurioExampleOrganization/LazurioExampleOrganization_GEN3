@@ -39,7 +39,7 @@ Before you start, you can answer:
   it wrong?
 - Which assumptions am I making? An assumption that changes correctness,
   safety, customer impact or an ownership boundary is not an assumption; it is
-  a question for your Operator.
+  a question for your user.
 
 Owning the outcome means: when you do not know, you find out; when you cannot
 find out, you ask; and what you promise in the handoff is true.
@@ -49,7 +49,7 @@ find out, you ask; and what you promise in the handoff is true.
 Plan a refactor, feature, workflow change or access change first, with the
 `mission-control-planning` skill: a plan with a code, a goal and acceptance
 criteria. The plan is not bureaucracy. It is the anchor through which the
-next agent and your Operator find your work, and it names your worktree
+next agent and your user find your work, and it names your worktree
 (`<plan-code>-<slug>`).
 
 ### 3. Then a worktree, never the primary checkout
@@ -85,5 +85,5 @@ months from now:
 - Handoff: what changed, why the solution is sustainable, what was verified
   and what remains as follow-up. No secrets and no reasoning dump.
 - Your work ends with a pull request. Publishing it (the merge) belongs to
-  your Operator or to a Colleague they ask; see the collaboration model linked
+  your user or to a Colleague they ask; see the collaboration model linked
   from the root `AGENTS.md`.

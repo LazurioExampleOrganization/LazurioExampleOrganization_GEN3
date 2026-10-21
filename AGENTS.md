@@ -12,9 +12,9 @@ money online: legally, with its own brand and its own data.
 
 ## Collaboration model
 
-How people and agents work together (the Operator, Colleagues, Task Agents,
-Drafts and Publication) is defined once, in the collaboration model section of
-the [Lazurio root `AGENTS.md`](https://github.com/HumanAndMachines/Lazurio/blob/main/AGENTS.md#model-spolupr%C3%A1ce-oper%C3%A1tor-a-agenti).
+How users and agents work together (the user, Colleagues, Task Agents, Drafts
+and Publication) is defined once, in the collaboration model section of the
+[Lazurio root `AGENTS.md`](https://github.com/HumanAndMachines/Lazurio/blob/main/AGENTS.md#model-spolupr%C3%A1ce-u%C5%BEivatel-a-agenti).
 It applies here unchanged. This file does not keep a translated copy; when the
 Lazurio root ships an English version of that section, it is embedded here
 verbatim.
@@ -74,7 +74,7 @@ Read from the general to the specific; the closer rule wins:
 - Be an active colleague: point out a risk, contradiction or opportunity
   briefly (what you see, why it matters, the recommended fix, who owns the
   next step). Fix a small, safe problem within your scope directly; leave a
-  decision with business or security impact to a person, with one to three
+  decision with business or security impact to the user, with one to three
   options.
 - Never bring secrets, OAuth session data, private overlays or another
   company's data into this Organization.
@@ -93,8 +93,8 @@ experiment, all content and every automation:
   `workspace/experiments`.
 - Only a mechanism with a verified signal is scaled; only a verified procedure
   goes to `workspace/playbooks`.
-- Confirm every financial step and every externally visible action with a
-  person first.
+- Confirm every financial step and every externally visible action with the
+  user first.
 - Sensitive financial data enters Git only safely anonymised
   (`workspace/finance`); everything else stays out of Git.
 - Online market claims age quickly: every research output lists its sources
@@ -155,7 +155,7 @@ Never pretend that a missing module is a Git workflow error.
   Integrations, never committed. Personal assistant settings live in the
   gitignored `company/colleagues/<os-user>/.claude/settings.json` or in
   `~/.claude/settings.json`.
-- When a service is not connected, say so and point the person to connect it.
+- When a service is not connected, say so and point the user to connect it.
 - `example.local` is a local placeholder, not an OAuth identity.
 
 ## Git rules
@@ -181,7 +181,7 @@ Never pretend that a missing module is a Git workflow error.
 - Destructive operations (`rm -rf`, forced resets, bulk deletion) only on an
   explicit instruction; prefer recoverable steps.
 - Confirm actions that leave the local Environment (email, public post,
-  external message, paid ad) with a person first.
+  external message, paid ad) with the user first.
 - Secrets, tokens and OAuth data never go to Git. A secret an App needs lives
   in the Environment's vault and is declared by name in the App's
   `lazurio.runtime.secrets`.

@@ -20,7 +20,7 @@ Why it is here:
 4. Use the archetypes below as a content pattern for `README.md` and
    `AGENTS.md`.
 5. Write the final list into `company/roles/README.md`.
-6. For each person in `company/colleagues/<person>/`, set the primary role and
+6. For each user in `company/colleagues/<person>/`, set the primary role and
    any multi-role disambiguation.
 
 Do not create empty roles just because they are in the catalogue. A role

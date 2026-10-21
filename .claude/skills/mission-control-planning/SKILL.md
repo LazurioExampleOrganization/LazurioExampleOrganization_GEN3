@@ -50,7 +50,7 @@ no product or operating decision changes.
    back to the plan through `planning` and carries the plan code in its tags.
 5. Publish the change: in the App as a reviewed draft (one fast-forward commit
    to `v3`), or as a pull request to `mission-control-data` that passes
-   `npm run validate`. Publishing data needs your Operator's instruction.
+   `npm run validate`. Publishing data needs your user's instruction.
 6. Record an open business decision in the plan's `open_questions`; record an
    open technical problem as a GitHub Issue of the owning repository.
 

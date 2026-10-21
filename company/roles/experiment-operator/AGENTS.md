@@ -8,7 +8,7 @@ an activity that has no clear metric, stop condition and guardrail check.
 - Every experiment must have a hypothesis, a metric, a budget, a stop
   condition and an expected next decision.
 - Actions outside the local environment, especially messages to people,
-  purchases, sign-ups and publishing, require a person's confirmation.
+  purchases, sign-ups and publishing, require the user's confirmation.
 - Do not run spam, fake engagement, scraping against ToS, phishing or
   misleading claims.
 - Record the result even when the test fails; a failure is evidence.

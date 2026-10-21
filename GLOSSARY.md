@@ -61,13 +61,13 @@ design system).
 
 ### Lazurio Folder
 
-The folder on one Machine in which Lazurio keeps the Organizations a person
+The folder on one Machine in which Lazurio keeps the Organizations a user
 works with (`organizations/`) and their private Personalspace. Organizations
 stay separate access boundaries inside it.
 
 ### Team
 
-A logical, many-to-many group of modules and people inside an Organization,
+A logical, many-to-many group of modules and users inside an Organization,
 the same concept as a GitHub Team. A module can belong to several Teams. A
 Team has no directory of its own. The roster is declared in
 `lazurio.organization.json#teams` and a module's membership in
@@ -102,7 +102,7 @@ yet.
 
 ### Personalspace
 
-The private personal space of one person, outside every GitHub Organization.
+The private personal space of one user, outside every GitHub Organization.
 It never holds company truth.
 
 ### Launchpad

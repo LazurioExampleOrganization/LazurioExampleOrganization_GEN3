@@ -2,7 +2,7 @@
 
 **Scope:** <FILL_SCOPE>
 
-This folder defines a reusable role overlay. A specific person refers to it
+This folder defines a reusable role overlay. A specific user refers to it
 from `company/colleagues/<name>/`.
 
 ## What the role does
@@ -50,7 +50,7 @@ Example:
 
 ## Multi-role note
 
-If a specific person holds several roles, the disambiguation belongs in
+If a specific user holds several roles, the disambiguation belongs in
 `company/colleagues/<person>/AGENTS.md`. Describe the pure role here, not a
 personal mix.
 

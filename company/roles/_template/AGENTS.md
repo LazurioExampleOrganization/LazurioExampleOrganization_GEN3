@@ -43,7 +43,7 @@ What the role owns, and what is **not** in scope.
 
 ## Multi-role behaviour
 
-If the person overlay says that a specific person holds several roles, do not
+If the person overlay says that a specific user holds several roles, do not
 switch between them silently. When the task does not make clear which role
 the agent should use, ask a short question.
 

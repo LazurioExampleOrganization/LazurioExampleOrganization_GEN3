@@ -6,7 +6,7 @@ root (mirrored to `.claude/skills/`).
 
 ## When to use a personal skill and when a shared skill
 
-- **Shared skill** (`.agents/skills/`): a process that several people use
+- **Shared skill** (`.agents/skills/`): a process that several users follow
   (for example `mission-control-planning`)
 - **Personal skill** (`company/colleagues/<you>/.claude/skills/`): a process
   or preference that is for one colleague only (for example a specific

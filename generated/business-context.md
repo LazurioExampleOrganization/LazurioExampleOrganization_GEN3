@@ -15,7 +15,7 @@ Firma: Lazurio Example Organization
 - evidence-based-adaptation: Legal adaptations of demonstrably working online mechanisms: own brand, own data, own offer and no evasion of platform rules.
 
 ## Rozhodovací pravidla
-- money movement, external visibility, platform ToS, legal or reputational risk: A person confirms financial steps, externally visible actions and anything with legal or platform impact in advance. An agent never starts an automation that generates spam, fake engagement or misleading claims.
+- money movement, external visibility, platform ToS, legal or reputational risk: The user confirms financial steps, externally visible actions and anything with legal or platform impact in advance. An agent never starts an automation that generates spam, fake engagement or misleading claims.
 - scale decision: Only a mechanism with a verified signal from an experiment may be scaled; the stop or scale decision is recorded in workspace/experiments.
 
 ## Rizika

@@ -187,7 +187,7 @@
         "decision_rules": [
           {
             "owner": "founder",
-            "rule": "A person confirms financial steps, externally visible actions and anything with legal or platform impact in advance. An agent never starts an automation that generates spam, fake engagement or misleading claims.",
+            "rule": "The user confirms financial steps, externally visible actions and anything with legal or platform impact in advance. An agent never starts an automation that generates spam, fake engagement or misleading claims.",
             "trigger": "money movement, external visibility, platform ToS, legal or reputational risk"
           },
           {
@@ -438,7 +438,7 @@
     "legacy_projection": {
       "path": "company.gen3.json",
       "algorithm": "sha256-canonical-json-v1",
-      "sha256": "sha256:26de869aa2814ee92caccc6213df0158938d7d4b5b9e58aaaac48abf93fe6c41"
+      "sha256": "sha256:e7326263797c25be5907dcbd97ad7925e95b00736819caad91bbb974c6d6260f"
     }
   }
 }

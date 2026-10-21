@@ -22,7 +22,7 @@
     "decision_rules": [
       {
         "owner": "founder",
-        "rule": "A person confirms financial steps, externally visible actions and anything with legal or platform impact in advance. An agent never starts an automation that generates spam, fake engagement or misleading claims.",
+        "rule": "The user confirms financial steps, externally visible actions and anything with legal or platform impact in advance. An agent never starts an automation that generates spam, fake engagement or misleading claims.",
         "trigger": "money movement, external visibility, platform ToS, legal or reputational risk"
       },
       {

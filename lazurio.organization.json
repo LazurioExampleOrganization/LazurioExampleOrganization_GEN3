@@ -155,7 +155,10 @@
           "one_drive",
           "share_point"
         ],
-        "callbacks": []
+        "callbacks": [
+          "https://launchpad.admin-01.lazurioexampleorganization.lazurio.io/api/integrations/oauth/callback",
+          "https://launchpad.team-01.lazurioexampleorganization.lazurio.io/api/integrations/oauth/callback"
+        ]
       }
     },
     "access_requests": {

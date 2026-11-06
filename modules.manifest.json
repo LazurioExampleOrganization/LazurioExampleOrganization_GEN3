@@ -263,7 +263,7 @@
         "url": "git@github.com:LazurioExampleOrganization/design-system.git",
         "branch": "main"
       },
-      "notes": "Organization design system: brand baseline, tokens and a read-only viewer App. Split from the root with its history; no template upstream."
+      "notes": "Organization design system: brand baseline, tokens and a read-only viewer App. Split from the root with its history; takes releases of the Lazurio Marketplace template LazurioTemplates/design-system by merging their tags (v1.0.0)."
     },
     {
       "path": "mission-control",
@@ -281,7 +281,7 @@
         "url": "git@github.com:LazurioExampleOrganization/mission-control.git",
         "branch": "main"
       },
-      "notes": "Mission Control v3 App. The repository integrates released tags of the public upstream Lazurio/mission-control (decision 0174) and adds only the declared instance overlay; its data lives in mission-control/db."
+      "notes": "Mission Control App (generation app/v3). The repository takes released tags of the Lazurio Marketplace template LazurioTemplates/mission-control, formerly Lazurio/mission-control (decision 0174), and adds only the declared instance overlay; its data lives in mission-control/db."
     },
     {
       "path": "mission-control/db",

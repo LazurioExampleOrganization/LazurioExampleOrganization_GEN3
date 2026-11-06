@@ -3,6 +3,25 @@
 Date versions: `YYYYMMDD`. This changelog records notable changes delivered
 to the Organization root. Modules keep their own changelogs.
 
+## Unreleased
+
+Plan DEV-6593: the Organization is the first subscriber of the Lazurio
+Marketplace and adopts three app templates of LazurioTemplates.
+
+### Added
+
+- `workspace/presentations`: the Presentations App, adopted from the template
+  LazurioTemplates/presentations v0.1.0, with the example presentation.
+
+### Changed
+
+- Mission Control takes the template LazurioTemplates/mission-control 4.0.0
+  (formerly Lazurio/mission-control) and the design system the template
+  LazurioTemplates/design-system 1.0.0, each by merging the release tag. The
+  rules, README, glossary, migration ledger, planning skill and reference
+  notes name the new sources; the planning skill follows Mission Control 4.0,
+  whose App no longer reads the task ledgers.
+
 ## 20261016
 
 GEN3 migration, plan EX-0001. Every step is a public pull request with a
@@ -22,7 +41,8 @@ benchmark row in `MIGRATION.md`.
   colleague overlays, agent knowledge, blog and the manifest text. Fictional
   people have international names (Alex Morgan, Sam Taylor, Robin Lee).
 - Mission Control v3 replaces the in-tree v1 layer: the App comes from the
-  public upstream Lazurio/mission-control (v3.0.1) and the plans and tasks
+  public upstream Lazurio/mission-control (v3.0.1; since moved to
+  LazurioTemplates/mission-control) and the plans and tasks
   live in the mission-control-data repository, imported from v1 and
   translated. The design system is its own repository. All three root
   application slots are active, and the restricted infra slot is cloned by an

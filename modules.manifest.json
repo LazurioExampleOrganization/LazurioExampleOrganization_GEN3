@@ -159,6 +159,55 @@
       "notes": "Costs, revenue, unit economics, payment provider exports and the experiment audit. Sensitive data stays out of Git unless it is safely anonymized."
     },
     {
+      "path": "workspace/time-tracker",
+      "slug": "time-tracker",
+      "space": "workspace",
+      "teams": [
+        "workspace"
+      ],
+      "category": "application",
+      "default_access": "expected",
+      "required_roles": [
+        "*"
+      ],
+      "source_of_truth": "git-native",
+      "status": "active",
+      "notes": "Time Tracker: Modul zalo\u017een\u00fd p\u0159\u00edkazem lazurio module create (stack vite-react).",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/time-tracker.git",
+        "branch": "main"
+      }
+    },
+    {
+      "path": "workspace/time-tracker/db",
+      "slug": "time-tracker-data",
+      "teams": [
+        "workspace"
+      ],
+      "category": "application",
+      "default_access": "expected",
+      "required_roles": [
+        "*"
+      ],
+      "source_of_truth": "repository-db:v3",
+      "status": "active",
+      "notes": "Time Tracker: data Modulu v repository-db (LazurioExampleOrganization/time-tracker-data, v\u011btev v3), p\u0159ipojen\u00e1 jako db/ Modulu workspace/time-tracker. Publikace dat je repository-db publish do v3, odd\u011blen\u00e1 od PR k\u00f3du Modulu.",
+      "materialization": "repository_db_mount",
+      "repository_db": {
+        "repo": "LazurioExampleOrganization/time-tracker-data",
+        "url": "git@github.com:LazurioExampleOrganization/time-tracker-data.git",
+        "branch": "v3",
+        "config": "repository-db.yaml",
+        "data_root": "data",
+        "profile": "repository-db-v3",
+        "app_writable_path_policy": "repository_db_publish_only"
+      },
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/time-tracker-data.git",
+        "branch": "v3"
+      }
+    },
+    {
       "path": "design-system",
       "slug": "design-system",
       "space": "root",

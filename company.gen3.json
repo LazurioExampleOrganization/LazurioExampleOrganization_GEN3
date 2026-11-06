@@ -405,6 +405,54 @@
       "teams": [
         "workspace"
       ]
+    },
+    {
+      "access": {
+        "default": "expected",
+        "roles": [
+          "*"
+        ]
+      },
+      "branch": "main",
+      "category": "application",
+      "notes": "Time Tracker: Modul založený příkazem lazurio module create (stack vite-react).",
+      "path": "workspace/time-tracker",
+      "repo": "git@github.com:LazurioExampleOrganization/time-tracker.git",
+      "slug": "time-tracker",
+      "source_of_truth": "git-native",
+      "status": "active",
+      "teams": [
+        "workspace"
+      ]
+    },
+    {
+      "access": {
+        "default": "expected",
+        "roles": [
+          "*"
+        ]
+      },
+      "branch": "v3",
+      "category": "application",
+      "materialization": "repository_db_mount",
+      "notes": "Time Tracker: data Modulu v repository-db (LazurioExampleOrganization/time-tracker-data, větev v3), připojená jako db/ Modulu workspace/time-tracker. Publikace dat je repository-db publish do v3, oddělená od PR kódu Modulu.",
+      "path": "workspace/time-tracker/db",
+      "repo": "git@github.com:LazurioExampleOrganization/time-tracker-data.git",
+      "repository_db": {
+        "app_writable_path_policy": "repository_db_publish_only",
+        "branch": "v3",
+        "config": "repository-db.yaml",
+        "data_root": "data",
+        "profile": "repository-db-v3",
+        "repo": "LazurioExampleOrganization/time-tracker-data",
+        "url": "git@github.com:LazurioExampleOrganization/time-tracker-data.git"
+      },
+      "slug": "time-tracker-data",
+      "source_of_truth": "repository-db:v3",
+      "status": "active",
+      "teams": [
+        "workspace"
+      ]
     }
   ],
   "organization_generation": "gen3",

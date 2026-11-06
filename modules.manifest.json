@@ -172,7 +172,7 @@
       ],
       "source_of_truth": "git-native",
       "status": "active",
-      "notes": "Time Tracker: shared time tracking application, created with lazurio module create (vite-react).",
+      "notes": "Time Tracker: Modul zalo\u017een\u00fd p\u0159\u00edkazem lazurio module create (stack vite-react).",
       "git": {
         "url": "git@github.com:LazurioExampleOrganization/time-tracker.git",
         "branch": "main"
@@ -191,7 +191,7 @@
       ],
       "source_of_truth": "repository-db:v3",
       "status": "active",
-      "notes": "Time Tracker data in the private time-tracker-data repository, mounted at db/ on v3; data publication uses repository-db.",
+      "notes": "Time Tracker: data Modulu v repository-db (LazurioExampleOrganization/time-tracker-data, v\u011btev v3), p\u0159ipojen\u00e1 jako db/ Modulu workspace/time-tracker. Publikace dat je repository-db publish do v3, odd\u011blen\u00e1 od PR k\u00f3du Modulu.",
       "materialization": "repository_db_mount",
       "repository_db": {
         "repo": "LazurioExampleOrganization/time-tracker-data",

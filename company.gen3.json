@@ -410,6 +410,25 @@
       "access": {
         "default": "expected",
         "roles": [
+          "*"
+        ]
+      },
+      "branch": "main",
+      "category": "application",
+      "notes": "Presentations App: a library of HTML presentations created with an agent, adopted from the Lazurio Marketplace template LazurioTemplates/presentations v0.1.0. Generation app/v1, decks are files in Git; no data repository.",
+      "path": "workspace/presentations",
+      "repo": "git@github.com:LazurioExampleOrganization/presentations.git",
+      "slug": "presentations",
+      "source_of_truth": "git-native",
+      "status": "active",
+      "teams": [
+        "workspace"
+      ]
+    },
+    {
+      "access": {
+        "default": "expected",
+        "roles": [
           "founder",
           "research-operator"
         ]

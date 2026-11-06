@@ -35,7 +35,7 @@ stays here.
 
 | Id | Decision |
 |---|---|
-| D2 | The knowledgebase and design system templates have no public upstream. Both repositories are converted by hand and record "no upstream". |
+| D2 | The knowledgebase and design system templates have no public upstream. Both repositories are converted by hand and record "no upstream". Addendum 2026-11-06: the design system later became the Lazurio Marketplace template [LazurioTemplates/design-system](https://github.com/LazurioTemplates/design-system), and the Organization adopts its v1.0.0 as a subscriber (plan DEV-6593). |
 | D3 | Display name "Lazurio Example Organization", identifiers `example-*`, domain `example.local`. Fictional people use international names without diacritics: Alex Morgan (`alexmorgan`), Sam Taylor (`samtaylor`), Robin Lee (`robinlee`) and Kim Park. |
 | D4 | Until the Lazurio root ships an English locale of its managed collaboration block, `AGENTS.md` links to that block instead of embedding a translated copy. The Organization's own rules are written in English. |
 | D6 | The manifest stays in `transition`. Every pull request that changes a manifest regenerates the projection. |
@@ -43,8 +43,8 @@ stays here.
 | D8 | Module port pool 25300–25399, disjoint from every other Organization on the maintainer machine. |
 | D9 | Plan code `EX-0001`. Private plan codes never appear. |
 | D10 | No private tooling is copied. Root CI runs `lazurio organization check` from a pinned commit of the public Lazurio Core. |
-| D1 | Mission Control v3 comes from the public upstream [Lazurio/mission-control](https://github.com/Lazurio/mission-control) at release `v3.0.0`. The Organization's `mission-control` repository imports it (decision 0174) and adds only its `lazurio.module.json`; planning data lives in `mission-control-data` (branch `v3`). |
-| D5 | The Mission Control v3 UI is Czech-only for now ([Lazurio/mission-control#1](https://github.com/Lazurio/mission-control/issues/1)). The Organization does not fork the UI; this is a known gap of the English gate. |
+| D1 | Mission Control v3 comes from the public upstream [Lazurio/mission-control](https://github.com/LazurioTemplates/mission-control) at release `v3.0.0` (the repository has since moved to `LazurioTemplates/mission-control`, the publisher of the Lazurio Marketplace templates; from v4.0.0 the Organization takes its releases as a Marketplace subscriber, plan DEV-6593). The Organization's `mission-control` repository imports it (decision 0174) and adds only its `lazurio.module.json`; planning data lives in `mission-control-data` (branch `v3`). |
+| D5 | The Mission Control v3 UI is Czech-only for now ([LazurioTemplates/mission-control#1](https://github.com/LazurioTemplates/mission-control/issues/1)). The Organization does not fork the UI; this is a known gap of the English gate. |
 
 ## Phases
 
@@ -175,12 +175,13 @@ rulesets allow this and GitHub marks the pull request as merged.
   regenerating it needs a template remote the Organization does not have
   ([HumanAndMachines/Lazurio#556](https://github.com/HumanAndMachines/Lazurio/issues/556)).
 - The Mission Control v3 UI is Czech-only
-  ([Lazurio/mission-control#1](https://github.com/Lazurio/mission-control/issues/1)).
+  ([LazurioTemplates/mission-control#1](https://github.com/LazurioTemplates/mission-control/issues/1)).
 - The Mission Control data validator is pinned upstream code and keeps two
   Czech regular expressions; they are the only Czech left in
   `mission-control-data`.
 - Mission Control v3 fails Module Standard check MS-07 upstream
-  ([Lazurio/mission-control#5](https://github.com/Lazurio/mission-control/issues/5)).
+  ([LazurioTemplates/mission-control#5](https://github.com/LazurioTemplates/mission-control/issues/5));
+  4.0.0 starts Bun with `--no-env-file`.
 - The localhost Launchpad does not run a module's declared preparation
   ([HumanAndMachines/Lazurio#470](https://github.com/HumanAndMachines/Lazurio/issues/470));
   Mission Control needs `bun run prepare:app` in `app/v3` before its first
@@ -192,7 +193,7 @@ rulesets allow this and GitHub marks the pull request as merged.
 |---|---|
 | `lazurio update --json` | Root updated; `design-system` and `mission-control` reported `managed_checkout_not_repository`: only the ignored `node_modules` of the removed in-tree Apps were left in those folders. Removed by hand |
 | `lazurio organization install LazurioExampleOrganization --json` (Admin) | `updated`, 0 blocked: cloned `design-system`, `mission-control` and the repository-db mount `mission-control/db` |
-| `lazurio module setup` | design-system `current` 13/13; mission-control 12/13 (MS-07: the upstream `dev` script starts Bun without `--no-env-file`, [Lazurio/mission-control#5](https://github.com/Lazurio/mission-control/issues/5)); all seven workspace modules `current` 13/13 |
+| `lazurio module setup` | design-system `current` 13/13; mission-control 12/13 (MS-07: the upstream `dev` script starts Bun without `--no-env-file`, [LazurioTemplates/mission-control#5](https://github.com/LazurioTemplates/mission-control/issues/5)); all seven workspace modules `current` 13/13 |
 | `lazurio module start` | design-system healthy on 25301; Mission Control healthy on 25302 after its declared preparation (`prepare:app`) was run by hand, because the localhost Launchpad does not run preparation yet ([HumanAndMachines/Lazurio#470](https://github.com/HumanAndMachines/Lazurio/issues/470)) |
 | Browser (headless Chromium) | The design system renders its tokens; Mission Control lists the 13 plans (EX-0001 to EX-0013), 14 open tasks (6 linked to a plan) and 1 open business issue, with no broken links |
 | Czech-diacritics grep | 0 in design-system, knowledgebase, research, experiments, playbooks, content, finance, automations and infra; root 9 (compiler headings); mission-control-data 2 (pinned upstream validator); mission-control 1,142 (upstream code and Czech-only UI) |

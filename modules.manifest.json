@@ -228,6 +228,26 @@
       }
     },
     {
+      "path": "workspace/presentations",
+      "slug": "presentations",
+      "space": "workspace",
+      "teams": [
+        "workspace"
+      ],
+      "category": "application",
+      "default_access": "expected",
+      "required_roles": [
+        "*"
+      ],
+      "source_of_truth": "git-native",
+      "status": "active",
+      "notes": "Presentations App: a library of HTML presentations created with an agent, adopted from the Lazurio Marketplace template LazurioTemplates/presentations v0.1.0. Generation app/v1, decks are files in Git; no data repository.",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/presentations.git",
+        "branch": "main"
+      }
+    },
+    {
       "path": "design-system",
       "slug": "design-system",
       "space": "root",
@@ -243,7 +263,7 @@
         "url": "git@github.com:LazurioExampleOrganization/design-system.git",
         "branch": "main"
       },
-      "notes": "Organization design system: brand baseline, tokens and a read-only viewer App. Split from the root with its history; no template upstream."
+      "notes": "Organization design system: brand baseline, tokens and a read-only viewer App. Split from the root with its history; takes releases of the Lazurio Marketplace template LazurioTemplates/design-system by merging their tags (v1.0.0)."
     },
     {
       "path": "mission-control",
@@ -261,7 +281,7 @@
         "url": "git@github.com:LazurioExampleOrganization/mission-control.git",
         "branch": "main"
       },
-      "notes": "Mission Control v3 App. The repository integrates released tags of the public upstream Lazurio/mission-control (decision 0174) and adds only the declared instance overlay; its data lives in mission-control/db."
+      "notes": "Mission Control App (generation app/v3). The repository takes released tags of the Lazurio Marketplace template LazurioTemplates/mission-control, formerly Lazurio/mission-control (decision 0174), and adds only the declared instance overlay; its data lives in mission-control/db."
     },
     {
       "path": "mission-control/db",

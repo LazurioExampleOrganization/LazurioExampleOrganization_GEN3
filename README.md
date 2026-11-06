@@ -90,8 +90,9 @@ Workspace modules:
 
 The Organization plans in Mission Control v3. Plans hold the why, the scope,
 the decisions and the acceptance criteria; tasks hold the concrete
-implementation steps and link back to a plan. The App comes from the public
-upstream [Lazurio/mission-control](https://github.com/Lazurio/mission-control);
+implementation steps and link back to a plan. The App is the Organization's
+copy of the Lazurio Marketplace template
+[LazurioTemplates/mission-control](https://github.com/LazurioTemplates/mission-control);
 the plans and tasks live in the
 [mission-control-data](https://github.com/LazurioExampleOrganization/mission-control-data)
 repository. The migration itself is plan EX-0001 there. The Mission Control UI

@@ -105,18 +105,22 @@ experiment, all content and every automation:
 - Plans live in Mission Control: why something is done, for whom, its scope,
   decisions and acceptance criteria. Concrete implementation steps are tasks
   linked to a plan. Use the `mission-control-planning` skill.
-- Mission Control v3 is the root application module `mission-control/`, the
-  public upstream [Lazurio/mission-control](https://github.com/Lazurio/mission-control)
-  with this Organization's overlay. Its data repository `mission-control-data`
-  (branch `v3`) is mounted at `mission-control/db/`: plans in
-  `data/mission-control/plans/<year>/<month>/EX-XXXX-<slug>.yaml`, tasks in
+- Mission Control is the root application module `mission-control/`, this
+  Organization's copy of the Lazurio Marketplace template
+  [LazurioTemplates/mission-control](https://github.com/LazurioTemplates/mission-control)
+  (formerly `Lazurio/mission-control`); it takes the template's releases by
+  merging their tags. Its data repository `mission-control-data` (branch `v3`)
+  is mounted at `mission-control/db/`: plans in
+  `data/mission-control/plans/<year>/<month>/EX-XXXX-<slug>.yaml`, roadmaps in
+  `data/mission-control/roadmaps/`, tasks in
   `data/mission-control/TODO.tasks.json` and `DONE.tasks.json`.
-- Write plans and tasks through the Mission Control App (a reviewed draft,
+- Write plans and roadmaps through the Mission Control App (a reviewed draft,
   published as one fast-forward commit) or a pull request to
-  `mission-control-data`. Open technical problems are GitHub Issues of the
-  owning repository.
+  `mission-control-data`. From Mission Control 4.0 the App no longer reads the
+  task ledgers; write tasks by a pull request to `mission-control-data`. Open
+  technical problems are GitHub Issues of the owning repository.
 - The Mission Control UI is Czech-only for now
-  ([Lazurio/mission-control#1](https://github.com/Lazurio/mission-control/issues/1));
+  ([LazurioTemplates/mission-control#1](https://github.com/LazurioTemplates/mission-control/issues/1));
   the data is English.
 - Do not hold up a simple bug fix with planning ceremony.
 

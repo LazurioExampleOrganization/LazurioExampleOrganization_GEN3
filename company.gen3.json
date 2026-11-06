@@ -271,6 +271,25 @@
   "modules": [
     {
       "access": {
+        "default": "expected",
+        "roles": [
+          "*"
+        ]
+      },
+      "branch": "main",
+      "category": "engineering",
+      "notes": "App access: shows who came to an App through Lazurio and with which application role, read with @lazurio/module-kit appAccess (Lazurio decision 0231). Created with lazurio module create (stack bun-service).",
+      "path": "workspace/app-access",
+      "repo": "git@github.com:LazurioExampleOrganization/app-access.git",
+      "slug": "app-access",
+      "source_of_truth": "git-native",
+      "status": "active",
+      "teams": [
+        "workspace"
+      ]
+    },
+    {
+      "access": {
         "default": "role_based",
         "roles": [
           "founder",

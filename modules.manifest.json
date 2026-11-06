@@ -159,6 +159,55 @@
       "notes": "Costs, revenue, unit economics, payment provider exports and the experiment audit. Sensitive data stays out of Git unless it is safely anonymized."
     },
     {
+      "path": "workspace/time-tracker",
+      "slug": "time-tracker",
+      "space": "workspace",
+      "teams": [
+        "workspace"
+      ],
+      "category": "application",
+      "default_access": "expected",
+      "required_roles": [
+        "*"
+      ],
+      "source_of_truth": "git-native",
+      "status": "active",
+      "notes": "Time Tracker: shared time tracking application, created with lazurio module create (vite-react).",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/time-tracker.git",
+        "branch": "main"
+      }
+    },
+    {
+      "path": "workspace/time-tracker/db",
+      "slug": "time-tracker-data",
+      "teams": [
+        "workspace"
+      ],
+      "category": "application",
+      "default_access": "expected",
+      "required_roles": [
+        "*"
+      ],
+      "source_of_truth": "repository-db:v3",
+      "status": "active",
+      "notes": "Time Tracker data in the private time-tracker-data repository, mounted at db/ on v3; data publication uses repository-db.",
+      "materialization": "repository_db_mount",
+      "repository_db": {
+        "repo": "LazurioExampleOrganization/time-tracker-data",
+        "url": "git@github.com:LazurioExampleOrganization/time-tracker-data.git",
+        "branch": "v3",
+        "config": "repository-db.yaml",
+        "data_root": "data",
+        "profile": "repository-db-v3",
+        "app_writable_path_policy": "repository_db_publish_only"
+      },
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/time-tracker-data.git",
+        "branch": "v3"
+      }
+    },
+    {
       "path": "design-system",
       "slug": "design-system",
       "space": "root",

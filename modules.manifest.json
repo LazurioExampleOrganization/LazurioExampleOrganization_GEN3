@@ -208,6 +208,26 @@
       }
     },
     {
+      "path": "workspace/app-access",
+      "slug": "app-access",
+      "space": "workspace",
+      "teams": [
+        "workspace"
+      ],
+      "category": "engineering",
+      "default_access": "expected",
+      "required_roles": [
+        "*"
+      ],
+      "source_of_truth": "git-native",
+      "status": "active",
+      "notes": "App access: shows who came to an App through Lazurio and with which application role, read with @lazurio/module-kit appAccess (Lazurio decision 0231). Created with lazurio module create (stack bun-service).",
+      "git": {
+        "url": "git@github.com:LazurioExampleOrganization/app-access.git",
+        "branch": "main"
+      }
+    },
+    {
       "path": "design-system",
       "slug": "design-system",
       "space": "root",

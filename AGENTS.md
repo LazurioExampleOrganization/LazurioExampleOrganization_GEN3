@@ -103,8 +103,7 @@ experiment, all content and every automation:
 ## Mission Control and tasks
 
 - Plans live in Mission Control: why something is done, for whom, its scope,
-  decisions and acceptance criteria. Concrete implementation steps are tasks
-  linked to a plan. Use the `mission-control-planning` skill.
+  decisions and acceptance criteria. Use the `mission-control-planning` skill.
 - Mission Control is the root application module `mission-control/`, this
   Organization's copy of the Lazurio Marketplace template
   [LazurioTemplates/mission-control](https://github.com/LazurioTemplates/mission-control)
@@ -112,16 +111,24 @@ experiment, all content and every automation:
   merging their tags. Its data repository `mission-control-data` (branch `v3`)
   is mounted at `mission-control/db/`: plans in
   `data/mission-control/plans/<year>/<month>/EX-XXXX-<slug>.yaml`, roadmaps in
-  `data/mission-control/roadmaps/`, tasks in
-  `data/mission-control/TODO.tasks.json` and `DONE.tasks.json`.
+  `data/mission-control/roadmaps/`.
 - Write plans and roadmaps through the Mission Control App (a reviewed draft,
   published as one fast-forward commit) or a pull request to
-  `mission-control-data`. From Mission Control 4.0 the App no longer reads the
-  task ledgers; write tasks by a pull request to `mission-control-data`. Open
-  technical problems are GitHub Issues of the owning repository.
-- The Mission Control UI is Czech-only for now
-  ([LazurioTemplates/mission-control#1](https://github.com/LazurioTemplates/mission-control/issues/1));
-  the data is English.
+  `mission-control-data`, whose required check `validate` runs the App's own
+  check of the records.
+- Tasks are the concrete implementation steps of a plan: its
+  `proposed_tasks`, which Mission Control validates with the plan and shows
+  with their assignee. The work on a task is a GitHub Issue of the owning
+  repository that names the plan code (`EX-XXXX`) and the task; the plan's
+  `links` list the issue. Open technical problems are GitHub Issues of the
+  owning repository as well.
+- The task and issue ledgers of `mission-control-data` (`TODO.tasks.json`,
+  `DONE.tasks.json`, `ISSUES.*.json`) are history. Mission Control 4.x
+  neither reads nor changes them; never add to them or change them.
+- Mission Control speaks Czech and English from 4.1.0 and takes the language
+  from Lazurio, which does not yet pass it to a Module
+  ([Lazurio/LazurioPlatform#909](https://github.com/Lazurio/LazurioPlatform/issues/909)),
+  so the hosted App shows Czech for now; the data is English.
 - Do not hold up a simple bug fix with planning ceremony.
 
 ## Missing modules

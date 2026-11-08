@@ -11,16 +11,21 @@ Marketplace and adopts three app templates of LazurioTemplates.
 ### Added
 
 - `workspace/presentations`: the Presentations App, adopted from the template
-  LazurioTemplates/presentations v0.1.0, with the example presentation.
+  LazurioTemplates/presentations v0.1.1, with the example presentation; from
+  `main` Lazurio runs its built version.
 
 ### Changed
 
-- Mission Control takes the template LazurioTemplates/mission-control 4.0.0
+- Mission Control takes the template LazurioTemplates/mission-control 4.1.0
   (formerly Lazurio/mission-control) and the design system the template
   LazurioTemplates/design-system 1.0.0, each by merging the release tag. The
   rules, README, glossary, migration ledger, planning skill and reference
-  notes name the new sources; the planning skill follows Mission Control 4.0,
-  whose App no longer reads the task ledgers.
+  notes name the new sources.
+- Tasks: Mission Control 4.x no longer reads the task ledgers, so a plan's
+  tasks are its `proposed_tasks` and the work on them is GitHub Issues of the
+  owning repository that link back to the plan. `TODO.tasks.json`,
+  `DONE.tasks.json` and the issue ledgers of `mission-control-data` stay
+  unchanged as history (#27).
 
 ## 20261016
 

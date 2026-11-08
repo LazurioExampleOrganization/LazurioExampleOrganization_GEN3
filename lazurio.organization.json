@@ -442,7 +442,7 @@
     "legacy_projection": {
       "path": "company.gen3.json",
       "algorithm": "sha256-canonical-json-v1",
-      "sha256": "sha256:1043e8bbf7052f886779ea1c1b34a0298e1b1fdaafd3e86e93798eac6ef96363"
+      "sha256": "sha256:7cc3df37ee85603028fdcfba65643e4cb3f4eeb63946ed3b0ae27e29bf5e4400"
     }
   }
 }

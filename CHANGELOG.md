@@ -16,7 +16,7 @@ Marketplace and adopts three app templates of LazurioTemplates.
 
 ### Changed
 
-- Mission Control takes the template LazurioTemplates/mission-control 4.1.1
+- Mission Control takes the template LazurioTemplates/mission-control 4.1.2
   (formerly Lazurio/mission-control) and the design system the template
   LazurioTemplates/design-system 1.0.0, each by merging the release tag. The
   rules, README, glossary, migration ledger, planning skill and reference

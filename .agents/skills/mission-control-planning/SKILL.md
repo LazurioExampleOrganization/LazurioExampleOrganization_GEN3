@@ -9,18 +9,22 @@ This skill turns a vague intent into two separate layers:
 
 - **A Mission Control plan**: why the work is done, for whom, its scope,
   decisions and acceptance criteria.
-- **Tasks**: concrete implementation steps that point back to the plan.
+- **Tasks**: concrete implementation steps, kept in the plan as its
+  `proposed_tasks`; the work on each is a GitHub Issue that points back to the
+  plan.
 
-The Organization runs Mission Control v3: the App is the root module
-`mission-control/` (public upstream
-[Lazurio/mission-control](https://github.com/Lazurio/mission-control)), and
+The Organization runs Mission Control: the App is the root module
+`mission-control/` (the Organization's copy of the Lazurio Marketplace template
+[LazurioTemplates/mission-control](https://github.com/LazurioTemplates/mission-control)), and
 its data repository `mission-control-data` (branch `v3`) is mounted at
 `mission-control/db/`:
 
 - plans: `data/mission-control/plans/<year>/<month>/EX-XXXX-<slug>.yaml`
-  (plan prefix `EX`);
-- tasks: `data/mission-control/TODO.tasks.json` and `DONE.tasks.json`;
-- roadmaps: `data/mission-control/roadmaps/`.
+  (plan prefix `EX`), with their tasks in `proposed_tasks`;
+- roadmaps: `data/mission-control/roadmaps/`;
+- the task and issue ledgers (`TODO.tasks.json`, `DONE.tasks.json`,
+  `ISSUES.*.json`) are history: Mission Control 4.x neither reads nor changes
+  them, and nobody adds to them.
 
 ## When to use
 
@@ -39,19 +43,23 @@ no product or operating decision changes.
 1. Read the root `AGENTS.md`, `MAP.md` and the nearest relevant `AGENTS.md`.
 2. Find an existing plan for the intent in Mission Control (the App, or the
    plans directory). Do not create a duplicate.
-3. If none exists, create one in English: in the Mission Control App, or with
-   `bun run create-plan -- --title "<title>"` in `mission-control/`, which takes
-   the next free `EX-XXXX` code. A plan has a goal and business reason
+3. If none exists, create one in English: in the Mission Control App ("Nový
+   plán" takes the next free `EX-XXXX` code), or as a new file in a pull
+   request to `mission-control-data` with the next free code. A plan has a goal and business reason
    (`context`, `current_problem`, `target_state`), scope and non-goals,
    acceptance criteria, validation, risks, decisions and open questions.
-4. Derive small tasks with one main result each. Put them in the plan's
-   `proposed_tasks` and export them to `TODO.tasks.json`
-   (`bun run export -- --plan EX-XXXX`, then `--apply`), so every task links
-   back to the plan through `planning` and carries the plan code in its tags.
+4. Derive small tasks with one main result each and put them in the plan's
+   `proposed_tasks` (`title` and `summary`; `assignee`, `priority`,
+   `acceptance_criteria` and `blocked_by` where they help). Mission Control
+   validates them with the plan and shows them with their assignee. Never add
+   a task to `TODO.tasks.json`.
 5. Publish the change: in the App as a reviewed draft (one fast-forward commit
    to `v3`), or as a pull request to `mission-control-data` that passes
-   `npm run validate`. Publishing data needs your user's instruction.
-6. Record an open business decision in the plan's `open_questions`; record an
+   `bun scripts/validate.ts`. Publishing data needs your user's instruction.
+6. When work on a task starts, open a GitHub Issue in the owning repository
+   that names the plan code and the task, and add the issue to the plan's
+   `links` with the next change of the plan.
+7. Record an open business decision in the plan's `open_questions`; record an
    open technical problem as a GitHub Issue of the owning repository.
 
 If Mission Control cannot be read, do not pretend a plan exists. Say what is
@@ -59,10 +67,12 @@ missing and how to restore it; do not keep a second plan elsewhere.
 
 ## Verification
 
-- The plan exists once, in Mission Control, and every derived task links to
-  it.
-- `npm run validate` in `mission-control/db/` reports
-  `Mission Control data validation OK`.
+- The plan exists once, in Mission Control; its tasks are its
+  `proposed_tasks`, and every GitHub Issue for their work names the plan.
+- `bun scripts/validate.ts` in `mission-control/db/` reports
+  `Mission Control data: OK` (the App's own check, the rules across records
+  included), and `bun run validate` in `mission-control/app/v3/` reports
+  `db/: OK`.
 - No feature plan lives only in chat, and no long strategic brief lives only
   in a task.
 - Mission Control holds no secrets, tokens, customer data or local runtime

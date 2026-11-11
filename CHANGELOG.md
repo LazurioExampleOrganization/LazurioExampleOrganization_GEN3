@@ -3,6 +3,34 @@
 Date versions: `YYYYMMDD`. This changelog records notable changes delivered
 to the Organization root. Modules keep their own changelogs.
 
+## Unreleased
+
+Plan DEV-6593: the Organization is the first subscriber of the Lazurio
+Marketplace and adopts three app templates of LazurioTemplates.
+
+### Added
+
+- `workspace/presentations`: the Presentations App, adopted from the template
+  LazurioTemplates/presentations v0.2.0, with its sample deck; the library is
+  in English. From `main` Lazurio runs its built version. It wears the design
+  system package at the template's release `v2.0.0` and moves to the
+  Organization's own design system `v2.0.0` as soon as that is released.
+
+### Changed
+
+- Mission Control takes the template LazurioTemplates/mission-control 4.1.2
+  (formerly Lazurio/mission-control) and the design system the template
+  LazurioTemplates/design-system 2.0.0, each by merging the release tag. The
+  design system wears the template's invented Example brand (warm paper, a
+  black primary action, an ultramarine accent) instead of its earlier graphite
+  and signal-blue brand. The rules, README, glossary, migration ledger,
+  planning skill and reference notes name the new sources.
+- Tasks: Mission Control 4.x no longer reads the task ledgers, so a plan's
+  tasks are its `proposed_tasks` and the work on them is GitHub Issues of the
+  owning repository that link back to the plan. `TODO.tasks.json`,
+  `DONE.tasks.json` and the issue ledgers of `mission-control-data` stay
+  unchanged as history (#27).
+
 ## 20261016
 
 GEN3 migration, plan EX-0001. Every step is a public pull request with a
@@ -22,7 +50,8 @@ benchmark row in `MIGRATION.md`.
   colleague overlays, agent knowledge, blog and the manifest text. Fictional
   people have international names (Alex Morgan, Sam Taylor, Robin Lee).
 - Mission Control v3 replaces the in-tree v1 layer: the App comes from the
-  public upstream Lazurio/mission-control (v3.0.1) and the plans and tasks
+  public upstream Lazurio/mission-control (v3.0.1; since moved to
+  LazurioTemplates/mission-control) and the plans and tasks
   live in the mission-control-data repository, imported from v1 and
   translated. The design system is its own repository. All three root
   application slots are active, and the restricted infra slot is cloned by an

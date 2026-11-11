@@ -418,14 +418,14 @@
           "write_rule": "Unit economics, costs and revenue of experiments. Sensitive data enters Git only safely anonymised; the rest stays outside Git."
         },
         {
-          "canonical": "mission-control/db/data/mission-control/TODO.tasks.json",
+          "canonical": "mission-control/db/data/mission-control/plans",
           "domain": "tasks",
-          "write_rule": "Live work is never written in Markdown; it is a task in Mission Control, linked to its plan, published through the Mission Control App or a pull request to mission-control-data."
+          "write_rule": "Live work is never written in Markdown; a task is one of a plan's proposed_tasks in Mission Control, published through the Mission Control App or a pull request to mission-control-data, and the work on it is a GitHub Issue of the owning repository that names the plan. The task ledgers TODO.tasks.json and DONE.tasks.json are history and never change."
         },
         {
-          "canonical": "mission-control/db/data/mission-control/ISSUES.open.json",
+          "canonical": "mission-control/db/data/mission-control/plans",
           "domain": "open-decisions",
-          "write_rule": "Open business decisions are resolved by a colleague with an agent and become tasks once decided; open technical problems are GitHub Issues of the owning repository."
+          "write_rule": "Open business decisions are a plan's open_questions, resolved by a colleague with an agent, and become the plan's tasks once decided; open technical problems are GitHub Issues of the owning repository. The issue ledgers are history and never change."
         }
       ],
       "workspaces": [
@@ -442,7 +442,7 @@
     "legacy_projection": {
       "path": "company.gen3.json",
       "algorithm": "sha256-canonical-json-v1",
-      "sha256": "sha256:8c7c53ab73b8bb7920f4273315f561d7957316893b3a6ad55f2a6e14f74a0f4c"
+      "sha256": "sha256:94adabaef413596169f199bd75896203e0b4cf053d5d2435b95382b1060f5599"
     }
   }
 }

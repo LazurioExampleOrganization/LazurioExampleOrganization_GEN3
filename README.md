@@ -69,7 +69,7 @@ It works in a loop:
 | `.agents/skills/` | Organization skills; `.claude/skills` is their mirror |
 | `workspace/` | Workspace modules, each its own repository |
 | `infra/` | Restricted repository for infrastructure and access governance |
-| `design-system/` | [Design system](https://github.com/LazurioExampleOrganization/design-system): brand baseline, tokens and a viewer App |
+| `design-system/` | [Design system](https://github.com/LazurioExampleOrganization/design-system): brand, tokens, components as a package and a viewer App |
 | `mission-control/` | [Mission Control v3](https://github.com/LazurioExampleOrganization/mission-control) with its [data](https://github.com/LazurioExampleOrganization/mission-control-data) in `mission-control/db/` |
 | `manual/` | Maintenance manual |
 | `blog/` | Internal learning notes |
@@ -89,10 +89,13 @@ Workspace modules:
 ## Planning
 
 The Organization plans in Mission Control v3. Plans hold the why, the scope,
-the decisions and the acceptance criteria; tasks hold the concrete
-implementation steps and link back to a plan. The App comes from the public
-upstream [Lazurio/mission-control](https://github.com/Lazurio/mission-control);
-the plans and tasks live in the
+the decisions and the acceptance criteria; its tasks (`proposed_tasks`) hold
+the concrete implementation steps, and the work on them is GitHub Issues that
+link back to the plan. The App is the Organization's
+copy of the Lazurio Marketplace template
+[LazurioTemplates/mission-control](https://github.com/LazurioTemplates/mission-control);
+the plans and roadmaps live in the
 [mission-control-data](https://github.com/LazurioExampleOrganization/mission-control-data)
-repository. The migration itself is plan EX-0001 there. The Mission Control UI
-is Czech-only for now; the data is English.
+repository. The migration itself is plan EX-0001 there. Mission Control
+speaks Czech and English; hosted, it shows Czech until Lazurio passes the
+language to a Module. The data is English.

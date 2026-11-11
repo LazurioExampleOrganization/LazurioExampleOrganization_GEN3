@@ -17,9 +17,10 @@ Companies typically provide:
 - references for specific technologies
 
 The concrete content depends on the company. There are no references yet.
-The Mission Control planning model is documented in its upstream,
-[Lazurio/mission-control](https://github.com/Lazurio/mission-control)
-(`docs/roadmap-planning-model.md` and the operating manual).
+The Mission Control planning model is documented in the Lazurio Marketplace
+template the Organization's copy follows,
+[LazurioTemplates/mission-control](https://github.com/LazurioTemplates/mission-control)
+(`README.md` and `docs/data.md`).
 
 ## What does not belong here
 

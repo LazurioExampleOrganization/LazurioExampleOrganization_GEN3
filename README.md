@@ -69,7 +69,7 @@ It works in a loop:
 | `.agents/skills/` | Organization skills; `.claude/skills` is their mirror |
 | `workspace/` | Workspace modules, each its own repository |
 | `infra/` | Restricted repository for infrastructure and access governance |
-| `design-system/` | [Design system](https://github.com/LazurioExampleOrganization/design-system): brand baseline, tokens and a viewer App |
+| `design-system/` | [Design system](https://github.com/LazurioExampleOrganization/design-system): brand, tokens, components as a package and a viewer App |
 | `mission-control/` | [Mission Control v3](https://github.com/LazurioExampleOrganization/mission-control) with its [data](https://github.com/LazurioExampleOrganization/mission-control-data) in `mission-control/db/` |
 | `manual/` | Maintenance manual |
 | `blog/` | Internal learning notes |

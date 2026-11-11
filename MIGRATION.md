@@ -35,7 +35,7 @@ stays here.
 
 | Id | Decision |
 |---|---|
-| D2 | The knowledgebase and design system templates have no public upstream. Both repositories are converted by hand and record "no upstream". Addendum 2026-11-06: the design system later became the Lazurio Marketplace template [LazurioTemplates/design-system](https://github.com/LazurioTemplates/design-system), and the Organization adopts its v1.0.0 as a subscriber (plan DEV-6593). |
+| D2 | The knowledgebase and design system templates have no public upstream. Both repositories are converted by hand and record "no upstream". Addendum 2026-11-06: the design system later became the Lazurio Marketplace template [LazurioTemplates/design-system](https://github.com/LazurioTemplates/design-system), and the Organization adopts it as a subscriber, merging v1.0.0 and then v2.0.0 (plan DEV-6593). |
 | D3 | Display name "Lazurio Example Organization", identifiers `example-*`, domain `example.local`. Fictional people use international names without diacritics: Alex Morgan (`alexmorgan`), Sam Taylor (`samtaylor`), Robin Lee (`robinlee`) and Kim Park. |
 | D4 | Until the Lazurio root ships an English locale of its managed collaboration block, `AGENTS.md` links to that block instead of embedding a translated copy. The Organization's own rules are written in English. |
 | D6 | The manifest stays in `transition`. Every pull request that changes a manifest regenerates the projection. |

@@ -241,7 +241,7 @@
       ],
       "source_of_truth": "git-native",
       "status": "active",
-      "notes": "Presentations App: a library of HTML presentations created with an agent, adopted from the Lazurio Marketplace template LazurioTemplates/presentations v0.1.1. Generation app/v1, decks are files in Git; no data repository.",
+      "notes": "Presentations App: a library of HTML presentations created with an agent, adopted from the Lazurio Marketplace template LazurioTemplates/presentations v0.2.0. Generation app/v1, decks are files in Git; no data repository.",
       "git": {
         "url": "git@github.com:LazurioExampleOrganization/presentations.git",
         "branch": "main"
@@ -263,7 +263,7 @@
         "url": "git@github.com:LazurioExampleOrganization/design-system.git",
         "branch": "main"
       },
-      "notes": "Organization design system: brand baseline, tokens and a read-only viewer App. Split from the root with its history; takes releases of the Lazurio Marketplace template LazurioTemplates/design-system by merging their tags (v1.0.0)."
+      "notes": "Organization design system: the brand, tokens and components as the package design-system, and a read-only viewer App. Split from the root with its history; takes releases of the Lazurio Marketplace template LazurioTemplates/design-system by merging their tags (v2.0.0)."
     },
     {
       "path": "mission-control",

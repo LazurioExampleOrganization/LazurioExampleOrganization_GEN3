@@ -102,6 +102,10 @@ A row lands in the same root pull request or in the next one.
 
 ### Pull requests
 
+The repository `infra` in this ledger is the public repository that has been
+`infra-example` since 2026-11-14 (root decision 0204, point 10); its links
+point there. Today's `infra` is the Organization's private Deployment Repo.
+
 | # | Pull request | Repo | Start (UTC) | Merged (UTC) | Agent time | Human wait | Review rounds | Files | +/− | Czech lines before → after | Organization check | MS checks | CI | Broke | Human decisions | Tokens |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
 | R1 | [#1](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/1) | root | 2026-10-15 22:28 | 2026-10-15 22:31 | 3 min | 0 | 0 | 1 | +103/−0 | 7,297 → 7,297 | ok, `transition` | n/a | no workflow yet | nothing | none | not reported |
@@ -118,19 +122,19 @@ A row lands in the same root pull request or in the next one.
 | T6e | [finance#1](https://github.com/LazurioExampleOrganization/finance/pull/1) | finance | 2026-10-15 23:13 | 2026-10-15 23:17 | 4 min | 0 | 0 | 2 | +16/−14 | 12 → 0 | n/a | 13/13 | none | nothing | none | (T6b–e) |
 | T6b | [automations#1](https://github.com/LazurioExampleOrganization/automations/pull/1) | automations | 2026-10-15 23:13 | 2026-10-15 23:18 | 5 min | 0 | 0 | 2 | +16/−15 | 12 → 0 | n/a | 13/13 | none | nothing | none | (T6b–e) |
 | T4 | [design-system#2](https://github.com/LazurioExampleOrganization/design-system/pull/2) | design-system | 2026-10-15 23:13 | 2026-10-15 23:20 | 7 min | 0 | 0 | 6 | +86/−70 | 31 → 0 | n/a | 13/13 (scratch Folder) | pass | nothing | none | subagent, 140k tokens |
-| T7 | [infra#1](https://github.com/LazurioExampleOrganization/infra/pull/1) | infra | 2026-10-15 23:13 | 2026-10-15 23:21 | 8 min | 0 | 0 | 5 | +130/−67 | 40 → 0 | n/a | n/a (restricted root repository) | none | nothing | none | subagent, 138k tokens |
+| T7 | [infra-example#1](https://github.com/LazurioExampleOrganization/infra-example/pull/1) | infra | 2026-10-15 23:13 | 2026-10-15 23:21 | 8 min | 0 | 0 | 5 | +130/−67 | 40 → 0 | n/a | n/a (restricted root repository) | none | nothing | none | subagent, 138k tokens |
 | T6a | [research#1](https://github.com/LazurioExampleOrganization/research/pull/1) | research | 2026-10-15 23:13 | 2026-10-15 23:23 | 10 min | 0 | 0 | 6 | +923/−23 | 19 → 0 (plus about 830 lines moved out of the root and translated) | n/a | 13/13 | none | nothing | none | subagent, 207k tokens |
 | T5 | [experiments#1](https://github.com/LazurioExampleOrganization/experiments/pull/1) | experiments | 2026-10-15 23:13 | 2026-10-15 23:24 | 11 min | 0 | 0 | 14 | +678/−645 | 518 → 0 | n/a | 13/13 | none | nothing | none | subagent, 186k tokens |
 | T1 | [#8](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/8) | root | 2026-10-15 23:14 | 2026-10-15 23:29 | 14 min | 0 | 0 | 71 | +2,031/−3,055 | 3,205 → 1,187 (0 outside held surfaces and compiler output) | ok, `transition`, projection parity | n/a | pass | nothing | none | subagent for `company/`, `blog/`, `productionspace/`: 235k tokens |
 | T2 | [knowledgebase#2](https://github.com/LazurioExampleOrganization/knowledgebase/pull/2) | knowledgebase | 2026-10-15 23:31 | 2026-10-15 23:33 | 4 min | 0 | 0 | 44 | +100/−638 | 266 → 0 | n/a | 13/13 | pass | The rename left one capitalised word mid-sentence, seen in the rendered page; fixed in knowledgebase#3 | none | not reported |
 | T2 fix | [knowledgebase#3](https://github.com/LazurioExampleOrganization/knowledgebase/pull/3) | knowledgebase | 2026-10-15 23:36 | 2026-10-15 23:48 | 2 min | 0 | 0 | 1 | +1/−1 | 0 → 0 | n/a | 13/13 | pass | The publish helper waited for CI without a PR (missing body file); stopped and rerun | none | not reported |
-| O2 | [mission-control-data#1](https://github.com/LazurioExampleOrganization/mission-control-data/pull/1) (after a bootstrap push of the template skeleton to `v3`) | mission-control-data | 2026-10-15 23:50 | 2026-10-15 23:56 | 6 min | 0 | 0 | 18 | +2,479/−3 | imported in original language | n/a | data validation OK | pass | nothing; the GitHub governance issue moved to [infra#2](https://github.com/LazurioExampleOrganization/infra/issues/2) | Owner unblocked Mission Control | not reported |
+| O2 | [mission-control-data#1](https://github.com/LazurioExampleOrganization/mission-control-data/pull/1) (after a bootstrap push of the template skeleton to `v3`) | mission-control-data | 2026-10-15 23:50 | 2026-10-15 23:56 | 6 min | 0 | 0 | 18 | +2,479/−3 | imported in original language | n/a | data validation OK | pass | nothing; the GitHub governance issue moved to [infra-example#2](https://github.com/LazurioExampleOrganization/infra-example/issues/2) | Owner unblocked Mission Control | not reported |
 | T3 | [mission-control-data#2](https://github.com/LazurioExampleOrganization/mission-control-data/pull/2) | mission-control-data | 2026-10-15 23:58 | 2026-10-16 00:24 | 26 min | 0 | 0 | 18 | +689/−957 | 575 → 2 (pinned upstream validator) | n/a | data validation OK | pass | nothing | none | subagent, 350k tokens |
 | O3 | [mission-control#1](https://github.com/LazurioExampleOrganization/mission-control/pull/1) | mission-control | 2026-10-15 23:56 | 2026-10-16 00:56 | 35 min | 24 min (waiting for the upstream fix) | 0 | 6 overlay files on top of the upstream merge | +12/−12 vs upstream v3.0.1 | upstream UI is Czech-only (known gap) | n/a | `bun run check`, 231 + 228 tests and build green with the real data mount | pass (Ubuntu and Windows) | On v3.0.0, 7 upstream fixture tests failed in a fork integrated with unrelated histories ([Lazurio/mission-control#3](https://github.com/Lazurio/mission-control/issues/3)); fixed upstream in v3.0.1 and the branch was rebuilt on it | Owner chose to wait for the upstream fix instead of merging red | not reported |
 | O4 | [#9](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/9) | root | 2026-10-16 00:09 | 2026-10-16 00:58 | 20 min (prepared while O3 waited) | 0 | 0 | 115 | +246/−11,784 | 1,187 → 9 (compiler headings only) | ok, `transition`, projection parity | design system 13/13, Mission Control 12/13 | pass | The ignored `node_modules` of the removed in-tree Apps blocked the clone of the new nested checkouts until removed by hand | none | not reported |
-| T7 follow-up | [infra#3](https://github.com/LazurioExampleOrganization/infra/pull/3) | infra | 2026-10-16 01:06 | 2026-10-16 01:09 | 3 min | 0 | 0 | 2 | +18/−8 | 0 → 0 | n/a | n/a | none | nothing | none | not reported |
-| close-out | [#10](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/10) | root | 2026-10-16 01:09 | 2026-10-16 01:11 | 3 min | 0 | 0 | 4 | +40/−3 | 9 → 9 | ok, `transition`, projection parity | n/a | pass | `lazurio doctor` then reported infra without a module contract and an unignored legacy colleague folder; fixed in infra#4 and the next root PR | none | not reported |
-| infra fix | [infra#4](https://github.com/LazurioExampleOrganization/infra/pull/4) | infra | 2026-10-16 01:12 | 2026-10-16 01:14 | 2 min | 0 | 0 | 1 | +9/−0 | 0 → 0 | n/a | not linked → 13/13 | none | nothing | none | not reported |
+| T7 follow-up | [infra-example#3](https://github.com/LazurioExampleOrganization/infra-example/pull/3) | infra | 2026-10-16 01:06 | 2026-10-16 01:09 | 3 min | 0 | 0 | 2 | +18/−8 | 0 → 0 | n/a | n/a | none | nothing | none | not reported |
+| close-out | [#10](https://github.com/LazurioExampleOrganization/LazurioExampleOrganization_GEN3/pull/10) | root | 2026-10-16 01:09 | 2026-10-16 01:11 | 3 min | 0 | 0 | 4 | +40/−3 | 9 → 9 | ok, `transition`, projection parity | n/a | pass | `lazurio doctor` then reported infra without a module contract and an unignored legacy colleague folder; fixed in infra-example#4 and the next root PR | none | not reported |
+| infra fix | [infra-example#4](https://github.com/LazurioExampleOrganization/infra-example/pull/4) | infra | 2026-10-16 01:12 | 2026-10-16 01:14 | 2 min | 0 | 0 | 1 | +9/−0 | 0 → 0 | n/a | not linked → 13/13 | none | nothing | none | not reported |
 
 ### Mount on the maintainer machine (2026-10-15 22:35–22:38 UTC)
 
@@ -208,6 +212,6 @@ rulesets allow this and GitHub marks the pull request as merged.
 
 `lazurio doctor --json` reported two required failures for this Organization:
 `infra` had no `lazurio.module.json` once it became a managed checkout
-(fixed in infra#4), and `.gitignore` no longer covered the legacy colleague
+(fixed in infra-example#4), and `.gitignore` no longer covered the legacy colleague
 folder name `archiv/` that the doctor probes (fixed in the PR that adds this
 section). Every Organization check is green afterwards.

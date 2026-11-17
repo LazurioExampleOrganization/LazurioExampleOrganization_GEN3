@@ -159,7 +159,8 @@
           "https://launchpad.lazurio-alena.lazurioexampleorganization.lazurio.io/api/integrations/oauth/callback",
           "https://launchpad.lazurio-bob.lazurioexampleorganization.lazurio.io/api/integrations/oauth/callback",
           "https://launchpad.team-01.lazurioexampleorganization.lazurio.io/api/integrations/oauth/callback"
-        ]
+        ],
+        "send_mail": true
       }
     },
     "access_requests": {

@@ -184,7 +184,7 @@
       "business_context": {
         "customer_segments": [
           {
-            "description": "The company has no single fixed segment; every experiment defines its own customer, channel and offer in its own spec. A segment without an experiment is only a hypothesis.",
+            "description": "The company has no single fixed segment; every experiment defines its own customer, channel and offer in its spec. A segment without an experiment is only a hypothesis.",
             "slug": "mechanism-specific-audiences"
           }
         ],

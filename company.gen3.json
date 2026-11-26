@@ -331,6 +331,54 @@
       "access": {
         "default": "expected",
         "roles": [
+          "*"
+        ]
+      },
+      "branch": "main",
+      "category": "application",
+      "notes": "Deals: Modul založený příkazem lazurio module create (stack vite-react).",
+      "path": "workspace/deals",
+      "repo": "git@github.com:LazurioExampleOrganization/deals.git",
+      "slug": "deals",
+      "source_of_truth": "git-native",
+      "status": "active",
+      "teams": [
+        "workspace"
+      ]
+    },
+    {
+      "access": {
+        "default": "expected",
+        "roles": [
+          "*"
+        ]
+      },
+      "branch": "v3",
+      "category": "application",
+      "materialization": "repository_db_mount",
+      "notes": "Deals: data Modulu v repository-db (LazurioExampleOrganization/deals-data, větev v3), připojená jako db/ Modulu workspace/deals. Publikace dat je repository-db publish do v3, oddělená od PR kódu Modulu.",
+      "path": "workspace/deals/db",
+      "repo": "git@github.com:LazurioExampleOrganization/deals-data.git",
+      "repository_db": {
+        "app_writable_path_policy": "repository_db_publish_only",
+        "branch": "v3",
+        "config": "repository-db.yaml",
+        "data_root": "data",
+        "profile": "repository-db-v3",
+        "repo": "LazurioExampleOrganization/deals-data",
+        "url": "git@github.com:LazurioExampleOrganization/deals-data.git"
+      },
+      "slug": "deals-data",
+      "source_of_truth": "repository-db:v3",
+      "status": "active",
+      "teams": [
+        "workspace"
+      ]
+    },
+    {
+      "access": {
+        "default": "expected",
+        "roles": [
           "founder",
           "experiment-operator"
         ]

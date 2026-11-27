@@ -6,7 +6,7 @@
     "forge_binding": {
       "binding_state": "verified",
       "forge": "github",
-      "locator": "LazurioExampleOrganization",
+      "locator": "LazurioExampleOrg-RenameTest",
       "organization_id": "325048785"
     },
     "metadata": {},
@@ -16,7 +16,7 @@
     "binding_state": "verified",
     "default_branch": "main",
     "forge": "github",
-    "locator": "LazurioExampleOrganization/LazurioExampleOrganization_GEN3",
+    "locator": "LazurioExampleOrg-RenameTest/LazurioExampleOrganization_GEN3",
     "repository_id": "1421349619"
   },
   "manifests": {
@@ -442,7 +442,7 @@
     "legacy_projection": {
       "path": "company.gen3.json",
       "algorithm": "sha256-canonical-json-v1",
-      "sha256": "sha256:07322d3ce90cb534fd7b8cc4802e2b2243463e97a7441d3c4db9b3212e55bfab"
+      "sha256": "sha256:5a44b11eb1d59b1fc1a2f46c9e0ed88e95002ed4d85f95cd212acda84b823bcd"
     }
   }
 }

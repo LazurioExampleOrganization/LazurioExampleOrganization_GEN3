@@ -105,19 +105,19 @@
   "company": {
     "default_branch": "main",
     "display_name": "Lazurio Example Organization",
-    "github_org": "LazurioExampleOrg-RenameTest",
-    "repository": "git@github.com:LazurioExampleOrg-RenameTest/LazurioExampleOrganization_GEN3.git",
-    "root_repository": "LazurioExampleOrg-RenameTest/LazurioExampleOrganization_GEN3",
+    "github_org": "LazurioExampleOrganization",
+    "repository": "git@github.com:LazurioExampleOrganization/LazurioExampleOrganization_GEN3.git",
+    "root_repository": "LazurioExampleOrganization/LazurioExampleOrganization_GEN3",
     "slug": "LazurioExampleOrganization"
   },
   "forge_binding": {
     "organization": {
-      "asserted_login": "LazurioExampleOrg-RenameTest",
+      "asserted_login": "LazurioExampleOrganization",
       "id": "325048785"
     },
     "provider": "github",
     "repository": {
-      "asserted_full_name": "LazurioExampleOrg-RenameTest/LazurioExampleOrganization_GEN3",
+      "asserted_full_name": "LazurioExampleOrganization/LazurioExampleOrganization_GEN3",
       "default_branch": "main",
       "id": "1421349619"
     },
@@ -280,7 +280,7 @@
       "category": "engineering",
       "notes": "App access: shows who came to an App through Lazurio and with which application role, read with @lazurio/module-kit appAccess (Lazurio decision 0231). Created with lazurio module create (stack bun-service).",
       "path": "workspace/app-access",
-      "repo": "git@github.com:LazurioExampleOrg-RenameTest/app-access.git",
+      "repo": "git@github.com:LazurioExampleOrganization/app-access.git",
       "slug": "app-access",
       "source_of_truth": "git-native",
       "status": "active",
@@ -300,7 +300,7 @@
       "category": "automation",
       "notes": "Agent workflows, integrations and runtime. An automation is connected only after a manual check that it creates no spam, no terms-of-service evasion and no security risk.",
       "path": "workspace/automations",
-      "repo": "git@github.com:LazurioExampleOrg-RenameTest/automations.git",
+      "repo": "git@github.com:LazurioExampleOrganization/automations.git",
       "slug": "automations",
       "source_of_truth": "git-native",
       "teams": [
@@ -319,7 +319,7 @@
       "category": "publishing",
       "notes": "Public publishing and acquisition assets. No third-party content, fake engagement or claims without evidence.",
       "path": "workspace/content",
-      "repo": "git@github.com:LazurioExampleOrg-RenameTest/content.git",
+      "repo": "git@github.com:LazurioExampleOrganization/content.git",
       "slug": "content",
       "source_of_truth": "git-native",
       "teams": [
@@ -338,7 +338,7 @@
       "category": "application",
       "notes": "Deals: Modul založený příkazem lazurio module create (stack vite-react).",
       "path": "workspace/deals",
-      "repo": "git@github.com:LazurioExampleOrg-RenameTest/deals.git",
+      "repo": "git@github.com:LazurioExampleOrganization/deals.git",
       "slug": "deals",
       "source_of_truth": "git-native",
       "status": "active",
@@ -356,17 +356,17 @@
       "branch": "v3",
       "category": "application",
       "materialization": "repository_db_mount",
-      "notes": "Deals: data Modulu v repository-db (LazurioExampleOrg-RenameTest/deals-data, větev v3), připojená jako db/ Modulu workspace/deals. Publikace dat je repository-db publish do v3, oddělená od PR kódu Modulu.",
+      "notes": "Deals: data Modulu v repository-db (LazurioExampleOrganization/deals-data, větev v3), připojená jako db/ Modulu workspace/deals. Publikace dat je repository-db publish do v3, oddělená od PR kódu Modulu.",
       "path": "workspace/deals/db",
-      "repo": "git@github.com:LazurioExampleOrg-RenameTest/deals-data.git",
+      "repo": "git@github.com:LazurioExampleOrganization/deals-data.git",
       "repository_db": {
         "app_writable_path_policy": "repository_db_publish_only",
         "branch": "v3",
         "config": "repository-db.yaml",
         "data_root": "data",
         "profile": "repository-db-v3",
-        "repo": "LazurioExampleOrg-RenameTest/deals-data",
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/deals-data.git"
+        "repo": "LazurioExampleOrganization/deals-data",
+        "url": "git@github.com:LazurioExampleOrganization/deals-data.git"
       },
       "slug": "deals-data",
       "source_of_truth": "repository-db:v3",
@@ -387,7 +387,7 @@
       "category": "business",
       "notes": "Experiment specs, run logs, metrics, results, stop or scale decisions and the guardrail audit.",
       "path": "workspace/experiments",
-      "repo": "git@github.com:LazurioExampleOrg-RenameTest/experiments.git",
+      "repo": "git@github.com:LazurioExampleOrganization/experiments.git",
       "slug": "experiments",
       "source_of_truth": "git-native",
       "teams": [
@@ -406,7 +406,7 @@
       "category": "business",
       "notes": "Costs, revenue, unit economics, payment provider exports and the experiment audit. Sensitive data stays out of Git unless it is safely anonymized.",
       "path": "workspace/finance",
-      "repo": "git@github.com:LazurioExampleOrg-RenameTest/finance.git",
+      "repo": "git@github.com:LazurioExampleOrganization/finance.git",
       "slug": "finance",
       "source_of_truth": "git-native",
       "teams": [
@@ -426,7 +426,7 @@
       "category": "knowledge",
       "notes": "Strategy, decision logic, guardrails and lessons learned. Document-native knowledge with a read-only viewer App.",
       "path": "workspace/knowledgebase",
-      "repo": "git@github.com:LazurioExampleOrg-RenameTest/knowledgebase.git",
+      "repo": "git@github.com:LazurioExampleOrganization/knowledgebase.git",
       "slug": "knowledgebase",
       "source_of_truth": "git-native",
       "teams": [
@@ -446,7 +446,7 @@
       "category": "knowledge",
       "notes": "Verified, repeatable mechanisms. Hypotheses do not belong here; they stay in research and experiments.",
       "path": "workspace/playbooks",
-      "repo": "git@github.com:LazurioExampleOrg-RenameTest/playbooks.git",
+      "repo": "git@github.com:LazurioExampleOrganization/playbooks.git",
       "slug": "playbooks",
       "source_of_truth": "git-native",
       "teams": [
@@ -465,7 +465,7 @@
       "category": "application",
       "notes": "Presentations App: a library of HTML presentations created with an agent, adopted from the Lazurio Marketplace template LazurioTemplates/presentations v0.2.0. Generation app/v1, decks are files in Git; no data repository.",
       "path": "workspace/presentations",
-      "repo": "git@github.com:LazurioExampleOrg-RenameTest/presentations.git",
+      "repo": "git@github.com:LazurioExampleOrganization/presentations.git",
       "slug": "presentations",
       "source_of_truth": "git-native",
       "status": "active",
@@ -485,7 +485,7 @@
       "category": "knowledge",
       "notes": "Mechanism scans, source notes, market maps and the evidence for deciding what to test.",
       "path": "workspace/research",
-      "repo": "git@github.com:LazurioExampleOrg-RenameTest/research.git",
+      "repo": "git@github.com:LazurioExampleOrganization/research.git",
       "slug": "research",
       "source_of_truth": "git-native",
       "teams": [
@@ -503,7 +503,7 @@
       "category": "application",
       "notes": "Time Tracker: Modul založený příkazem lazurio module create (stack vite-react).",
       "path": "workspace/time-tracker",
-      "repo": "git@github.com:LazurioExampleOrg-RenameTest/time-tracker.git",
+      "repo": "git@github.com:LazurioExampleOrganization/time-tracker.git",
       "slug": "time-tracker",
       "source_of_truth": "git-native",
       "status": "active",
@@ -521,17 +521,17 @@
       "branch": "v3",
       "category": "application",
       "materialization": "repository_db_mount",
-      "notes": "Time Tracker: data Modulu v repository-db (LazurioExampleOrg-RenameTest/time-tracker-data, větev v3), připojená jako db/ Modulu workspace/time-tracker. Publikace dat je repository-db publish do v3, oddělená od PR kódu Modulu.",
+      "notes": "Time Tracker: data Modulu v repository-db (LazurioExampleOrganization/time-tracker-data, větev v3), připojená jako db/ Modulu workspace/time-tracker. Publikace dat je repository-db publish do v3, oddělená od PR kódu Modulu.",
       "path": "workspace/time-tracker/db",
-      "repo": "git@github.com:LazurioExampleOrg-RenameTest/time-tracker-data.git",
+      "repo": "git@github.com:LazurioExampleOrganization/time-tracker-data.git",
       "repository_db": {
         "app_writable_path_policy": "repository_db_publish_only",
         "branch": "v3",
         "config": "repository-db.yaml",
         "data_root": "data",
         "profile": "repository-db-v3",
-        "repo": "LazurioExampleOrg-RenameTest/time-tracker-data",
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/time-tracker-data.git"
+        "repo": "LazurioExampleOrganization/time-tracker-data",
+        "url": "git@github.com:LazurioExampleOrganization/time-tracker-data.git"
       },
       "slug": "time-tracker-data",
       "source_of_truth": "repository-db:v3",

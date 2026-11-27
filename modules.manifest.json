@@ -1,7 +1,7 @@
 {
   "organization_generation": "gen3",
   "company": "LazurioExampleOrganization",
-  "github_org": "LazurioExampleOrg-RenameTest",
+  "github_org": "LazurioExampleOrganization",
   "module_slots": [
     {
       "path": "infra",
@@ -16,7 +16,7 @@
       "status": "active",
       "materialization": "doctor_managed_nested_repo",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/infra.git",
+        "url": "git@github.com:LazurioExampleOrganization/infra.git",
         "branch": "main"
       },
       "notes": "Restricted root repository for infrastructure, access governance and deployment context. It never holds secrets. Cloned only by an Admin install; its access record lists the GitHub Organization, Team grants and rulesets."
@@ -36,7 +36,7 @@
       ],
       "source_of_truth": "git-native",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/knowledgebase.git",
+        "url": "git@github.com:LazurioExampleOrganization/knowledgebase.git",
         "branch": "main"
       },
       "notes": "Strategy, decision logic, guardrails and lessons learned. Document-native knowledge with a read-only viewer App."
@@ -55,7 +55,7 @@
       ],
       "source_of_truth": "git-native",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/research.git",
+        "url": "git@github.com:LazurioExampleOrganization/research.git",
         "branch": "main"
       },
       "notes": "Mechanism scans, source notes, market maps and the evidence for deciding what to test."
@@ -75,7 +75,7 @@
       "source_of_truth": "git-native",
       "upstream_truth": "workspace/research",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/experiments.git",
+        "url": "git@github.com:LazurioExampleOrganization/experiments.git",
         "branch": "main"
       },
       "notes": "Experiment specs, run logs, metrics, results, stop or scale decisions and the guardrail audit."
@@ -96,7 +96,7 @@
       "source_of_truth": "git-native",
       "upstream_truth": "workspace/experiments",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/playbooks.git",
+        "url": "git@github.com:LazurioExampleOrganization/playbooks.git",
         "branch": "main"
       },
       "notes": "Verified, repeatable mechanisms. Hypotheses do not belong here; they stay in research and experiments."
@@ -115,7 +115,7 @@
       ],
       "source_of_truth": "git-native",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/automations.git",
+        "url": "git@github.com:LazurioExampleOrganization/automations.git",
         "branch": "main"
       },
       "notes": "Agent workflows, integrations and runtime. An automation is connected only after a manual check that it creates no spam, no terms-of-service evasion and no security risk."
@@ -135,7 +135,7 @@
       "source_of_truth": "git-native",
       "upstream_truth": "workspace/knowledgebase",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/content.git",
+        "url": "git@github.com:LazurioExampleOrganization/content.git",
         "branch": "main"
       },
       "notes": "Public publishing and acquisition assets. No third-party content, fake engagement or claims without evidence."
@@ -153,7 +153,7 @@
       ],
       "source_of_truth": "git-native",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/finance.git",
+        "url": "git@github.com:LazurioExampleOrganization/finance.git",
         "branch": "main"
       },
       "notes": "Costs, revenue, unit economics, payment provider exports and the experiment audit. Sensitive data stays out of Git unless it is safely anonymized."
@@ -174,7 +174,7 @@
       "status": "active",
       "notes": "Time Tracker: Modul zalo\u017een\u00fd p\u0159\u00edkazem lazurio module create (stack vite-react).",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/time-tracker.git",
+        "url": "git@github.com:LazurioExampleOrganization/time-tracker.git",
         "branch": "main"
       }
     },
@@ -191,11 +191,11 @@
       ],
       "source_of_truth": "repository-db:v3",
       "status": "active",
-      "notes": "Time Tracker: data Modulu v repository-db (LazurioExampleOrg-RenameTest/time-tracker-data, v\u011btev v3), p\u0159ipojen\u00e1 jako db/ Modulu workspace/time-tracker. Publikace dat je repository-db publish do v3, odd\u011blen\u00e1 od PR k\u00f3du Modulu.",
+      "notes": "Time Tracker: data Modulu v repository-db (LazurioExampleOrganization/time-tracker-data, v\u011btev v3), p\u0159ipojen\u00e1 jako db/ Modulu workspace/time-tracker. Publikace dat je repository-db publish do v3, odd\u011blen\u00e1 od PR k\u00f3du Modulu.",
       "materialization": "repository_db_mount",
       "repository_db": {
-        "repo": "LazurioExampleOrg-RenameTest/time-tracker-data",
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/time-tracker-data.git",
+        "repo": "LazurioExampleOrganization/time-tracker-data",
+        "url": "git@github.com:LazurioExampleOrganization/time-tracker-data.git",
         "branch": "v3",
         "config": "repository-db.yaml",
         "data_root": "data",
@@ -203,7 +203,7 @@
         "app_writable_path_policy": "repository_db_publish_only"
       },
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/time-tracker-data.git",
+        "url": "git@github.com:LazurioExampleOrganization/time-tracker-data.git",
         "branch": "v3"
       }
     },
@@ -223,7 +223,7 @@
       "status": "active",
       "notes": "App access: shows who came to an App through Lazurio and with which application role, read with @lazurio/module-kit appAccess (Lazurio decision 0231). Created with lazurio module create (stack bun-service).",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/app-access.git",
+        "url": "git@github.com:LazurioExampleOrganization/app-access.git",
         "branch": "main"
       }
     },
@@ -243,7 +243,7 @@
       "status": "active",
       "notes": "Presentations App: a library of HTML presentations created with an agent, adopted from the Lazurio Marketplace template LazurioTemplates/presentations v0.2.0. Generation app/v1, decks are files in Git; no data repository.",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/presentations.git",
+        "url": "git@github.com:LazurioExampleOrganization/presentations.git",
         "branch": "main"
       }
     },
@@ -263,7 +263,7 @@
       "status": "active",
       "notes": "Deals: Modul založený příkazem lazurio module create (stack vite-react).",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/deals.git",
+        "url": "git@github.com:LazurioExampleOrganization/deals.git",
         "branch": "main"
       }
     },
@@ -280,11 +280,11 @@
       ],
       "source_of_truth": "repository-db:v3",
       "status": "active",
-      "notes": "Deals: data Modulu v repository-db (LazurioExampleOrg-RenameTest/deals-data, větev v3), připojená jako db/ Modulu workspace/deals. Publikace dat je repository-db publish do v3, oddělená od PR kódu Modulu.",
+      "notes": "Deals: data Modulu v repository-db (LazurioExampleOrganization/deals-data, větev v3), připojená jako db/ Modulu workspace/deals. Publikace dat je repository-db publish do v3, oddělená od PR kódu Modulu.",
       "materialization": "repository_db_mount",
       "repository_db": {
-        "repo": "LazurioExampleOrg-RenameTest/deals-data",
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/deals-data.git",
+        "repo": "LazurioExampleOrganization/deals-data",
+        "url": "git@github.com:LazurioExampleOrganization/deals-data.git",
         "branch": "v3",
         "config": "repository-db.yaml",
         "data_root": "data",
@@ -292,7 +292,7 @@
         "app_writable_path_policy": "repository_db_publish_only"
       },
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/deals-data.git",
+        "url": "git@github.com:LazurioExampleOrganization/deals-data.git",
         "branch": "v3"
       }
     },
@@ -309,7 +309,7 @@
       "status": "active",
       "materialization": "doctor_managed_nested_repo",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/design-system.git",
+        "url": "git@github.com:LazurioExampleOrganization/design-system.git",
         "branch": "main"
       },
       "notes": "Organization design system: the brand, tokens and components as the package design-system, and a read-only viewer App. Split from the root with its history; takes releases of the Lazurio Marketplace template LazurioTemplates/design-system by merging their tags (v2.0.0)."
@@ -327,7 +327,7 @@
       "status": "active",
       "materialization": "doctor_managed_nested_repo",
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/mission-control.git",
+        "url": "git@github.com:LazurioExampleOrganization/mission-control.git",
         "branch": "main"
       },
       "notes": "Mission Control App (generation app/v3). The repository takes released tags of the Lazurio Marketplace template LazurioTemplates/mission-control, formerly Lazurio/mission-control (decision 0174), and adds only the declared instance overlay; its data lives in mission-control/db."
@@ -345,8 +345,8 @@
       "status": "active",
       "materialization": "repository_db_mount",
       "repository_db": {
-        "repo": "LazurioExampleOrg-RenameTest/mission-control-data",
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/mission-control-data.git",
+        "repo": "LazurioExampleOrganization/mission-control-data",
+        "url": "git@github.com:LazurioExampleOrganization/mission-control-data.git",
         "branch": "v3",
         "config": "repository-db.yaml",
         "data_root": "data/mission-control",
@@ -354,7 +354,7 @@
         "app_writable_path_policy": "repository_db_publish_only"
       },
       "git": {
-        "url": "git@github.com:LazurioExampleOrg-RenameTest/mission-control-data.git",
+        "url": "git@github.com:LazurioExampleOrganization/mission-control-data.git",
         "branch": "v3"
       },
       "notes": "Mission Control v3 data: plans, tasks, roadmaps and reports, on branch v3. Published through the Mission Control App or a pull request; GitHub grants are the only access authority."
